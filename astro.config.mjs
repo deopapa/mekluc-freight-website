@@ -5,7 +5,10 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.meklucfreight.co.za',
+  // V3.5 — Initially deployed to GitHub Pages (free hosting)
+  // Will switch to https://meklucfreight.co.za when DNS migration done
+  site: 'https://deopapa.github.io',
+  base: '/mekluc-freight-website',
   integrations: [
     mdx(),
     tailwind(),
