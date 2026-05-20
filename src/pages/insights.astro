@@ -19,8 +19,8 @@ import { site } from '@/lib/site';
   <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 8rem);">
     <div class="section">
       <div class="reveal">
-        <a href="#" style="display: block; padding: clamp(2.5rem, 5vw, 4rem); background: var(--c-cream); border: 1px solid var(--c-line-soft); transition: border-color 0.2s ease;" class="group hover:border-[var(--c-bordeaux)]">
-          <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-bordeaux);">FEATURED</span>
+        <a href="/insights/aeo-customs-clearance-time" style="display: block; padding: clamp(2.5rem, 5vw, 4rem); background: var(--c-cream); border: 1px solid var(--c-line-soft); transition: border-color 0.2s ease;" class="group hover:border-[var(--c-bordeaux)]">
+          <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-bordeaux);">FEATURED &middot; CUSTOMS & AEO</span>
           <h3 style="font-family: var(--f-display); font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 400; line-height: 1.15; color: var(--c-ink); margin: 1rem 0;">
             What AEO accreditation actually means for your customs clearance time
           </h3>
@@ -48,13 +48,15 @@ import { site } from '@/lib/site';
           {
             tag: 'CORRIDORS',
             title: 'Mining cargo to the DRC — 3 things SA exporters should plan before tendering',
+            href: '/insights/drc-mining-cargo-planning',
           },
           {
             tag: 'TRENDS',
             title: 'SA export diversification post-US tariffs — the 5 corridors that matter in 2026',
+            href: '/insights/sa-export-diversification-corridors-2026',
           },
         ].map((article) => (
-          <a href="#" style="display: block; background: var(--c-paper); padding: clamp(2rem, 4vw, 3rem); transition: background 0.2s ease;" class="group hover:bg-[var(--c-cream)]">
+          <a href={article.href} style="display: block; background: var(--c-paper); padding: clamp(2rem, 4vw, 3rem); transition: background 0.2s ease;" class="group hover:bg-[var(--c-cream)]">
             <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-bordeaux);">{article.tag}</span>
             <h3 style="font-family: var(--f-display); font-size: 1.5rem; font-weight: 400; line-height: 1.25; color: var(--c-ink); margin: 0.75rem 0 1.25rem;">{article.title}</h3>
             <span style="font-family: var(--f-sans); font-size: 15px; font-weight: 600; color: var(--c-bordeaux); display: inline-flex; align-items: center; gap: 8px;">

@@ -15,24 +15,52 @@ import { site } from '@/lib/site';
     bg="paper"
   />
 
-  <!-- Recent press -->
+  <!-- Recent news -->
   <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 10rem);">
     <div class="section">
       <div class="section-header reveal">
         <div>
-          <p class="eyebrow mb-4">Press</p>
-          <h2 class="section-title">Recent <em>press</em></h2>
+          <p class="eyebrow mb-4">News</p>
+          <h2 class="section-title">Recent <em>news</em></h2>
         </div>
       </div>
 
-      <div class="max-w-3xl reveal" style="padding: clamp(2rem, 4vw, 3rem); background: var(--c-cream); border: 1px solid var(--c-line-soft);">
-        <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); margin-bottom: 0.75rem;">
-          Industry mentions will be added as they appear. Press releases from Mekluc Freight will be published here.
-        </p>
-        <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal);">
-          Appearances in Freight News, Engineering News and African Cargo will be linked when available.
-        </p>
+      <div class="max-w-3xl" style="display: flex; flex-direction: column; gap: 0;">
+        {[
+          {
+            date: '20 May 2026',
+            tag: 'COMPANY',
+            title: 'Mekluc Freight launches refreshed digital presence at meklucfreight.co.za',
+            body: 'Mekluc Freight has launched a refreshed corporate website at meklucfreight.co.za alongside its updated brand identity. The new site brings together our service offer (Air, Sea, Road, Customs, Warehousing, Specialised Cargo) and our three priority solutions for South African importers and exporters: SA Export Diversification, Mining & Project Cargo to Africa, and Pharma & Perishables GDP-ready forwarding. Trilingual rollout (EN / FR / AF) follows over 2026.',
+          },
+          {
+            date: 'May 2026',
+            tag: 'BRAND',
+            title: 'New visual identity — Brand Book v2.3 published internally',
+            body: 'Following a multi-month strategic review, Mekluc Freight has consolidated its visual identity in Brand Book v2.3. The system codifies the bordeaux + carmin palette, the Plus Jakarta Sans + IBM Plex Mono pairing, and the freight-specific iconography used across the website, signatures, quotes and proposals. The book is the source of truth for all internal and external collateral going forward.',
+          },
+          {
+            date: '2026',
+            tag: 'MILESTONE',
+            title: '19 years of South African freight forwarding (2007–2026)',
+            body: 'Mekluc Freight enters its 19th year of operations in 2026. Founded by Anne-Marie Mandtoumbi in Johannesburg in 2007, the company has remained 100% Black Woman Owned, maintained Level 1 B-BBEE certification, and earned Authorised Economic Operator (AEO) status from SARS — placing it in the top tier of South African customs-trusted forwarders. The road to 20 years continues with our 2027 expansion plan for the Pharma, Mining and Export Diversification verticals.',
+          },
+        ].map((item, i) => (
+          <article class="reveal" style={`padding: clamp(2rem, 4vw, 2.5rem) 0; ${i > 0 ? 'border-top: 1px solid var(--c-line-soft);' : ''}`}>
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 1rem;">
+              <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-bordeaux);">{item.tag}</span>
+              <span style="font-family: var(--f-mono); font-size: 13px; color: var(--c-mute);">&middot;</span>
+              <time style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.06em; color: var(--c-mute);">{item.date}</time>
+            </div>
+            <h3 style="font-family: var(--f-display); font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 400; line-height: 1.2; color: var(--c-ink); margin-bottom: 1rem;">{item.title}</h3>
+            <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal);">{item.body}</p>
+          </article>
+        ))}
       </div>
+
+      <p style="font-family: var(--f-sans); font-size: 0.8125rem; color: var(--c-mute); margin-top: 2.5rem; max-width: 60ch;">
+        Press mentions in Freight News, Engineering News, African Cargo and SAAFF Newsletter will be linked here as they appear.
+      </p>
     </div>
   </section>
 
