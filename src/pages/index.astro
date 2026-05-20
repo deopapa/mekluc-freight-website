@@ -22,8 +22,8 @@ const lang = 'en' as const;
         fetchpriority="high"
       />
       {/* Layered overlay for text contrast — homepage uses dark text so we lighten with cream */}
-      <div class="absolute inset-0" style="background: linear-gradient(90deg, rgba(244,237,222,0.96) 0%, rgba(244,237,222,0.88) 45%, rgba(244,237,222,0.55) 80%, rgba(244,237,222,0.25) 100%);"></div>
-      <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(244,237,222,0.3) 0%, transparent 30%, transparent 70%, rgba(244,237,222,0.5) 100%);"></div>
+      <div class="absolute inset-0" style="background: linear-gradient(90deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.88) 45%, rgba(255,255,255,0.55) 80%, rgba(255,255,255,0.25) 100%);"></div>
+      <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 30%, transparent 70%, rgba(255,255,255,0.5) 100%);"></div>
     </div>
 
     <!-- Decorative ornament -->
@@ -240,6 +240,59 @@ const lang = 'en' as const;
         <a href="/solutions" style="font-family: var(--f-sans); font-size: 16px; font-weight: 600; color: var(--c-cream); display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border: 1px solid rgba(176,122,79,0.4); transition: all 0.2s ease;" class="hover:bg-[var(--c-bordeaux)] hover:border-[var(--c-bordeaux)]">
           View all sector solutions <span class="btn-arrow">&rarr;</span>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== LEADER — Anne-Marie introduction (V3.6) ============== -->
+  <section style="background: #FFFFFF; padding: clamp(5rem, 10vw, 8rem) 0; border-top: 1px solid var(--c-line-soft); border-bottom: 1px solid var(--c-line-soft);">
+    <div class="section">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center reveal">
+
+        <!-- Photo Anne-Marie — col 5 -->
+        <div class="lg:col-span-5">
+          <div style="position: relative; aspect-ratio: 4/5; overflow: hidden; background: #F5F5F5; max-width: 480px; margin: 0 auto;">
+            <img
+              src="/mekluc-freight-website/images/hero/hero-about-leadership.webp"
+              alt="Anne-Marie Mandtoumbi, Founder and Managing Director of Mekluc Freight"
+              style="width: 100%; height: 100%; object-fit: cover; object-position: center top;"
+              loading="lazy"
+            />
+            <!-- Bordeaux corner badge -->
+            <div style="position: absolute; bottom: 0; left: 0; padding: 14px 20px; background: var(--c-bordeaux); color: var(--c-cream);">
+              <p style="font-family: var(--f-sans); font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 4px; opacity: 0.85;">Founder · MD</p>
+              <p style="font-family: var(--f-serif); font-size: 18px; font-weight: 600; letter-spacing: -0.01em;">Anne-Marie Mandtoumbi</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bio + vision — col 7 -->
+        <div class="lg:col-span-7">
+          <p class="eyebrow mb-6">Meet the founder</p>
+
+          <h2 style="font-family: var(--f-serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; color: var(--c-ink); margin-bottom: 1.5rem; position: relative; padding-bottom: 24px;">
+            19 years.<br/>One <em style="font-style: italic;">conviction.</em>
+            <span style="position: absolute; bottom: 0; left: 0; width: 64px; height: 3px; background: var(--c-bordeaux);"></span>
+          </h2>
+
+          <p style="font-family: var(--f-sans); font-size: clamp(17px, 1.4vw, 19px); line-height: 1.7; color: var(--c-charcoal); margin-bottom: 1.5rem; max-width: 60ch;">
+            Anne-Marie Mandtoumbi founded Mekluc Freight in 2007 with one conviction: that South African exporters and importers deserve a freight partner who treats their cargo like their own — not like a line item on a quote.
+          </p>
+
+          <p style="font-family: var(--f-sans); font-size: 17px; line-height: 1.7; color: var(--c-charcoal); margin-bottom: 2rem; max-width: 60ch;">
+            <em style="color: var(--c-bordeaux); font-style: italic; font-weight: 500;">She still answers the phone</em> when your container is stuck at Beit Bridge. She still signs off every operational decision. No layers between you and the people moving your cargo.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="/about" class="btn-primary">
+              Read her full story <span class="btn-arrow">&rarr;</span>
+            </a>
+            <span style="font-family: var(--f-mono); font-size: 13px; color: var(--c-mute);">
+              Or call <a href={`tel:${site.phoneRaw}`} style="color: var(--c-ink); font-weight: 600;">{site.phone}</a>
+            </span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>

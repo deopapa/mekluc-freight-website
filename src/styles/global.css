@@ -19,9 +19,9 @@
     --c-mute: #9D958E;
     --c-line: #D8CFC2;
     --c-line-soft: #E8E0D2;
-    /* V3.5 PATCH — Background switch from cream to WHITE (Megafreight style) */
-    --c-cream: #F7F4EE;        /* Slightly off-white pour les bandes secondaires uniquement */
-    --c-cream-deep: #EFE7D4;   /* Conservé pour accents */
+    /* V3.6 PATCH — Background tout BLANC pur (zéro off-white) */
+    --c-cream: #FFFFFF;        /* WHITE — bandes secondaires */
+    --c-cream-deep: #F5F5F5;   /* Gris très très léger pour micro-séparation */
     --c-paper: #FFFFFF;        /* Body background = WHITE pur */
     --c-ivory: #FFFFFF;        /* Forms = WHITE */
     --c-copper: #B07A4F;
@@ -210,14 +210,14 @@
 
 @layer components {
   /* ===== V3 EYEBROW ===== */
-  /* V3.4 PATCH 1.2 — Eyebrow simplifié (pas de ligne, copper 12px regular) */
+  /* V3.6 PATCH — Eyebrow agrandi + bordeaux fort contraste */
   .eyebrow {
-    font-family: var(--f-mono);
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 0.15em;
+    font-family: var(--f-sans);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--c-copper);
+    color: var(--c-bordeaux);
     display: inline-block;
     font-weight: 500;
   }

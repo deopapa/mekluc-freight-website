@@ -22,11 +22,11 @@ export default {
           /* Lignes, séparateurs */
           line: '#D8CFC2',
           'line-soft': '#E8E0D2',
-          /* Surfaces */
-          cream: '#F7F2E8',
-          'cream-deep': '#EFE7D4',
-          paper: '#FAF6EE',
-          ivory: '#FFFAF0',
+          /* Surfaces — V3.6 PATCH: all WHITE */
+          cream: '#FFFFFF',
+          'cream-deep': '#F5F5F5',
+          paper: '#FFFFFF',
+          ivory: '#FFFFFF',
           /* Cuivre — accent secondaire */
           copper: '#B07A4F',
           'copper-deep': '#7A5234',

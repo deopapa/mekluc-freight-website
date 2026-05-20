@@ -121,8 +121,11 @@ const fullTitle = title === 'Home'
         </span>
       </a>
 
-      <!-- Nav links -->
+      <!-- V3.6 PATCH — Nav reordered: About first -->
       <div class="hidden lg:flex items-center gap-8">
+        <a href="/about" class="font-sans text-[14px] font-medium text-mekluc-ink-soft relative hover:text-mekluc-bordeaux transition-colors nav-link">
+          {t(lang, 'nav.about')}
+        </a>
         <a href="/services" class="font-sans text-[14px] font-medium text-mekluc-ink-soft relative hover:text-mekluc-bordeaux transition-colors nav-link">
           {t(lang, 'nav.services')}
         </a>
@@ -134,9 +137,6 @@ const fullTitle = title === 'Home'
         </a>
         <a href="/insights" class="font-sans text-[14px] font-medium text-mekluc-ink-soft relative hover:text-mekluc-bordeaux transition-colors nav-link">
           {t(lang, 'nav.insights')}
-        </a>
-        <a href="/about" class="font-sans text-[14px] font-medium text-mekluc-ink-soft relative hover:text-mekluc-bordeaux transition-colors nav-link">
-          {t(lang, 'nav.about')}
         </a>
         <a href="/contact" class="font-sans text-[14px] font-medium text-mekluc-ink-soft relative hover:text-mekluc-bordeaux transition-colors nav-link">
           {t(lang, 'nav.contact')}
@@ -163,11 +163,11 @@ const fullTitle = title === 'Home'
     <!-- Mobile menu -->
     <div id="mobile-menu" class="hidden lg:hidden border-t border-mekluc-line-soft bg-mekluc-paper">
       <div class="section py-6 flex flex-col gap-4">
+        <a href="/about" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">About</a>
         <a href="/services" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">Services</a>
         <a href="/solutions" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">Solutions</a>
         <a href="/tracking" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">Track Shipment</a>
         <a href="/insights" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">Insights</a>
-        <a href="/about" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">About</a>
         <a href="/contact" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">Contact</a>
         <div class="flex gap-3 pt-4 border-t border-mekluc-line-soft">
           <a href={site.social.whatsappLink} target="_blank" rel="noopener" class="btn-whatsapp flex-1 justify-center">WhatsApp</a>
