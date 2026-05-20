@@ -25,7 +25,7 @@ const tocItems = [
   <PageHeader
     bgImage="/images/hero/hero-about-team.webp"
     label="About Mekluc Freight"
-    title="Built in Africa. Trusted across continents."
+    title='Built in <em style="color: var(--c-bordeaux); font-style: italic;">Africa</em>. Trusted across continents.'
     subtitle="Mekluc Freight is a 19-year-old, 100% Black Woman Owned freight forwarder headquartered in Sandton, Johannesburg. AEO-accredited by SARS and rated Level 1 B-BBEE."
     cta={{ text: 'Get a quote in less than 2h', href: '/contact?quote=1' }}
     ctaSecondary={{ text: 'Our services', href: '/services' }}
@@ -298,7 +298,7 @@ const tocItems = [
     <div class="section">
       <div class="reveal" style="margin-bottom: 56px;">
         <p class="eyebrow mb-4" style="color: var(--c-copper);">Credentials</p>
-        <h2 class="section-title" style="color: var(--c-cream);">Our <em>accreditations</em></h2>
+        <h2 class="section-title" style="color: var(--c-cream);">Our accreditations</h2>
         <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: var(--c-mute); max-width: 52ch; margin-top: 1rem;">
           The credentials that prove what we say about ourselves.
         </p>
@@ -332,7 +332,7 @@ const tocItems = [
       <div class="section-header reveal">
         <div>
           <p class="eyebrow mb-4">Network</p>
-          <h2 class="section-title">Where we <em>operate</em></h2>
+          <h2 class="section-title">Where we operate</h2>
         </div>
         <p class="section-lead">Headquartered in Sandton. Operating across South Africa and into the rest of the continent.</p>
       </div>
@@ -415,7 +415,7 @@ const tocItems = [
       <div class="section-header reveal">
         <div>
           <p class="eyebrow mb-4">Testimonials</p>
-          <h2 class="section-title">What our clients <em>say</em></h2>
+          <h2 class="section-title">What our clients say</h2>
         </div>
       </div>
 
@@ -513,7 +513,7 @@ const tocItems = [
 </BaseLayout>
 
 <style>
-  /* V3.4 PATCH 3 — TOC sticky positioning + anchor offset compensation */
+  /* V4.5 PATCH P0 — TOC repositioned to avoid overlap on full-bleed sections */
   .toc-wrapper {
     display: none;
   }
@@ -524,8 +524,21 @@ const tocItems = [
       position: fixed;
       left: 32px;
       top: 140px;
-      z-index: 30;
-      max-width: 200px;
+      /* z-index lowered 30 -> 20 (below sticky header at 50, but still over body) */
+      z-index: 20;
+      /* Explicit width 240px (was max-width: 200px) for stable layout */
+      width: 240px;
+      /* Cream background "eats" the gutter cleanly (no transparent overlap) */
+      background: var(--c-cream);
+      padding: 12px 14px 14px;
+      border-radius: 2px;
+      /* Smooth fade when JS toggles .toc-hidden over full-bleed dark sections */
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .toc-wrapper.toc-hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-8px);
     }
   }
 
@@ -536,6 +549,9 @@ const tocItems = [
     scroll-margin-top: 100px;
     visibility: hidden;
   }
+
+  /* V4.5 PATCH P0 — Hide TOC when scrolling over full-bleed dark / colored sections */
+  /* (handled by JS observer below — CSS just defines the transition) */
 
   /* V3.8 — Infinite scrolling marquee for client logos (right -> left) */
   .marquee-clients {
@@ -600,4 +616,39 @@ const tocItems = [
     transform: translateY(-2px);
   }
 </style>
+
+<script>
+  /* V4.5 PATCH P0 #2 — Hide sticky TOC when full-bleed dark/colored sections are in view */
+  document.addEventListener('DOMContentLoaded', () => {
+    const toc = document.querySelector<HTMLElement>('.toc-wrapper');
+    if (!toc) return;
+
+    // Sections with their own dark/colored background that would clash with the cream TOC card.
+    // Hiding the TOC over these gives a clean "TOC fades out, section is hero" feel.
+    const fullBleedIds = ['leadership', 'credentials', 'cta'];
+    const targets = fullBleedIds
+      .map((id) => document.getElementById(id)?.nextElementSibling as HTMLElement | null)
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (!targets.length) return;
+
+    const visible = new Set<HTMLElement>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) visible.add(e.target as HTMLElement);
+          else visible.delete(e.target as HTMLElement);
+        });
+        toc.classList.toggle('toc-hidden', visible.size > 0);
+      },
+      {
+        // Trigger as soon as the section enters the top portion of viewport
+        rootMargin: '-100px 0px -40% 0px',
+        threshold: 0,
+      }
+    );
+
+    targets.forEach((t) => observer.observe(t));
+  });
+</script>
 

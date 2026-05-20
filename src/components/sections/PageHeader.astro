@@ -56,8 +56,7 @@ const { label, title, subtitle, cta, ctaSecondary, bg = 'dark', bgImage } = Astr
       {label && (
         <p class="eyebrow mb-6 hero-fade" style={`animation-delay: 0.1s; ${bg === 'paper' ? 'color: var(--c-bordeaux);' : bg === 'bordeaux' ? 'color: var(--c-copper);' : 'color: var(--c-copper);'}`} set:html={`<span class="eyebrow-line" style="background: currentColor;"></span>${label}`} />
       )}
-      <h1 class="hero-fade" style={`font-family: var(--f-sans); font-weight: 600; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.1; letter-spacing: -0.02em; animation-delay: 0.25s; color: ${bgImage ? 'var(--c-cream)' : bg === 'paper' ? 'var(--c-ink)' : 'var(--c-cream)'};`}>
-        {title}
+      <h1 class="hero-fade" style={`font-family: var(--f-sans); font-weight: 600; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.1; letter-spacing: -0.02em; animation-delay: 0.25s; color: ${bgImage ? 'var(--c-cream)' : bg === 'paper' ? 'var(--c-ink)' : 'var(--c-cream)'};`} set:html={title}>
       </h1>
       {subtitle && (
         <p class="hero-fade" style={`font-family: var(--f-sans); font-size: clamp(1rem, 1.3vw, 1.1875rem); line-height: 1.6; max-width: 60ch; margin-top: 1.25rem; animation-delay: 0.4s; font-weight: 400; color: ${bgImage ? 'rgba(247,242,232,0.92)' : bg === 'paper' ? 'var(--c-charcoal)' : bg === 'bordeaux' ? 'rgba(247,242,232,0.88)' : 'var(--c-line)'};`}>
