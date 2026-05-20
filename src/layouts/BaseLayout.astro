@@ -478,20 +478,21 @@ const fullTitle = title === 'Home'
       outline-offset: 3px;
       border-radius: 9999px;
     }
+    /* V4.7 HOTFIX — rotate the whole ring SVG (transform, GPU-composited)
+       instead of animating the textPath (which recalculates layout per frame
+       and was the main TBT culprit on mobile). The inner AEO logo image
+       sits in its own static layer so it does NOT rotate with the ring. */
     .aeo-rotating-badge .aeo-ring-svg {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       pointer-events: none;
+      animation: aeoSpin 30s linear infinite;
+      will-change: transform;
     }
-    /* Spin the textPath only — original AEO logo stays still */
-    .aeo-rotating-badge .aeo-spin-text {
-      transform-origin: 50% 50%;
-      animation: aeoSpin 22s linear infinite;
-    }
-    .aeo-rotating-badge:hover .aeo-spin-text {
-      animation-duration: 10s; /* speed up on hover */
+    .aeo-rotating-badge:hover .aeo-ring-svg {
+      animation-duration: 12s; /* speed up on hover */
     }
     .aeo-rotating-badge .aeo-logo-inner {
       position: absolute;
@@ -508,7 +509,7 @@ const fullTitle = title === 'Home'
       to   { transform: rotate(360deg); }
     }
     @media (prefers-reduced-motion: reduce) {
-      .aeo-rotating-badge .aeo-spin-text { animation: none; }
+      .aeo-rotating-badge .aeo-ring-svg { animation: none; }
     }
 
     /* V4.6.5 — AEO popover anchored to the centred floating badge (top:50%, left:24, w:84) */

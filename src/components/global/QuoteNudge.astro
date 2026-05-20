@@ -59,19 +59,31 @@
     border-radius: 4px;
   }
 
+  /* V4.7 HOTFIX — pulse refactor: box-shadow (paint-heavy) -> opacity+transform on a pseudo (GPU-composited). */
   .quote-nudge-pulse {
     flex-shrink: 0;
     width: 10px;
     height: 10px;
     background: var(--c-carmin);
     border-radius: 50%;
-    box-shadow: 0 0 0 0 rgba(208, 0, 56, 0.6);
+    position: relative;
+  }
+  .quote-nudge-pulse::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    background: rgba(208, 0, 56, 0.45);
+    opacity: 0;
+    transform: scale(0.4);
     animation: quoteNudgePulse 2s ease-out infinite;
+    will-change: opacity, transform;
+    pointer-events: none;
   }
   @keyframes quoteNudgePulse {
-    0%   { box-shadow: 0 0 0 0 rgba(208, 0, 56, 0.6); }
-    70%  { box-shadow: 0 0 0 12px rgba(208, 0, 56, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(208, 0, 56, 0); }
+    0%   { opacity: 0.7; transform: scale(0.4); }
+    70%  { opacity: 0;   transform: scale(1.6); }
+    100% { opacity: 0;   transform: scale(1.6); }
   }
 
   .quote-nudge-text {
