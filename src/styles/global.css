@@ -16,7 +16,8 @@
     --c-ink: #1A1612;
     --c-ink-soft: #3D3530;
     --c-charcoal: #6B645E;
-    --c-mute: #9D958E;
+    /* V4.7 PATCH P1 (WCAG AA fix 2026-05-20) — mute darkened 9D958E -> 776E67 (2.95:1 -> 4.55:1) */
+    --c-mute: #776E67;
     --c-line: #D8CFC2;
     --c-line-soft: #E8E0D2;
     /* V3.6 PATCH — Background tout BLANC pur (zéro off-white) */
@@ -24,7 +25,8 @@
     --c-cream-deep: #F5F5F5;   /* Gris très très léger pour micro-séparation */
     --c-paper: #FFFFFF;        /* Body background = WHITE pur */
     --c-ivory: #FFFFFF;        /* Forms = WHITE */
-    --c-copper: #B07A4F;
+    /* V4.7 PATCH P1 (WCAG AA fix 2026-05-20) — copper darkened B07A4F -> 95643E (3.66:1 -> 5.04:1) */
+    --c-copper: #95643E;
     --c-copper-deep: #7A5234;
     /* V4.0 — Plus Jakarta Sans unifié, IBM Plex Mono pour eyebrows */
     --f-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
