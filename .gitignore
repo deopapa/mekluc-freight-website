@@ -62,3 +62,6 @@ logs/
 # Wrangler (Cloudflare)
 .wrangler/
 wrangler-secrets.json
+
+# Cloudflare API token (NEVER commit)
+.cf-token

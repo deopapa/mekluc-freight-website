@@ -3,6 +3,16 @@
  * Source unique de verite pour les donnees du site
  */
 
+/**
+ * Helper for asset URLs that respects the Astro base path.
+ * Use with all /images/, /fonts/, etc. references in templates.
+ * Example: <img src={asset('/images/logos/mekluc.svg')} />
+ */
+export function asset(path: string): string {
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+  return `${base}${path.startsWith('/') ? '' : '/'}${path}`;
+}
+
 export const site = {
   name: 'Mekluc Freight',
   tagline: 'With us nothing stands in your way',

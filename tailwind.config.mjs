@@ -46,10 +46,10 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Manrope', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['Fraunces', 'Georgia', 'serif'],
         serif: ['Fraunces', 'Georgia', 'serif'],
-        sans: ['Manrope', 'system-ui', '-apple-system', 'sans-serif'],
-        mono: ['JetBrains Mono', 'SF Mono', 'Consolas', 'monospace'],
+        sans: ['IBM Plex Sans', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['IBM Plex Mono', 'SF Mono', 'Consolas', 'monospace'],
       },
       fontSize: {
         /* V3 typographic scale — editorial magazine (sizes increased for readability) */
