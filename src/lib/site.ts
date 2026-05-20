@@ -45,12 +45,11 @@ export const site = {
   yearsActive: new Date().getFullYear() - 2007,
   ceo: 'Anne-Marie Mandtoumbi',
 
-  /* Accreditations — ordre impose */
+  /* Accreditations — ordre impose (V4.4 2026-05-20 : SAAFF Member retire — voir terms.astro pour STC) */
   accreditations: [
     { key: 'aeo', label: 'AEO South Africa', short: 'AEO' },
     { key: 'sars', label: 'SARS Customs Clearing Agent', short: 'SARS' },
     { key: 'bee', label: 'Level 1 B-BBEE', short: 'B-BBEE L1' },
-    { key: 'saaff', label: 'SAAFF Member', short: 'SAAFF' },
     { key: 'bwo', label: '100% Black Woman Owned', short: 'BWO' },
   ],
 

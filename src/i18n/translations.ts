@@ -56,11 +56,10 @@ export const translations = {
     'common.callUs': 'Call us',
     'common.emailUs': 'Email us',
 
-    /* Trust signals */
+    /* Trust signals (V4.4 : 'trust.saaff' retire — voir terms.astro pour STC) */
     'trust.aeo': 'AEO South Africa',
     'trust.sars': 'SARS Customs Clearing Agent',
     'trust.bee': 'Level 1 B-BBEE',
-    'trust.saaff': 'SAAFF Member',
     'trust.bwo': '100% Black Woman Owned',
     'trust.years': '19 years of expertise',
 
@@ -112,11 +111,10 @@ export const translations = {
     'common.callUs': 'Appelez-nous',
     'common.emailUs': 'Ecrivez-nous',
 
-    /* Trust signals */
+    /* Trust signals (V4.4 : 'trust.saaff' retire — voir terms.astro pour STC) */
     'trust.aeo': 'AEO Afrique du Sud',
     'trust.sars': 'Agent de dedouanement SARS',
     'trust.bee': 'Niveau 1 B-BBEE',
-    'trust.saaff': 'Membre SAAFF',
     'trust.bwo': '100% detenue par une femme noire',
     'trust.years': '19 ans d\'expertise',
 
