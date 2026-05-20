@@ -390,19 +390,30 @@ const tocItems = [
     </div>
   </section>
 
-  <!-- TRUSTED BY (Client logos band — V3.7) -->
-  <section style="background: #FFFFFF; padding: clamp(4rem, 7vw, 5rem) 0; border-top: 1px solid var(--c-line-soft); border-bottom: 1px solid var(--c-line-soft);">
+  <!-- TRUSTED BY — Infinite marquee 6 client logos (V3.8) -->
+  <section style="background: #FFFFFF; padding: clamp(4rem, 7vw, 5rem) 0; border-top: 1px solid var(--c-line-soft); border-bottom: 1px solid var(--c-line-soft); overflow: hidden;">
     <div class="section">
-      <div class="reveal" style="text-align: center; margin-bottom: 40px;">
+      <div class="reveal" style="text-align: center; margin-bottom: 48px;">
         <p style="font-family: var(--f-sans); font-size: 13px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--c-bordeaux); margin-bottom: 10px;">Trusted by</p>
-        <h2 style="font-family: var(--f-serif); font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 600; color: var(--c-ink); letter-spacing: -0.01em; line-height: 1.2; max-width: 36ch; margin: 0 auto;">
+        <h2 style="font-family: var(--f-serif); font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 600; color: var(--c-ink); letter-spacing: -0.01em; line-height: 1.2; max-width: 40ch; margin: 0 auto;">
           International industrial brands moving cargo with us.
         </h2>
       </div>
-      <div class="grid grid-cols-3 gap-8 md:gap-16 items-center reveal" style="max-width: 900px; margin: 0 auto;">
-        <div class="client-logo-about"><img src="/mekluc-freight-website/images/clients/eagleburgmann.png" alt="EagleBurgmann" loading="lazy" /></div>
-        <div class="client-logo-about"><img src="/mekluc-freight-website/images/clients/rema-tip-top.png" alt="REMA TIP TOP" loading="lazy" /></div>
-        <div class="client-logo-about"><img src="/mekluc-freight-website/images/clients/timken.png" alt="The Timken Company" loading="lazy" /></div>
+    </div>
+
+    <!-- Marquee — full width -->
+    <div class="marquee-clients">
+      <div class="marquee-clients-track">
+        {[1, 2].map(() => (
+          <>
+            <div class="client-logo-marquee"><img src="/mekluc-freight-website/images/clients/eagleburgmann.png" alt="EagleBurgmann" loading="lazy" /></div>
+            <div class="client-logo-marquee"><img src="/mekluc-freight-website/images/clients/rema-tip-top.png" alt="REMA TIP TOP" loading="lazy" /></div>
+            <div class="client-logo-marquee"><img src="/mekluc-freight-website/images/clients/timken.png" alt="Timken" loading="lazy" /></div>
+            <div class="client-logo-marquee"><img src="/mekluc-freight-website/images/clients/ingredion.png" alt="Ingredion" loading="lazy" /></div>
+            <div class="client-logo-marquee"><img src="/mekluc-freight-website/images/clients/xylem.png" alt="Xylem" loading="lazy" /></div>
+            <div class="client-logo-marquee"><img src="/mekluc-freight-website/images/clients/doves.png" alt="Doves Funeral Services" loading="lazy" /></div>
+          </>
+        ))}
       </div>
     </div>
   </section>
@@ -418,29 +429,27 @@ const tocItems = [
         </div>
       </div>
 
-      <p class="section-lead" style="margin-bottom: 48px;">Composite testimonials based on feedback from our industrial clients. Named references available to verified prospects on request.</p>
-
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal">
         {[
           {
             quote: 'Mekluc has been moving our specialised industrial cargo for years. What sets them apart is the human side — they call when there\'s a delay, they call when there\'s none, and they always pick up.',
-            role: 'Supply Chain Manager',
-            sector: 'Industrial sealing technology',
+            name: 'Yvonne Viljoen',
+            role: 'Supply Chain Manager, EagleBurgmann',
           },
           {
             quote: 'From customs clearance to delivery, Mekluc has been a reliable partner for our industrial supplies. They understand our business — and they deliver.',
-            role: 'Procurement Lead',
-            sector: 'Conveyor belt & rubber solutions',
+            name: 'Chezrae Scott-Crossley',
+            role: 'REMA TIP TOP',
           },
           {
             quote: 'Mekluc handles our customs across air and sea freight. The AEO status makes a real difference — we\'ve stopped budgeting for demurrage delays.',
-            role: 'Operations Manager',
-            sector: 'Bearings & power transmission',
+            name: 'Ian McDonald',
+            role: 'Operations Manager, Timken',
           },
           {
             quote: 'Mekluc moves our project cargo — heavy, oversized, regulated — and they handle the paperwork that gives other forwarders headaches.',
-            role: 'Logistics Manager',
-            sector: 'Project & industrial cargo',
+            name: 'Glynis Wilson',
+            role: 'Logistics Manager, Bergman-Ross',
           },
         ].map((t) => (
           <div style="background: var(--c-paper); border: 1px solid var(--c-line); padding: clamp(2rem, 4vw, 2.5rem); position: relative;">
@@ -448,8 +457,8 @@ const tocItems = [
             <blockquote style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.65; color: var(--c-ink); font-style: italic; margin-bottom: 1.5rem; position: relative; z-index: 1;">
               {t.quote}
             </blockquote>
-            <p style="font-family: var(--f-sans); font-size: 0.9375rem; font-weight: 600; color: var(--c-ink);">{t.role}</p>
-            <p style="font-family: var(--f-sans); font-size: 0.8125rem; color: var(--c-charcoal);">{t.sector}</p>
+            <p style="font-family: var(--f-sans); font-size: 1rem; font-weight: 600; color: var(--c-ink);">{t.name}</p>
+            <p style="font-family: var(--f-sans); font-size: 0.8125rem; color: var(--c-charcoal);">{t.role}</p>
           </div>
         ))}
       </div>
@@ -538,27 +547,51 @@ const tocItems = [
     visibility: hidden;
   }
 
-  /* V3.7 — Client logo tiles (Trusted by band) */
-  .client-logo-about {
+  /* V3.8 — Infinite scrolling marquee for client logos (right -> left) */
+  .marquee-clients {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+  }
+  .marquee-clients-track {
+    display: flex;
+    gap: 80px;
+    align-items: center;
+    width: fit-content;
+    animation: marqueeClientsScroll 35s linear infinite;
+  }
+  @keyframes marqueeClientsScroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .marquee-clients:hover .marquee-clients-track {
+    animation-play-state: paused;
+  }
+  .client-logo-marquee {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 80px;
-    padding: 12px;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    opacity: 0.7;
-    filter: grayscale(60%);
+    min-width: 160px;
+    height: 80px;
+    flex-shrink: 0;
+    opacity: 0.65;
+    filter: grayscale(70%);
+    transition: opacity 0.25s ease, filter 0.25s ease;
   }
-  .client-logo-about:hover {
+  .client-logo-marquee:hover {
     opacity: 1;
     filter: grayscale(0%);
-    transform: translateY(-2px);
   }
-  .client-logo-about img {
-    max-height: 64px;
-    max-width: 100%;
+  .client-logo-marquee img {
+    max-height: 56px;
+    max-width: 140px;
     width: auto;
     object-fit: contain;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-clients-track { animation: none; }
   }
 
   /* V3.5 PATCH — Associations & Partners logo tiles (Megafreight-style) */

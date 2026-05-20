@@ -244,56 +244,97 @@ const lang = 'en' as const;
     </div>
   </section>
 
-  <!-- ============== TRUSTED BY — Client logos (V3.7) ============== -->
-  <section style="background: #FFFFFF; padding: clamp(4rem, 7vw, 5rem) 0; border-top: 1px solid var(--c-line-soft); border-bottom: 1px solid var(--c-line-soft);">
+  <!-- ============== TRUSTED BY — Client logos infinite marquee (V3.8) ============== -->
+  <section style="background: #FFFFFF; padding: clamp(4rem, 7vw, 5rem) 0; border-top: 1px solid var(--c-line-soft); border-bottom: 1px solid var(--c-line-soft); overflow: hidden;">
     <div class="section">
-      <div class="reveal" style="text-align: center; margin-bottom: 40px;">
+      <div class="reveal" style="text-align: center; margin-bottom: 48px;">
         <p style="font-family: var(--f-sans); font-size: 13px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--c-bordeaux); margin-bottom: 8px;">Trusted by</p>
-        <h2 style="font-family: var(--f-serif); font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 600; color: var(--c-ink); letter-spacing: -0.01em; line-height: 1.2; max-width: 32ch; margin: 0 auto;">
+        <h2 style="font-family: var(--f-serif); font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 600; color: var(--c-ink); letter-spacing: -0.01em; line-height: 1.2; max-width: 36ch; margin: 0 auto;">
           Industrial leaders moving cargo through <em style="font-style: italic;">South Africa.</em>
         </h2>
       </div>
+    </div>
 
-      <!-- Client logos row -->
-      <div class="grid grid-cols-3 md:grid-cols-3 gap-8 md:gap-16 items-center reveal" style="max-width: 900px; margin: 0 auto;">
-        <div class="client-logo">
-          <img src="/mekluc-freight-website/images/clients/eagleburgmann.png" alt="EagleBurgmann — Industrial sealing technology" loading="lazy" />
-        </div>
-        <div class="client-logo">
-          <img src="/mekluc-freight-website/images/clients/rema-tip-top.png" alt="REMA TIP TOP — Conveyor belt and rubber solutions" loading="lazy" />
-        </div>
-        <div class="client-logo">
-          <img src="/mekluc-freight-website/images/clients/timken.png" alt="The Timken Company — Industrial bearings & power transmission" loading="lazy" />
-        </div>
+    <!-- Marquee container — pleine largeur, hors .section pour défiler bord-à-bord -->
+    <div class="marquee">
+      <div class="marquee-track">
+        <!-- Duplicate 2x for seamless loop -->
+        {[1, 2].map(() => (
+          <>
+            <div class="client-logo"><img src="/mekluc-freight-website/images/clients/eagleburgmann.png" alt="EagleBurgmann" loading="lazy" /></div>
+            <div class="client-logo"><img src="/mekluc-freight-website/images/clients/rema-tip-top.png" alt="REMA TIP TOP" loading="lazy" /></div>
+            <div class="client-logo"><img src="/mekluc-freight-website/images/clients/timken.png" alt="Timken" loading="lazy" /></div>
+            <div class="client-logo"><img src="/mekluc-freight-website/images/clients/ingredion.png" alt="Ingredion" loading="lazy" /></div>
+            <div class="client-logo"><img src="/mekluc-freight-website/images/clients/xylem.png" alt="Xylem" loading="lazy" /></div>
+            <div class="client-logo"><img src="/mekluc-freight-website/images/clients/doves.png" alt="Doves Funeral Services" loading="lazy" /></div>
+          </>
+        ))}
       </div>
+    </div>
 
-      <p style="text-align: center; font-family: var(--f-sans); font-size: 13px; color: var(--c-mute); margin-top: 32px;">
+    <div class="section">
+      <p style="text-align: center; font-family: var(--f-sans); font-size: 13px; color: var(--c-mute); margin-top: 40px;">
         Among the international industrial brands trusting Mekluc with their freight.
       </p>
     </div>
   </section>
 
   <style>
+    /* V3.8 — Infinite scrolling marquee for client logos (right to left) */
+    .marquee {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      /* Fade edges for cleaner look */
+      mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 80px;
+      align-items: center;
+      width: fit-content;
+      animation: marqueeScroll 35s linear infinite;
+    }
+
+    @keyframes marqueeScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); } /* 50% car le contenu est dupliqué 2x */
+    }
+
+    /* Pause au survol */
+    .marquee:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
     .client-logo {
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 80px;
-      padding: 12px;
-      transition: opacity 0.25s ease, transform 0.25s ease;
-      opacity: 0.7;
-      filter: grayscale(60%);
+      min-width: 160px;
+      height: 80px;
+      flex-shrink: 0;
+      opacity: 0.65;
+      filter: grayscale(70%);
+      transition: opacity 0.25s ease, filter 0.25s ease;
     }
     .client-logo:hover {
       opacity: 1;
       filter: grayscale(0%);
-      transform: translateY(-2px);
     }
     .client-logo img {
-      max-height: 64px;
-      max-width: 100%;
+      max-height: 56px;
+      max-width: 140px;
       width: auto;
       object-fit: contain;
+    }
+
+    /* Respect motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track {
+        animation: none;
+      }
     }
   </style>
 
