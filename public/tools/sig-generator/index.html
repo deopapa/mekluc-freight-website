@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mekluc Freight — Email Signature Generator</title>
+<style>
+  :root { --bleu:#0B2C4D; --orange:#E87722; --texte:#2C2C2C; --surface:#F4F5F7; --bordure:#D0D5DD; --alerte:#B42318; --succes:#0F7D3B; --label:#8B8B8B; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI',Calibri,Arial,sans-serif; background:var(--surface); color:var(--texte); }
+
+  .header { background:var(--bleu); color:#fff; padding:14px 28px; display:flex; align-items:center; justify-content:space-between; }
+  .header-left { display:flex; align-items:center; gap:14px; }
+  .header h1 { font-size:18px; font-weight:700; }
+  .header .version { background:var(--orange); padding:2px 10px; border-radius:10px; font-size:10px; font-weight:700; }
+  .header .subtitle { font-size:11px; opacity:0.6; }
+
+  .container { display:grid; grid-template-columns:420px 1fr; min-height:calc(100vh - 50px); }
+
+  /* FORM */
+  .form-panel { background:#fff; padding:16px 20px; overflow-y:auto; border-right:1px solid var(--bordure); max-height:calc(100vh - 50px); }
+  .form-panel h2 { font-size:12px; font-weight:700; color:var(--bleu); text-transform:uppercase; letter-spacing:0.5px; margin:18px 0 8px 0; padding-bottom:4px; border-bottom:2px solid var(--orange); }
+  .form-panel h2:first-child { margin-top:0; }
+  .field { margin-bottom:8px; }
+  .field label { display:block; font-size:10px; font-weight:600; color:#6B6B6B; margin-bottom:2px; text-transform:uppercase; letter-spacing:0.3px; }
+  .field input[type="text"], .field input[type="email"], .field input[type="number"], .field textarea {
+    width:100%; padding:6px 9px; border:1px solid var(--bordure); border-radius:5px;
+    font-size:13px; font-family:inherit; color:var(--texte); transition:border-color 0.2s; resize:vertical;
+  }
+  .field input:focus, .field textarea:focus { outline:none; border-color:var(--orange); box-shadow:0 0 0 2px rgba(232,119,34,0.1); }
+  .field select { width:100%; padding:6px 9px; border:1px solid var(--bordure); border-radius:5px; font-size:13px; font-family:inherit; color:var(--texte); background:#fff; cursor:pointer; }
+  .field select:focus { outline:none; border-color:var(--orange); }
+  .field-row { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .field-row-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; }
+  .field-row-4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:6px; }
+  .field input[type="range"] { padding:0; height:4px; -webkit-appearance:none; background:var(--bordure); border-radius:2px; border:none; width:100%; }
+  .field input[type="range"]::-webkit-slider-thumb { -webkit-appearance:none; width:14px; height:14px; background:var(--orange); border-radius:50%; cursor:pointer; }
+  .range-label { display:flex; justify-content:space-between; align-items:center; }
+  .range-label .val { font-weight:700; color:var(--bleu); font-size:11px; }
+  .toggle-row { display:flex; align-items:center; gap:8px; margin-bottom:6px; font-size:12px; }
+  .toggle-row input[type="checkbox"] { width:15px; height:15px; accent-color:var(--orange); cursor:pointer; }
+  .toggle-row label { cursor:pointer; }
+  .file-input-wrapper { position:relative; }
+  .file-input-wrapper input[type="file"] { position:absolute; opacity:0; width:100%; height:100%; cursor:pointer; }
+  .file-input-btn { display:block; padding:5px 10px; background:var(--surface); border:1px dashed var(--bordure); border-radius:5px; font-size:11px; color:#6B6B6B; cursor:pointer; text-align:center; transition:all 0.2s; }
+  .file-input-btn:hover { border-color:var(--orange); color:var(--orange); }
+  .profiles { display:flex; gap:5px; margin-bottom:12px; }
+  .profile-btn { flex:1; padding:7px 4px; border:2px solid var(--bordure); border-radius:5px; background:#fff; cursor:pointer; text-align:center; font-size:11px; font-weight:600; color:var(--texte); transition:all 0.15s; }
+  .profile-btn:hover { border-color:var(--orange); }
+  .profile-btn.active { border-color:var(--bleu); background:#EEF2F6; color:var(--bleu); }
+  .swap-btn { display:inline-flex; align-items:center; gap:5px; padding:5px 12px; background:var(--surface); border:1px solid var(--bordure); border-radius:5px; font-size:11px; color:var(--texte); cursor:pointer; transition:all 0.15s; margin-top:4px; }
+  .swap-btn:hover { border-color:var(--orange); color:var(--orange); }
+  .help-text { font-size:9px; color:#999; margin-top:2px; font-style:italic; }
+  .infra-note { background:#E8F5E9; border-left:3px solid var(--succes); padding:8px 10px; border-radius:0 5px 5px 0; font-size:11px; color:var(--texte); margin-top:14px; line-height:1.5; }
+  .infra-note strong { color:var(--succes); }
+
+  /* COLOR PICKER */
+  .color-field { display:flex; align-items:center; gap:6px; }
+  .color-field input[type="color"] { width:30px; height:26px; padding:0; border:1px solid var(--bordure); border-radius:4px; cursor:pointer; -webkit-appearance:none; background:transparent; }
+  .color-field input[type="color"]::-webkit-color-swatch-wrapper { padding:2px; }
+  .color-field input[type="color"]::-webkit-color-swatch { border:none; border-radius:2px; }
+  .color-field .clabel { font-size:9px; color:#8B8B8B; white-space:nowrap; }
+  .reset-colors-btn { display:inline-flex; align-items:center; gap:4px; padding:4px 10px; background:#fff; border:1px solid var(--bordure); border-radius:4px; font-size:10px; color:#8B8B8B; cursor:pointer; margin-top:6px; }
+  .reset-colors-btn:hover { border-color:var(--orange); color:var(--orange); }
+
+  /* PREVIEW */
+  .preview-panel { padding:20px 28px; display:flex; flex-direction:column; align-items:center; overflow-y:auto; max-height:calc(100vh - 50px); }
+  .preview-toolbar { display:flex; justify-content:space-between; align-items:center; width:100%; max-width:780px; margin-bottom:14px; }
+  .preview-toolbar-left { display:flex; align-items:center; gap:10px; }
+  .preview-toolbar h2 { font-size:13px; font-weight:700; color:var(--bleu); text-transform:uppercase; letter-spacing:0.5px; }
+  .edit-badge { display:inline-flex; align-items:center; gap:5px; background:#FFF3E8; color:var(--orange); padding:3px 10px; border-radius:10px; font-size:10px; font-weight:600; }
+  .edit-badge .dot { width:6px; height:6px; background:var(--orange); border-radius:50%; animation:pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .btn-group { display:flex; gap:5px; }
+  .btn { padding:7px 14px; border:none; border-radius:5px; font-size:12px; font-weight:600; cursor:pointer; transition:all 0.15s; }
+  .btn-primary { background:var(--orange); color:#fff; }
+  .btn-primary:hover { background:#d06a1d; }
+  .btn-secondary { background:var(--bleu); color:#fff; }
+  .btn-secondary:hover { background:#0a2440; }
+  .btn-outline { background:#fff; color:var(--bleu); border:1px solid var(--bordure); padding:6px 10px; font-size:14px; }
+  .btn-outline:hover { border-color:var(--bleu); background:#EEF2F6; }
+  .preview-card { background:#fff; border:1px solid var(--bordure); border-radius:8px; padding:32px; width:100%; max-width:780px; box-shadow:0 2px 12px rgba(0,0,0,0.06); transition:background 0.3s; position:relative; overflow:visible; }
+  .preview-card.dark-bg { background:#1E1E2E; }
+  .preview-hint { margin-top:10px; font-size:11px; color:#999; text-align:center; font-style:italic; }
+
+  /* INLINE EDITING */
+  .sig-editable { transition:outline 0.12s,background 0.12s; outline:2px solid transparent; outline-offset:2px; border-radius:2px; cursor:text !important; }
+  .sig-editable:hover { outline:2px dashed rgba(232,119,34,0.5) !important; background:rgba(232,119,34,0.03) !important; }
+  .sig-editable[contenteditable="true"] { outline:2px solid var(--orange) !important; background:rgba(232,119,34,0.07) !important; text-decoration:none !important; }
+
+  /* LOGO WRAP — free movement */
+  .logo-wrap { position:relative; display:inline-block; cursor:grab; transition:outline 0.12s, box-shadow 0.15s; outline:2px solid transparent; outline-offset:3px; border-radius:4px; user-select:none; }
+  .logo-wrap:hover { outline:2px dashed rgba(232,119,34,0.4); }
+  .logo-wrap.selected { outline:2px solid var(--orange) !important; }
+  .logo-wrap.dragging-free { cursor:grabbing !important; box-shadow:0 8px 24px rgba(0,0,0,0.18); z-index:10; opacity:0.92; }
+  .logo-wrap img { display:block; border:0; outline:none; text-decoration:none; -ms-interpolation-mode:bicubic; background:transparent; pointer-events:none; }
+
+  /* Resize grip — bigger, more visible */
+  .resize-grip {
+    position:absolute; bottom:-6px; right:-6px; width:18px; height:18px;
+    background:var(--orange); border:2px solid #fff; border-radius:50%;
+    cursor:se-resize; opacity:0; transition:opacity 0.15s; z-index:5;
+    box-shadow:0 1px 4px rgba(0,0,0,0.35);
+  }
+  .logo-wrap:hover .resize-grip, .logo-wrap.selected .resize-grip { opacity:1; }
+
+  /* Resize indicator corners */
+  .resize-corner-tl, .resize-corner-tr, .resize-corner-bl {
+    position:absolute; width:8px; height:8px; border:2px solid var(--orange);
+    opacity:0; transition:opacity 0.15s; z-index:5; pointer-events:none;
+  }
+  .resize-corner-tl { top:-3px; left:-3px; border-right:none; border-bottom:none; }
+  .resize-corner-tr { top:-3px; right:-3px; border-left:none; border-bottom:none; }
+  .resize-corner-bl { bottom:-3px; left:-3px; border-right:none; border-top:none; }
+  .logo-wrap.selected .resize-corner-tl,
+  .logo-wrap.selected .resize-corner-tr,
+  .logo-wrap.selected .resize-corner-bl { opacity:1; }
+
+  /* Logo floating actions */
+  .logo-float-actions {
+    position:absolute; top:-32px; left:0; display:flex; gap:3px;
+    opacity:0; transition:opacity 0.15s; z-index:6;
+  }
+  .logo-wrap.selected .logo-float-actions { opacity:1; }
+  .lfa-btn {
+    background:var(--bleu); color:#fff; border:none; padding:3px 8px;
+    font-size:10px; font-weight:600; border-radius:4px; cursor:pointer; white-space:nowrap;
+  }
+  .lfa-btn:hover { background:#143D66; }
+
+  /* EDIT HINT */
+  .edit-hint { position:fixed; background:var(--bleu); color:#fff; padding:3px 8px; border-radius:4px; font-size:10px; pointer-events:none; z-index:100; opacity:0; transition:opacity 0.12s; white-space:nowrap; }
+  .edit-hint.show { opacity:0.9; }
+
+  /* TOAST */
+  .toast { position:fixed; bottom:20px; right:20px; background:var(--succes); color:#fff; padding:10px 18px; border-radius:8px; font-weight:600; font-size:13px; opacity:0; transform:translateY(16px); transition:all 0.3s; z-index:999; }
+  .toast.show { opacity:1; transform:translateY(0); }
+  /* SAVE BUTTON */
+  .save-row { display:flex; gap:5px; margin-bottom:12px; }
+  .save-btn { flex:1; padding:7px 4px; border:1px solid var(--succes); border-radius:5px; background:#E8F5E9; color:var(--succes); font-size:11px; font-weight:700; cursor:pointer; transition:all 0.15s; text-align:center; }
+  .save-btn:hover { background:#C8E6C9; }
+  .reset-profile-btn { padding:7px 8px; border:1px solid var(--bordure); border-radius:5px; background:#fff; color:#8B8B8B; font-size:11px; cursor:pointer; transition:all 0.15s; }
+  .reset-profile-btn:hover { border-color:var(--orange); color:var(--orange); }
+  .saved-badge { display:inline-block; background:var(--succes); color:#fff; font-size:8px; font-weight:700; padding:1px 5px; border-radius:8px; margin-left:4px; vertical-align:middle; }
+
+  /* OUTLOOK 365 */
+  /* o365 status bar removed v4.2 — MSAL/Graph API not supported for signatures */
+  .o365-actions { display:flex; gap:5px; flex-wrap:wrap; margin-bottom:8px; }
+  .o365-result { margin-top:8px; font-size:11px; padding:8px 10px; border-radius:5px; background:#F8F9FB; border:1px solid var(--bordure); display:none; line-height:1.5; }
+  .o365-config { background:#F8F9FB; border:1px solid var(--bordure); border-radius:5px; padding:10px; margin-top:8px; }
+  .o365-config code { background:#EEF2F6; padding:1px 5px; border-radius:3px; font-size:10px; word-break:break-all; }
+</style>
+<!-- MSAL removed v4.2: Graph API does not support signature management (May 2026) -->
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>Mekluc Freight — Signature Generator</h1>
+    <span class="version">v4.2</span>
+  </div>
+  <span class="subtitle">Direction Artistique Corporate &middot; Freight Standards</span>
+</div>
+
+<div class="container">
+  <div class="form-panel">
+
+    <h2>Profil</h2>
+    <div class="profiles">
+      <button class="profile-btn active" onclick="loadProfile('anne-marie',this)">Anne-Marie</button>
+      <button class="profile-btn" onclick="loadProfile('deo-gracia',this)">Deo Gracia</button>
+      <button class="profile-btn" onclick="loadProfile('nyiko',this)">Nyiko</button>
+      <button class="profile-btn" onclick="loadProfile('siyiwa',this)">Siyiwa</button>
+      <button class="profile-btn" onclick="loadProfile('custom',this)">Nouveau</button>
+    </div>
+    <div class="save-row">
+      <button class="save-btn" onclick="saveCurrentProfile()">&#128190; Sauvegarder le profil</button>
+      <button class="reset-profile-btn" onclick="resetCurrentProfile()" title="Restaurer les valeurs par defaut du profil">&#8635; Reset</button>
+    </div>
+
+    <h2>Identite</h2>
+    <div class="field"><label>Nom complet</label><input type="text" id="fullName" value="Anne-Marie Mandtoumbi" oninput="render()"></div>
+    <div class="field"><label>Titre / Fonction</label><input type="text" id="title" value="Managing Director" oninput="render()"></div>
+    <div class="field"><label>Entreprise (optionnel)</label><input type="text" id="company" value="" placeholder="Laisser vide si pas necessaire" oninput="render()"><div class="help-text">S'affiche apres le titre : Titre &middot; Entreprise</div></div>
+    <div class="field"><label>Ligne metier</label><input type="text" id="industryLine" value="Air &middot; Sea &middot; Road &middot; Customs" oninput="render()"><div class="help-text">Positionnement sectoriel sous le titre (laisser vide pour masquer)</div></div>
+
+    <h2>Coordonnees</h2>
+    <div class="field-row">
+      <div class="field"><label>Telephone Office</label><input type="text" id="phoneOffice" value="+27 11 392 1699" oninput="render()"></div>
+      <div class="field"><label>Telephone Mobile</label><input type="text" id="phoneMobile" value="+27 83 745 6483" oninput="render()"></div>
+    </div>
+    <div class="field"><label>Email</label><input type="email" id="email" value="anne_marie@mekluc.co.za" oninput="render()"></div>
+    <div class="field"><label>Site Web</label><input type="text" id="website" value="www.meklucfreight.co.za" oninput="render()"></div>
+    <div class="field"><label>Adresse</label><input type="text" id="address" value="Morningside, Sandton, Johannesburg, South Africa" oninput="render()"></div>
+
+    <h2>Reseaux Sociaux</h2>
+    <div class="toggle-row"><input type="checkbox" id="showLinkedin" onchange="state.showLinkedin=this.checked;render()"><label for="showLinkedin">LinkedIn</label></div>
+    <div id="linkedinFields" class="field" style="display:none;margin-left:23px;"><input type="text" id="linkedin" value="mekluc-freight" placeholder="slug entreprise" oninput="render()"></div>
+    <div class="toggle-row"><input type="checkbox" id="showWhatsapp" onchange="state.showWhatsapp=this.checked;render()"><label for="showWhatsapp">WhatsApp</label></div>
+    <div id="whatsappFields" style="display:none;margin-left:23px;">
+      <div class="field-row"><div class="field"><input type="text" id="whatsapp" value="meklucfreight" placeholder="ID" oninput="render()"></div><div class="field"><input type="text" id="whatsappNum" value="27113921699" placeholder="Numero sans +" oninput="render()"></div></div>
+    </div>
+    <div class="toggle-row"><input type="checkbox" id="showFacebook" onchange="state.showFacebook=this.checked;render()"><label for="showFacebook">Facebook</label></div>
+    <div id="facebookFields" class="field" style="display:none;margin-left:23px;"><input type="text" id="facebook" value="meklucfreight" placeholder="ID" oninput="render()"></div>
+    <div class="help-text" style="margin-top:6px;">Cochez un reseau pour l'activer dans la signature. Decochez pour le masquer sans perdre les donnees.</div>
+
+    <h2>Logos &amp; Tailles</h2>
+    <div class="field-row">
+      <div class="field"><label>Logo Mekluc</label><div class="file-input-wrapper"><input type="file" id="logoMeklucFile" accept="image/*" onchange="handleLogo(this,'mekluc')"><div class="file-input-btn">Changer le logo</div></div></div>
+      <div class="field"><label>Logo AEO</label><div class="file-input-wrapper"><input type="file" id="logoAeoFile" accept="image/*" onchange="handleLogo(this,'aeo')"><div class="file-input-btn">Changer le logo</div></div></div>
+    </div>
+    <div class="field">
+      <div class="range-label"><label>Taille Logo Mekluc</label><span class="val" id="logoMeklucSizeVal">180px</span></div>
+      <input type="range" id="logoMeklucSize" min="40" max="320" value="180" oninput="render()">
+    </div>
+    <div class="field">
+      <div class="range-label"><label>Taille Logo AEO</label><span class="val" id="logoAeoSizeVal">50px</span></div>
+      <input type="range" id="logoAeoSize" min="20" max="200" value="50" oninput="render()">
+    </div>
+    <div style="display:flex;gap:5px;margin-top:4px;">
+      <button class="swap-btn" onclick="swapLogos()">&#8645; Inverser logos</button>
+      <button class="swap-btn" onclick="resetLogoPositions()">&#8635; Reset positions</button>
+    </div>
+    <div class="help-text" style="margin-top:6px">Glissez un logo pour le deplacer librement. Tirez le coin orange pour redimensionner.</div>
+
+    <h2>Hebergement Images</h2>
+    <div class="toggle-row"><input type="checkbox" id="useHostedImages" onchange="state.useHostedImages=this.checked;render()"><label for="useHostedImages">Utiliser des images hebergees (URL)</label></div>
+    <div id="hostedUrlFields" style="display:none;">
+      <div class="field"><label>URL Logo Mekluc</label><input type="text" id="hostedLogoMekluc" value="https://www.meklucfreight.co.za/assets/sig/mekluc-logo.png" placeholder="https://..." oninput="render()"></div>
+      <div class="field"><label>URL Logo AEO</label><input type="text" id="hostedLogoAeo" value="https://www.meklucfreight.co.za/assets/sig/aeo-logo.png" placeholder="https://..." oninput="render()"></div>
+      <div class="help-text">Mode heberge : les logos se chargent depuis le serveur. Mettez a jour l'image sur le serveur = toutes les signatures se mettent a jour automatiquement.</div>
+    </div>
+    <div class="help-text" style="margin-top:4px;">Base64 = autonome (par defaut). URL = mise a jour centralisee a distance.</div>
+
+    <h2>Typographie</h2>
+    <div class="field">
+      <label>Police</label>
+      <select id="fontFamily" onchange="render()">
+        <option value="Calibri,'Segoe UI',Arial,sans-serif">Calibri (defaut)</option>
+        <option value="Arial,Helvetica,sans-serif">Arial</option>
+        <option value="'Segoe UI',Calibri,Arial,sans-serif">Segoe UI</option>
+        <option value="Georgia,'Times New Roman',serif">Georgia</option>
+        <option value="Verdana,Geneva,sans-serif">Verdana</option>
+        <option value="'Trebuchet MS',Calibri,sans-serif">Trebuchet MS</option>
+        <option value="'Times New Roman',Georgia,serif">Times New Roman</option>
+      </select>
+    </div>
+    <div class="field-row-3">
+      <div class="field"><div class="range-label"><label>Nom</label><span class="val" id="fontNameVal">22px</span></div><input type="range" id="fontName" min="14" max="36" value="22" oninput="render()"></div>
+      <div class="field"><div class="range-label"><label>Titre</label><span class="val" id="fontTitleVal">16px</span></div><input type="range" id="fontTitle" min="10" max="24" value="16" oninput="render()"></div>
+      <div class="field"><div class="range-label"><label>Details</label><span class="val" id="fontDetailsVal">14px</span></div><input type="range" id="fontDetails" min="10" max="20" value="14" oninput="render()"></div>
+    </div>
+    <div class="field"><div class="range-label"><label>Tagline</label><span class="val" id="fontTaglineVal">16px</span></div><input type="range" id="fontTagline" min="10" max="28" value="16" oninput="render()"></div>
+
+    <h2>Couleurs</h2>
+    <div class="field-row-3">
+      <div class="field"><label>Nom</label><div class="color-field"><input type="color" id="colorName" value="#2C2C2C" oninput="render()"><span class="clabel" id="colorNameHex">#2C2C2C</span></div></div>
+      <div class="field"><label>Titre</label><div class="color-field"><input type="color" id="colorTitle" value="#0B2C4D" oninput="render()"><span class="clabel" id="colorTitleHex">#0B2C4D</span></div></div>
+      <div class="field"><label>Labels</label><div class="color-field"><input type="color" id="colorLabels" value="#8B8B8B" oninput="render()"><span class="clabel" id="colorLabelsHex">#8B8B8B</span></div></div>
+    </div>
+    <div class="field-row-3">
+      <div class="field"><label>Liens</label><div class="color-field"><input type="color" id="colorLinks" value="#0B2C4D" oninput="render()"><span class="clabel" id="colorLinksHex">#0B2C4D</span></div></div>
+      <div class="field"><label>Texte</label><div class="color-field"><input type="color" id="colorText" value="#2C2C2C" oninput="render()"><span class="clabel" id="colorTextHex">#2C2C2C</span></div></div>
+      <div class="field"><label>Separateur</label><div class="color-field"><input type="color" id="colorSep" value="#D0D5DD" oninput="render()"><span class="clabel" id="colorSepHex">#D0D5DD</span></div></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>Tagline</label><div class="color-field"><input type="color" id="colorTagline" value="#0B2C4D" oninput="render()"><span class="clabel" id="colorTaglineHex">#0B2C4D</span></div></div>
+      <div class="field"><label>Warning</label><div class="color-field"><input type="color" id="colorWarning" value="#8B8B8B" oninput="render()"><span class="clabel" id="colorWarningHex">#8B8B8B</span></div></div>
+    </div>
+    <button class="reset-colors-btn" onclick="resetColors()">&#8635; Couleurs par defaut</button>
+
+    <h2>Options</h2>
+    <div class="field"><label>Tagline</label><input type="text" id="tagline" value="With us nothing stands in your way" oninput="render()"></div>
+    <div class="field"><label>Accreditations (separees par |)</label><input type="text" id="accreditations" value="AEO South Africa | SARS Customs Clearing Agent | Level 1 B-BBEE | 100% Black Woman Owned" oninput="render()"></div>
+    <div class="field"><label>Message anti-fraude (V4.3 : retire par defaut, deplace sur devis/factures)</label><textarea id="antiFraudText" rows="3" oninput="render()"></textarea></div>
+    <div class="field"><label>Largeur signature (px)</label><input type="number" id="sigWidth" value="660" min="500" max="800" oninput="render()"></div>
+    <div class="toggle-row"><input type="checkbox" id="showAccred" checked onchange="state.showAccred=this.checked;render()"><label for="showAccred">Afficher accreditations</label></div>
+    <div class="toggle-row"><input type="checkbox" id="showAntiFraud" onchange="state.showAntiFraud=this.checked;render()"><label for="showAntiFraud">Afficher anti-fraude</label></div>
+    <div class="toggle-row"><input type="checkbox" id="showIndustryLine" checked onchange="state.showIndustryLine=this.checked;render()"><label for="showIndustryLine">Afficher ligne metier</label></div>
+    <div class="toggle-row"><input type="checkbox" id="showIndustryIcons" checked onchange="state.showIndustryIcons=this.checked;render()"><label for="showIndustryIcons">Icones transport visuelles (Air, Sea, Road, Customs)</label></div>
+    <div class="toggle-row"><input type="checkbox" id="showBanner" checked onchange="state.showBanner=this.checked;render()"><label for="showBanner">Banniere transport animee (GIF)</label></div>
+    <div class="toggle-row"><input type="checkbox" id="showPromo" checked onchange="state.showPromo=this.checked;render()"><label for="showPromo">Zone info / promo client</label></div>
+
+    <h2>Zone Info Client</h2>
+    <div id="promoFields">
+      <div class="field"><label>Titre</label><input type="text" id="promoTitle" value="Industry Update" oninput="render()"></div>
+      <div class="field"><label>Texte court (1-2 lignes)</label><input type="text" id="promoText" value="Stay informed on the latest SARS customs regulations and trade updates affecting your imports and exports." oninput="render()"></div>
+      <div class="field-row">
+        <div class="field"><label>URL du lien</label><input type="text" id="promoUrl" value="https://www.sars.gov.za/customs-and-excise/" oninput="render()"></div>
+        <div class="field"><label>Texte du lien</label><input type="text" id="promoLinkText" value="Read more on SARS" oninput="render()"></div>
+      </div>
+      <div class="help-text">Zone compacte affichee sous la signature. Liez un article SARS, une news import/export, ou une promo interne.</div>
+    </div>
+
+    <h2>Deploiement Outlook</h2>
+    <div class="o365-actions">
+      <button class="btn btn-primary" onclick="deployToOutlook()" title="Copie la signature et ouvre les parametres Outlook Web">&#9993; Deployer dans Outlook</button>
+      <button class="btn btn-outline" onclick="openOutlookSettings()" title="Ouvrir les parametres signature Outlook Web">Outlook Settings &#8599;</button>
+    </div>
+    <h2>Publication Serveur</h2>
+    <div class="o365-actions">
+      <button class="btn btn-secondary" onclick="autoSaveCurrentProfile()" title="Sauvegarder la signature du profil actif sur le serveur">&#128190; Sauvegarder ce profil</button>
+      <button class="btn btn-primary" onclick="deployAllProfiles()" title="Generer et sauvegarder les 4 signatures sur le serveur">&#128640; Deployer tous les profils</button>
+    </div>
+    <div class="help-text" style="margin-top:4px;">Sauvegarde les fichiers HTML sur le serveur dans <code>/tools/sig-generator/signatures/</code>.<br>Utilisez ensuite "Deployer dans Outlook" pour chaque profil.</div>
+    <div id="o365Result" class="o365-result"></div>
+    <div class="help-text" style="margin-top:6px;">
+      <b>Etape 1 :</b> Cliquez "Deployer dans Outlook" &rarr; la signature est copiee + les parametres Outlook s'ouvrent.<br>
+      <b>Etape 2 :</b> Collez (Ctrl+V) dans le champ signature, cliquez Enregistrer. <b>Operation unique.</b><br>
+      <b>Note :</b> Repetez dans Outlook Desktop et Outlook Mobile si necessaire (2 min par canal).
+    </div>
+
+    <div class="infra-note">
+      <strong>Infrastructure Mekluc :</strong><br>
+      Domain <b>meklucfreight.co.za</b> — Elitehost (exp. 13/11/2026)<br>
+      Domain <b>mekluc.co.za</b> — Afrihost (exp. 20/08/2026)<br>
+      Email <b>@mekluc.co.za</b> + <b>@mekluc.com</b> — Microsoft 365 Exchange Online
+    </div>
+  </div>
+
+  <!-- PREVIEW -->
+  <div class="preview-panel">
+    <div class="preview-toolbar">
+      <div class="preview-toolbar-left">
+        <h2>Apercu en direct</h2>
+        <div class="edit-badge"><span class="dot"></span> Mode edition</div>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-outline" onclick="toggleDarkBg()" title="Fond sombre / clair">&#9681;</button>
+        <button class="btn btn-primary" onclick="copySignature()">Copier la signature</button>
+        <button class="btn btn-secondary" onclick="downloadHTML()">Telecharger HTML</button>
+      </div>
+    </div>
+    <div class="preview-card" id="previewCard"></div>
+    <div class="preview-hint">Glissez un logo pour le deplacer &middot; Tirez le coin orange pour redimensionner &middot; Cliquez le texte pour editer</div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<div class="edit-hint" id="editHint"></div>
+
+<script>
+/* ===== SOCIAL ICONS — Original brand colors for instant recognition ===== */
+const ICON = {
+  linkedin: "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><rect width="16" height="16" rx="2" fill="#0A66C2"/><path d="M4.5 6.5H6V12H4.5zM5.25 4a.9.9 0 110 1.8.9.9 0 010-1.8zM7 6.5h1.4v.7c.2-.3.7-.8 1.5-.8 1.6 0 1.9 1 1.9 2.4V12h-1.5V9.3c0-.6-.1-1.3-.9-1.3s-.9.6-.9 1.3V12H7z" fill="#fff"/></svg>'),
+  whatsapp: "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#25D366"/><path d="M11.3 9.3c-.2-.1-1-.5-1.2-.6-.2-.1-.3-.1-.4.1-.1.2-.4.5-.5.7-.1.1-.2.1-.4 0-.2-.1-.8-.3-1.5-.9-.6-.5-.9-1.1-1-1.3-.1-.2 0-.3.1-.4l.3-.3c.1-.1.1-.2.1-.3 0-.1 0-.2 0-.3-.1-.1-.4-1-.6-1.4-.1-.4-.3-.3-.4-.3h-.3c-.1 0-.4 0-.5.3-.2.2-.6.6-.6 1.5s.6 1.7.7 1.8c.1.1 1.2 1.9 3 2.7.4.2.7.3 1 .3.4.1.8.1 1.1.1.3-.1 1-.4 1.2-.8.1-.4.1-.8.1-.9-.1-.1-.2-.1-.4-.2z" fill="#fff"/></svg>'),
+  facebook: "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#1877F2"/><path d="M10.5 8.5H9V13H7V8.5H5.5V7H7V5.5C7 4.2 7.7 3 9.3 3H11v1.5H9.5c-.3 0-.5.2-.5.5V7h2l-.5 1.5z" fill="#fff"/></svg>'),
+};
+function iconImg(name) {
+  return '<img src="'+ICON[name]+'" alt="'+name+'" width="14" height="14" style="vertical-align:middle;border:0;outline:none;display:inline;margin-right:3px;">';
+}
+
+/* ===== FREIGHT / TRANSPORT ICONS — Industry visual identity ===== */
+const FREIGHT_ICON = {
+  air: "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.5 9.2l-6.2-1.6L10 1.5c-.1-.3-.4-.5-.7-.3L8.5 2l1.6 5.4-5.5-1.4L3.5 4l-.8.2L3.6 7 2 6.6l-.5.5 2.2 1.8 1.7.5 5.5 1.4-4.5 3.5-.8-.2-.3.8 2.7.7c.3.1.7 0 .9-.2l4.8-3.7 4.9 1.3c.5.1 1-.1 1.2-.6.1-.5-.1-1-.6-1.2z" fill="#0B2C4D"/></svg>'),
+  sea: "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M17 11l-1.5-5H13V4H7v2H4.5L3 11l-1 .3v1.2l.6-.2c1.2-.3 2-.2 2.8.3.8.5 1.4.5 2.2.2.8-.3 1.6-.3 2.4 0 .8.3 1.4.3 2.2-.2.8-.5 1.6-.6 2.8-.3l.6.2v-1.2L17 11zM7 6h6v.5H7V6zm-1.8 5l1-3.5h7.6l1 3.5H5.2zM2.4 14.5c.8.5 1.6.6 2.8.3.8-.3 1.4-.3 2.2.2.8.5 1.6.5 2.4.2.8-.3 1.4-.3 2.2.2.8.5 1.6.5 2.4.2.8-.3 1.6-.6 2.8-.3l.6.2v1.2l-.6-.2c-1.2-.3-2-.2-2.8.3-.8.5-1.4.5-2.2.2-.8-.3-1.6-.3-2.4 0-.8.3-1.4.3-2.2-.2-.8-.5-1.6-.6-2.8-.3l-.6.2v-1.2l.6-.2z" fill="#0B2C4D"/></svg>'),
+  road: "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M17 13V7c0-.6-.4-1-1-1h-2V5c0-.6-.4-1-1-1H3c-.6 0-1 .4-1 1v8c0 .6.4 1 1 1h.3c.2.9 1 1.5 1.9 1.5s1.7-.6 1.9-1.5h5.8c.2.9 1 1.5 1.9 1.5s1.7-.6 1.9-1.5H17c.6 0 1-.4 1-1v-1l-1 1zM5.2 15c-.7 0-1.2-.5-1.2-1.2s.5-1.2 1.2-1.2 1.2.5 1.2 1.2-.5 1.2-1.2 1.2zM12 7h3l2 3h-5V7zm2.8 8c-.7 0-1.2-.5-1.2-1.2s.5-1.2 1.2-1.2 1.2.5 1.2 1.2-.5 1.2-1.2 1.2z" fill="#0B2C4D"/></svg>'),
+  customs: "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M15 2H5c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V3c0-.6-.4-1-1-1zm-1 14H6V4h8v12zM7 6h6v1H7V6zm0 2.5h6v1H7v-1zm0 2.5h4v1H7v-1zm5.5 2l-1 1.5-1-1.5h2z" fill="#E87722"/></svg>'),
+};
+/* PNG versions of freight icons (converted from SVG at page load for Outlook Desktop compatibility) */
+const FREIGHT_ICON_PNG = {};
+async function convertFreightIconsToPng() {
+  const size = 40; // render at 2x for crisp display
+  for (const [name, svgUri] of Object.entries(FREIGHT_ICON)) {
+    try {
+      const img = new Image();
+      img.src = svgUri;
+      await new Promise((res, rej) => { img.onload = res; img.onerror = rej; });
+      const c = document.createElement('canvas');
+      c.width = size; c.height = size;
+      const ctx = c.getContext('2d');
+      ctx.drawImage(img, 0, 0, size, size);
+      FREIGHT_ICON_PNG[name] = c.toDataURL('image/png');
+    } catch(e) { FREIGHT_ICON_PNG[name] = svgUri; }
+  }
+}
+const FREIGHT_ICON_HOSTED = {
+  air: 'https://www.meklucfreight.co.za/assets/sig/icon-air.png',
+  sea: 'https://www.meklucfreight.co.za/assets/sig/icon-sea.png',
+  road: 'https://www.meklucfreight.co.za/assets/sig/icon-road.png',
+  customs: 'https://www.meklucfreight.co.za/assets/sig/icon-customs.png',
+};
+function freightIconImg(name, size) {
+  size = size || 20;
+  const src = state.useHostedImages ? FREIGHT_ICON_HOSTED[name] : (FREIGHT_ICON_PNG[name] || FREIGHT_ICON[name]);
+  return '<img src="'+src+'" alt="'+name+'" width="'+size+'" height="'+size+'" style="vertical-align:middle;border:0;outline:none;display:inline;-ms-interpolation-mode:bicubic;">';
+}
+
+/* ===== BANNER GIF — Animated transport strip ===== */
+const BANNER_GIF_URL = 'https://www.meklucfreight.co.za/assets/sig/mekluc-transport-banner.gif';
+const BANNER_PNG_URL = 'https://www.meklucfreight.co.za/assets/sig/mekluc-transport-banner.png';
+let bannerGifSrc = '';
+async function loadBannerGif() {
+  bannerGifSrc = await tryFetchLogo('./mekluc-transport-banner.gif');
+  if(!bannerGifSrc) bannerGifSrc = await tryFetchLogo('/assets/sig/mekluc-transport-banner.gif');
+  if(!bannerGifSrc) bannerGifSrc = await imgToBase64('/assets/sig/mekluc-transport-banner.gif');
+  if(!bannerGifSrc) bannerGifSrc = BANNER_GIF_URL;
+}
+
+/* ===== DEFAULT COLORS ===== */
+const DEFAULT_COLORS = {
+  colorName:'#2C2C2C', colorTitle:'#0B2C4D', colorLabels:'#8B8B8B',
+  colorLinks:'#0B2C4D', colorText:'#2C2C2C', colorSep:'#D0D5DD',
+  colorTagline:'#0B2C4D', colorWarning:'#8B8B8B',
+};
+
+/* ===== STATE ===== */
+const state = {
+  inlineEditing: false,
+  activeField: null,
+  logoOrder: ['mekluc','aeo'],
+  logoOffsets: { mekluc:{x:0,y:0}, aeo:{x:0,y:0} },
+  showAccred: true,
+  showAntiFraud: false,  // V4.3 (Anne-Marie 2026-05-18) : retire des signatures, deplace sur devis/factures
+  showIndustryLine: true,
+  showIndustryIcons: true,
+  showBanner: true,
+  showPromo: true,
+  showLinkedin: false,
+  showWhatsapp: false,
+  showFacebook: false,
+  useHostedImages: false,
+  darkBg: false,
+  selectedLogo: null,
+  resizing: null,
+  draggingLogo: null,
+};
+
+/* ===== PROFILES ===== */
+const profiles = {
+  'anne-marie': {
+    fullName:'Anne-Marie Mandtoumbi', title:'Managing Director', company:'',
+    industryLine:'Air · Sea · Road · Customs',
+    phoneOffice:'+27 11 392 1699', phoneMobile:'+27 83 745 6483',
+    email:'anne_marie@mekluc.co.za', website:'www.meklucfreight.co.za',
+    address:'Morningside, Sandton, Johannesburg, South Africa',
+    whatsapp:'meklucfreight', facebook:'meklucfreight', linkedin:'mekluc-freight',
+    whatsappNum:'27113921699', tagline:'With us nothing stands in your way',
+    accreditations:'AEO South Africa | SARS Customs Clearing Agent | Level 1 B-BBEE | 100% Black Woman Owned',
+    antiFraudText:'',
+  },
+  'deo-gracia': {
+    fullName:'Deo Gracia Mekourou', title:'CFO & Operations', company:'',
+    industryLine:'Air · Sea · Road · Customs',
+    phoneOffice:'+27 11 392 1699', phoneMobile:'+27 72 295 1512',
+    email:'director@mekluc.co.za', website:'www.meklucfreight.co.za',
+    address:'Morningside, Sandton, Johannesburg, South Africa',
+    whatsapp:'meklucfreight', facebook:'meklucfreight', linkedin:'mekluc-freight',
+    whatsappNum:'27113921699', tagline:'With us nothing stands in your way',
+    accreditations:'AEO South Africa | SARS Customs Clearing Agent | Level 1 B-BBEE | 100% Black Woman Owned',
+    antiFraudText:'',
+  },
+  'nyiko': {
+    fullName:'Nyiko Shingange', title:'Accounts Manager', company:'',
+    industryLine:'Air · Sea · Road · Customs',
+    phoneOffice:'+27 11 392 1699', phoneMobile:'',
+    email:'account2@mekluc.com', website:'www.meklucfreight.co.za',
+    address:'Morningside, Sandton, Johannesburg, South Africa',
+    whatsapp:'', facebook:'', linkedin:'',
+    whatsappNum:'27113921699', tagline:'With us nothing stands in your way',
+    accreditations:'AEO South Africa | SARS Customs Clearing Agent | Level 1 B-BBEE | 100% Black Woman Owned',
+    antiFraudText:'',
+  },
+  'siyiwa': {
+    fullName:'Siyiwa Chekwa', title:'Operations Coordinator', company:'',
+    industryLine:'Air · Sea · Road · Customs',
+    phoneOffice:'+27 11 392 1699', phoneMobile:'084 411 9508',
+    email:'Controller@mekluc.co.za', website:'www.meklucfreight.co.za',
+    address:'Morningside, Sandton, Johannesburg, South Africa',
+    whatsapp:'', facebook:'', linkedin:'',
+    whatsappNum:'27113921699', tagline:'With us nothing stands in your way',
+    accreditations:'AEO South Africa | SARS Customs Clearing Agent | Level 1 B-BBEE | 100% Black Woman Owned',
+    antiFraudText:'',
+  },
+  'custom': {
+    fullName:'', title:'', company:'',
+    industryLine:'Air · Sea · Road · Customs',
+    phoneOffice:'+27 11 392 1699', phoneMobile:'',
+    email:'', website:'www.meklucfreight.co.za',
+    address:'Morningside, Sandton, Johannesburg, South Africa',
+    whatsapp:'', facebook:'', linkedin:'',
+    whatsappNum:'27113921699', tagline:'With us nothing stands in your way',
+    accreditations:'AEO South Africa | SARS Customs Clearing Agent | Level 1 B-BBEE | 100% Black Woman Owned',
+    antiFraudText:'',
+  },
+};
+
+/* ===== LOGOS ===== */
+let logoMeklucSrc = '', logoAeoSrc = '';
+function blobToBase64(blob) { return new Promise(r => { const fr=new FileReader(); fr.onloadend=()=>r(fr.result); fr.readAsDataURL(blob); }); }
+function imgToBase64(url) {
+  return new Promise(resolve => {
+    const img = new Image(); img.crossOrigin = 'anonymous';
+    img.onload = () => { const c=document.createElement('canvas'); c.width=img.naturalWidth; c.height=img.naturalHeight; c.getContext('2d').drawImage(img,0,0); try { resolve(c.toDataURL('image/png')); } catch(e) { resolve(''); } };
+    img.onerror = () => resolve('');
+    img.src = url;
+  });
+}
+async function tryFetchLogo(url) {
+  try { const r=await fetch(url); if(r.ok) return await blobToBase64(await r.blob()); } catch(e){} return '';
+}
+async function loadDefaultLogos() {
+  // 1. Try local PNGs via fetch (dev mode with python server)
+  logoMeklucSrc = await tryFetchLogo('./MEKLUC_LOGO_COLOR_LIGHT_TRANSPARENT_v2.0.png');
+  if(!logoMeklucSrc) logoAeoSrc = ''; // skip local AEO if Mekluc local failed
+  else logoAeoSrc = await tryFetchLogo('./AEO_LOGO_600px.png');
+  // 2. Fallback: try hosted logos via fetch (works with normal auth dialog)
+  if(!logoMeklucSrc) logoMeklucSrc = await tryFetchLogo('/assets/sig/mekluc-logo.png');
+  if(!logoAeoSrc) logoAeoSrc = await tryFetchLogo('/assets/sig/aeo-logo.png');
+  // 3. Fallback: try via Image element (works even with credentials in URL)
+  if(!logoMeklucSrc) logoMeklucSrc = await imgToBase64('/assets/sig/mekluc-logo.png');
+  if(!logoAeoSrc) logoAeoSrc = await imgToBase64('/assets/sig/aeo-logo.png');
+  // 4. Last resort: SVG placeholders
+  if(!logoMeklucSrc) logoMeklucSrc='data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="180" height="76"><rect fill="#0B2C4D" width="180" height="76" rx="4"/><text x="90" y="42" fill="#fff" font-family="Calibri" font-size="14" font-weight="bold" text-anchor="middle">MEKLUC FREIGHT</text></svg>');
+  if(!logoAeoSrc) logoAeoSrc='data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50"><circle cx="25" cy="25" r="23" fill="none" stroke="#8B8B8B" stroke-width="1.5"/><text x="25" y="29" fill="#8B8B8B" font-family="Calibri" font-size="11" font-weight="bold" text-anchor="middle">AEO</text></svg>');
+  render();
+}
+function handleLogo(input,type) {
+  const file=input.files[0]; if(!file) return;
+  const fr=new FileReader();
+  fr.onload=e=>{ if(type==='mekluc') logoMeklucSrc=e.target.result; else logoAeoSrc=e.target.result; render(); };
+  fr.readAsDataURL(file);
+}
+
+/* ===== UTILS ===== */
+function val(id) { return document.getElementById(id).value; }
+function num(id) { return parseInt(document.getElementById(id).value)||0; }
+function cval(id) { return document.getElementById(id).value; }
+function loadProfile(name,btn) {
+  const saved = getSavedProfiles();
+  const p = saved[name] || profiles[name];
+  if(!p) return;
+  // Apply all known fields from profile data
+  Object.keys(p).forEach(k=>{ const el=document.getElementById(k); if(el) el.value=p[k]; });
+  // Also apply default profile fields not in saved data (for backwards compat)
+  if(saved[name] && profiles[name]) {
+    Object.keys(profiles[name]).forEach(k=>{ if(!(k in saved[name])) { const el=document.getElementById(k); if(el) el.value=profiles[name][k]; } });
+  }
+  document.querySelectorAll('.profile-btn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  resetLogoPositions();
+  render();
+}
+function swapLogos() { state.logoOrder.reverse(); render(); }
+function resetLogoPositions() { state.logoOffsets={mekluc:{x:0,y:0},aeo:{x:0,y:0}}; render(); }
+function toggleDarkBg() { state.darkBg=!state.darkBg; document.getElementById('previewCard').classList.toggle('dark-bg',state.darkBg); }
+function resetColors() {
+  Object.keys(DEFAULT_COLORS).forEach(k=>{ document.getElementById(k).value=DEFAULT_COLORS[k]; });
+  render();
+}
+
+/* ===== PROFILE SAVE / LOAD (localStorage) ===== */
+const PROFILES_STORAGE_KEY = 'mekluc_sig_profiles';
+const PROFILE_FIELDS = ['fullName','title','company','industryLine','phoneOffice','phoneMobile','email','website','address','linkedin','whatsapp','facebook','whatsappNum','tagline','accreditations','antiFraudText','promoTitle','promoText','promoUrl','promoLinkText'];
+
+function getSavedProfiles() {
+  try { return JSON.parse(localStorage.getItem(PROFILES_STORAGE_KEY)) || {}; } catch(e) { return {}; }
+}
+function getActiveProfileKey() {
+  const btn = document.querySelector('.profile-btn.active');
+  if(!btn) return null;
+  const m = btn.getAttribute('onclick').match(/loadProfile\('([^']+)'/);
+  return m ? m[1] : null;
+}
+function saveCurrentProfile() {
+  const key = getActiveProfileKey();
+  if(!key) { showToast('Selectionnez un profil d\'abord'); return; }
+  const saved = getSavedProfiles();
+  const data = {};
+  PROFILE_FIELDS.forEach(f => { const el = document.getElementById(f); if(el) data[f] = el.value; });
+  saved[key] = data;
+  localStorage.setItem(PROFILES_STORAGE_KEY, JSON.stringify(saved));
+  updateSavedBadges();
+  showToast('Profil "' + (val('fullName') || key) + '" sauvegarde !');
+}
+function resetCurrentProfile() {
+  const key = getActiveProfileKey();
+  if(!key) return;
+  const saved = getSavedProfiles();
+  delete saved[key];
+  localStorage.setItem(PROFILES_STORAGE_KEY, JSON.stringify(saved));
+  const p = profiles[key];
+  if(p) { Object.keys(p).forEach(k => { const el = document.getElementById(k); if(el) el.value = p[k]; }); }
+  updateSavedBadges();
+  render();
+  showToast('Profil reset aux valeurs par defaut');
+}
+function updateSavedBadges() {
+  const saved = getSavedProfiles();
+  document.querySelectorAll('.profile-btn').forEach(btn => {
+    const m = btn.getAttribute('onclick').match(/loadProfile\('([^']+)'/);
+    if(!m) return;
+    const key = m[1];
+    let badge = btn.querySelector('.saved-badge');
+    if(saved[key]) {
+      if(!badge) { badge = document.createElement('span'); badge.className='saved-badge'; badge.textContent='OK'; btn.appendChild(badge); }
+    } else {
+      if(badge) badge.remove();
+    }
+  });
+}
+
+/* ===== AUTO-SAVE & BATCH DEPLOY ===== */
+const SIG_API_URL = (location.hostname==='localhost'?'':'') + 'save-sig.php';
+const SIG_API_KEY = 'mekluc2026sig';
+
+async function saveSignatureToServer(profileName) {
+  const html = buildSignatureHTML(true);
+  const email = val('email');
+  const name = val('fullName');
+  try {
+    const resp = await fetch(SIG_API_URL, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ profile:profileName, html:html, email:email, name:name, key:SIG_API_KEY })
+    });
+    const data = await resp.json();
+    if(data.success) return data;
+    console.warn('Save failed:', data.error);
+    return null;
+  } catch(e) { console.warn('Save error:', e); return null; }
+}
+
+async function deployAllProfiles() {
+  const profileNames = ['anne-marie','deo-gracia','nyiko','siyiwa'];
+  const resultDiv = document.getElementById('o365Result');
+  resultDiv.style.display='block';
+  resultDiv.innerHTML='<span style="color:var(--orange);">&#9203; Deploiement batch en cours...</span>';
+  let savedCount = 0, results = [];
+
+  for(const pName of profileNames) {
+    // Load profile temporarily
+    const saved = getSavedProfiles();
+    const p = saved[pName] || profiles[pName];
+    if(!p) continue;
+    Object.keys(p).forEach(k=>{ const el=document.getElementById(k); if(el) el.value=p[k]; });
+    if(saved[pName] && profiles[pName]) {
+      Object.keys(profiles[pName]).forEach(k=>{ if(!(k in saved[pName])) { const el=document.getElementById(k); if(el) el.value=profiles[pName][k]; } });
+    }
+    resetLogoPositions();
+    // Save to server
+    const res = await saveSignatureToServer(pName);
+    if(res) { savedCount++; results.push('&#10003; '+p.fullName); }
+    else { results.push('&#10007; '+p.fullName+' (erreur)'); }
+  }
+
+  // Restore active profile
+  const activeBtn = document.querySelector('.profile-btn.active');
+  const activeName = activeBtn ? activeBtn.textContent.trim().toLowerCase().replace(/\s+/g,'-').replace('ок','ok') : 'anne-marie';
+  loadProfile(Object.keys(profiles).find(k => profiles[k].fullName && document.querySelector('.profile-btn.active')) || 'anne-marie');
+
+  resultDiv.innerHTML = '<b>'+savedCount+'/'+profileNames.length+' signatures sauvegardees sur le serveur</b><br>' +
+    results.join('<br>') +
+    '<br><br><span style="color:var(--label);font-size:11px;">Les fichiers HTML sont disponibles dans /tools/sig-generator/signatures/<br>' +
+    'Pour appliquer dans Outlook : selectionnez un profil &rarr; "Deployer dans Outlook"</span>';
+
+  // Reload first profile
+  document.querySelector('.profile-btn').click();
+  showToast(savedCount + ' signatures publiees sur le serveur !');
+}
+
+async function autoSaveCurrentProfile() {
+  const activeBtn = document.querySelector('.profile-btn.active');
+  if(!activeBtn) return;
+  const name = activeBtn.getAttribute('onclick')?.match(/loadProfile\('([^']+)'/)?.[1];
+  if(!name || name==='custom') return;
+  const res = await saveSignatureToServer(name);
+  if(res) showToast('Signature sauvegardee : ' + val('fullName'));
+}
+
+/* ===== OUTLOOK DEPLOY ===== */
+function deployToOutlook() {
+  const resultDiv = document.getElementById('o365Result');
+  copySignature();
+  resultDiv.style.display='block';
+  resultDiv.innerHTML='<span style="color:var(--succes);font-size:14px;">&#10003; Signature copiee dans le presse-papier !</span><br><span style="color:var(--label);font-size:11px;">Outlook Web s\'ouvre &rarr; Collez (Ctrl+V) dans le champ signature &rarr; Enregistrer.</span>';
+  setTimeout(() => window.open('https://outlook.cloud.microsoft/mail/options/mail/messageContent','_blank'), 600);
+}
+function openOutlookSettings() {
+  window.open('https://outlook.cloud.microsoft/mail/options/mail/messageContent','_blank');
+}
+
+/* Note: Microsoft Graph API ne supporte pas la gestion des signatures email (mai 2026).
+   Le workflow est : copier signature + coller dans les parametres Outlook. Operation unique par canal. */
+
+/* ===== BUILD SIGNATURE HTML ===== */
+function buildSignatureHTML(forExport) {
+  const w=num('sigWidth')||660, lm=num('logoMeklucSize')||180, la=num('logoAeoSize')||50;
+  const fn=num('fontName')||22, ft=num('fontTitle')||16, fd=num('fontDetails')||14, ftg=num('fontTagline')||16;
+  const ff=val('fontFamily')||"Calibri,'Segoe UI',Arial,sans-serif";
+  const colW=Math.max(lm,la)+30;
+  const ed=(f)=>forExport?'':' data-field="'+f+'" class="sig-editable"';
+  const edLink=(f,lt)=>forExport?'':' data-field="'+f+'" data-link-type="'+lt+'" class="sig-editable"';
+  const company=val('company'), titleSuffix=company?' &middot; '+company:'';
+
+  // Colors
+  const cName=cval('colorName'), cTitle=cval('colorTitle'), cLbl=cval('colorLabels');
+  const cLink=cval('colorLinks'), cTxt=cval('colorText'), cSep=cval('colorSep');
+  const cTag=cval('colorTagline'), cWarn=cval('colorWarning');
+
+  // Social links — only shown if toggled ON + has value
+  const socials=[];
+  const li=val('linkedin'), wa=val('whatsapp'), fb=val('facebook');
+  if(state.showLinkedin && li) socials.push('<a href="https://linkedin.com/company/'+li+'" style="color:'+cTxt+';text-decoration:none;">'+iconImg('linkedin')+li+'</a>');
+  if(state.showWhatsapp && wa) socials.push('<a href="https://wa.me/'+val('whatsappNum')+'" style="color:'+cTxt+';text-decoration:none;">'+iconImg('whatsapp')+wa+'</a>');
+  if(state.showFacebook && fb) socials.push('<a href="https://facebook.com/'+fb+'" style="color:'+cTxt+';text-decoration:none;">'+iconImg('facebook')+fb+'</a>');
+
+  // Logo images with free positioning — use hosted URLs or base64
+  const mSrc=state.useHostedImages?val('hostedLogoMekluc'):logoMeklucSrc;
+  const aSrc=state.useHostedImages?val('hostedLogoAeo'):logoAeoSrc;
+  const logoD={ mekluc:{src:mSrc,alt:'Mekluc Freight',w:lm}, aeo:{src:aSrc,alt:'AEO South Africa',w:la} };
+  const logoImgs=state.logoOrder.map((type,i)=>{
+    const d=logoD[type];
+    const mb=i===0?'margin:0 0 12px 0;':'margin:0;';
+    const opacity=type==='aeo'?'opacity:0.85;':'';
+    const ox=state.logoOffsets[type]?.x||0, oy=state.logoOffsets[type]?.y||0;
+
+    if(forExport) {
+      const offM=(ox?'margin-left:'+ox+'px;':'')+(oy?'margin-top:'+oy+'px;':'');
+      return '<img src="'+d.src+'" alt="'+d.alt+'" width="'+d.w+'" style="display:block;width:'+d.w+'px;height:auto;border:0;'+mb+opacity+offM+'outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;background:transparent;">';
+    } else {
+      const transform=(ox||oy)?'transform:translate('+ox+'px,'+oy+'px);':'';
+      return '<div class="logo-wrap" data-logo-type="'+type+'" style="'+mb+transform+'">' +
+        '<img src="'+d.src+'" alt="'+d.alt+'" width="'+d.w+'" style="width:'+d.w+'px;height:auto;'+opacity+'">' +
+        '<div class="resize-grip" data-grip="'+type+'"></div>' +
+        '<div class="resize-corner-tl"></div><div class="resize-corner-tr"></div><div class="resize-corner-bl"></div>' +
+        '<div class="logo-float-actions">' +
+          '<button class="lfa-btn" data-action="swap">&#8645; Swap</button>' +
+          '<button class="lfa-btn" data-action="replace" data-logo-for="'+type+'">&#8634; Replace</button>' +
+          '<button class="lfa-btn" data-action="reset">&#8635; Reset</button>' +
+        '</div>' +
+      '</div>';
+    }
+  });
+
+  // Accreditations
+  const accredItems=val('accreditations').split('|').map(s=>s.trim()).filter(Boolean);
+  const accredDots=accredItems.join(' <span style="color:'+cSep+';">&middot;</span> ');
+
+  // Anti-fraud text
+  const afText=val('antiFraudText');
+
+  // Industry line
+  const indLine=val('industryLine');
+
+  let h='<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;width:'+w+'px;max-width:'+w+'px;font-family:'+ff+';mso-table-lspace:0pt;mso-table-rspace:0pt;">';
+
+  // ROW 1: Identity
+  h+='<tr><td style="padding:0 0 12px 0;vertical-align:top;">';
+  h+='<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;width:'+w+'px;"><tr>';
+
+  // Logos column
+  h+='<td width="'+colW+'" valign="top" style="width:'+colW+'px;padding:0 20px 0 0;vertical-align:top;">';
+  h+=logoImgs.join('\n');
+  h+='</td>';
+
+  // Info column
+  h+='<td valign="top" style="vertical-align:top;padding:2px 0 0 0;">';
+
+  // Name
+  h+='<div'+ed('fullName')+' style="font-family:'+ff+';font-size:'+fn+'px;font-weight:bold;color:'+cName+';line-height:1.2;margin:0 0 3px 0;letter-spacing:-0.2px;">'+val('fullName')+'</div>';
+
+  // Title
+  if(forExport) {
+    h+='<div style="font-family:'+ff+';font-size:'+ft+'px;color:'+cTitle+';font-weight:600;line-height:1.3;margin:0 0 2px 0;">'+val('title')+titleSuffix+'</div>';
+  } else {
+    h+='<div style="font-family:'+ff+';font-size:'+ft+'px;color:'+cTitle+';font-weight:600;line-height:1.3;margin:0 0 2px 0;"><span data-field="title" class="sig-editable">'+val('title')+'</span>'+titleSuffix+'</div>';
+  }
+
+  // Industry line + optional transport icons
+  if(state.showIndustryLine && indLine) {
+    if(state.showIndustryIcons) {
+      // Enhanced industry line with freight icons
+      h+='<div style="margin:0 0 14px 0;">';
+      h+='<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;"><tr>';
+      const modes=[
+        {icon:'air',label:'Air',col:'#0B2C4D'},
+        {icon:'sea',label:'Sea',col:'#0B2C4D'},
+        {icon:'road',label:'Road',col:'#0B2C4D'},
+        {icon:'customs',label:'Customs',col:'#E87722'}
+      ];
+      modes.forEach((m,i)=>{
+        const sep=i<modes.length-1?'<td style="padding:0 8px;color:'+cSep+';font-size:13px;font-family:'+ff+';">&middot;</td>':'';
+        h+='<td style="padding:0;white-space:nowrap;">'+freightIconImg(m.icon,20)+'<span style="font-family:'+ff+';font-size:13px;font-weight:700;color:'+m.col+';text-transform:uppercase;letter-spacing:1px;vertical-align:middle;margin-left:4px;">'+m.label+'</span></td>'+sep;
+      });
+      h+='</tr></table></div>';
+    } else {
+      h+='<div'+ed('industryLine')+' style="font-family:'+ff+';font-size:13px;color:'+cLbl+';font-weight:600;text-transform:uppercase;letter-spacing:1.8px;line-height:1.3;margin:0 0 14px 0;">'+indLine+'</div>';
+    }
+  } else {
+    h+='<div style="margin:0 0 12px 0;"></div>';
+  }
+
+  // Contact details
+  h+='<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;font-family:'+ff+';font-size:'+fd+'px;color:'+cTxt+';line-height:1.9;">';
+  h+='<tr><td style="padding:0;"><span style="color:'+cLbl+';font-weight:500;font-size:'+fd+'px;">Office</span>&nbsp;&nbsp;<span'+ed('phoneOffice')+' style="color:'+cTxt+';">'+val('phoneOffice')+'</span> &nbsp;<span style="color:'+cSep+';">|</span>&nbsp; <span style="color:'+cLbl+';font-weight:500;font-size:'+fd+'px;">Mobile</span>&nbsp;&nbsp;<span'+ed('phoneMobile')+' style="color:'+cTxt+';">'+val('phoneMobile')+'</span></td></tr>';
+  h+='<tr><td style="padding:0;"><span style="color:'+cLbl+';font-weight:500;font-size:'+fd+'px;">Email</span>&nbsp;&nbsp;<a href="mailto:'+val('email')+'"'+edLink('email','email')+' style="color:'+cLink+';text-decoration:none;">'+val('email')+'</a></td></tr>';
+  h+='<tr><td style="padding:0;"><span style="color:'+cLbl+';font-weight:500;font-size:'+fd+'px;">Web</span>&nbsp;&nbsp;<a href="https://'+val('website')+'"'+edLink('website','web')+' style="color:'+cLink+';text-decoration:none;">'+val('website')+'</a></td></tr>';
+  h+='<tr><td style="padding:0;"><span style="color:'+cLbl+';font-weight:500;font-size:'+fd+'px;">Address</span>&nbsp;&nbsp;<span'+ed('address')+' style="color:'+cTxt+';">'+val('address')+'</span></td></tr>';
+  if(socials.length>0) {
+    h+='<tr><td style="padding:2px 0 0 0;">'+socials.join(' &nbsp;&nbsp; ')+'</td></tr>';
+  }
+  h+='</table></td></tr></table></td></tr>';
+
+  // ROW 2: Tagline
+  if(val('tagline')) {
+    h+='<tr><td style="padding:8px 0 10px 0;"><div'+ed('tagline')+' style="font-family:'+ff+';font-size:'+ftg+'px;font-weight:400;font-style:italic;color:'+cTag+';line-height:1.3;letter-spacing:0.2px;">'+val('tagline')+'</div></td></tr>';
+  }
+
+  // ROW 3: Separator
+  h+='<tr><td style="padding:0;border-bottom:1px solid '+cSep+';font-size:1px;line-height:1px;height:1px;">&nbsp;</td></tr>';
+
+  // ROW 4: Accreditations
+  if(state.showAccred && accredItems.length>0) {
+    h+='<tr><td style="padding:8px 0;"><div style="font-family:'+ff+';font-size:11px;font-weight:500;color:'+cLbl+';letter-spacing:0.8px;line-height:1.4;text-transform:uppercase;">'+accredDots+'</div></td></tr>';
+  }
+
+  // ROW 5: Anti-fraud
+  if(state.showAntiFraud && afText) {
+    h+='<tr><td style="padding:6px 0 0 0;">';
+    h+='<div'+ed('antiFraudText')+' style="font-family:'+ff+';font-size:10px;font-style:italic;color:'+cWarn+';line-height:1.5;border-left:2px solid '+cSep+';padding:4px 0 4px 10px;">';
+    h+=afText;
+    h+='</div></td></tr>';
+  }
+
+  // ROW 6: Animated GIF transport banner
+  if(state.showBanner) {
+    const bSrc = bannerGifSrc || BANNER_GIF_URL;
+    h+='<tr><td style="padding:10px 0 4px 0;">';
+    h+='<a href="https://'+val('website')+'" target="_blank" style="text-decoration:none;">';
+    h+='<img src="'+bSrc+'" alt="Mekluc Freight - Air Sea Road Customs Warehousing" width="'+w+'" height="36" style="display:block;width:'+w+'px;height:36px;border:0;outline:none;-ms-interpolation-mode:bicubic;border-radius:3px;">';
+    h+='</a></td></tr>';
+  }
+
+  // ROW 7: Promo / Info zone
+  if(state.showPromo) {
+    const pTitle=val('promoTitle'), pText=val('promoText'), pUrl=val('promoUrl'), pLink=val('promoLinkText');
+    if(pTitle || pText) {
+      h+='<tr><td style="padding:10px 0 0 0;">';
+      h+='<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;width:100%;background:#F8F9FB;border-radius:4px;border-left:3px solid #E87722;">';
+      h+='<tr><td style="padding:8px 12px;">';
+      if(pTitle) h+='<div style="font-family:'+ff+';font-size:10px;font-weight:700;color:#0B2C4D;text-transform:uppercase;letter-spacing:0.6px;margin:0 0 3px 0;">'+pTitle+'</div>';
+      if(pText) h+='<div style="font-family:'+ff+';font-size:11px;color:#555;line-height:1.45;margin:0 0 4px 0;">'+pText+'</div>';
+      if(pUrl && pLink) h+='<a href="'+pUrl+'" target="_blank" style="font-family:'+ff+';font-size:10px;color:#0B2C4D;font-weight:600;text-decoration:none;">'+pLink+' &rarr;</a>';
+      h+='</td></tr></table>';
+      h+='</td></tr>';
+    }
+  }
+
+  h+='</table>';
+  return h;
+}
+
+/* ===== RENDER ===== */
+function render() {
+  if(state.inlineEditing || state.resizing || state.draggingLogo) return;
+  ['logoMeklucSize','logoAeoSize','fontName','fontTitle','fontDetails','fontTagline'].forEach(id=>{
+    const d=document.getElementById(id+'Val'); if(d) d.textContent=num(id)+'px';
+  });
+  // Update color hex labels
+  ['colorName','colorTitle','colorLabels','colorLinks','colorText','colorSep','colorTagline','colorWarning'].forEach(id=>{
+    const hex=document.getElementById(id+'Hex'); if(hex) hex.textContent=cval(id).toUpperCase();
+  });
+  // Toggle visibility of social fields and hosted URL fields
+  document.getElementById('linkedinFields').style.display=state.showLinkedin?'block':'none';
+  document.getElementById('whatsappFields').style.display=state.showWhatsapp?'block':'none';
+  document.getElementById('facebookFields').style.display=state.showFacebook?'block':'none';
+  document.getElementById('hostedUrlFields').style.display=state.useHostedImages?'block':'none';
+  document.getElementById('promoFields').style.display=state.showPromo?'block':'none';
+  document.getElementById('previewCard').innerHTML=buildSignatureHTML(false);
+  attachEditHandlers();
+  attachLogoHandlers();
+}
+
+/* ===== INLINE EDITING ===== */
+function attachEditHandlers() {
+  document.querySelectorAll('.sig-editable').forEach(el=>{
+    el.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); startInlineEdit(this); });
+    el.addEventListener('mouseenter', function(e){
+      if(!state.inlineEditing){
+        const h=document.getElementById('editHint');
+        h.textContent='Cliquez pour modifier';
+        h.style.left=(e.clientX+14)+'px'; h.style.top=(e.clientY-28)+'px';
+        h.classList.add('show');
+      }
+    });
+    el.addEventListener('mousemove', function(e){
+      if(!state.inlineEditing){ const h=document.getElementById('editHint'); h.style.left=(e.clientX+14)+'px'; h.style.top=(e.clientY-28)+'px'; }
+    });
+    el.addEventListener('mouseleave', function(){ document.getElementById('editHint').classList.remove('show'); });
+  });
+}
+
+function startInlineEdit(el) {
+  const field=el.dataset.field; if(!field) return;
+  state.inlineEditing=true; state.activeField=field;
+  document.getElementById('editHint').classList.remove('show');
+  el.contentEditable=true; el.spellcheck=false; el.focus();
+  const range=document.createRange(); range.selectNodeContents(el);
+  window.getSelection().removeAllRanges(); window.getSelection().addRange(range);
+
+  el.addEventListener('blur', function onBlur(){
+    el.contentEditable=false;
+    const newVal=el.textContent.trim();
+    const input=document.getElementById(field);
+    if(input) input.value=newVal;
+    if(el.tagName==='A'){ const lt=el.dataset.linkType; if(lt==='email') el.href='mailto:'+newVal; else if(lt==='web') el.href='https://'+newVal; }
+    state.inlineEditing=false; state.activeField=null;
+    render();
+  }, {once:true});
+
+  el.addEventListener('keydown', function handler(e){
+    if(e.key==='Enter'){ e.preventDefault(); el.removeEventListener('keydown',handler); el.blur(); }
+    if(e.key==='Escape'){ e.preventDefault(); el.textContent=val(field); el.removeEventListener('keydown',handler); el.blur(); }
+  });
+}
+
+/* ===== LOGO INTERACTION — Free drag + Resize ===== */
+function attachLogoHandlers() {
+  const wraps=document.querySelectorAll('.logo-wrap');
+
+  wraps.forEach(wrap=>{
+    const type=wrap.dataset.logoType;
+    const grip=wrap.querySelector('.resize-grip');
+
+    // Click to select
+    wrap.addEventListener('mousedown', function(e){
+      // Don't interfere with buttons
+      if(e.target.closest('.lfa-btn')) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      // Select this logo
+      wraps.forEach(w=>w.classList.remove('selected'));
+      this.classList.add('selected');
+      state.selectedLogo=type;
+
+      // If clicking grip, start resize instead
+      if(e.target.closest('.resize-grip')) {
+        startResize(e, wrap, type);
+        return;
+      }
+
+      // Otherwise start free drag
+      startLogoDrag(e, wrap, type);
+    });
+
+    // Float action buttons
+    wrap.querySelectorAll('.lfa-btn').forEach(btn=>{
+      btn.addEventListener('click', function(e){
+        e.stopPropagation(); e.preventDefault();
+        const action=this.dataset.action;
+        if(action==='swap') { swapLogos(); }
+        else if(action==='replace') {
+          const t=this.dataset.logoFor;
+          document.getElementById(t==='mekluc'?'logoMeklucFile':'logoAeoFile').click();
+        }
+        else if(action==='reset') {
+          state.logoOffsets[type]={x:0,y:0};
+          render();
+        }
+      });
+    });
+  });
+
+  // Click outside deselects logo
+  document.getElementById('previewCard').addEventListener('click', function(e){
+    if(!e.target.closest('.logo-wrap')){
+      wraps.forEach(w=>w.classList.remove('selected'));
+      state.selectedLogo=null;
+    }
+  });
+}
+
+/* ===== FREE LOGO DRAG ===== */
+function startLogoDrag(e, wrap, type) {
+  const ox=state.logoOffsets[type]?.x||0, oy=state.logoOffsets[type]?.y||0;
+  state.draggingLogo = { type, startX:e.clientX, startY:e.clientY, origX:ox, origY:oy, wrap, moved:false };
+  wrap.classList.add('dragging-free');
+  document.addEventListener('mousemove', onLogoDragMove);
+  document.addEventListener('mouseup', onLogoDragUp);
+}
+function onLogoDragMove(e) {
+  if(!state.draggingLogo) return;
+  const d=state.draggingLogo;
+  const dx=e.clientX-d.startX, dy=e.clientY-d.startY;
+  if(Math.abs(dx)>2||Math.abs(dy)>2) d.moved=true;
+  const nx=d.origX+dx, ny=d.origY+dy;
+  d.wrap.style.transform='translate('+nx+'px,'+ny+'px)';
+}
+function onLogoDragUp(e) {
+  document.removeEventListener('mousemove', onLogoDragMove);
+  document.removeEventListener('mouseup', onLogoDragUp);
+  if(!state.draggingLogo) return;
+  const d=state.draggingLogo;
+  if(d.moved) {
+    state.logoOffsets[d.type]={
+      x: d.origX+(e.clientX-d.startX),
+      y: d.origY+(e.clientY-d.startY)
+    };
+  }
+  d.wrap.classList.remove('dragging-free');
+  state.draggingLogo=null;
+  // Don't re-render if we moved to preserve visual position — let state hold it
+  // But DO re-render to sync everything cleanly
+  render();
+}
+
+/* ===== LOGO RESIZE ===== */
+function startResize(e, wrap, type) {
+  e.preventDefault(); e.stopPropagation();
+  const img=wrap.querySelector('img');
+  state.resizing={
+    type: type,
+    startX: e.clientX,
+    startY: e.clientY,
+    startW: parseInt(img.style.width)||img.width||parseInt(img.getAttribute('width'))||100,
+    img: img,
+    wrap: wrap,
+    sliderId: type==='mekluc'?'logoMeklucSize':'logoAeoSize',
+  };
+  document.addEventListener('mousemove', onResizeMove);
+  document.addEventListener('mouseup', onResizeUp);
+}
+function onResizeMove(e) {
+  if(!state.resizing) return;
+  const r=state.resizing;
+  const dx=e.clientX-r.startX;
+  const dy=e.clientY-r.startY;
+  const delta=Math.max(dx,dy); // scale proportionally
+  const newW=Math.max(20, Math.min(320, r.startW+delta));
+  r.img.style.width=newW+'px';
+  r.img.setAttribute('width', newW);
+  document.getElementById(r.sliderId).value=newW;
+  document.getElementById(r.sliderId+'Val').textContent=newW+'px';
+}
+function onResizeUp() {
+  document.removeEventListener('mousemove', onResizeMove);
+  document.removeEventListener('mouseup', onResizeUp);
+  state.resizing=null;
+  render();
+}
+
+/* ===== COPY / DOWNLOAD ===== */
+async function copySignature() {
+  const html=buildSignatureHTML(true);
+  try {
+    await navigator.clipboard.write([new ClipboardItem({'text/html':new Blob([html],{type:'text/html'}),'text/plain':new Blob([html],{type:'text/plain'})})]);
+    showToast('Signature copiee ! Collez dans Outlook ou Gmail.');
+  } catch(e) {
+    const ta=document.createElement('textarea'); ta.value=html; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+    showToast('Code HTML copie !');
+  }
+}
+function downloadHTML() {
+  const name=val('fullName').replace(/\s+/g,'-')||'signature';
+  const html='<!DOCTYPE html>\n<html lang="en">\n<head><meta charset="UTF-8"><title>Signature - '+val('fullName')+'</title></head>\n<body style="margin:0;padding:32px;background:#fff;font-family:'+val('fontFamily')+';">\n'+buildSignatureHTML(true)+'\n</body>\n</html>';
+  const blob=new Blob([html],{type:'text/html'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='MEKLUC_SIGNATURE_'+name+'.html'; a.click(); URL.revokeObjectURL(a.href);
+  showToast('Telecharge : MEKLUC_SIGNATURE_'+name+'.html');
+}
+function showToast(msg) { const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),3000); }
+
+/* ===== INIT ===== */
+loadDefaultLogos();
+loadBannerGif();
+convertFreightIconsToPng().then(()=>render()); // Convert SVG icons to PNG for Outlook compatibility
+// Restore saved badges on profile buttons
+updateSavedBadges();
+// Azure AD config removed v4.2 — Graph API does not support signatures
+// v4.2: MSAL/Graph API removed — signature deploy is copy+paste workflow
+</script>
+</body>
+</html>
