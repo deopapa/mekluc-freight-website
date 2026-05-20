@@ -65,4 +65,20 @@ export const site = {
     titleTemplate: '%s | Mekluc Freight',
     defaultDescription: '19 years of multimodal freight forwarding from South Africa. AEO accredited. Level 1 B-BBEE. 100% Black Woman Owned.',
   },
+
+  /* Promotion bar (V4.6.2 — Deo 2026-05-20)
+   * Set active=true and edit text/href when a real promo is live.
+   * The PromoBar component renders nothing when active=false.
+   * Examples for `text`:
+   *   - "Special rate to DRC mining sites — book before 30 June"
+   *   - "Citrus to GCC : direct sea sailing every Friday"
+   *   - "Pharma & cold-chain : free GDP audit on first shipment"
+   */
+  promo: {
+    active: false,
+    label: 'PROMO',           // small chip on the left
+    text: 'Special rate to DRC mining corridor — book before end of June.',
+    ctaText: 'Get the rate',
+    ctaHref: '/contact?quote=1&promo=drc',
+  },
 } as const;
