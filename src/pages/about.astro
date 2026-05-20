@@ -513,26 +513,24 @@ const tocItems = [
 </BaseLayout>
 
 <style>
-  /* V4.5 PATCH P0 — TOC repositioned to avoid overlap on full-bleed sections */
+  /* V4.6.1 — TOC restored on /about, repositioned further left + narrower */
   .toc-wrapper {
     display: none;
   }
 
-  @media (min-width: 1280px) {
+  /* Show only when viewport is wide enough (≥1440px) so the rail sits clearly
+     in the left gutter outside the content max-width without overlap. */
+  @media (min-width: 1440px) {
     .toc-wrapper {
       display: block;
       position: fixed;
-      left: 32px;
+      left: 16px;            /* pushed further left into the gutter */
       top: 140px;
-      /* z-index lowered 30 -> 20 (below sticky header at 50, but still over body) */
       z-index: 20;
-      /* Explicit width 240px (was max-width: 200px) for stable layout */
-      width: 240px;
-      /* Cream background "eats" the gutter cleanly (no transparent overlap) */
+      width: 200px;          /* narrower so it never reaches into content */
       background: var(--c-cream);
       padding: 12px 14px 14px;
       border-radius: 2px;
-      /* Smooth fade when JS toggles .toc-hidden over full-bleed dark sections */
       transition: opacity 0.25s ease, transform 0.25s ease;
     }
     .toc-wrapper.toc-hidden {
@@ -618,54 +616,31 @@ const tocItems = [
 </style>
 
 <script>
-  /* V4.6 PATCH (Deo 2026-05-20) — Hide sticky TOC when:
-     (A) the user is in the hero/top zone (before scrolling into the article body)
-     (B) a full-bleed dark/colored section is in view (Leadership / Credentials / CTA)
-  */
+  /* V4.6.1 (Deo 2026-05-20) — TOC restored. Only hide on full-bleed dark/colored
+     sections (Leadership / Credentials / CTA bordeaux) — no longer hide on hero.
+     The TOC now sits in the left gutter on ≥1440px so it doesn't overlap content. */
   document.addEventListener('DOMContentLoaded', () => {
     const toc = document.querySelector<HTMLElement>('.toc-wrapper');
     if (!toc) return;
 
-    // -- State trackers -------------------------------------------------------
-    const fullBleedVisible = new Set<HTMLElement>();
-    let inHeroZone = true; // start true: user opens page at top, TOC must NOT show over hero
-
-    const refresh = () => {
-      toc.classList.toggle('toc-hidden', inHeroZone || fullBleedVisible.size > 0);
-    };
-
-    // -- (A) Hero zone detection via scroll position --------------------------
-    // The hero PageHeader is roughly the first viewport. Hide TOC until user
-    // scrolls ~60% of the viewport height (well past the H1 + subtitle).
-    const updateHeroState = () => {
-      const newState = window.scrollY < window.innerHeight * 0.6;
-      if (newState !== inHeroZone) {
-        inHeroZone = newState;
-        refresh();
-      }
-    };
-    window.addEventListener('scroll', updateHeroState, { passive: true });
-    updateHeroState();
-
-    // -- (B) Full-bleed dark/colored sections via IntersectionObserver --------
     const fullBleedIds = ['leadership', 'credentials', 'cta'];
     const targets = fullBleedIds
       .map((id) => document.getElementById(id)?.nextElementSibling as HTMLElement | null)
       .filter((el): el is HTMLElement => el !== null);
+    if (!targets.length) return;
 
-    if (targets.length) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting) fullBleedVisible.add(e.target as HTMLElement);
-            else fullBleedVisible.delete(e.target as HTMLElement);
-          });
-          refresh();
-        },
-        { rootMargin: '-100px 0px -40% 0px', threshold: 0 }
-      );
-      targets.forEach((t) => observer.observe(t));
-    }
+    const fullBleedVisible = new Set<HTMLElement>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) fullBleedVisible.add(e.target as HTMLElement);
+          else fullBleedVisible.delete(e.target as HTMLElement);
+        });
+        toc.classList.toggle('toc-hidden', fullBleedVisible.size > 0);
+      },
+      { rootMargin: '-100px 0px -40% 0px', threshold: 0 }
+    );
+    targets.forEach((t) => observer.observe(t));
   });
 </script>
 
