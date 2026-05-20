@@ -227,7 +227,7 @@ const fullTitle = title === 'Home'
   <!-- Pulled out of the header flex group so it can NEVER overlap nav text. -->
   <!-- Sits in the left edge of the page, below the header. Visible on all pages, ≥1024px. -->
   <button type="button" class="aeo-rotating-badge" aria-label="What AEO accreditation means" data-aeo-toggle>
-    <svg class="aeo-ring-svg" viewBox="0 0 100 100" width="80" height="80" aria-hidden="true">
+    <svg class="aeo-ring-svg" viewBox="0 0 100 100" width="84" height="84" aria-hidden="true">
       <defs>
         <path id="aeo-text-circle" d="M 50,50 m -42,0 a 42,42 0 1,1 84,0 a 42,42 0 1,1 -84,0" />
       </defs>
@@ -434,15 +434,16 @@ const fullTitle = title === 'Home'
       transform: translateY(-1px);
     }
 
-    /* V4.6.4 — AEO badge pushed further down so it is fully visible below ticker */
+    /* V4.6.5 — AEO badge vertically centred on viewport, free from all top-bar stacking */
     .aeo-rotating-badge {
       display: none;
       position: fixed;
-      top: 180px;            /* clearly below sticky header (~96px) + ticker bar (~46px) + breathing room */
+      top: 50%;
       left: 24px;
+      transform: translateY(-50%);
       z-index: 38;
-      width: 80px;           /* slightly bigger for that "trust seal" feel */
-      height: 80px;
+      width: 84px;
+      height: 84px;
       padding: 0;
       margin: 0;
       border: none;
@@ -454,7 +455,7 @@ const fullTitle = title === 'Home'
       box-shadow: 0 6px 20px rgba(128, 0, 32, 0.18);
     }
     .aeo-rotating-badge:hover {
-      transform: scale(1.05);
+      transform: translateY(-50%) scale(1.05);
       box-shadow: 0 8px 24px rgba(128, 0, 32, 0.28);
     }
     @media (min-width: 1024px) {
@@ -501,11 +502,12 @@ const fullTitle = title === 'Home'
       .aeo-rotating-badge .aeo-spin-text { animation: none; }
     }
 
-    /* V4.6.4 — AEO popover, anchored to the floating badge (top:180, left:24, w:80) */
+    /* V4.6.5 — AEO popover anchored to the centred floating badge (top:50%, left:24, w:84) */
     .aeo-popover {
       position: fixed;
-      top: 170px;
-      left: 120px;          /* 24 (badge left) + 80 (badge w) + 16 (gap) */
+      top: 50%;
+      transform: translateY(-50%) translateX(-8px) scale(0.98);
+      left: 124px;          /* 24 (badge left) + 84 (badge w) + 16 (gap) */
       z-index: 60;
       width: 360px;
       max-width: calc(100vw - 160px);
@@ -521,7 +523,7 @@ const fullTitle = title === 'Home'
     }
     .aeo-popover[data-open] {
       opacity: 1;
-      transform: translateX(0) scale(1);
+      transform: translateY(-50%) translateX(0) scale(1);
       pointer-events: auto;
     }
     .aeo-popover-close {

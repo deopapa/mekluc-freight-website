@@ -1,16 +1,22 @@
 ---
-// V4.6.2 PromoBar (Deo 2026-05-20)
-// Renders a single thin promotional bar at the very top of every page,
-// ABOVE the sticky header — but only when site.promo.active is true.
-// Toggle via src/lib/site.ts -> promo.active.
+// V4.6.5 PromoBar (Deo 2026-05-20)
+// Renders a single thin bar at the very top of every page, ABOVE the sticky
+// header, only when site.promo.active is true. Toggle via src/lib/site.ts.
+//
+// Visual identity (Deo: "toujour utilser les couleur de AEO qui est le bleu,
+// noire, sa doit etre identifie par ces couleur"):
+//   - Background: deep AEO navy + black gradient stripe
+//   - Text: white
+//   - Chip: white on black
+//   - Marquee animation on the message ("fait defile la bande pour que ca
+//     attir l'attention") — text scrolls right -> left, pauses on hover
 //
 // Sample uses:
+//   - AEO trust message (default)
 //   - Special rates for a corridor (DRC, GCC, China)
-//   - Limited-time service launch (e.g. new cold-chain Beira service)
-//   - Holiday cutoff dates (last sailings before Christmas)
+//   - Limited-time service launch (Pharma cold-chain etc.)
 //
-// Dismissable per-session via sessionStorage so a returning visitor
-// doesn't see the same banner ten times in one browse.
+// Dismissable per-session via sessionStorage.
 
 import { site } from '@/lib/site';
 
@@ -22,7 +28,19 @@ const isActive = !!(promo && promo.active);
   <div class="promo-bar" data-promo-bar role="region" aria-label="Special offer">
     <div class="promo-bar-inner">
       <span class="promo-bar-label">{promo.label}</span>
-      <p class="promo-bar-text">{promo.text}</p>
+
+      <!-- Marquee viewport -->
+      <div class="promo-bar-marquee" aria-live="polite">
+        <div class="promo-bar-marquee-track">
+          {[...Array(2)].map(() => (
+            <span class="promo-bar-marquee-item">
+              {promo.text}
+              <span class="promo-bar-marquee-sep" aria-hidden="true">&nbsp;&nbsp;◆&nbsp;&nbsp;</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
       {promo.ctaHref && (
         <a href={promo.ctaHref} class="promo-bar-cta">
           {promo.ctaText || 'Learn more'}
@@ -40,16 +58,28 @@ const isActive = !!(promo && promo.active);
 )}
 
 <style>
+  /* V4.6.5 — AEO blue + black identity */
   .promo-bar {
-    background: linear-gradient(90deg, var(--c-bordeaux) 0%, var(--c-bordeaux-deep) 100%);
-    color: var(--c-cream);
+    background: linear-gradient(90deg, #0d1b3d 0%, #1f4e8b 40%, #80b7dd 50%, #1f4e8b 60%, #0d1b3d 100%);
+    background-size: 200% 100%;
+    color: #ffffff;
     position: relative;
     z-index: 41;
+    border-bottom: 1px solid #000000;
+    animation: promoBarShimmer 18s linear infinite;
   }
+  @keyframes promoBarShimmer {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .promo-bar { animation: none; background: #1f4e8b; }
+  }
+
   .promo-bar-inner {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 9px 56px 9px 20px;
+    padding: 9px 56px 9px 0;
     display: flex;
     align-items: center;
     gap: 14px;
@@ -57,35 +87,74 @@ const isActive = !!(promo && promo.active);
     font-size: 13.5px;
     line-height: 1.3;
   }
+
+  /* AEO-identified chip: black background, white text */
   .promo-bar-label {
     font-family: var(--f-mono);
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 800;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    padding: 4px 8px;
-    background: rgba(255, 255, 255, 0.18);
-    border-radius: 2px;
+    padding: 5px 11px;
+    background: #000000;
+    color: #ffffff;
     flex-shrink: 0;
+    margin-left: 20px;
+    border-radius: 2px;
   }
-  .promo-bar-text {
-    margin: 0;
+
+  /* Marquee viewport */
+  .promo-bar-marquee {
     flex: 1;
-    color: var(--c-cream);
-    font-weight: 500;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
   }
+  .promo-bar-marquee-track {
+    display: flex;
+    white-space: nowrap;
+    animation: promoMarquee 26s linear infinite;
+    width: max-content;
+  }
+  .promo-bar-marquee-track:hover {
+    animation-play-state: paused;
+  }
+  .promo-bar-marquee-item {
+    color: #ffffff;
+    font-weight: 500;
+    padding-right: 0;
+  }
+  .promo-bar-marquee-sep {
+    color: #80b7dd;
+    font-weight: 700;
+    opacity: 0.85;
+  }
+  @keyframes promoMarquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .promo-bar-marquee-track { animation: none; }
+  }
+
+  /* CTA — white outlined for stronger contrast on the blue+black bar */
   .promo-bar-cta {
     font-family: var(--f-sans);
     font-size: 13px;
     font-weight: 700;
-    color: var(--c-cream);
+    color: #ffffff;
     text-decoration: none;
-    border-bottom: 1px solid rgba(247, 242, 232, 0.5);
-    transition: border-color 0.2s ease;
+    padding: 6px 14px;
+    border: 1.5px solid #ffffff;
+    border-radius: 2px;
+    transition: background 0.2s ease, color 0.2s ease;
     flex-shrink: 0;
+    white-space: nowrap;
   }
   .promo-bar-cta:hover {
-    border-bottom-color: var(--c-cream);
+    background: #ffffff;
+    color: #0d1b3d;
   }
   .promo-bar-cta span {
     margin-left: 6px;
@@ -95,6 +164,7 @@ const isActive = !!(promo && promo.active);
   .promo-bar-cta:hover span {
     transform: translateX(3px);
   }
+
   .promo-bar-close {
     position: absolute;
     right: 14px;
@@ -105,7 +175,7 @@ const isActive = !!(promo && promo.active);
     border-radius: 9999px;
     background: transparent;
     border: none;
-    color: var(--c-cream);
+    color: #ffffff;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -117,27 +187,28 @@ const isActive = !!(promo && promo.active);
     background: rgba(255, 255, 255, 0.15);
     opacity: 1;
   }
+
   @media (max-width: 720px) {
     .promo-bar-inner {
-      padding: 8px 48px 8px 14px;
+      padding: 8px 44px 8px 0;
       gap: 10px;
-      flex-wrap: wrap;
     }
-    .promo-bar-text {
-      flex: 1 1 100%;
-      order: 2;
-      font-size: 13px;
+    .promo-bar-label {
+      margin-left: 14px;
+      padding: 4px 9px;
+      font-size: 10px;
     }
-    .promo-bar-label { order: 1; }
-    .promo-bar-cta {
-      order: 3;
+    .promo-bar-marquee {
       font-size: 12.5px;
+    }
+    .promo-bar-cta {
+      font-size: 12px;
+      padding: 5px 10px;
     }
   }
 </style>
 
 <script>
-  /* Hide the bar if the visitor already dismissed it this session */
   document.addEventListener('DOMContentLoaded', () => {
     const bar = document.querySelector<HTMLElement>('[data-promo-bar]');
     if (!bar) return;
