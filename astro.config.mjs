@@ -5,10 +5,10 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  // V3.5 — Initially deployed to GitHub Pages (free hosting)
-  // Will switch to https://meklucfreight.co.za when DNS migration done
-  site: 'https://deopapa.github.io',
-  base: '/mekluc-freight-website',
+  // V4.3 — Custom domain meklucfreight.co.za (GitHub Pages with CNAME)
+  // DNS migration: ZA-DNS A records -> GitHub Pages IPs
+  site: 'https://meklucfreight.co.za',
+  // No base path — serves from root of custom domain
   integrations: [
     mdx(),
     tailwind(),

@@ -28,11 +28,11 @@ const fullTitle = title === 'Home'
   <title>{fullTitle}</title>
 
   <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/mekluc-freight-website/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/mekluc-freight-website/favicon-16x16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/mekluc-freight-website/apple-touch-icon.png" />
-  <link rel="icon" sizes="192x192" href="/mekluc-freight-website/android-chrome-192x192.png" />
-  <link rel="icon" sizes="512x512" href="/mekluc-freight-website/android-chrome-512x512.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" sizes="192x192" href="/android-chrome-192x192.png" />
+  <link rel="icon" sizes="512x512" href="/android-chrome-512x512.png" />
 
   <!-- Canonical -->
   <link rel="canonical" href={new URL(Astro.url.pathname, site.url).href} />
@@ -128,7 +128,7 @@ const fullTitle = title === 'Home'
   <!-- Search overlay (V4.2) — hidden by default -->
   <div id="search-overlay" class="hidden fixed inset-0 z-[100] flex items-start justify-center pt-32" style="background: rgba(26,22,18,0.85); backdrop-filter: blur(8px);">
     <div class="w-full max-w-2xl px-6">
-      <form action="/mekluc-freight-website/" method="get" role="search" style="position: relative;">
+      <form action="/" method="get" role="search" style="position: relative;">
         <input type="search" name="q" id="search-input" placeholder="Search Mekluc Freight..." autocomplete="off" style="width: 100%; padding: 22px 60px 22px 24px; font-family: var(--f-display); font-size: 18px; background: var(--c-cream); border: 2px solid var(--c-bordeaux); color: var(--c-ink); outline: none;" />
         <button type="submit" aria-label="Submit search" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: var(--c-bordeaux); color: var(--c-cream); border: none; cursor: pointer; padding: 12px 18px; font-family: var(--f-display); font-size: 14px; font-weight: 700;">
           Search
@@ -149,9 +149,9 @@ const fullTitle = title === 'Home'
 
       <!-- LOGO + EST 2007 + AEO badge mini (V4.2) -->
       <div class="flex items-center gap-4">
-        <a href="/mekluc-freight-website/" class="flex items-center gap-4" aria-label="Mekluc Freight — Home">
+        <a href="/" class="flex items-center gap-4" aria-label="Mekluc Freight — Home">
           <img
-            src="/mekluc-freight-website/images/logos/mekluc-freight-logo.svg"
+            src="/images/logos/mekluc-freight-logo.svg"
             alt="Mekluc Freight"
             class="h-[72px] w-auto"
             width="200"
@@ -164,7 +164,7 @@ const fullTitle = title === 'Home'
           </span>
         </a>
         <!-- AEO mini badge (V4.2) -->
-        <a href="/mekluc-freight-website/accreditations" class="hidden lg:flex items-center gap-2 aeo-mini-badge" aria-label="View accreditations">
+        <a href="/accreditations" class="hidden lg:flex items-center gap-2 aeo-mini-badge" aria-label="View accreditations">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12 2 4 5v6c0 5.5 3.5 10.7 8 12 4.5-1.3 8-6.5 8-12V5l-8-3zm-1.7 14.3-4-4 1.4-1.4 2.6 2.6 5.6-5.6 1.4 1.4-7 7z"/>
           </svg>
@@ -174,22 +174,22 @@ const fullTitle = title === 'Home'
 
       <!-- NAV LINKS — V4.1 spaced + 15px -->
       <div class="hidden lg:flex items-center" style="gap: 36px;">
-        <a href="/mekluc-freight-website/about" style="font-family: var(--f-display); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
+        <a href="/about" style="font-family: var(--f-display); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
           {t(lang, 'nav.about')}
         </a>
-        <a href="/mekluc-freight-website/services" style="font-family: var(--f-display); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
+        <a href="/services" style="font-family: var(--f-display); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
           {t(lang, 'nav.services')}
         </a>
-        <a href="/mekluc-freight-website/solutions" style="font-family: var(--f-display); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
+        <a href="/solutions" style="font-family: var(--f-display); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
           {t(lang, 'nav.solutions')}
         </a>
-        <a href="/mekluc-freight-website/tracking" style="font-family: var(--f-display); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
+        <a href="/tracking" style="font-family: var(--f-display); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
           Track
         </a>
-        <a href="/mekluc-freight-website/insights" style="font-family: var(--f-display); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
+        <a href="/insights" style="font-family: var(--f-display); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
           {t(lang, 'nav.insights')}
         </a>
-        <a href="/mekluc-freight-website/contact" style="font-family: var(--f-display); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
+        <a href="/contact" style="font-family: var(--f-display); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
           {t(lang, 'nav.contact')}
         </a>
       </div>
@@ -204,7 +204,7 @@ const fullTitle = title === 'Home'
           <span>WhatsApp</span>
         </a>
         <!-- Quote button bordeaux -->
-        <a href="/mekluc-freight-website/contact?quote=1" class="btn-primary">
+        <a href="/contact?quote=1" class="btn-primary">
           Request a quote <span class="btn-arrow">&rarr;</span>
         </a>
         <!-- Mobile menu button -->
@@ -219,15 +219,15 @@ const fullTitle = title === 'Home'
     <!-- Mobile menu -->
     <div id="mobile-menu" class="hidden lg:hidden border-t border-mekluc-line-soft bg-mekluc-paper">
       <div class="section py-6 flex flex-col gap-4">
-        <a href="/mekluc-freight-website/about" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">About</a>
-        <a href="/mekluc-freight-website/services" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">Services</a>
-        <a href="/mekluc-freight-website/solutions" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">Solutions</a>
-        <a href="/mekluc-freight-website/tracking" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">Track Shipment</a>
-        <a href="/mekluc-freight-website/insights" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">Insights</a>
-        <a href="/mekluc-freight-website/contact" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">Contact</a>
+        <a href="/about" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">About</a>
+        <a href="/services" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">Services</a>
+        <a href="/solutions" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">Solutions</a>
+        <a href="/tracking" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">Track Shipment</a>
+        <a href="/insights" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">Insights</a>
+        <a href="/contact" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">Contact</a>
         <div class="flex gap-3 pt-4 border-t border-mekluc-line-soft">
           <a href={site.social.whatsappLink} target="_blank" rel="noopener" class="btn-whatsapp flex-1 justify-center">WhatsApp</a>
-          <a href="/mekluc-freight-website/contact?quote=1" class="btn-primary flex-1 justify-center">Get a quote <span class="btn-arrow">&rarr;</span></a>
+          <a href="/contact?quote=1" class="btn-primary flex-1 justify-center">Get a quote <span class="btn-arrow">&rarr;</span></a>
         </div>
       </div>
     </div>
@@ -264,7 +264,7 @@ const fullTitle = title === 'Home'
         <!-- Brand column — Official Logo (dark bg variant, charte v2.3 §04) -->
         <div>
           <img
-            src="/mekluc-freight-website/images/logos/MEKLUC_LOGO_COLOR_DARK_v2.0.png"
+            src="/images/logos/MEKLUC_LOGO_COLOR_DARK_v2.0.png"
             alt="Mekluc Freight"
             class="h-[60px] w-auto mb-[18px]"
             loading="lazy"
@@ -283,14 +283,14 @@ const fullTitle = title === 'Home'
             Services
           </p>
           <ul class="flex flex-col gap-[10px]">
-            <li><a href="/mekluc-freight-website/services/air-freight" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Air Freight</a></li>
-            <li><a href="/mekluc-freight-website/services/sea-freight" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Sea Freight</a></li>
-            <li><a href="/mekluc-freight-website/services/road-freight" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Road Freight</a></li>
-            <li><a href="/mekluc-freight-website/services/customs-clearing" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Customs Clearing</a></li>
-            <li><a href="/mekluc-freight-website/services/warehousing" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Warehousing</a></li>
-            <li><a href="/mekluc-freight-website/services/packaging-crating" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Packaging & Crating</a></li>
-            <li><a href="/mekluc-freight-website/services/specialised-cargo" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Specialised Cargo</a></li>
-            <li><a href="/mekluc-freight-website/services/cargo-insurance" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Cargo Insurance</a></li>
+            <li><a href="/services/air-freight" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Air Freight</a></li>
+            <li><a href="/services/sea-freight" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Sea Freight</a></li>
+            <li><a href="/services/road-freight" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Road Freight</a></li>
+            <li><a href="/services/customs-clearing" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Customs Clearing</a></li>
+            <li><a href="/services/warehousing" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Warehousing</a></li>
+            <li><a href="/services/packaging-crating" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Packaging & Crating</a></li>
+            <li><a href="/services/specialised-cargo" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Specialised Cargo</a></li>
+            <li><a href="/services/cargo-insurance" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Cargo Insurance</a></li>
           </ul>
         </div>
 
@@ -300,12 +300,12 @@ const fullTitle = title === 'Home'
             Company
           </p>
           <ul class="flex flex-col gap-[10px]">
-            <li><a href="/mekluc-freight-website/about" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">About Mekluc</a></li>
-            <li><a href="/mekluc-freight-website/accreditations" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Accreditations</a></li>
-            <li><a href="/mekluc-freight-website/insights" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Insights</a></li>
-            <li><a href="/mekluc-freight-website/careers" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Careers</a></li>
-            <li><a href="/mekluc-freight-website/sustainability" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Sustainability</a></li>
-            <li><a href="/mekluc-freight-website/news" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">News & Press</a></li>
+            <li><a href="/about" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">About Mekluc</a></li>
+            <li><a href="/accreditations" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Accreditations</a></li>
+            <li><a href="/insights" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Insights</a></li>
+            <li><a href="/careers" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Careers</a></li>
+            <li><a href="/sustainability" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Sustainability</a></li>
+            <li><a href="/news" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">News & Press</a></li>
           </ul>
         </div>
 
@@ -318,8 +318,8 @@ const fullTitle = title === 'Home'
             <li><a href={`tel:${site.phone}`} class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">{site.phone}</a></li>
             <li><a href={`mailto:${site.email}`} class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">{site.email}</a></li>
             <li><a href={site.social.whatsappLink} target="_blank" rel="noopener" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">WhatsApp</a></li>
-            <li><a href="/mekluc-freight-website/contact?quote=1" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Request a Quote</a></li>
-            <li><a href="/mekluc-freight-website/tracking" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Track Shipment</a></li>
+            <li><a href="/contact?quote=1" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Request a Quote</a></li>
+            <li><a href="/tracking" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Track Shipment</a></li>
           </ul>
         </div>
       </div>
@@ -330,9 +330,9 @@ const fullTitle = title === 'Home'
           &copy; {new Date().getFullYear()} Mekluc Freight. All rights reserved. 100% Black Woman Owned.
         </p>
         <div class="flex gap-6">
-          <a href="/mekluc-freight-website/privacy" class="font-mono text-[11px] tracking-[0.08em] uppercase text-mekluc-charcoal hover:text-mekluc-cream transition-colors">Privacy</a>
-          <a href="/mekluc-freight-website/terms" class="font-mono text-[11px] tracking-[0.08em] uppercase text-mekluc-charcoal hover:text-mekluc-cream transition-colors">Terms</a>
-          <a href="/mekluc-freight-website/sustainability" class="font-mono text-[11px] tracking-[0.08em] uppercase text-mekluc-charcoal hover:text-mekluc-cream transition-colors">Sustainability</a>
+          <a href="/privacy" class="font-mono text-[11px] tracking-[0.08em] uppercase text-mekluc-charcoal hover:text-mekluc-cream transition-colors">Privacy</a>
+          <a href="/terms" class="font-mono text-[11px] tracking-[0.08em] uppercase text-mekluc-charcoal hover:text-mekluc-cream transition-colors">Terms</a>
+          <a href="/sustainability" class="font-mono text-[11px] tracking-[0.08em] uppercase text-mekluc-charcoal hover:text-mekluc-cream transition-colors">Sustainability</a>
         </div>
       </div>
     </div>
