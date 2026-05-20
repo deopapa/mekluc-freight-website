@@ -4,6 +4,7 @@ import { site } from '@/lib/site';
 import { getLangFromUrl, t } from '@/i18n/translations';
 import Breadcrumb from '@/components/layout/Breadcrumb.astro';
 import FloatingActions from '@/components/global/FloatingActions.astro';
+import ServiceQuickNav from '@/components/global/ServiceQuickNav.astro';
 
 interface Props {
   title: string;
@@ -368,6 +369,10 @@ const fullTitle = title === 'Home'
   <!-- ============== FLOATING ACTIONS (Patch typo-bubbles 2026-05-19) ============== -->
   <!-- 2 bubbles: Quote (bordeaux) + WhatsApp (green). Replaces old single FAB. -->
   <FloatingActions />
+
+  <!-- ============== SERVICE QUICK-NAV (V4.6 Lot 3 2026-05-20) ============== -->
+  <!-- Desktop: sticky right rail with icons. Mobile: floating button -> bottom drawer. -->
+  <ServiceQuickNav />
 
   <!-- ============== SCRIPTS ============== -->
   <style>
