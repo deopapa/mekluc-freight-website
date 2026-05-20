@@ -227,7 +227,7 @@ const fullTitle = title === 'Home'
   <!-- Pulled out of the header flex group so it can NEVER overlap nav text. -->
   <!-- Sits in the left edge of the page, below the header. Visible on all pages, ≥1024px. -->
   <button type="button" class="aeo-rotating-badge" aria-label="What AEO accreditation means" data-aeo-toggle>
-    <svg class="aeo-ring-svg" viewBox="0 0 100 100" width="76" height="76" aria-hidden="true">
+    <svg class="aeo-ring-svg" viewBox="0 0 100 100" width="80" height="80" aria-hidden="true">
       <defs>
         <path id="aeo-text-circle" d="M 50,50 m -42,0 a 42,42 0 1,1 84,0 a 42,42 0 1,1 -84,0" />
       </defs>
@@ -434,15 +434,15 @@ const fullTitle = title === 'Home'
       transform: translateY(-1px);
     }
 
-    /* V4.6.3 — AEO badge moved OUT of header flex, now FLOATING FIXED on left edge */
+    /* V4.6.4 — AEO badge pushed further down so it is fully visible below ticker */
     .aeo-rotating-badge {
       display: none;
       position: fixed;
-      top: 130px;            /* below sticky header + ticker bar */
-      left: 20px;
+      top: 180px;            /* clearly below sticky header (~96px) + ticker bar (~46px) + breathing room */
+      left: 24px;
       z-index: 38;
-      width: 76px;           /* enlarged per Deo: "agrandi le circle un peu plus" */
-      height: 76px;
+      width: 80px;           /* slightly bigger for that "trust seal" feel */
+      height: 80px;
       padding: 0;
       margin: 0;
       border: none;
@@ -451,7 +451,11 @@ const fullTitle = title === 'Home'
       border-radius: 9999px;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
       flex-shrink: 0;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 6px 20px rgba(128, 0, 32, 0.18);
+    }
+    .aeo-rotating-badge:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 24px rgba(128, 0, 32, 0.28);
     }
     @media (min-width: 1024px) {
       .aeo-rotating-badge { display: block; }
@@ -497,14 +501,14 @@ const fullTitle = title === 'Home'
       .aeo-rotating-badge .aeo-spin-text { animation: none; }
     }
 
-    /* V4.6.3 — AEO popover, anchored to the floating badge on the left edge */
+    /* V4.6.4 — AEO popover, anchored to the floating badge (top:180, left:24, w:80) */
     .aeo-popover {
       position: fixed;
-      top: 120px;
-      left: 112px;          /* badge is at left:20 width:76 -> popover starts after 96+ */
+      top: 170px;
+      left: 120px;          /* 24 (badge left) + 80 (badge w) + 16 (gap) */
       z-index: 60;
       width: 360px;
-      max-width: calc(100vw - 140px);
+      max-width: calc(100vw - 160px);
       background: var(--c-cream);
       border: 1px solid var(--c-line);
       border-left: 3px solid var(--c-bordeaux);

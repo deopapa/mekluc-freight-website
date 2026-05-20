@@ -66,19 +66,22 @@ export const site = {
     defaultDescription: '19 years of multimodal freight forwarding from South Africa. AEO accredited. Level 1 B-BBEE. 100% Black Woman Owned.',
   },
 
-  /* Promotion bar (V4.6.2 — Deo 2026-05-20)
-   * Set active=true and edit text/href when a real promo is live.
-   * The PromoBar component renders nothing when active=false.
-   * Examples for `text`:
-   *   - "Special rate to DRC mining sites — book before 30 June"
-   *   - "Citrus to GCC : direct sea sailing every Friday"
-   *   - "Pharma & cold-chain : free GDP audit on first shipment"
+  /* Promotion bar (V4.6.4 — Deo 2026-05-20)
+   * Active by default with the AEO trust message (Deo: "notre arme atout pour
+   * les importation"). Replace label/text/ctaHref when a commercial promo
+   * is live (e.g. DRC mining rate, citrus to GCC, pharma cold-chain).
+   * To hide the bar entirely, set active=false.
+   *
+   * Sample replacements:
+   *   - { label: 'PROMO', text: 'Special rate to DRC mining corridor — book before end of June.', ctaText: 'Get the rate', ctaHref: '/contact?quote=1&promo=drc' }
+   *   - { label: 'NEW',   text: 'Direct sea sailing to GCC every Friday — citrus, wine, table grapes.', ctaText: 'Book a slot',  ctaHref: '/contact?quote=1&promo=gcc' }
+   *   - { label: 'PHARMA', text: 'Free GDP audit on your first cold-chain shipment.', ctaText: 'Claim it', ctaHref: '/contact?quote=1&promo=pharma' }
    */
   promo: {
-    active: false,
-    label: 'PROMO',           // small chip on the left
-    text: 'Special rate to DRC mining corridor — book before end of June.',
-    ctaText: 'Get the rate',
-    ctaHref: '/contact?quote=1&promo=drc',
+    active: true,
+    label: 'AEO',
+    text: 'Top 1% AEO-accredited freight forwarder — faster customs, less inspection, mutual recognition with EU/CN/JP/CH.',
+    ctaText: 'Request your quote',
+    ctaHref: '/contact?quote=1',
   },
 } as const;
