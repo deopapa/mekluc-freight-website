@@ -7,6 +7,7 @@ import FloatingActions from '@/components/global/FloatingActions.astro';
 import ServiceQuickNav from '@/components/global/ServiceQuickNav.astro';
 import QuoteNudge from '@/components/global/QuoteNudge.astro';
 import PromoBar from '@/components/global/PromoBar.astro';
+import MeklucLogo from '@/components/global/MeklucLogo.astro';
 
 interface Props {
   title: string;
@@ -157,56 +158,15 @@ const fullTitle = title === 'Home'
       <!-- LOGO + EST 2007 + AEO badge mini (V4.2) -->
       <div class="flex items-center gap-4">
         <a href="/" class="flex items-center gap-4" aria-label="Mekluc Freight — Home">
-          <img
-            src="/images/logos/mekluc-freight-logo.svg"
-            alt="Mekluc Freight"
-            class="h-[96px] md:h-[104px] w-auto"
-            width="260"
-            loading="eager"
-          />
+          <MeklucLogo variant="light" height={96} class="md:!h-[104px]" loading="eager" />
           <span class="hidden sm:block" style="width: 1px; height: 40px; background: var(--c-line);"></span>
           <span class="hidden sm:flex flex-col" style="font-family: var(--f-mono); font-size: 11px; font-weight: 500; color: var(--c-charcoal); letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.4;">
             <span>Est. 2007</span>
             <span style="color: var(--c-bordeaux); font-weight: 700;">Johannesburg</span>
           </span>
         </a>
-        <!-- AEO rotating circle badge — V4.6.2 : compact 56px, isolated from neighbours -->
-        <button type="button" class="hidden lg:flex aeo-rotating-badge" aria-label="What AEO accreditation means" data-aeo-toggle>
-          <!-- Outer rotating ring with text -->
-          <svg class="aeo-ring-svg" viewBox="0 0 100 100" width="56" height="56" aria-hidden="true">
-            <defs>
-              <path id="aeo-text-circle" d="M 50,50 m -41,0 a 41,41 0 1,1 82,0 a 41,41 0 1,1 -82,0" />
-            </defs>
-            <circle cx="50" cy="50" r="48" fill="none" stroke="var(--c-bordeaux)" stroke-width="0.5" opacity="0.35" />
-            <text class="aeo-spin-text" fill="var(--c-bordeaux)" font-family="var(--f-mono, monospace)" font-size="6" font-weight="700" letter-spacing="0.8">
-              <textPath href="#aeo-text-circle" startOffset="0">
-                · AUTHORISED ECONOMIC OPERATOR · SARS ·
-              </textPath>
-            </text>
-          </svg>
-          <!-- Inner AEO logo (static) -->
-          <img src="/images/accreditation/mekluc-aeo-logo.svg" alt="AEO Mekluc — Authorised Economic Operator" class="aeo-logo-inner" />
-        </button>
+        <!-- AEO badge REMOVED from header flex (V4.6.3) — see floating element after </header> below -->
 
-        <!-- AEO popover (hidden until trigger) — V4.6.1 condensed copy + Quote CTA outro -->
-        <div class="aeo-popover" data-aeo-popover hidden role="dialog" aria-label="AEO accreditation details">
-          <button type="button" class="aeo-popover-close" aria-label="Close" data-aeo-close>&times;</button>
-          <p class="aeo-popover-eyebrow">— AEO Accredited · SARS</p>
-          <h3 class="aeo-popover-title">Authorised Economic Operator</h3>
-          <p class="aeo-popover-lead">
-            The highest tier of customs trust granted by SARS — held by less than 1% of South African forwarders.
-          </p>
-          <p class="aeo-popover-eyebrow" style="margin-top: 16px;">— Benefits for your cargo</p>
-          <ul class="aeo-popover-list">
-            <li>Pre-arrival customs clearance</li>
-            <li>Reduced physical inspection rate</li>
-            <li>Mutual recognition with EU, China, Japan, Switzerland</li>
-          </ul>
-          <a href="/contact?quote=1" class="btn-primary aeo-popover-quote-cta">
-            Request your quote <span class="btn-arrow">&rarr;</span>
-          </a>
-          <a href="/accreditations" class="aeo-popover-secondary-link">See full accreditations &rarr;</a>
-        </div>
       </div>
 
       <!-- NAV LINKS — V4.1 spaced + 15px -->
@@ -263,6 +223,45 @@ const fullTitle = title === 'Home'
     </div>
   </header>
 
+  <!-- ============== AEO ROTATING BADGE — V4.6.3 FLOATING FIXED LEFT ============== -->
+  <!-- Pulled out of the header flex group so it can NEVER overlap nav text. -->
+  <!-- Sits in the left edge of the page, below the header. Visible on all pages, ≥1024px. -->
+  <button type="button" class="aeo-rotating-badge" aria-label="What AEO accreditation means" data-aeo-toggle>
+    <svg class="aeo-ring-svg" viewBox="0 0 100 100" width="76" height="76" aria-hidden="true">
+      <defs>
+        <path id="aeo-text-circle" d="M 50,50 m -42,0 a 42,42 0 1,1 84,0 a 42,42 0 1,1 -84,0" />
+      </defs>
+      <circle cx="50" cy="50" r="49" fill="var(--c-cream)" />
+      <circle cx="50" cy="50" r="48" fill="none" stroke="var(--c-bordeaux)" stroke-width="0.6" opacity="0.45" />
+      <text class="aeo-spin-text" fill="var(--c-bordeaux)" font-family="var(--f-mono, monospace)" font-size="7" font-weight="700" letter-spacing="1.2">
+        <textPath href="#aeo-text-circle" startOffset="0">
+          · AUTHORISED ECONOMIC OPERATOR · SARS · MEKLUC ·
+        </textPath>
+      </text>
+    </svg>
+    <img src="/images/accreditation/mekluc-aeo-logo.svg" alt="AEO Mekluc — Authorised Economic Operator" class="aeo-logo-inner" />
+  </button>
+
+  <!-- AEO popover (anchored to floating badge) -->
+  <div class="aeo-popover" data-aeo-popover hidden role="dialog" aria-label="AEO accreditation details">
+    <button type="button" class="aeo-popover-close" aria-label="Close" data-aeo-close>&times;</button>
+    <p class="aeo-popover-eyebrow">— AEO Accredited · SARS</p>
+    <h3 class="aeo-popover-title">Authorised Economic Operator</h3>
+    <p class="aeo-popover-lead">
+      The highest tier of customs trust granted by SARS — held by less than 1% of South African forwarders.
+    </p>
+    <p class="aeo-popover-eyebrow" style="margin-top: 16px;">— Benefits for your cargo</p>
+    <ul class="aeo-popover-list">
+      <li>Pre-arrival customs clearance</li>
+      <li>Reduced physical inspection rate</li>
+      <li>Mutual recognition with EU, China, Japan, Switzerland</li>
+    </ul>
+    <a href="/contact?quote=1" class="btn-primary aeo-popover-quote-cta">
+      Request your quote <span class="btn-arrow">&rarr;</span>
+    </a>
+    <a href="/accreditations#aeo" class="aeo-popover-secondary-link">See full accreditations &rarr;</a>
+  </div>
+
   <!-- ============== TICKER — Trust Signals (V4.6.2 : items clickable -> /accreditations#anchor) ============== -->
   <div class="bg-mekluc-ink text-mekluc-cream py-[14px] overflow-hidden relative z-30">
     <div class="ticker-track flex gap-[60px] whitespace-nowrap font-mono text-eyebrow uppercase" style="animation: tickerScroll 50s linear infinite;">
@@ -290,14 +289,9 @@ const fullTitle = title === 'Home'
     <div class="section pt-20 pb-10">
       <!-- Top grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14 lg:gap-[60px] pb-14 border-b" style="border-color: rgba(216, 207, 194, 0.15);">
-        <!-- Brand column — Official Logo (dark bg variant, charte v2.3 §04) -->
+        <!-- Brand column — V4.6.3 use MeklucLogo wrapper (variant dark for ink bg) -->
         <div>
-          <img
-            src="/images/logos/MEKLUC_LOGO_COLOR_DARK_v2.0.png"
-            alt="Mekluc Freight"
-            class="h-[60px] w-auto mb-[18px]"
-            loading="lazy"
-          />
+          <MeklucLogo variant="dark" height={60} class="mb-[18px]" loading="lazy" />
           <p class="font-display italic text-[19px] leading-[1.4] text-mekluc-line max-w-[32ch]">
             {site.tagline}
           </p>
@@ -440,20 +434,27 @@ const fullTitle = title === 'Home'
       transform: translateY(-1px);
     }
 
-    /* V4.6.2 — AEO badge compact + extra breathing room (Deo 2026-05-20 #2) */
+    /* V4.6.3 — AEO badge moved OUT of header flex, now FLOATING FIXED on left edge */
     .aeo-rotating-badge {
-      position: relative;
-      width: 56px;
-      height: 56px;
+      display: none;
+      position: fixed;
+      top: 130px;            /* below sticky header + ticker bar */
+      left: 20px;
+      z-index: 38;
+      width: 76px;           /* enlarged per Deo: "agrandi le circle un peu plus" */
+      height: 76px;
       padding: 0;
-      margin-left: 24px;     /* clear gap from Mekluc wordmark */
-      margin-right: 8px;     /* and a small one before next sibling (nav) */
+      margin: 0;
       border: none;
       background: transparent;
       cursor: pointer;
       border-radius: 9999px;
-      transition: transform 0.25s ease;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
       flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    }
+    @media (min-width: 1024px) {
+      .aeo-rotating-badge { display: block; }
     }
     .aeo-rotating-badge:hover {
       transform: scale(1.06);
@@ -483,8 +484,8 @@ const fullTitle = title === 'Home'
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 40px;
-      height: 40px;
+      width: 56px;
+      height: 56px;
       object-fit: contain;
       pointer-events: none;
     }
@@ -496,27 +497,27 @@ const fullTitle = title === 'Home'
       .aeo-rotating-badge .aeo-spin-text { animation: none; }
     }
 
-    /* V4.6 — AEO popover */
+    /* V4.6.3 — AEO popover, anchored to the floating badge on the left edge */
     .aeo-popover {
       position: fixed;
-      top: 100px;
-      left: 24px;
+      top: 120px;
+      left: 112px;          /* badge is at left:20 width:76 -> popover starts after 96+ */
       z-index: 60;
-      width: 380px;
-      max-width: calc(100vw - 48px);
+      width: 360px;
+      max-width: calc(100vw - 140px);
       background: var(--c-cream);
       border: 1px solid var(--c-line);
       border-left: 3px solid var(--c-bordeaux);
-      padding: 24px 26px 20px;
+      padding: 22px 24px 18px;
       box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
       opacity: 0;
-      transform: translateY(-8px) scale(0.98);
+      transform: translateX(-8px) scale(0.98);
       pointer-events: none;
       transition: opacity 0.25s ease, transform 0.25s ease;
     }
     .aeo-popover[data-open] {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translateX(0) scale(1);
       pointer-events: auto;
     }
     .aeo-popover-close {

@@ -1,0 +1,58 @@
+---
+// V4.6.3 MeklucLogo (Deo 2026-05-20)
+// Single component that picks the right Mekluc Freight logo variant
+// for the surrounding background, so the same brand mark always renders
+// cleanly without a baked-in background.
+//
+// All variants share:
+//   - transparent SVG background (no hard rect behind)
+//   - identical glyph proportions (~985x415 viewBox)
+//
+// Variants:
+//   light  -> bicolor (anthracite + bordeaux). Use on white / cream / paper.
+//   dark   -> bicolor (cream + bordeaux). Use on ink / bordeaux / dark photo.
+//   mono   -> single-color via CSS currentColor. Color whatever the parent
+//             sets via `color:`. Use anywhere you want full background
+//             flexibility (e.g. dynamic backgrounds).
+//
+// Examples:
+//   <MeklucLogo variant="light" height={96} />
+//   <MeklucLogo variant="dark"  height={60} />
+//   <MeklucLogo variant="mono"  height={48} style="color: var(--c-bordeaux);" />
+
+interface Props {
+  variant?: 'light' | 'dark' | 'mono';
+  height?: number;            // CSS height in px; width auto-scales
+  alt?: string;
+  loading?: 'eager' | 'lazy';
+  class?: string;
+  style?: string;
+}
+
+const {
+  variant = 'light',
+  height = 96,
+  alt = 'Mekluc Freight',
+  loading = 'eager',
+  class: extraClass = '',
+  style = '',
+} = Astro.props;
+
+const sources: Record<NonNullable<Props['variant']>, string> = {
+  light: '/images/logos/mekluc-freight-logo.svg',          // colored, dark text + bordeaux accent
+  dark:  '/images/logos/MEKLUC_LOGO_COLOR_DARK_v2.0.svg',  // colored, cream text + bordeaux accent
+  mono:  '/images/logos/mekluc-freight-logo-mono.svg',     // currentColor, transparent
+};
+
+const src = sources[variant];
+const sizingStyle = `height: ${height}px; width: auto; display: block;`;
+const finalStyle = `${sizingStyle} ${style}`.trim();
+---
+
+<img
+  src={src}
+  alt={alt}
+  loading={loading}
+  class={`mekluc-logo mekluc-logo-${variant} ${extraClass}`.trim()}
+  style={finalStyle}
+/>
