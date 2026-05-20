@@ -67,7 +67,7 @@ const fullTitle = title === 'Home'
 </head>
 <body class="min-h-screen flex flex-col">
 
-  <!-- ============== UTILITY BAR — Bordeaux commercial ============== -->
+  <!-- ============== UTILITY BAR — V4.2: Phone prominent + Search + Language ============== -->
   <div style="background: var(--c-bordeaux); color: var(--c-cream);" class="relative z-50">
     <div class="section flex items-center justify-between" style="padding-top: 10px; padding-bottom: 10px;">
       <!-- Left: trust signals -->
@@ -84,22 +84,62 @@ const fullTitle = title === 'Home'
           Since 2007
         </span>
       </div>
-      <!-- Right: contact -->
-      <div class="flex items-center gap-5">
-        <a href={`tel:${site.phoneRaw}`} style="font-family: var(--f-sans); font-size: 13px; font-weight: 600; color: var(--c-cream); transition: opacity 0.2s ease;" class="hover:opacity-80 flex items-center gap-2">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <!-- Right: PHONE prominent + email + search + lang + STC -->
+      <div class="flex items-center gap-4">
+        <!-- Phone — MORE PROMINENT (V4.2) -->
+        <a href={`tel:${site.phoneRaw}`} style="font-family: var(--f-display); font-size: 14px; font-weight: 700; color: var(--c-cream); transition: opacity 0.2s ease; letter-spacing: 0.02em;" class="hover:opacity-80 flex items-center gap-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           {site.phone}
         </a>
         <span class="hidden sm:inline" style="color: rgba(247,242,232,0.3);">|</span>
-        <a href={`mailto:${site.email}`} class="hidden sm:flex items-center gap-2" style="font-family: var(--f-sans); font-size: 13px; font-weight: 500; color: var(--c-cream); transition: opacity 0.2s ease;">
+        <!-- Email -->
+        <a href={`mailto:${site.email}`} class="hidden sm:flex items-center gap-2" style="font-family: var(--f-display); font-size: 13px; font-weight: 500; color: rgba(247,242,232,0.9); transition: opacity 0.2s ease;">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           {site.email}
         </a>
-        <span class="hidden lg:inline" style="color: rgba(247,242,232,0.3);">|</span>
-        <a href="/mekluc-freight-website/terms" class="hidden lg:inline" style="font-family: var(--f-sans); font-size: 13px; font-weight: 500; color: var(--c-cream); text-decoration: underline; text-underline-offset: 3px;">
-          Standard Trading Conditions
-        </a>
+        <span class="hidden md:inline" style="color: rgba(247,242,232,0.3);">|</span>
+        <!-- Search icon (V4.2) — opens search overlay -->
+        <button id="search-btn" class="hidden md:inline-flex items-center gap-1.5 utility-icon-btn" aria-label="Search" style="background: transparent; border: none; cursor: pointer; padding: 4px 6px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(247,242,232,0.85);"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <!-- Language dropdown (V4.2) — EN active, FR/AF placeholders -->
+        <div class="hidden md:flex relative" id="lang-switcher">
+          <button id="lang-btn" class="utility-icon-btn flex items-center gap-1" aria-label="Change language" aria-expanded="false" style="background: transparent; border: none; cursor: pointer; padding: 4px 6px; font-family: var(--f-display); font-size: 13px; font-weight: 600; color: rgba(247,242,232,0.9); letter-spacing: 0.05em;">
+            <span aria-hidden="true">🇿🇦</span><span>EN</span>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <!-- Dropdown menu -->
+          <div id="lang-menu" class="hidden absolute right-0 top-full mt-2" style="background: var(--c-ink); border: 1px solid rgba(247,242,232,0.15); min-width: 140px; z-index: 100; box-shadow: 0 8px 24px rgba(0,0,0,0.2);">
+            <button class="lang-item lang-item-active" data-lang="en" style="display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px 14px; font-family: var(--f-display); font-size: 13px; font-weight: 600; color: var(--c-cream); background: transparent; border: none; cursor: pointer; text-align: left;">
+              <span>🇿🇦</span><span>English</span><span style="margin-left: auto; color: var(--c-copper); font-size: 11px;">●</span>
+            </button>
+            <button class="lang-item" data-lang="fr" style="display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px 14px; font-family: var(--f-display); font-size: 13px; font-weight: 500; color: rgba(247,242,232,0.6); background: transparent; border: none; cursor: not-allowed; text-align: left;" disabled>
+              <span>🇫🇷</span><span>Français</span><span style="margin-left: auto; font-size: 9px; color: rgba(247,242,232,0.4);">SOON</span>
+            </button>
+            <button class="lang-item" data-lang="af" style="display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px 14px; font-family: var(--f-display); font-size: 13px; font-weight: 500; color: rgba(247,242,232,0.6); background: transparent; border: none; cursor: not-allowed; text-align: left;" disabled>
+              <span>🇿🇦</span><span>Afrikaans</span><span style="margin-left: auto; font-size: 9px; color: rgba(247,242,232,0.4);">SOON</span>
+            </button>
+          </div>
+        </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Search overlay (V4.2) — hidden by default -->
+  <div id="search-overlay" class="hidden fixed inset-0 z-[100] flex items-start justify-center pt-32" style="background: rgba(26,22,18,0.85); backdrop-filter: blur(8px);">
+    <div class="w-full max-w-2xl px-6">
+      <form action="/mekluc-freight-website/" method="get" role="search" style="position: relative;">
+        <input type="search" name="q" id="search-input" placeholder="Search Mekluc Freight..." autocomplete="off" style="width: 100%; padding: 22px 60px 22px 24px; font-family: var(--f-display); font-size: 18px; background: var(--c-cream); border: 2px solid var(--c-bordeaux); color: var(--c-ink); outline: none;" />
+        <button type="submit" aria-label="Submit search" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: var(--c-bordeaux); color: var(--c-cream); border: none; cursor: pointer; padding: 12px 18px; font-family: var(--f-display); font-size: 14px; font-weight: 700;">
+          Search
+        </button>
+      </form>
+      <button id="search-close" aria-label="Close search" style="position: absolute; top: -48px; right: 24px; background: transparent; border: none; color: var(--c-cream); cursor: pointer; padding: 8px;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <p style="text-align: center; color: rgba(247,242,232,0.6); font-family: var(--f-display); font-size: 13px; margin-top: 16px;">
+        Press <kbd style="background: rgba(247,242,232,0.15); padding: 2px 8px; border-radius: 4px; font-family: var(--f-mono); font-size: 11px;">ESC</kbd> to close · Search is coming soon (V1.5)
+      </p>
     </div>
   </div>
 
@@ -107,21 +147,30 @@ const fullTitle = title === 'Home'
   <header class="sticky top-0 z-40 border-b border-mekluc-line-soft" style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);">
     <nav class="section flex items-center justify-between" style="padding-top: 16px; padding-bottom: 16px;">
 
-      <!-- LOGO + EST 2007 caption -->
-      <a href="/mekluc-freight-website/" class="flex items-center gap-4" aria-label="Mekluc Freight — Home">
-        <img
-          src="/mekluc-freight-website/images/logos/mekluc-freight-logo.svg"
-          alt="Mekluc Freight"
-          class="h-[72px] w-auto"
-          width="200"
-          loading="eager"
-        />
-        <span class="hidden sm:block" style="width: 1px; height: 40px; background: var(--c-line);"></span>
-        <span class="hidden sm:flex flex-col" style="font-family: var(--f-mono); font-size: 11px; font-weight: 500; color: var(--c-charcoal); letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.4;">
-          <span>Est. 2007</span>
-          <span style="color: var(--c-bordeaux); font-weight: 700;">Johannesburg</span>
-        </span>
-      </a>
+      <!-- LOGO + EST 2007 + AEO badge mini (V4.2) -->
+      <div class="flex items-center gap-4">
+        <a href="/mekluc-freight-website/" class="flex items-center gap-4" aria-label="Mekluc Freight — Home">
+          <img
+            src="/mekluc-freight-website/images/logos/mekluc-freight-logo.svg"
+            alt="Mekluc Freight"
+            class="h-[72px] w-auto"
+            width="200"
+            loading="eager"
+          />
+          <span class="hidden sm:block" style="width: 1px; height: 40px; background: var(--c-line);"></span>
+          <span class="hidden sm:flex flex-col" style="font-family: var(--f-mono); font-size: 11px; font-weight: 500; color: var(--c-charcoal); letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.4;">
+            <span>Est. 2007</span>
+            <span style="color: var(--c-bordeaux); font-weight: 700;">Johannesburg</span>
+          </span>
+        </a>
+        <!-- AEO mini badge (V4.2) -->
+        <a href="/mekluc-freight-website/accreditations" class="hidden lg:flex items-center gap-2 aeo-mini-badge" aria-label="View accreditations">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2 4 5v6c0 5.5 3.5 10.7 8 12 4.5-1.3 8-6.5 8-12V5l-8-3zm-1.7 14.3-4-4 1.4-1.4 2.6 2.6 5.6-5.6 1.4 1.4-7 7z"/>
+          </svg>
+          <span>AEO Accredited</span>
+        </a>
+      </div>
 
       <!-- NAV LINKS — V4.1 spaced + 15px -->
       <div class="hidden lg:flex items-center" style="gap: 36px;">
@@ -324,6 +373,44 @@ const fullTitle = title === 'Home'
       width: 100%;
     }
 
+    /* V4.2 — AEO mini badge next to logo */
+    .aeo-mini-badge {
+      padding: 6px 12px;
+      background: var(--c-bordeaux);
+      color: var(--c-cream);
+      font-family: var(--f-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: background 0.2s ease, transform 0.15s ease;
+      white-space: nowrap;
+    }
+    .aeo-mini-badge:hover {
+      background: var(--c-bordeaux-deep);
+      transform: translateY(-1px);
+    }
+
+    /* V4.2 — Utility bar icons (search + lang) hover */
+    .utility-icon-btn {
+      border-radius: 0;
+      transition: opacity 0.2s ease;
+      opacity: 0.85;
+    }
+    .utility-icon-btn:hover {
+      opacity: 1;
+      color: var(--c-copper) !important;
+    }
+    .utility-icon-btn:hover svg {
+      color: var(--c-copper) !important;
+    }
+
+    /* V4.2 — Language dropdown items */
+    .lang-item:not(:disabled):hover {
+      background: rgba(247,242,232,0.08);
+      color: var(--c-copper) !important;
+    }
+
     /* V4.1 — Header WhatsApp button GREEN (#25D366 official WhatsApp brand) */
     .header-whatsapp-btn {
       display: inline-flex;
@@ -375,6 +462,43 @@ const fullTitle = title === 'Home'
     if (btn && menu) {
       btn.addEventListener('click', () => {
         menu.classList.toggle('hidden');
+      });
+    }
+
+    // V4.2 — Search overlay toggle
+    const searchBtn = document.getElementById('search-btn');
+    const searchOverlay = document.getElementById('search-overlay');
+    const searchClose = document.getElementById('search-close');
+    const searchInput = document.getElementById('search-input');
+    if (searchBtn && searchOverlay) {
+      searchBtn.addEventListener('click', () => {
+        searchOverlay.classList.remove('hidden');
+        setTimeout(() => (searchInput as HTMLInputElement)?.focus(), 50);
+      });
+      searchClose?.addEventListener('click', () => searchOverlay.classList.add('hidden'));
+      searchOverlay.addEventListener('click', (e) => {
+        if (e.target === searchOverlay) searchOverlay.classList.add('hidden');
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') searchOverlay.classList.add('hidden');
+      });
+    }
+
+    // V4.2 — Language dropdown toggle
+    const langBtn = document.getElementById('lang-btn');
+    const langMenu = document.getElementById('lang-menu');
+    if (langBtn && langMenu) {
+      langBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isHidden = langMenu.classList.contains('hidden');
+        langMenu.classList.toggle('hidden');
+        langBtn.setAttribute('aria-expanded', String(isHidden));
+      });
+      document.addEventListener('click', (e) => {
+        if (!langMenu.contains(e.target as Node) && e.target !== langBtn) {
+          langMenu.classList.add('hidden');
+          langBtn.setAttribute('aria-expanded', 'false');
+        }
       });
     }
 
