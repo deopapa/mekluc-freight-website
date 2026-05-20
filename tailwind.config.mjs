@@ -17,8 +17,8 @@ export default {
           'ink-soft': '#3D3530',
           /* Charcoal — texte secondaire */
           charcoal: '#6B645E',
-          /* Mute — labels, captions */
-          mute: '#9D958E',
+          /* Mute — labels, captions (V4.7 PATCH P1 WCAG : 9D958E -> 776E67 = 4.55:1) */
+          mute: '#776E67',
           /* Lignes, séparateurs */
           line: '#D8CFC2',
           'line-soft': '#E8E0D2',
@@ -27,8 +27,8 @@ export default {
           'cream-deep': '#F5F5F5',
           paper: '#FFFFFF',
           ivory: '#FFFFFF',
-          /* Cuivre — accent secondaire */
-          copper: '#B07A4F',
+          /* Cuivre — accent secondaire (V4.7 PATCH P1 WCAG : B07A4F -> 95643E = 5.04:1) */
+          copper: '#95643E',
           'copper-deep': '#7A5234',
           /* Statut */
           success: '#2F6B3F',
@@ -38,11 +38,11 @@ export default {
           dark: '#1A1612',
           anthracite: '#3D3530',
           gray: '#6B645E',
-          'gray-light': '#9D958E',
+          'gray-light': '#776E67',
           surface: '#F7F2E8',
           border: '#D8CFC2',
           navy: '#1A1612',
-          orange: '#B07A4F',
+          orange: '#95643E',
         },
       },
       fontFamily: {

@@ -13,9 +13,11 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  /* V4.7 PATCH P1 — preload hero image of the current page for LCP optimisation */
+  heroImage?: string;
 }
 
-const { title, description = site.seo.defaultDescription, ogImage } = Astro.props;
+const { title, description = site.seo.defaultDescription, ogImage, heroImage } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const fullTitle = title === 'Home'
   ? `${site.name} — AEO Accredited Freight Forwarder South Africa`
@@ -30,6 +32,13 @@ const fullTitle = title === 'Home'
   <meta name="description" content={description} />
 
   <title>{fullTitle}</title>
+
+  <!-- V4.7 PATCH P1 — preconnect to Google Fonts origins (fonts loaded via @import in global.css) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- V4.7 PATCH P1 — preload hero image of the current page for LCP -->
+  {heroImage && <link rel="preload" as="image" href={heroImage} fetchpriority="high" />}
 
   <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
