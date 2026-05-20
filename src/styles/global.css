@@ -1,8 +1,8 @@
-/* ===== V3.4 FONTS — Patch typo-bubbles (charte v2.2 + sobriété Megafreight) ===== */
-/* Fraunces = titres H1/H2/H3 (Mekluc signature éditoriale) */
-/* IBM Plex Sans = body texte */
-/* IBM Plex Mono = eyebrows + labels uppercase */
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,ital@9..144,400,0;9..144,500,0;9..144,600,0;9..144,700,0;9..144,400,1;9..144,500,1&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+/* ===== V4.0 FONTS — Plus Jakarta Sans (moderne, attractif, premium SaaS) ===== */
+/* Plus Jakarta Sans = TITRES + BODY (police unique, cohérente, attractive) */
+/* IBM Plex Mono = eyebrows + labels uppercase (uniquement) */
+/* Fraunces SUPPRIMÉ (trop serif/lourd selon feedback utilisateur) */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -26,9 +26,10 @@
     --c-ivory: #FFFFFF;        /* Forms = WHITE */
     --c-copper: #B07A4F;
     --c-copper-deep: #7A5234;
-    --f-display: 'Fraunces', Georgia, serif;
-    --f-serif: 'Fraunces', Georgia, serif;
-    --f-sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+    /* V4.0 — Plus Jakarta Sans unifié, IBM Plex Mono pour eyebrows */
+    --f-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --f-serif: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; /* alias compat */
+    --f-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     --f-mono: 'IBM Plex Mono', 'SF Mono', Consolas, monospace;
     --measure: 1200px;
   }
@@ -50,28 +51,29 @@
 
   /* V3.5 PATCH — Texture noise supprimée (background WHITE clean) */
 
-  /* V3.4 PATCH 1.1 — Titres Fraunces SemiBold sobres (charte v2.2 + sobriété Megafreight) */
+  /* V4.0 — Tous les titres en Plus Jakarta Sans bold (attractif, moderne, lisible) */
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--f-serif);
+    font-family: var(--f-display);
     color: var(--c-ink);
-    font-weight: 600;
-    letter-spacing: -0.01em;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
   }
 
-  /* V3.4 PATCH 1.1: les em dans titres = italic Fraunces ANTHRACITE (PAS bordeaux) */
+  /* V4.0 — em dans titres = italic Plus Jakarta Sans, couleur héritée */
   h1 em, h2 em, h3 em, h4 em {
-    font-family: var(--f-serif);
+    font-family: var(--f-display);
     font-style: italic;
-    font-weight: 600;
+    font-weight: 700;
     color: inherit;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
   }
 
-  /* V3.4 PATCH 1.1: italiques bordeaux RÉSERVÉS aux pull-quotes uniquement */
+  /* V4.0 — Pull-quotes (em dans p / blockquote) = italic bordeaux Plus Jakarta Sans */
   p > em, blockquote em, .pull-quote em {
-    font-family: var(--f-serif);
+    font-family: var(--f-display);
     font-style: italic;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--c-bordeaux);
   }
 
@@ -245,24 +247,24 @@
     align-items: end;
   }
 
-  /* V3.4 PATCH 1.1 + 1.3 — Section title Fraunces SemiBold sans italique bordeaux + underline */
+  /* V4.0 — Section title Plus Jakarta Sans bold 800 + underline bordeaux */
   .section-title {
-    font-family: var(--f-serif);
-    font-weight: 600;
+    font-family: var(--f-display);
+    font-weight: 800;
     font-size: clamp(2rem, 4vw, 3rem);
     line-height: 1.1;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.025em;
     color: var(--c-ink);
-    margin-bottom: 24px; /* Space for underline below */
+    margin-bottom: 24px;
     position: relative;
-    padding-bottom: 27px; /* Underline 3px + 24px gap */
+    padding-bottom: 27px;
   }
-  /* PATCH 1.1: les em dans titres = italic anthracite, PAS bordeaux */
+  /* V4.0 — em dans section-title = italic bordeaux Plus Jakarta Sans */
   .section-title em {
-    font-family: var(--f-serif);
+    font-family: var(--f-display);
     font-style: italic;
-    color: inherit;
-    font-weight: 600;
+    color: var(--c-bordeaux);
+    font-weight: 800;
   }
   /* PATCH 1.3: soulignement bordeaux 64×3px sous chaque .section-title */
   .section-title::after {

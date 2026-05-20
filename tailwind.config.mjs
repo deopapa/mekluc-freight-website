@@ -46,9 +46,10 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Fraunces', 'Georgia', 'serif'],
-        serif: ['Fraunces', 'Georgia', 'serif'],
-        sans: ['IBM Plex Sans', 'system-ui', '-apple-system', 'sans-serif'],
+        /* V4.0 — Plus Jakarta Sans partout (display + serif + sans) */
+        display: ['Plus Jakarta Sans', 'system-ui', '-apple-system', 'sans-serif'],
+        serif: ['Plus Jakarta Sans', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Plus Jakarta Sans', 'system-ui', '-apple-system', 'sans-serif'],
         mono: ['IBM Plex Mono', 'SF Mono', 'Consolas', 'monospace'],
       },
       fontSize: {

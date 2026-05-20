@@ -19,7 +19,7 @@ import { site } from '@/lib/site';
   <!-- WHY PACKAGING — Stats Band Bordeaux -->
   <section class="cta-band-bordeaux">
     <div class="absolute right-[-80px] bottom-[-80px] select-none pointer-events-none" aria-hidden="true">
-      <span style="font-family: var(--f-serif); font-size: 360px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+      <span style="font-family: var(--f-display); font-size: 360px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
     </div>
     <div class="section relative z-10" style="padding-top: clamp(3rem, 6vw, 5rem); padding-bottom: clamp(3rem, 6vw, 5rem);">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 items-center">
@@ -38,7 +38,7 @@ import { site } from '@/lib/site';
         ].map((stat) => (
           <div style="border-left: 1px solid rgba(247,242,232,0.18); padding-left: clamp(1rem, 2vw, 1.5rem);" class="flex flex-col gap-2">
             <span style="font-family: var(--f-display); font-weight: 800; color: var(--c-cream); line-height: 1; letter-spacing: -0.03em; font-size: clamp(44px, 5.5vw, 60px);">
-              {stat.num}<small style="font-family: var(--f-serif); font-style: italic; font-weight: 500; color: var(--c-copper); font-size: 0.45em; margin-left: 6px;">{stat.unit}</small>
+              {stat.num}<small style="font-family: var(--f-display); font-style: italic; font-weight: 500; color: var(--c-copper); font-size: 0.45em; margin-left: 6px;">{stat.unit}</small>
             </span>
             <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(247,242,232,0.7);">
               {stat.label}
@@ -178,11 +178,11 @@ import { site } from '@/lib/site';
   <!-- CTA -->
   <section class="cta-band-bordeaux" style="padding: clamp(5rem, 10vw, 8rem) 0;">
     <div class="absolute right-[-60px] bottom-[-60px] select-none pointer-events-none" aria-hidden="true">
-      <span style="font-family: var(--f-serif); font-size: 400px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+      <span style="font-family: var(--f-display); font-size: 400px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
     </div>
     <div class="section relative z-10" style="text-align: center;">
       <h2 style="font-family: var(--f-display); font-weight: 800; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; letter-spacing: -0.03em; color: var(--c-cream); margin-bottom: 1rem;">
-        Need cargo <em style="font-family: var(--f-serif); color: var(--c-copper); font-style: italic; font-weight: 500;">protection?</em>
+        Need cargo <em style="font-family: var(--f-display); color: var(--c-copper); font-style: italic; font-weight: 500;">protection?</em>
       </h2>
       <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: rgba(247,242,232,0.75); max-width: 48ch; margin: 0 auto 2.5rem;">
         Quote in less than 2h. Or call <a href={`tel:${site.phoneRaw}`} style="color: var(--c-cream); text-decoration: underline; text-underline-offset: 3px;">{site.phone}</a>.

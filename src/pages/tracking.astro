@@ -112,7 +112,7 @@ import { site } from '@/lib/site';
           },
         ].map((faq, i) => (
           <div class="reveal" style={`padding: clamp(1.5rem, 3vw, 2rem) 0; ${i > 0 ? 'border-top: 1px solid var(--c-line);' : ''}`}>
-            <h3 style="font-family: var(--f-serif); font-size: 1.25rem; font-weight: 400; color: var(--c-ink); margin-bottom: 0.75rem;">{faq.q}</h3>
+            <h3 style="font-family: var(--f-display); font-size: 1.25rem; font-weight: 400; color: var(--c-ink); margin-bottom: 0.75rem;">{faq.q}</h3>
             <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); max-width: 60ch;">{faq.a}</p>
           </div>
         ))}
@@ -125,7 +125,7 @@ import { site } from '@/lib/site';
     <div class="section" style="text-align: center;">
       <div class="reveal">
         <p class="eyebrow mb-4" style="color: var(--c-copper); justify-content: center;">Urgent</p>
-        <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(2rem, 4.5vw, 3.25rem); line-height: 1.1; color: var(--c-cream); margin-bottom: 1rem;">
+        <h2 style="font-family: var(--f-display); font-weight: 400; font-size: clamp(2rem, 4.5vw, 3.25rem); line-height: 1.1; color: var(--c-cream); margin-bottom: 1rem;">
           Something <em style="color: var(--c-copper); font-style: italic;">wrong</em> with your shipment?
         </h2>
         <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: var(--c-mute); max-width: 48ch; margin: 0 auto 2.5rem;">

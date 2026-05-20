@@ -59,7 +59,7 @@ import { site } from '@/lib/site';
           { title: 'Hands-on attitude', desc: 'Every team member helps when a shipment needs it.' },
         ].map((q) => (
           <div style="border: 1px solid rgba(176,122,79,0.15); padding: clamp(1.5rem, 3vw, 2rem);">
-            <h3 style="font-family: var(--f-serif); font-size: 1.25rem; font-weight: 400; color: var(--c-cream); margin-bottom: 0.5rem;">{q.title}</h3>
+            <h3 style="font-family: var(--f-display); font-size: 1.25rem; font-weight: 400; color: var(--c-cream); margin-bottom: 0.5rem;">{q.title}</h3>
             <p style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.65; color: var(--c-mute);">{q.desc}</p>
           </div>
         ))}
@@ -106,8 +106,8 @@ import { site } from '@/lib/site';
           { step: '04', title: 'Interview', desc: 'Interviews scheduled when a relevant role opens.' },
         ].map((s, i) => (
           <div style={`padding: clamp(1.5rem, 3vw, 2.5rem); ${i > 0 ? 'border-left: 1px solid var(--c-line-soft);' : ''}`} class="hidden md:block">
-            <p style="font-family: var(--f-serif); font-size: clamp(2.5rem, 4vw, 3.25rem); font-weight: 400; color: var(--c-bordeaux); line-height: 1; margin-bottom: 0.75rem;">{s.step}</p>
-            <h3 style="font-family: var(--f-serif); font-size: 1.25rem; font-weight: 400; color: var(--c-ink); margin-bottom: 0.5rem;">{s.title}</h3>
+            <p style="font-family: var(--f-display); font-size: clamp(2.5rem, 4vw, 3.25rem); font-weight: 400; color: var(--c-bordeaux); line-height: 1; margin-bottom: 0.75rem;">{s.step}</p>
+            <h3 style="font-family: var(--f-display); font-size: 1.25rem; font-weight: 400; color: var(--c-ink); margin-bottom: 0.5rem;">{s.title}</h3>
             <p style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.65; color: var(--c-charcoal);">{s.desc}</p>
           </div>
         ))}
@@ -118,8 +118,8 @@ import { site } from '@/lib/site';
           { step: '04', title: 'Interview', desc: 'Interviews scheduled when a relevant role opens.' },
         ].map((s, i) => (
           <div style={`padding: 1.5rem 0; ${i > 0 ? 'border-top: 1px solid var(--c-line-soft);' : ''}`} class="md:hidden">
-            <p style="font-family: var(--f-serif); font-size: 2.5rem; font-weight: 400; color: var(--c-bordeaux); line-height: 1; margin-bottom: 0.5rem;">{s.step}</p>
-            <h3 style="font-family: var(--f-serif); font-size: 1.25rem; font-weight: 400; color: var(--c-ink); margin-bottom: 0.5rem;">{s.title}</h3>
+            <p style="font-family: var(--f-display); font-size: 2.5rem; font-weight: 400; color: var(--c-bordeaux); line-height: 1; margin-bottom: 0.5rem;">{s.step}</p>
+            <h3 style="font-family: var(--f-display); font-size: 1.25rem; font-weight: 400; color: var(--c-ink); margin-bottom: 0.5rem;">{s.title}</h3>
             <p style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.65; color: var(--c-charcoal);">{s.desc}</p>
           </div>
         ))}
@@ -130,10 +130,10 @@ import { site } from '@/lib/site';
   <!-- CTA BAND -->
   <section class="cta-band-bordeaux" style="padding: clamp(5rem, 12vw, 8rem) 0;">
     <div class="absolute right-[-60px] bottom-[-60px] select-none pointer-events-none" aria-hidden="true">
-      <span style="font-family: var(--f-serif); font-size: 400px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+      <span style="font-family: var(--f-display); font-size: 400px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
     </div>
     <div class="section relative z-10" style="text-align: center;">
-      <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; color: var(--c-cream); margin-bottom: 1rem;">
+      <h2 style="font-family: var(--f-display); font-weight: 400; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; color: var(--c-cream); margin-bottom: 1rem;">
         Ready to join <em style="color: var(--c-copper); font-style: italic;">Mekluc Freight?</em>
       </h2>
       <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: rgba(247,242,232,0.7); max-width: 48ch; margin: 0 auto 2.5rem;">

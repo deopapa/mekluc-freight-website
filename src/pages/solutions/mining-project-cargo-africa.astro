@@ -70,7 +70,7 @@ import { site } from '@/lib/site';
         ].map((cat) => (
           <div style="border: 1px solid rgba(176,122,79,0.15); padding: clamp(1.5rem, 3vw, 2.5rem);">
             <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); display: block; margin-bottom: 1rem;">{cat.tag}</span>
-            <h3 style="font-family: var(--f-serif); font-size: 1.5rem; font-weight: 400; color: var(--c-cream); margin-bottom: 1.25rem;">{cat.title}</h3>
+            <h3 style="font-family: var(--f-display); font-size: 1.5rem; font-weight: 400; color: var(--c-cream); margin-bottom: 1.25rem;">{cat.title}</h3>
             <div style="display: flex; flex-direction: column; gap: 8px;">
               {cat.items.map((item) => (
                 <div style="display: flex; align-items: flex-start; gap: 10px;">
@@ -118,7 +118,7 @@ import { site } from '@/lib/site';
           },
         ].map((c) => (
           <div style="background: var(--c-paper); padding: clamp(2rem, 4vw, 3rem);">
-            <h3 style="font-family: var(--f-serif); font-size: 1.75rem; font-weight: 400; color: var(--c-ink); margin-bottom: 1.25rem;">{c.title}</h3>
+            <h3 style="font-family: var(--f-display); font-size: 1.75rem; font-weight: 400; color: var(--c-ink); margin-bottom: 1.25rem;">{c.title}</h3>
             <div style="display: flex; flex-direction: column; gap: 12px;">
               <div>
                 <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.12em; color: var(--c-mute); display: block; margin-bottom: 4px;">ROUTE</span>
@@ -127,7 +127,7 @@ import { site } from '@/lib/site';
               <div class="flex gap-8">
                 <div>
                   <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.12em; color: var(--c-mute); display: block; margin-bottom: 4px;">TRANSIT</span>
-                  <p style="font-family: var(--f-serif); font-size: 1.25rem; font-weight: 400; color: var(--c-bordeaux);">{c.transit}</p>
+                  <p style="font-family: var(--f-display); font-size: 1.25rem; font-weight: 400; color: var(--c-bordeaux);">{c.transit}</p>
                 </div>
                 <div>
                   <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.12em; color: var(--c-mute); display: block; margin-bottom: 4px;">BORDER POSTS</span>
@@ -181,7 +181,7 @@ import { site } from '@/lib/site';
         ].map((cap) => (
           <div style="background: var(--c-paper); padding: clamp(2rem, 4vw, 3rem);">
             <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); display: block; margin-bottom: 1rem;">&mdash; {cap.num}</span>
-            <h3 style="font-family: var(--f-serif); font-size: 1.5rem; font-weight: 400; line-height: 1.2; color: var(--c-ink); margin-bottom: 0.75rem;">{cap.title}</h3>
+            <h3 style="font-family: var(--f-display); font-size: 1.5rem; font-weight: 400; line-height: 1.2; color: var(--c-ink); margin-bottom: 0.75rem;">{cap.title}</h3>
             <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal);">{cap.desc}</p>
           </div>
         ))}
@@ -195,7 +195,7 @@ import { site } from '@/lib/site';
       <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center reveal">
         <div>
           <p class="eyebrow mb-4">AEO advantage</p>
-          <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; color: var(--c-ink); margin-bottom: 1.5rem;">
+          <h2 style="font-family: var(--f-display); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; color: var(--c-ink); margin-bottom: 1.5rem;">
             4-6 days saved on <em style="color: var(--c-bordeaux); font-style: italic;">every delivery</em>
           </h2>
           <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); margin-bottom: 1rem;">
@@ -216,7 +216,7 @@ import { site } from '@/lib/site';
           ].map((stat) => (
             <div style="background: var(--c-cream); padding: clamp(1.5rem, 3vw, 2rem); display: flex; justify-content: space-between; align-items: center;">
               <span style="font-family: var(--f-sans); font-size: 1.1875rem; color: var(--c-charcoal);">{stat.label}</span>
-              <span style="font-family: var(--f-serif); font-size: 1.5rem; font-weight: 400; color: var(--c-bordeaux);">{stat.value}</span>
+              <span style="font-family: var(--f-display); font-size: 1.5rem; font-weight: 400; color: var(--c-bordeaux);">{stat.value}</span>
             </div>
           ))}
         </div>
@@ -229,7 +229,7 @@ import { site } from '@/lib/site';
     <div class="section">
       <div class="max-w-3xl reveal">
         <p class="eyebrow mb-4" style="color: var(--c-copper);">Case study</p>
-        <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(1.75rem, 3.5vw, 2.5rem); line-height: 1.15; color: var(--c-cream); margin-bottom: 1.5rem;">
+        <h2 style="font-family: var(--f-display); font-weight: 400; font-size: clamp(1.75rem, 3.5vw, 2.5rem); line-height: 1.15; color: var(--c-cream); margin-bottom: 1.5rem;">
           Copperbelt processing plant expansion
         </h2>
         <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-mute); margin-bottom: 1rem;">
@@ -247,7 +247,7 @@ import { site } from '@/lib/site';
             { label: 'Project status', value: 'Complete' },
           ].map((stat) => (
             <div style="text-align: center; padding: 20px; border: 1px solid rgba(176,122,79,0.15);">
-              <p style="font-family: var(--f-serif); font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 400; color: var(--c-copper); line-height: 1; margin-bottom: 6px;">{stat.value}</p>
+              <p style="font-family: var(--f-display); font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 400; color: var(--c-copper); line-height: 1; margin-bottom: 6px;">{stat.value}</p>
               <p style="font-family: var(--f-sans); font-size: 0.75rem; letter-spacing: 0.05em; color: var(--c-mute);">{stat.label}</p>
             </div>
           ))}
@@ -294,7 +294,7 @@ import { site } from '@/lib/site';
           },
         ].map((faq, i) => (
           <div class="reveal" style={`padding: clamp(1.5rem, 3vw, 2rem) 0; ${i > 0 ? 'border-top: 1px solid var(--c-line);' : ''}`}>
-            <h3 style="font-family: var(--f-serif); font-size: 1.25rem; font-weight: 400; color: var(--c-ink); margin-bottom: 0.75rem;">{faq.q}</h3>
+            <h3 style="font-family: var(--f-display); font-size: 1.25rem; font-weight: 400; color: var(--c-ink); margin-bottom: 0.75rem;">{faq.q}</h3>
             <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); max-width: 60ch;">{faq.a}</p>
           </div>
         ))}
@@ -305,10 +305,10 @@ import { site } from '@/lib/site';
   <!-- CTA BAND -->
   <section class="cta-band-bordeaux" style="padding: clamp(5rem, 12vw, 8rem) 0;">
     <div class="absolute right-[-60px] bottom-[-60px] select-none pointer-events-none" aria-hidden="true">
-      <span style="font-family: var(--f-serif); font-size: 400px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+      <span style="font-family: var(--f-display); font-size: 400px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
     </div>
     <div class="section relative z-10" style="text-align: center;">
-      <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; color: var(--c-cream); margin-bottom: 1rem;">
+      <h2 style="font-family: var(--f-display); font-weight: 400; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; color: var(--c-cream); margin-bottom: 1rem;">
         Moving cargo to a <em style="color: var(--c-copper); font-style: italic;">mine site?</em>
       </h2>
       <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: rgba(247,242,232,0.7); max-width: 48ch; margin: 0 auto 2.5rem;">

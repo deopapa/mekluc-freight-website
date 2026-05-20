@@ -36,8 +36,8 @@ const lang = 'en' as const;
         <span style="display: inline-block; width: 48px; height: 2.5px; background: var(--c-bordeaux); margin-right: 18px; vertical-align: middle;"></span>AEO ACCREDITED · LEVEL 1 B-BBEE · SINCE 2007
       </div>
 
-      <h1 class="text-mekluc-ink mb-6 opacity-0" style="font-family: var(--f-serif); font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 1.05; letter-spacing: -0.025em; font-weight: 600; animation: fadeUp 0.7s 0.25s forwards; max-width: 18ch;">
-        Your freight partner between <em style="font-style: italic; font-weight: 600;">South Africa</em> and the world.
+      <h1 class="text-mekluc-ink mb-6 opacity-0" style="font-family: var(--f-display); font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 1.05; letter-spacing: -0.035em; font-weight: 800; animation: fadeUp 0.7s 0.25s forwards; max-width: 18ch;">
+        Your freight partner between <em style="font-style: italic; font-weight: 700; color: var(--c-bordeaux);">South Africa</em> and the world.
       </h1>
 
       <p class="text-mekluc-ink-soft mb-10 opacity-0" style="font-family: var(--f-sans); font-size: clamp(1.0625rem, 1.4vw, 1.25rem); line-height: 1.6; max-width: 55ch; animation: fadeUp 0.7s 0.4s forwards; font-weight: 400;">
@@ -105,7 +105,7 @@ const lang = 'en' as const;
   <!-- ============== WHY MEKLUC — Bordeaux Band (DHL-inspired) ============== -->
   <section class="cta-band-bordeaux relative z-10">
     <div class="absolute right-[-80px] bottom-[-80px] select-none pointer-events-none" aria-hidden="true">
-      <span style="font-family: var(--f-serif); font-size: 360px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+      <span style="font-family: var(--f-display); font-size: 360px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
     </div>
     <div class="section relative z-10" style="padding-top: clamp(3rem, 6vw, 5rem); padding-bottom: clamp(3rem, 6vw, 5rem);">
       <div class="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-4 items-center">
@@ -127,7 +127,7 @@ const lang = 'en' as const;
         ].map((stat) => (
           <div style="border-left: 1px solid rgba(247,242,232,0.18); padding-left: clamp(1rem, 2vw, 1.5rem);" class="flex flex-col gap-2">
             <span style="font-family: var(--f-display); font-weight: 800; color: var(--c-cream); line-height: 1; letter-spacing: -0.03em; font-size: clamp(44px, 5.5vw, 60px);">
-              {stat.num}<small style="font-family: var(--f-serif); font-style: italic; font-weight: 500; color: var(--c-copper); font-size: 0.45em; margin-left: 6px;">{stat.unit}</small>
+              {stat.num}<small style="font-family: var(--f-display); font-style: italic; font-weight: 500; color: var(--c-copper); font-size: 0.45em; margin-left: 6px;">{stat.unit}</small>
             </span>
             <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(247,242,232,0.7);">
               {stat.label}
@@ -163,7 +163,7 @@ const lang = 'en' as const;
         ].map((svc) => (
           <a href={svc.href} class="group bg-mekluc-paper hover:bg-mekluc-cream transition-colors duration-400 p-[44px_36px] flex flex-col gap-5 min-h-[360px] relative cursor-pointer">
             <div class="font-mono text-[11px] text-mekluc-copper tracking-[0.15em]">— {svc.num}</div>
-            <h3 class="font-serif font-medium text-[32px] leading-[1.1] text-mekluc-ink tracking-tight">{svc.title}</h3>
+            <h3 class="font-display font-medium text-[32px] leading-[1.1] text-mekluc-ink tracking-tight">{svc.title}</h3>
             <p class="font-sans text-[14px] leading-[1.65] text-mekluc-ink-soft flex-grow">{svc.desc}</p>
             <span class="font-sans text-[13px] font-semibold text-mekluc-bordeaux inline-flex items-center gap-2 mt-auto tracking-[0.02em]">
               See {svc.title.toLowerCase()} <span class="font-mono text-[12px] transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
@@ -249,7 +249,7 @@ const lang = 'en' as const;
     <div class="section">
       <div class="reveal" style="text-align: center; margin-bottom: 48px;">
         <p style="font-family: var(--f-sans); font-size: 13px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--c-bordeaux); margin-bottom: 8px;">Trusted by</p>
-        <h2 style="font-family: var(--f-serif); font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 600; color: var(--c-ink); letter-spacing: -0.01em; line-height: 1.2; max-width: 36ch; margin: 0 auto;">
+        <h2 style="font-family: var(--f-display); font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 600; color: var(--c-ink); letter-spacing: -0.01em; line-height: 1.2; max-width: 36ch; margin: 0 auto;">
           Industrial leaders moving cargo through <em style="font-style: italic;">South Africa.</em>
         </h2>
       </div>
@@ -355,7 +355,7 @@ const lang = 'en' as const;
             <!-- Bordeaux corner badge -->
             <div style="position: absolute; bottom: 0; left: 0; padding: 14px 20px; background: var(--c-bordeaux); color: var(--c-cream);">
               <p style="font-family: var(--f-sans); font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 4px; opacity: 0.85;">Founder · MD</p>
-              <p style="font-family: var(--f-serif); font-size: 18px; font-weight: 600; letter-spacing: -0.01em;">Anne-Marie Mandtoumbi</p>
+              <p style="font-family: var(--f-display); font-size: 18px; font-weight: 600; letter-spacing: -0.01em;">Anne-Marie Mandtoumbi</p>
             </div>
           </div>
         </div>
@@ -364,7 +364,7 @@ const lang = 'en' as const;
         <div class="lg:col-span-7">
           <p class="eyebrow mb-6">Meet the founder</p>
 
-          <h2 style="font-family: var(--f-serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; color: var(--c-ink); margin-bottom: 1.5rem; position: relative; padding-bottom: 24px;">
+          <h2 style="font-family: var(--f-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; color: var(--c-ink); margin-bottom: 1.5rem; position: relative; padding-bottom: 24px;">
             19 years.<br/>One <em style="font-style: italic;">conviction.</em>
             <span style="position: absolute; bottom: 0; left: 0; width: 64px; height: 3px; background: var(--c-bordeaux);"></span>
           </h2>
@@ -413,7 +413,7 @@ const lang = 'en' as const;
         ].map((sol) => (
           <a href={sol.href} class="group bg-mekluc-ivory border border-mekluc-line-soft p-[40px_32px] flex flex-col gap-[18px] transition-all duration-300 hover:border-mekluc-bordeaux hover:-translate-y-1">
             <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-mekluc-bordeaux">— {sol.sector}</span>
-            <h3 class="font-serif font-medium text-[26px] leading-[1.15] text-mekluc-ink tracking-tight">{sol.title}</h3>
+            <h3 class="font-display font-medium text-[26px] leading-[1.15] text-mekluc-ink tracking-tight">{sol.title}</h3>
             <p class="font-sans text-[13.5px] leading-[1.65] text-mekluc-ink-soft flex-grow">{sol.desc}</p>
             <span class="font-sans text-[13px] font-semibold text-mekluc-bordeaux inline-flex items-center gap-[6px] mt-3">
               {sol.cta} <span class="transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
@@ -455,10 +455,10 @@ const lang = 'en' as const;
           { metric: '100', sub: '% BLACK WOMAN OWNED', title: 'Founded and led by Anne-Marie Mandtoumbi.', desc: 'Three principles since 2007 — trust, agility, and getting the work done.' },
         ].map((p, i) => (
           <div class={`py-9 px-6 flex flex-col gap-[14px] ${i > 0 ? 'lg:border-l' : ''}`} style={i > 0 ? 'border-color: rgba(216, 207, 194, 0.18);' : ''}>
-            <div class="font-serif font-medium text-mekluc-copper leading-none tracking-tight" style="font-size: 52px; font-feature-settings: 'lnum';">
+            <div class="font-display font-medium text-mekluc-copper leading-none tracking-tight" style="font-size: 52px; font-feature-settings: 'lnum';">
               {p.metric}<small class="text-[0.4em] text-mekluc-cream font-normal block mt-[6px] tracking-normal">{p.sub}</small>
             </div>
-            <h3 class="font-serif font-medium text-[18px] text-mekluc-cream">{p.title}</h3>
+            <h3 class="font-display font-medium text-[18px] text-mekluc-cream">{p.title}</h3>
             <p class="font-sans text-[13px] leading-[1.6]" style="color: var(--c-line);">{p.desc}</p>
           </div>
         ))}
@@ -466,7 +466,7 @@ const lang = 'en' as const;
 
       <!-- Quote CTA -->
       <div class="mt-14 pt-12 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 flex-wrap" style="border-top: 1px solid rgba(216, 207, 194, 0.15);">
-        <p class="font-serif italic font-normal text-mekluc-cream max-w-[40ch]" style="font-size: clamp(22px, 2.5vw, 28px); line-height: 1.3;">
+        <p class="font-display italic font-normal text-mekluc-cream max-w-[40ch]" style="font-size: clamp(22px, 2.5vw, 28px); line-height: 1.3;">
           "Mekluc treats our cargo like their own — and gets it through customs faster."
         </p>
         <a href="/mekluc-freight-website/contact?quote=1" class="btn-gold btn-lg">
@@ -494,7 +494,7 @@ const lang = 'en' as const;
         <!-- Client names -->
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-10 gap-y-8 items-center">
           {['EagleBurgmann', 'REMA TIP TOP', 'Timken', 'Lancet Labs', 'Bergman-Ross', 'SAPMA'].map((name) => (
-            <div class="font-serif font-medium text-[19px] text-mekluc-charcoal tracking-tight border-b border-mekluc-line pb-3 hover:text-mekluc-bordeaux transition-colors cursor-default">
+            <div class="font-display font-medium text-[19px] text-mekluc-charcoal tracking-tight border-b border-mekluc-line pb-3 hover:text-mekluc-bordeaux transition-colors cursor-default">
               {name}
             </div>
           ))}
@@ -502,8 +502,8 @@ const lang = 'en' as const;
 
         <!-- Testimonial -->
         <figure class="bg-mekluc-cream border-l-[3px] border-mekluc-bordeaux p-9 relative">
-          <span class="font-serif italic text-[100px] leading-none text-mekluc-bordeaux absolute top-2 right-6 opacity-[0.12] pointer-events-none">"</span>
-          <blockquote class="font-serif italic font-normal text-[22px] leading-[1.45] text-mekluc-ink mb-[22px] tracking-tight">
+          <span class="font-display italic text-[100px] leading-none text-mekluc-bordeaux absolute top-2 right-6 opacity-[0.12] pointer-events-none">"</span>
+          <blockquote class="font-display italic font-normal text-[22px] leading-[1.45] text-mekluc-ink mb-[22px] tracking-tight">
             Mekluc has been moving our specialised cargo for years. What sets them
             apart is the human side — they call when there's a delay, they call
             when there's none, and they always pick up.
@@ -521,7 +521,7 @@ const lang = 'en' as const;
     <div class="section">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-[60px] items-center">
         <div>
-          <h2 class="font-serif font-normal text-mekluc-ink tracking-tight" style="font-size: clamp(28px, 3.5vw, 40px); line-height: 1.1;">
+          <h2 class="font-display font-normal text-mekluc-ink tracking-tight" style="font-size: clamp(28px, 3.5vw, 40px); line-height: 1.1;">
             Where is your <em class="italic text-mekluc-bordeaux">cargo</em> right now?
           </h2>
           <p class="font-sans text-[14px] text-mekluc-charcoal leading-[1.65] mt-[14px]">
@@ -568,7 +568,7 @@ const lang = 'en' as const;
               <span>{article.category}</span>
               <time class="text-mekluc-mute font-normal">{article.date}</time>
             </div>
-            <h3 class="font-serif font-medium text-[22px] leading-[1.25] text-mekluc-ink tracking-tight group-hover:text-mekluc-bordeaux transition-colors">
+            <h3 class="font-display font-medium text-[22px] leading-[1.25] text-mekluc-ink tracking-tight group-hover:text-mekluc-bordeaux transition-colors">
               {article.title}
             </h3>
             <p class="font-sans text-[13.5px] leading-[1.65] text-mekluc-charcoal">
@@ -589,7 +589,7 @@ const lang = 'en' as const;
     <span class="absolute font-serif italic font-normal leading-[0.8] select-none pointer-events-none opacity-60" style="font-size: 600px; color: var(--c-bordeaux-deep); top: -120px; right: -80px;">M</span>
 
     <div class="section relative z-[2]">
-      <h2 class="font-serif font-normal text-mekluc-cream max-w-[18ch] mb-7" style="font-size: clamp(40px, 6vw, 72px); line-height: 1.05; letter-spacing: -0.02em;">
+      <h2 class="font-display font-normal text-mekluc-cream max-w-[18ch] mb-7" style="font-size: clamp(40px, 6vw, 72px); line-height: 1.05; letter-spacing: -0.02em;">
         Let's move your <em class="italic text-mekluc-copper">cargo</em>.
       </h2>
       <p class="font-sans text-[17px] leading-[1.6] max-w-[56ch] mb-11" style="color: var(--c-line);">
