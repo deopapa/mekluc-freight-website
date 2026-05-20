@@ -1,0 +1,156 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/sections/PageHeader.astro';
+import { site } from '@/lib/site';
+---
+
+<BaseLayout
+  title="Mekluc Accreditations | AEO SARS Level 1 B-BBEE SAAFF | Mekluc Freight"
+  description="Mekluc Freight is AEO-accredited by SARS, SARS Customs Clearing Agent licensed, Level 1 B-BBEE contributor, SAAFF member, and 100% Black Woman Owned."
+>
+  <PageHeader
+    label="Trust & Compliance"
+    title="Our accreditations — the credentials that prove what we say."
+    subtitle="Mekluc Freight holds the highest tier of customs trust granted by SARS, the maximum B-BBEE rating recognised by South African law, membership in the country's leading freight association, and 19 years of compliant operations."
+    bg="paper"
+  />
+
+  <!-- Accreditation Cards -->
+  <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 10rem);">
+    <div class="section">
+      <div class="max-w-3xl" style="display: flex; flex-direction: column; gap: 0;">
+
+        {[
+          {
+            badge: 'AEO',
+            title: 'AEO — Authorised Economic Operator',
+            what: 'Authorised Economic Operator is the highest tier of customs trust granted by SARS. The accreditation is earned through an audit process that verifies financial solvency, compliance history, physical security, internal controls, and customs literacy. Less than 1% of South African freight forwarders hold AEO status.',
+            benefits: [
+              'Pre-arrival customs clearance',
+              'Reduced physical inspection rates',
+              'International mutual recognition (EU, China, Japan, Switzerland)',
+              'Faster cargo release at every border post',
+            ],
+          },
+          {
+            badge: 'SARS',
+            title: 'SARS Customs Clearing Agent',
+            what: 'Mekluc Freight is licensed by SARS as a Customs Clearing Agent — authorised to act on behalf of importers and exporters in all customs matters.',
+            benefits: [
+              'All customs declarations handled by Mekluc directly',
+              'Tariff classification, duty calculation, valuation declarations',
+              'SARS audit representation',
+              'Direct lines to SARS officers',
+            ],
+          },
+          {
+            badge: 'B-BBEE L1',
+            title: 'Level 1 B-BBEE',
+            what: 'The maximum Broad-Based Black Economic Empowerment rating recognised by South African law. Independently audited. Renewed annually.',
+            benefits: [
+              '135% procurement recognition',
+              'Verifiable BEE contribution for annual reporting',
+              'Eligible for BEE-mandated procurement spend',
+              'Aligned with SA\'s economic transformation agenda',
+            ],
+          },
+          {
+            badge: 'SAAFF',
+            title: 'SAAFF Member',
+            what: 'Member of the South African Association of Freight Forwarders — the country\'s leading industry body.',
+            benefits: [
+              'Commitment to industry standards and ethical practices',
+              'Adherence to SAAFF code of conduct',
+              'Industry advocacy on regulatory matters',
+              'Network access for complex cases',
+            ],
+          },
+          {
+            badge: 'BWO',
+            title: '100% Black Woman Owned',
+            what: 'Mekluc Freight is 100% owned by a Black South African woman — Anne-Marie Mandtoumbi, the founder and Managing Director.',
+            benefits: [
+              'A defining characteristic of who we are',
+              'Verifiable BWO status for procurement reporting',
+              'Genuine, not a balance-sheet construct',
+              'Aligned with SA\'s economic transformation imperative',
+            ],
+          },
+        ].map((acc, i) => (
+          <div class="reveal" style={`padding: clamp(2.5rem, 5vw, 4rem) 0; ${i > 0 ? 'border-top: 1px solid var(--c-line);' : ''}`}>
+            <div class="flex items-center gap-3 mb-5">
+              <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); background: rgba(176,122,79,0.08); padding: 6px 12px;">{acc.badge}</span>
+            </div>
+            <h2 style="font-family: var(--f-serif); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 400; line-height: 1.2; color: var(--c-ink); margin-bottom: 1.5rem;">{acc.title}</h2>
+
+            <div style="margin-bottom: 1.5rem;">
+              <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-mute); margin-bottom: 8px;">WHAT IT IS</p>
+              <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal);">{acc.what}</p>
+            </div>
+
+            <div>
+              <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-mute); margin-bottom: 12px;">WHAT IT MEANS FOR YOU</p>
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                {acc.benefits.map((b) => (
+                  <div style="display: flex; align-items: flex-start; gap: 12px;">
+                    <span style="font-family: var(--f-mono); font-size: 14px; color: var(--c-bordeaux); margin-top: 3px; flex-shrink: 0;">&check;</span>
+                    <span style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.5; color: var(--c-charcoal);">{b}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {acc.badge === 'AEO' && (
+              <p style="font-family: var(--f-sans); font-size: 0.8125rem; font-style: italic; color: var(--c-mute); margin-top: 1.5rem;">
+                Accreditation details available to clients on request.
+              </p>
+            )}
+          </div>
+        ))}
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Anti-fraud notice -->
+  <section style="background: var(--c-ink); background-image: radial-gradient(circle at 30% 70%, rgba(176,122,79,0.06) 0%, transparent 50%); padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="section">
+      <div class="max-w-3xl reveal">
+        <p class="eyebrow mb-4" style="color: var(--c-copper);">Anti-fraud notice</p>
+        <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(1.75rem, 3.5vw, 2.5rem); line-height: 1.15; color: var(--c-cream); margin-bottom: 1.5rem;">
+          Why we don't publish accreditation numbers
+        </h2>
+        <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-mute); margin-bottom: 1rem;">
+          We do not publish accreditation numbers, licence numbers, or certificate IDs on our website. This is a deliberate fraud prevention measure.
+        </p>
+        <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-mute); margin-bottom: 1.5rem;">
+          If you are a verified client or prospective client, we will provide accreditation details on request — by email to <a href={`mailto:${site.email}`} style="color: var(--c-cream); text-decoration: underline; text-underline-offset: 3px;">{site.email}</a> or by phone to <a href={`tel:${site.phoneRaw}`} style="color: var(--c-cream); text-decoration: underline; text-underline-offset: 3px;">{site.phone}</a>.
+        </p>
+        <div style="padding: 20px 24px; border: 1px solid rgba(176,122,79,0.2); margin-top: 2rem;">
+          <p style="font-family: var(--f-sans); font-size: 1.1875rem; font-weight: 600; color: var(--c-cream);">
+            We will never communicate banking detail changes by email. If you receive such a request, please call us immediately to verify.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band-bordeaux" style="padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="absolute right-[-60px] bottom-[-60px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 400px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10" style="text-align: center;">
+      <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; color: var(--c-cream); margin-bottom: 1rem;">
+        Work with a fully <em style="color: var(--c-copper); font-style: italic;">accredited</em> freight forwarder.
+      </h2>
+      <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: rgba(247,242,232,0.7); max-width: 48ch; margin: 0 auto 2.5rem;">
+        AEO accredited. Level 1 B-BBEE. SAAFF member. 100% Black Woman Owned. 19 years of compliant operations.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contact?quote=1" class="btn-white">Get a freight quote <span class="btn-arrow">&rarr;</span></a>
+        <a href={site.social.whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-outline-light">WhatsApp us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

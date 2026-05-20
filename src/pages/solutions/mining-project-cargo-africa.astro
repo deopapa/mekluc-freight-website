@@ -1,0 +1,323 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/sections/PageHeader.astro';
+import { site } from '@/lib/site';
+---
+
+<BaseLayout
+  title="Mining Cargo SADC | Project Freight DRC Zambia Zimbabwe"
+  description="Specialised mining equipment freight, chemical reagents and project cargo to DRC, Zambia, Zimbabwe. AEO-secured cross-border road freight. Get a project quote."
+>
+  <PageHeader
+    bgImage="/images/hero/hero-mining.webp"
+    label="Mining & Project Cargo"
+    title="Mining and project cargo, moved through the Copperbelt."
+    subtitle="DRC, Zambia, Zimbabwe — corridors we operate every week. Heavy equipment, chemical reagents, oversized loads, project pieces. Cross-border customs, escorted delivery, route surveys when required."
+    cta={{ text: 'Plan your mining shipment', href: '/contact?quote=1&solution=mining' }}
+    ctaSecondary={{ text: 'Track shipment', href: '/tracking' }}
+  />
+
+  <!-- THE SITUATION -->
+  <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 8rem);">
+    <div class="section">
+      <div class="max-w-3xl reveal">
+        <p style="font-family: var(--f-sans); font-size: clamp(1.0625rem, 1.5vw, 1.25rem); line-height: 1.65; color: var(--c-charcoal); margin-bottom: 1.5rem;">
+          Mining freight to Africa is not a logistics problem you solve with a rate sheet and a tracking number. It's a corridor problem. The cargo is heavy, sometimes oversized, often classified as dangerous goods. The routes cross multiple borders — each with its own customs authority, its own documentation requirements, its own capacity for delay.
+        </p>
+        <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); margin-bottom: 1.5rem;">
+          SARS export clearance at origin. Beit Bridge — one of the most congested border posts in southern Africa. Bulawayo transit. Chirundu crossing into Zambia. Then Kasumbalesa into the DRC, where customs complexity increases by an order of magnitude. And then the final mile — from Lubumbashi to the actual mine site, on roads that test both vehicle and driver.
+        </p>
+        <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); margin-bottom: 2rem;">
+          Mekluc moves mining and project cargo through this corridor every week. Not occasionally. Not as a side service. This is a core operation — with dedicated teams, established relationships at every border post, and the AEO accreditation that cuts days off transit times where it matters most.
+        </p>
+        <a href="/contact?quote=1&solution=mining" style="font-family: var(--f-sans); font-size: 15px; font-weight: 600; color: var(--c-bordeaux); display: inline-flex; align-items: center; gap: 8px;">
+          Talk to our mining cargo team <span class="btn-arrow" style="font-family: var(--f-mono); font-size: 14px;">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE SHIP — dark band -->
+  <section style="background: var(--c-ink); background-image: radial-gradient(circle at 30% 70%, rgba(176,122,79,0.06) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(128,0,32,0.04) 0%, transparent 50%); padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="section">
+      <div class="reveal" style="margin-bottom: 48px;">
+        <p class="eyebrow mb-4" style="color: var(--c-copper);">Cargo types</p>
+        <h2 class="section-title" style="color: var(--c-cream);">What we ship to <em>mining operations</em></h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 reveal">
+        {[
+          {
+            tag: 'EQUIPMENT',
+            title: 'Mining equipment',
+            items: ['Drilling rigs', 'Ball mills, crushers, screens', 'Conveyor systems', 'Heavy vehicles', 'Underground equipment', 'Excavators', 'Generators, compressors, pumps'],
+          },
+          {
+            tag: 'DGR',
+            title: 'Mining reagents & chemicals',
+            items: ['Sodium cyanide (Class 6.1)', 'Sulfuric acid (Class 8)', 'Frothing reagents, depressants, collectors', 'Fuel — diesel, ATF (Class 3)'],
+          },
+          {
+            tag: 'PROJECT',
+            title: 'Project pieces & oversized',
+            items: ['Modular processing plant sections', 'Mill liners', 'Tank sections', 'Steel structures', 'Mining infrastructure'],
+          },
+          {
+            tag: 'SPARES',
+            title: 'Spare parts & consumables',
+            items: ['Regular spare parts', 'Wear parts', 'Mining haul truck tyres', 'Lubricants, hydraulic oils'],
+          },
+        ].map((cat) => (
+          <div style="border: 1px solid rgba(176,122,79,0.15); padding: clamp(1.5rem, 3vw, 2.5rem);">
+            <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); display: block; margin-bottom: 1rem;">{cat.tag}</span>
+            <h3 style="font-family: var(--f-serif); font-size: 1.5rem; font-weight: 400; color: var(--c-cream); margin-bottom: 1.25rem;">{cat.title}</h3>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              {cat.items.map((item) => (
+                <div style="display: flex; align-items: flex-start; gap: 10px;">
+                  <span style="font-family: var(--f-mono); font-size: 14px; color: var(--c-copper); margin-top: 3px; flex-shrink: 0;">&check;</span>
+                  <span style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.5; color: var(--c-mute);">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CORRIDORS -->
+  <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 10rem);">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Network</p>
+          <h2 class="section-title">The 3 corridors we operate <em>every week</em></h2>
+        </div>
+        <p class="section-lead">Established customs relationships and pre-clearance procedures at every border post on each route.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-px reveal" style="background: var(--c-line-soft);">
+        {[
+          {
+            title: 'SA → DRC',
+            route: 'JNB → Beit Bridge → Bulawayo → Chirundu → Lusaka → Kasumbalesa → Lubumbashi',
+            transit: '12-18 days',
+            borders: 'Beit Bridge, Chirundu, Kasumbalesa',
+          },
+          {
+            title: 'SA → Zambia',
+            route: 'JNB → Beit Bridge → Chirundu → Lusaka / Copperbelt',
+            transit: '7-10 days',
+            borders: 'Beit Bridge, Chirundu',
+          },
+          {
+            title: 'SA → Zimbabwe',
+            route: 'JNB → Beit Bridge → Harare / Bulawayo',
+            transit: '3-5 days',
+            borders: 'Beit Bridge',
+          },
+        ].map((c) => (
+          <div style="background: var(--c-paper); padding: clamp(2rem, 4vw, 3rem);">
+            <h3 style="font-family: var(--f-serif); font-size: 1.75rem; font-weight: 400; color: var(--c-ink); margin-bottom: 1.25rem;">{c.title}</h3>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div>
+                <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.12em; color: var(--c-mute); display: block; margin-bottom: 4px;">ROUTE</span>
+                <p style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.5; color: var(--c-charcoal);">{c.route}</p>
+              </div>
+              <div class="flex gap-8">
+                <div>
+                  <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.12em; color: var(--c-mute); display: block; margin-bottom: 4px;">TRANSIT</span>
+                  <p style="font-family: var(--f-serif); font-size: 1.25rem; font-weight: 400; color: var(--c-bordeaux);">{c.transit}</p>
+                </div>
+                <div>
+                  <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.12em; color: var(--c-mute); display: block; margin-bottom: 4px;">BORDER POSTS</span>
+                  <p style="font-family: var(--f-sans); font-size: 1rem; color: var(--c-charcoal);">{c.borders}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIALISED CAPABILITIES — cream band -->
+  <section style="background: var(--c-cream); padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Capabilities</p>
+          <h2 class="section-title">Specialised <em>capabilities</em></h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px reveal" style="background: var(--c-line-soft);">
+        {[
+          {
+            num: '01',
+            title: 'Cross-border customs expertise',
+            desc: 'SARS export clearance, Zimra transit, ZRA import clearance, DGDA (DRC) customs — handled end-to-end with pre-lodged documentation and direct contacts at every border post.',
+          },
+          {
+            num: '02',
+            title: 'Oversize & abnormal load coordination',
+            desc: 'Route surveys, abnormal load permits (SA, Zimbabwe, Zambia), police and traffic escort, specialised trailers — low-bed, step-deck, extendable flatbed.',
+          },
+          {
+            num: '03',
+            title: 'DGR / chemical reagent handling',
+            desc: 'Sodium cyanide, sulfuric acid, fuel — ADR-equivalent road transport with trained drivers, placarded vehicles, emergency response documentation.',
+          },
+          {
+            num: '04',
+            title: 'Escort & high-value cargo security',
+            desc: 'Armed escort for high-value equipment. GPS tracking with geofence alerts. Convoy management for multi-truck project deliveries. Insurance coordination.',
+          },
+          {
+            num: '05',
+            title: 'Project cargo planning',
+            desc: 'Multi-month delivery schedules. Phased equipment mobilisation. Warehouse staging in Johannesburg or Lusaka. Consolidated customs entries. Dedicated project manager.',
+          },
+        ].map((cap) => (
+          <div style="background: var(--c-paper); padding: clamp(2rem, 4vw, 3rem);">
+            <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); display: block; margin-bottom: 1rem;">&mdash; {cap.num}</span>
+            <h3 style="font-family: var(--f-serif); font-size: 1.5rem; font-weight: 400; line-height: 1.2; color: var(--c-ink); margin-bottom: 0.75rem;">{cap.title}</h3>
+            <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal);">{cap.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- AEO ADVANTAGE -->
+  <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 10rem);">
+    <div class="section">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center reveal">
+        <div>
+          <p class="eyebrow mb-4">AEO advantage</p>
+          <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; color: var(--c-ink); margin-bottom: 1.5rem;">
+            4-6 days saved on <em style="color: var(--c-bordeaux); font-style: italic;">every delivery</em>
+          </h2>
+          <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); margin-bottom: 1rem;">
+            The difference between a 12-day and a 22-day delivery to Lubumbashi is almost entirely customs time. Export clearance at SARS. Border processing at Beit Bridge. Customs at Chirundu. And then the DRC side of Kasumbalesa — where standard clearance can take 3-5 days alone.
+          </p>
+          <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); margin-bottom: 1rem;">
+            AEO accreditation compresses this. Pre-lodged export declarations clear before the truck reaches the border. Priority routing at Beit Bridge. Established compliance history that customs officers at every post recognise.
+          </p>
+          <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal);">
+            For a mining operation waiting on a replacement crusher or a reagent delivery, those days translate directly into production uptime and revenue.
+          </p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 1px; background: var(--c-line-soft);">
+          {[
+            { label: 'Average time saved', value: '4-6 days' },
+            { label: 'Border clearance', value: '4-6 hrs' },
+            { label: 'Standard clearance', value: '24-48 hrs' },
+          ].map((stat) => (
+            <div style="background: var(--c-cream); padding: clamp(1.5rem, 3vw, 2rem); display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-family: var(--f-sans); font-size: 1.1875rem; color: var(--c-charcoal);">{stat.label}</span>
+              <span style="font-family: var(--f-serif); font-size: 1.5rem; font-weight: 400; color: var(--c-bordeaux);">{stat.value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY — dark band -->
+  <section style="background: var(--c-ink); background-image: radial-gradient(circle at 30% 70%, rgba(176,122,79,0.06) 0%, transparent 50%); padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="section">
+      <div class="max-w-3xl reveal">
+        <p class="eyebrow mb-4" style="color: var(--c-copper);">Case study</p>
+        <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(1.75rem, 3.5vw, 2.5rem); line-height: 1.15; color: var(--c-cream); margin-bottom: 1.5rem;">
+          Copperbelt processing plant expansion
+        </h2>
+        <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-mute); margin-bottom: 1rem;">
+          A major Copperbelt processing plant expansion required 27 truckloads of equipment and 3 truckloads of chemical reagents delivered from Johannesburg to a mine site outside Lubumbashi over an 18-month delivery window.
+        </p>
+        <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-mute); margin-bottom: 2rem;">
+          The project included oversized mill sections requiring abnormal load permits in three countries, sodium cyanide shipments requiring full DGR compliance at every border, and phased delivery scheduling aligned to the construction programme.
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4" style="margin-bottom: 2rem;">
+          {[
+            { label: 'Total shipments', value: '30' },
+            { label: 'Customs delays', value: '0' },
+            { label: 'On-budget', value: 'Yes' },
+            { label: 'Project status', value: 'Complete' },
+          ].map((stat) => (
+            <div style="text-align: center; padding: 20px; border: 1px solid rgba(176,122,79,0.15);">
+              <p style="font-family: var(--f-serif); font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 400; color: var(--c-copper); line-height: 1; margin-bottom: 6px;">{stat.value}</p>
+              <p style="font-family: var(--f-sans); font-size: 0.75rem; letter-spacing: 0.05em; color: var(--c-mute);">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+
+        <p style="font-family: var(--f-sans); font-size: 0.8125rem; font-style: italic; color: var(--c-mute);">
+          30 shipments, zero customs delays, project completed within budget.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="background: var(--c-cream); padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">FAQ</p>
+          <h2 class="section-title">Mining cargo <em>questions</em></h2>
+        </div>
+      </div>
+
+      <div class="max-w-3xl" style="display: flex; flex-direction: column; gap: 0;">
+        {[
+          {
+            q: 'How long does freight to the DRC take?',
+            a: '12-18 days from Johannesburg to Lubumbashi. Our AEO accreditation saves 2-4 days versus standard customs at Beit Bridge and Kasumbalesa.',
+          },
+          {
+            q: 'Can you handle oversized mining equipment?',
+            a: 'Yes — route surveys, abnormal load permits in SA, Zimbabwe and Zambia, police escort coordination, and specialised trailers including low-bed, step-deck and extendable flatbed.',
+          },
+          {
+            q: 'Do you transport dangerous goods?',
+            a: 'Yes — all DGR classes. Mining reagents (cyanide, sulfuric acid) and fuel are core cargo types for us. Trained drivers, placarded vehicles, full compliance.',
+          },
+          {
+            q: 'Can you manage a multi-month project delivery?',
+            a: 'This is one of our strengths. Dedicated project manager, phased delivery schedules aligned to construction, consolidated customs entries, warehouse staging in JNB or Lusaka.',
+          },
+          {
+            q: 'What happens if a truck is held at a border?',
+            a: 'Rare with AEO pre-clearance, but when it happens we have direct contacts at every major border post. Our operations team resolves issues in real time.',
+          },
+        ].map((faq, i) => (
+          <div class="reveal" style={`padding: clamp(1.5rem, 3vw, 2rem) 0; ${i > 0 ? 'border-top: 1px solid var(--c-line);' : ''}`}>
+            <h3 style="font-family: var(--f-serif); font-size: 1.25rem; font-weight: 400; color: var(--c-ink); margin-bottom: 0.75rem;">{faq.q}</h3>
+            <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); max-width: 60ch;">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band-bordeaux" style="padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="absolute right-[-60px] bottom-[-60px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 400px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10" style="text-align: center;">
+      <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; color: var(--c-cream); margin-bottom: 1rem;">
+        Moving cargo to a <em style="color: var(--c-copper); font-style: italic;">mine site?</em>
+      </h2>
+      <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: rgba(247,242,232,0.7); max-width: 48ch; margin: 0 auto 2.5rem;">
+        We know Beit Bridge, Chirundu and Kasumbalesa. Call us at <a href={`tel:${site.phoneRaw}`} style="color: var(--c-cream); text-decoration: underline; text-underline-offset: 3px;">{site.phone}</a>.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contact?quote=1&solution=mining" class="btn-white">Plan your mining shipment <span class="btn-arrow">&rarr;</span></a>
+        <a href={site.social.whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-outline-light">WhatsApp us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

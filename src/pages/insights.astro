@@ -1,0 +1,130 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/sections/PageHeader.astro';
+import { site } from '@/lib/site';
+---
+
+<BaseLayout
+  title="Mekluc Insights | Freight Forwarding South Africa Analysis"
+  description="Analysis, market trends and operational insights on freight forwarding, customs, and African trade corridors from Mekluc Freight's experts."
+>
+  <PageHeader
+    label="Mekluc Insights"
+    title="Analysis from South Africa's freight forwarders."
+    subtitle="Market trends, customs analysis, corridor reality, and operational insights on freight forwarding from South Africa to the rest of the world. Published quarterly. Written by people who clear customs for a living."
+    bg="paper"
+  />
+
+  <!-- FEATURED ARTICLE -->
+  <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 8rem);">
+    <div class="section">
+      <div class="reveal">
+        <a href="#" style="display: block; padding: clamp(2.5rem, 5vw, 4rem); background: var(--c-cream); border: 1px solid var(--c-line-soft); transition: border-color 0.2s ease;" class="group hover:border-[var(--c-bordeaux)]">
+          <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-bordeaux);">FEATURED</span>
+          <h3 style="font-family: var(--f-serif); font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 400; line-height: 1.15; color: var(--c-ink); margin: 1rem 0;">
+            What AEO accreditation actually means for your customs clearance time
+          </h3>
+          <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); max-width: 60ch; margin-bottom: 1.5rem;">
+            For most South African exporters and importers, AEO is just an acronym on a freight forwarder's website. But the customs clearance time difference between an AEO-accredited forwarder and a standard one is measured in days, not hours.
+          </p>
+          <span style="font-family: var(--f-sans); font-size: 15px; font-weight: 600; color: var(--c-bordeaux); display: inline-flex; align-items: center; gap: 8px;">
+            Read article <span class="btn-arrow" style="font-family: var(--f-mono); font-size: 14px;">&rarr;</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECENT ARTICLES -->
+  <section style="padding-bottom: clamp(5rem, 12vw, 10rem);">
+    <div class="section">
+      <div class="reveal" style="margin-bottom: 48px;">
+        <p class="eyebrow mb-4">Recent</p>
+        <h2 class="section-title">Recent <em>articles</em></h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px reveal" style="background: var(--c-line-soft);">
+        {[
+          {
+            tag: 'CORRIDORS',
+            title: 'Mining cargo to the DRC — 3 things SA exporters should plan before tendering',
+          },
+          {
+            tag: 'TRENDS',
+            title: 'SA export diversification post-US tariffs — the 5 corridors that matter in 2026',
+          },
+        ].map((article) => (
+          <a href="#" style="display: block; background: var(--c-paper); padding: clamp(2rem, 4vw, 3rem); transition: background 0.2s ease;" class="group hover:bg-[var(--c-cream)]">
+            <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-bordeaux);">{article.tag}</span>
+            <h3 style="font-family: var(--f-serif); font-size: 1.5rem; font-weight: 400; line-height: 1.25; color: var(--c-ink); margin: 0.75rem 0 1.25rem;">{article.title}</h3>
+            <span style="font-family: var(--f-sans); font-size: 15px; font-weight: 600; color: var(--c-bordeaux); display: inline-flex; align-items: center; gap: 8px;">
+              Read article <span class="btn-arrow" style="font-family: var(--f-mono); font-size: 14px;">&rarr;</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES — cream band -->
+  <section style="background: var(--c-cream); padding: clamp(3rem, 6vw, 5rem) 0;">
+    <div class="section">
+      <div class="reveal" style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px;">
+        <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-mute);">BROWSE</span>
+        {['All', 'Customs & AEO', 'Corridors', 'Industry Trends', 'Operations'].map((cat, i) => (
+          <a href="#" style={`font-family: var(--f-sans); font-size: 0.8125rem; font-weight: 600; padding: 8px 16px; border: 1px solid ${i === 0 ? 'var(--c-bordeaux)' : 'var(--c-line)'}; color: ${i === 0 ? 'var(--c-paper)' : 'var(--c-ink)'}; background: ${i === 0 ? 'var(--c-bordeaux)' : 'transparent'}; transition: all 0.2s ease;`}>
+            {cat}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 10rem);">
+    <div class="section">
+      <div class="max-w-2xl mx-auto reveal" style="text-align: center;">
+        <p class="eyebrow mb-4" style="justify-content: center;">Newsletter</p>
+        <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; color: var(--c-ink); margin-bottom: 1rem;">
+          Mekluc <em style="color: var(--c-bordeaux); font-style: italic;">Currents</em>
+        </h2>
+        <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); margin-bottom: 2rem;">
+          Quarterly analysis on SA freight forwarding, customs, and African trade corridors. No spam. Unsubscribe anytime.
+        </p>
+        <form style="display: flex; flex-direction: column; gap: 12px; max-width: 28rem; margin: 0 auto;" class="sm:flex-row">
+          <input
+            type="email"
+            name="newsletter-email"
+            placeholder="Your business email"
+            style="flex: 1; font-family: var(--f-sans); font-size: 1.1875rem; color: var(--c-ink); background: var(--c-ivory); border: 1px solid var(--c-line); padding: 14px 18px;"
+          />
+          <button type="submit" class="btn-primary" style="white-space: nowrap;">
+            Subscribe <span class="btn-arrow">&rarr;</span>
+          </button>
+        </form>
+        <p style="font-family: var(--f-sans); font-size: 0.8125rem; color: var(--c-mute); margin-top: 1rem;">
+          Subscription launching soon.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band-bordeaux" style="padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="absolute right-[-60px] bottom-[-60px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 400px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10" style="text-align: center;">
+      <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; color: var(--c-cream); margin-bottom: 1rem;">
+        For more, talk to <em style="color: var(--c-copper); font-style: italic;">our team.</em>
+      </h2>
+      <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: rgba(247,242,232,0.7); max-width: 48ch; margin: 0 auto 2.5rem;">
+        Quote delivered in less than 2h.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contact?quote=1" class="btn-white">Request a quote <span class="btn-arrow">&rarr;</span></a>
+        <a href={site.social.whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-outline-light">WhatsApp us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

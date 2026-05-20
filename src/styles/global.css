@@ -1,0 +1,334 @@
+/* ===== V3.4 FONTS — Patch typo-bubbles (charte v2.2 + sobriété Megafreight) ===== */
+/* Fraunces = titres H1/H2/H3 (Mekluc signature éditoriale) */
+/* IBM Plex Sans = body texte */
+/* IBM Plex Mono = eyebrows + labels uppercase */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,ital@9..144,400,0;9..144,500,0;9..144,600,0;9..144,700,0;9..144,400,1;9..144,500,1&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --c-bordeaux: #800020;
+    --c-bordeaux-deep: #5C0017;
+    --c-carmin: #D00038;
+    --c-ink: #1A1612;
+    --c-ink-soft: #3D3530;
+    --c-charcoal: #6B645E;
+    --c-mute: #9D958E;
+    --c-line: #D8CFC2;
+    --c-line-soft: #E8E0D2;
+    /* V3.5 PATCH — Background switch from cream to WHITE (Megafreight style) */
+    --c-cream: #F7F4EE;        /* Slightly off-white pour les bandes secondaires uniquement */
+    --c-cream-deep: #EFE7D4;   /* Conservé pour accents */
+    --c-paper: #FFFFFF;        /* Body background = WHITE pur */
+    --c-ivory: #FFFFFF;        /* Forms = WHITE */
+    --c-copper: #B07A4F;
+    --c-copper-deep: #7A5234;
+    --f-display: 'Fraunces', Georgia, serif;
+    --f-serif: 'Fraunces', Georgia, serif;
+    --f-sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+    --f-mono: 'IBM Plex Mono', 'SF Mono', Consolas, monospace;
+    --measure: 1200px;
+  }
+
+  html {
+    color: var(--c-ink);
+    font-family: var(--f-sans);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: #FFFFFF; /* V3.5 PATCH — WHITE pur, plus de cream/marron */
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    font-weight: 400;
+  }
+
+  /* V3.5 PATCH — Texture noise supprimée (background WHITE clean) */
+
+  /* V3.4 PATCH 1.1 — Titres Fraunces SemiBold sobres (charte v2.2 + sobriété Megafreight) */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--f-serif);
+    color: var(--c-ink);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  /* V3.4 PATCH 1.1: les em dans titres = italic Fraunces ANTHRACITE (PAS bordeaux) */
+  h1 em, h2 em, h3 em, h4 em {
+    font-family: var(--f-serif);
+    font-style: italic;
+    font-weight: 600;
+    color: inherit;
+    letter-spacing: -0.01em;
+  }
+
+  /* V3.4 PATCH 1.1: italiques bordeaux RÉSERVÉS aux pull-quotes uniquement */
+  p > em, blockquote em, .pull-quote em {
+    font-family: var(--f-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--c-bordeaux);
+  }
+
+  /* V3.1: CTA band with bg-cta image overlay — reusable across pages */
+  .cta-band-bordeaux {
+    background:
+      linear-gradient(rgba(128, 0, 32, 0.88), rgba(128, 0, 32, 0.92)),
+      url('/images/backgrounds/bg-cta.webp') center / cover no-repeat;
+    position: relative;
+    overflow: hidden;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  :focus-visible {
+    outline: 2px solid var(--c-bordeaux);
+    outline-offset: 2px;
+  }
+}
+
+/* ===== V3 BUTTONS — Pure CSS, no @apply chains ===== */
+
+.btn-base {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--f-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 13px 24px;
+  border: 1px solid;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-lg { padding: 18px 34px; font-size: 15px; }
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--f-sans); font-size: 14px; font-weight: 600;
+  letter-spacing: 0.02em; padding: 13px 24px;
+  border: 1px solid var(--c-bordeaux);
+  background: var(--c-bordeaux); color: var(--c-cream);
+  cursor: pointer; transition: all 0.2s ease; white-space: nowrap;
+}
+.btn-primary:hover {
+  background: var(--c-bordeaux-deep);
+  border-color: var(--c-bordeaux-deep);
+  transform: translateY(-1px);
+}
+
+.btn-ghost, .btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--f-sans); font-size: 14px; font-weight: 600;
+  letter-spacing: 0.02em; padding: 13px 24px;
+  border: 1px solid var(--c-line);
+  background: transparent; color: var(--c-ink);
+  cursor: pointer; transition: all 0.2s ease; white-space: nowrap;
+}
+.btn-ghost:hover, .btn-secondary:hover {
+  border-color: var(--c-bordeaux);
+  color: var(--c-bordeaux);
+}
+
+.btn-gold {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--f-sans); font-size: 14px; font-weight: 600;
+  letter-spacing: 0.02em; padding: 13px 24px;
+  border: 1px solid var(--c-copper);
+  background: var(--c-copper); color: var(--c-ink);
+  cursor: pointer; transition: all 0.2s ease; white-space: nowrap;
+}
+.btn-gold:hover {
+  background: var(--c-copper-deep);
+  border-color: var(--c-copper-deep);
+  color: var(--c-cream);
+  transform: translateY(-1px);
+}
+
+.btn-white {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--f-sans); font-size: 14px; font-weight: 600;
+  letter-spacing: 0.02em; padding: 13px 24px;
+  border: 1px solid var(--c-cream);
+  background: var(--c-cream); color: var(--c-bordeaux);
+  cursor: pointer; transition: all 0.2s ease; white-space: nowrap;
+}
+.btn-white:hover {
+  background: var(--c-copper);
+  border-color: var(--c-copper);
+  color: var(--c-ink);
+}
+
+.btn-outline-light {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--f-sans); font-size: 14px; font-weight: 600;
+  letter-spacing: 0.02em; padding: 13px 24px;
+  border: 1px solid rgba(247, 242, 232, 0.4);
+  background: transparent; color: var(--c-cream);
+  cursor: pointer; transition: all 0.2s ease; white-space: nowrap;
+}
+.btn-outline-light:hover {
+  border-color: var(--c-cream);
+  background: rgba(247, 242, 232, 0.08);
+}
+
+.btn-whatsapp {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--f-sans); font-size: 14px; font-weight: 600;
+  letter-spacing: 0.02em; padding: 13px 24px;
+  border: 1px solid #25D366;
+  background: #25D366; color: #fff;
+  cursor: pointer; transition: all 0.2s ease; white-space: nowrap;
+}
+.btn-whatsapp:hover {
+  background: #1DA851; border-color: #1DA851;
+  transform: translateY(-1px);
+}
+
+.btn-arrow {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  transition: transform 0.2s;
+}
+.btn-primary:hover .btn-arrow,
+.btn-ghost:hover .btn-arrow,
+.btn-gold:hover .btn-arrow,
+.btn-white:hover .btn-arrow,
+.btn-outline-light:hover .btn-arrow,
+.btn-whatsapp:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+@layer components {
+  /* ===== V3 EYEBROW ===== */
+  /* V3.4 PATCH 1.2 — Eyebrow simplifié (pas de ligne, copper 12px regular) */
+  .eyebrow {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--c-copper);
+    display: inline-block;
+    font-weight: 500;
+  }
+  /* V3.4 PATCH 1.2 — Petit trait copper supprimé */
+  /* .eyebrow::before removed for sobriety (megafreight reference) */
+
+  /* ===== V3 SECTION LAYOUT ===== */
+  .section {
+    @apply mx-auto;
+    padding-left: clamp(1.25rem, 4vw, 3rem);
+    padding-right: clamp(1.25rem, 4vw, 3rem);
+    max-width: var(--measure);
+  }
+
+  .section-padding {
+    padding-top: clamp(5rem, 12vw, 10rem);
+    padding-bottom: clamp(5rem, 12vw, 10rem);
+  }
+
+  .section-header {
+    display: grid;
+    gap: 60px;
+    margin-bottom: 64px;
+    grid-template-columns: 1fr 1.5fr;
+    align-items: end;
+  }
+
+  /* V3.4 PATCH 1.1 + 1.3 — Section title Fraunces SemiBold sans italique bordeaux + underline */
+  .section-title {
+    font-family: var(--f-serif);
+    font-weight: 600;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--c-ink);
+    margin-bottom: 24px; /* Space for underline below */
+    position: relative;
+    padding-bottom: 27px; /* Underline 3px + 24px gap */
+  }
+  /* PATCH 1.1: les em dans titres = italic anthracite, PAS bordeaux */
+  .section-title em {
+    font-family: var(--f-serif);
+    font-style: italic;
+    color: inherit;
+    font-weight: 600;
+  }
+  /* PATCH 1.3: soulignement bordeaux 64×3px sous chaque .section-title */
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 64px;
+    height: 3px;
+    background: var(--c-bordeaux);
+  }
+  /* PATCH 1.4: variante centrée (modifier .section-title-center) */
+  .section-title-center {
+    text-align: center;
+  }
+  .section-title-center::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .section-lead {
+    font-family: var(--f-sans);
+    font-size: clamp(1rem, 1.4vw, 1.1875rem);
+    line-height: 1.7;
+    color: var(--c-charcoal);
+    max-width: 65ch; /* PATCH 2.2 — max-w-prose */
+  }
+
+  /* ===== REVEAL ANIMATION ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== WHATSAPP FAB ===== */
+  .fab-whatsapp {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #25D366;
+    color: white;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+    transition: transform 0.2s ease;
+  }
+  .fab-whatsapp:hover {
+    transform: scale(1.08);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .section-header {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 48px;
+  }
+}

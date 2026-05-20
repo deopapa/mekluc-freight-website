@@ -1,0 +1,203 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/sections/PageHeader.astro';
+import { site } from '@/lib/site';
+---
+
+<BaseLayout
+  title="Sea Freight South Africa | Durban Cape Town | FCL LCL Breakbulk"
+  description="Sea freight from South Africa. FCL, LCL, breakbulk and project cargo from Durban, Cape Town, Port Elizabeth. AEO customs. NVOCC consolidation. Quote in less than 2h."
+>
+  <PageHeader
+    bgImage="/images/hero/hero-sea-freight.webp"
+    label="Sea Freight"
+    title="Sea freight from South Africa's ports to the world."
+    subtitle="FCL, LCL, breakbulk and project cargo from Durban, Cape Town, Port Elizabeth, East London and Coega. AEO-accredited customs. Booking-to-discharge visibility."
+    cta={{ text: 'Get a sea quote in less than 2h', href: '/contact?quote=1&mode=sea' }}
+    ctaSecondary={{ text: 'Track shipment', href: '/tracking' }}
+  />
+
+  <!-- WHY SEA — Stats Band Bordeaux -->
+  <section class="cta-band-bordeaux">
+    <div class="absolute right-[-80px] bottom-[-80px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 360px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10" style="padding-top: clamp(3rem, 6vw, 5rem); padding-bottom: clamp(3rem, 6vw, 5rem);">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 items-center">
+        <div class="md:col-span-1">
+          <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-copper); margin-bottom: 8px;">
+            <span style="display: inline-block; width: 24px; height: 1px; background: var(--c-copper); margin-right: 10px; vertical-align: middle;"></span>Why Sea with Mekluc
+          </p>
+          <p style="font-family: var(--f-display); font-size: clamp(20px, 2.2vw, 26px); font-weight: 700; line-height: 1.15; color: var(--c-cream); letter-spacing: -0.02em;">
+            Booking to <em>discharge.</em>
+          </p>
+        </div>
+        {[
+          { num: '5', unit: 'PORTS', label: 'SA coverage' },
+          { num: '2-4', unit: 'HRS', label: 'AEO discharge clearance' },
+          { num: '100', unit: '+ POL', label: 'Worldwide destinations' },
+        ].map((stat) => (
+          <div style="border-left: 1px solid rgba(247,242,232,0.18); padding-left: clamp(1rem, 2vw, 1.5rem);" class="flex flex-col gap-2">
+            <span style="font-family: var(--f-display); font-weight: 800; color: var(--c-cream); line-height: 1; letter-spacing: -0.03em; font-size: clamp(44px, 5.5vw, 60px);">
+              {stat.num}<small style="font-family: var(--f-serif); font-style: italic; font-weight: 500; color: var(--c-copper); font-size: 0.45em; margin-left: 6px;">{stat.unit}</small>
+            </span>
+            <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(247,242,232,0.7);">
+              {stat.label}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE OFFER — 5 cards -->
+  <section style="padding-top: clamp(5rem, 10vw, 8rem); padding-bottom: clamp(5rem, 10vw, 8rem);">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">What we offer</p>
+          <h2 style="font-family: var(--f-display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: var(--c-ink); max-width: 18ch;">
+            Sea freight services for <em>every cargo.</em>
+          </h2>
+        </div>
+        <p class="section-lead">Container, breakbulk, project, rolling cargo — we handle the full ocean spectrum from SA's main ports.</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-px reveal" style="background: var(--c-line-soft);">
+        {[
+          { tag: 'FCL', title: 'Full Container Load', desc: '20ft, 40ft, 40HC, reefer. Dedicated container, optimal for >15m³ shipments.' },
+          { tag: 'LCL', title: 'Less than Container', desc: 'NVOCC consolidation. Weekly groupage to major routes. Best for <15m³ cargo.' },
+          { tag: 'BREAKBULK', title: 'Breakbulk', desc: 'Bagged, bundled, palletised cargo loaded directly to vessel. For non-containerisable goods.' },
+          { tag: 'PROJECT', title: 'Project Cargo', desc: 'Oversized industrial equipment, mining machinery, energy infrastructure. Heavy-lift specialists.' },
+          { tag: 'RORO', title: 'Roll-on/Roll-off', desc: 'Wheeled cargo — vehicles, trucks, trailers, agricultural machinery. Drive on, drive off.' },
+        ].map((s) => (
+          <div style="background: var(--c-paper); padding: clamp(1.5rem, 3vw, 2rem);">
+            <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); margin-bottom: 10px;">{s.tag}</p>
+            <h3 style="font-family: var(--f-display); font-size: 22px; font-weight: 700; color: var(--c-ink); margin-bottom: 10px; letter-spacing: -0.02em; line-height: 1.2;">{s.title}</h3>
+            <p style="font-family: var(--f-sans); font-size: 19px; line-height: 1.55; color: var(--c-charcoal);">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS — Accordion (by route) -->
+  <section style="background: var(--c-cream); padding: clamp(5rem, 10vw, 8rem) 0;">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Routes</p>
+          <h2 style="font-family: var(--f-display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: var(--c-ink); max-width: 20ch;">
+            Major <em>trade lanes.</em>
+          </h2>
+        </div>
+      </div>
+
+      <div class="max-w-3xl reveal" style="display: flex; flex-direction: column; gap: 0;">
+        {[
+          { title: 'South Africa ↔ Asia (28-35 days)', desc: 'Durban/Cape Town to Singapore, Shanghai, Hong Kong, Mumbai, Tokyo. Major carriers: Maersk, MSC, CMA-CGM, Evergreen.', features: ['Weekly departures', 'FCL/LCL consolidation', 'Reefer slots available'] },
+          { title: 'South Africa ↔ Europe (18-25 days)', desc: 'Durban/Cape Town to Rotterdam, Hamburg, Antwerp, Felixstowe, Genoa. Transit via West African ports.', features: ['Direct services on Maersk/MSC', 'Citrus & wine peak season slots', 'AEO mutual recognition'] },
+          { title: 'South Africa ↔ Middle East (12-18 days)', desc: 'Durban/Cape Town to Jebel Ali, Dammam, Bahrain, Sohar, Aqaba. Growing trade lane.', features: ['UAE feeder services', 'SASO & ESMA compliance', 'Halal cargo handling'] },
+          { title: 'South Africa ↔ Americas (22-30 days)', desc: 'Cape Town/Durban to USEC (New York, Savannah), USWC (Los Angeles, Oakland), Latin America (Santos, Buenos Aires).', features: ['Tariff classification expertise', 'C-TPAT compatible handling', 'Citrus protocol management'] },
+          { title: 'Intra-Africa coastal (5-15 days)', desc: 'Durban/Cape Town to Dar es Salaam, Mombasa, Lagos, Tema, Maputo, Walvis Bay. AfCFTA opportunities.', features: ['Feeder vessel coordination', 'AfCFTA documentation', 'Regional consolidation'] },
+        ].map((sol) => (
+          <details class="accordion-item" style="border-top: 1px solid var(--c-line);">
+            <summary style="display: flex; justify-content: space-between; align-items: center; padding: clamp(1.5rem, 3vw, 2rem) 0; cursor: pointer; list-style: none;">
+              <h3 style="font-family: var(--f-display); font-size: clamp(17px, 1.8vw, 20px); font-weight: 600; color: var(--c-ink); letter-spacing: -0.01em;">{sol.title}</h3>
+              <span class="accordion-icon" style="font-family: var(--f-mono); font-size: 24px; color: var(--c-bordeaux); transition: transform 0.3s ease; flex-shrink: 0; margin-left: 16px;">+</span>
+            </summary>
+            <div style="padding: 0 0 clamp(1.5rem, 3vw, 2rem) 0;">
+              <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); max-width: 65ch; margin-bottom: 1rem;">{sol.desc}</p>
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                {sol.features.map((f) => (
+                  <div style="display: flex; align-items: flex-start; gap: 10px;">
+                    <span style="font-family: var(--f-mono); font-size: 14px; color: var(--c-bordeaux); margin-top: 3px; flex-shrink: 0;">&check;</span>
+                    <span style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.5; color: var(--c-charcoal);">{f}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </details>
+        ))}
+        <div style="border-top: 1px solid var(--c-line);"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES band -->
+  <section style="background: var(--c-ink); position: relative; overflow: hidden;">
+    <div class="section" style="padding-top: clamp(3rem, 6vw, 5rem); padding-bottom: clamp(3rem, 6vw, 5rem);">
+      <div class="reveal" style="margin-bottom: 32px; text-align: center;">
+        <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-copper); margin-bottom: 12px;">— Industries we ship by sea</p>
+        <h2 style="font-family: var(--f-display); font-size: clamp(24px, 3vw, 32px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: var(--c-cream); max-width: 28ch; margin: 0 auto;">
+          From <em>mining gear</em> to <em>citrus.</em>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-3 md:grid-cols-6 gap-px reveal" style="background: rgba(176,122,79,0.15);">
+        {['Mining', 'Automotive', 'Agriculture', 'Manufacturing', 'Retail & FMCG', 'Pharma'].map((ind) => (
+          <div style="background: var(--c-ink); padding: 1.25rem 0.75rem; text-align: center;">
+            <span style="font-family: var(--f-display); font-size: 19px; font-weight: 600; color: var(--c-cream);">{ind}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="padding-top: clamp(5rem, 10vw, 8rem); padding-bottom: clamp(5rem, 10vw, 8rem);">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">FAQ</p>
+          <h2 style="font-family: var(--f-display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: var(--c-ink);">
+            Common <em>questions.</em>
+          </h2>
+        </div>
+      </div>
+
+      <div class="max-w-3xl" style="display: flex; flex-direction: column; gap: 0;">
+        {[
+          { q: 'FCL vs LCL — which should I choose?', a: 'FCL when shipping >15m³ or sensitive cargo (exclusive container, faster). LCL when <15m³ and cost matters more than speed (you share container space with other shippers).' },
+          { q: 'How fast is sea freight customs clearance?', a: 'AEO accreditation means 2-4 hours from vessel discharge for pre-arrival cleared shipments. Standard processing: 24-48h. Major saving on demurrage and storage.' },
+          { q: 'Can you handle reefer (refrigerated) containers?', a: 'Yes. Reefer slots booked on all major lanes (Asia, Europe, USEC). PPECB protocol for fruit. GDP-compliant for pharma. Continuous temperature monitoring throughout transit.' },
+          { q: 'What about project cargo and breakbulk?', a: 'Yes — heavy lift, oversized, out-of-gauge handled. Includes pre-load survey, lashing plan, marine warranty surveyor coordination, and discharge supervision at destination.' },
+        ].map((faq) => (
+          <details class="accordion-item" style="border-top: 1px solid var(--c-line);">
+            <summary style="display: flex; justify-content: space-between; align-items: center; padding: clamp(1.25rem, 2.5vw, 1.75rem) 0; cursor: pointer; list-style: none;">
+              <h3 style="font-family: var(--f-display); font-size: 24px; font-weight: 600; color: var(--c-ink);">{faq.q}</h3>
+              <span class="accordion-icon" style="font-family: var(--f-mono); font-size: 24px; color: var(--c-bordeaux); transition: transform 0.3s ease; flex-shrink: 0; margin-left: 16px;">+</span>
+            </summary>
+            <p style="padding: 0 0 clamp(1.25rem, 2.5vw, 1.75rem) 0; font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); max-width: 65ch;">{faq.a}</p>
+          </details>
+        ))}
+        <div style="border-top: 1px solid var(--c-line);"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band-bordeaux" style="padding: clamp(5rem, 10vw, 8rem) 0;">
+    <div class="absolute right-[-60px] bottom-[-60px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 400px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10" style="text-align: center;">
+      <h2 style="font-family: var(--f-display); font-weight: 800; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; letter-spacing: -0.03em; color: var(--c-cream); margin-bottom: 1rem;">
+        Ready to ship by <em style="font-family: var(--f-serif); color: var(--c-copper); font-style: italic; font-weight: 500;">sea?</em>
+      </h2>
+      <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: rgba(247,242,232,0.75); max-width: 48ch; margin: 0 auto 2.5rem;">
+        Quote in less than 2h. Or call <a href={`tel:${site.phoneRaw}`} style="color: var(--c-cream); text-decoration: underline; text-underline-offset: 3px;">{site.phone}</a>.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contact?quote=1&mode=sea" class="btn-white">Get a sea quote <span class="btn-arrow">&rarr;</span></a>
+        <a href={site.social.whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-outline-light">WhatsApp us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  details summary::-webkit-details-marker { display: none; }
+  details[open] .accordion-icon { transform: rotate(45deg); }
+  details summary:hover h3 { color: var(--c-bordeaux); }
+</style>

@@ -1,0 +1,259 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/sections/PageHeader.astro';
+import { site } from '@/lib/site';
+---
+
+<BaseLayout
+  title="Specialised Cargo South Africa | DGR HUM AVI | IATA Certified"
+  description="Specialised cargo handling: dangerous goods (IATA DGR 1-9), human remains repatriation (HUM), live animals (AVI), CITES. IATA-certified handlers. AEO customs."
+>
+  <PageHeader
+    bgImage="/images/hero/hero-specialised.webp"
+    label="Specialised Cargo"
+    title="Cargo most forwarders won't handle. We do."
+    subtitle="Dangerous goods (DGR), human remains (HUM), live animals (AVI), CITES-protected species. IATA-certified handlers. AEO-secured customs. Full regulatory compliance from origin to destination."
+    cta={{ text: 'Talk to a specialist', href: '/contact?quote=1&mode=specialised' }}
+  />
+
+  <!-- WHY SPECIALISED — Stats Band Bordeaux -->
+  <section class="cta-band-bordeaux">
+    <div class="absolute right-[-80px] bottom-[-80px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 360px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10" style="padding-top: clamp(3rem, 6vw, 5rem); padding-bottom: clamp(3rem, 6vw, 5rem);">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 items-center">
+        <div class="md:col-span-1">
+          <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-copper); margin-bottom: 8px;">
+            <span style="display: inline-block; width: 24px; height: 1px; background: var(--c-copper); margin-right: 10px; vertical-align: middle;"></span>Why Specialised
+          </p>
+          <p style="font-family: var(--f-display); font-size: clamp(20px, 2.2vw, 26px); font-weight: 700; line-height: 1.15; color: var(--c-cream); letter-spacing: -0.02em;">
+            We handle the <em>complex.</em>
+          </p>
+        </div>
+        {[
+          { num: '9', unit: 'IATA', label: 'DGR classes certified' },
+          { num: 'AEO', unit: '', label: 'Customs-fast clearance' },
+          { num: '24', unit: '/7', label: 'HUM emergency response' },
+        ].map((stat) => (
+          <div style="border-left: 1px solid rgba(247,242,232,0.18); padding-left: clamp(1rem, 2vw, 1.5rem);" class="flex flex-col gap-2">
+            <span style="font-family: var(--f-display); font-weight: 800; color: var(--c-cream); line-height: 1; letter-spacing: -0.03em; font-size: clamp(44px, 5.5vw, 60px);">
+              {stat.num}<small style="font-family: var(--f-serif); font-style: italic; font-weight: 500; color: var(--c-copper); font-size: 0.45em; margin-left: 6px;">{stat.unit}</small>
+            </span>
+            <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(247,242,232,0.7);">
+              {stat.label}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE OFFER — 3 main cards (DGR, HUM, AVI) -->
+  <section style="padding-top: clamp(5rem, 10vw, 8rem); padding-bottom: clamp(5rem, 10vw, 8rem);">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">What we offer</p>
+          <h2 style="font-family: var(--f-display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: var(--c-ink); max-width: 24ch;">
+            Three categories that require <em>expertise.</em>
+          </h2>
+        </div>
+        <p class="section-lead">Each comes with strict regulations, certifications, and zero margin for error.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-px reveal" style="background: var(--c-line-soft);">
+        {[
+          {
+            tag: 'DGR',
+            title: 'Dangerous Goods',
+            desc: 'All 9 IATA classes — explosives, gases, flammables, oxidisers, toxics, infectious substances, radioactives, corrosives, miscellaneous. Lithium batteries, chemicals, fuel, paints, aerosols.',
+            features: ['IATA DGR-certified handlers', 'UN-approved packaging', 'Shipper declaration documentation', 'Recertified every 2 years'],
+          },
+          {
+            tag: 'HUM',
+            title: 'Human Remains',
+            desc: 'Repatriation services with full dignity and respect. Coordination with funeral directors, embassies, religious authorities. 24/7 emergency response across all major airlines.',
+            features: ['Embalmed remains & ashes', 'Documentation coordination', 'Embassy & consular liaison', '24/7 emergency dispatch'],
+          },
+          {
+            tag: 'AVI',
+            title: 'Live Animals & CITES',
+            desc: 'Live animal transport meeting IATA Live Animals Regulations. CITES permits for protected species. From bloodstock horses to exotic birds, primates to companion pets.',
+            features: ['IATA LAR-compliant crates', 'CITES permit application', 'Veterinary coordination', 'Origin/destination quarantine'],
+          },
+        ].map((s) => (
+          <div style="background: var(--c-paper); padding: clamp(2rem, 4vw, 2.5rem);">
+            <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); margin-bottom: 10px;">{s.tag}</p>
+            <h3 style="font-family: var(--f-display); font-size: 22px; font-weight: 700; color: var(--c-ink); margin-bottom: 12px; letter-spacing: -0.02em; line-height: 1.2;">{s.title}</h3>
+            <p style="font-family: var(--f-sans); font-size: 17px; line-height: 1.6; color: var(--c-charcoal); margin-bottom: 1rem;">{s.desc}</p>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              {s.features.map((f) => (
+                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                  <span style="font-family: var(--f-mono); font-size: 14px; color: var(--c-bordeaux); margin-top: 2px; flex-shrink: 0;">&check;</span>
+                  <span style="font-family: var(--f-sans); font-size: 19px; line-height: 1.45; color: var(--c-charcoal);">{f}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HUM + AVI FEATURE BAND — split-layout with image -->
+  <section style="background: var(--c-ink); position: relative; overflow: hidden;">
+    <div class="section" style="padding: 0;">
+      <div class="grid grid-cols-1 lg:grid-cols-2 items-stretch">
+        <!-- Image left -->
+        <div style="position: relative; min-height: clamp(320px, 50vw, 540px); overflow: hidden;">
+          <img
+            src="/images/sections/section-hum-avi.webp"
+            alt="Human remains repatriation and live animal transport — Mekluc Freight specialised services"
+            style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0;"
+            loading="lazy"
+          />
+          <!-- Subtle ink overlay for depth -->
+          <div class="absolute inset-0" style="background: linear-gradient(135deg, transparent 0%, rgba(28,28,28,0.2) 100%);"></div>
+        </div>
+
+        <!-- Text right -->
+        <div style="padding: clamp(3rem, 6vw, 5rem); display: flex; flex-direction: column; justify-content: center;">
+          <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-copper); margin-bottom: 16px;">
+            <span style="display: inline-block; width: 28px; height: 1px; background: var(--c-copper); margin-right: 14px; vertical-align: middle;"></span>HUM & AVI — Beyond Standard Freight
+          </p>
+          <h2 style="font-family: var(--f-display); font-weight: 800; font-size: clamp(1.75rem, 3.5vw, 2.75rem); line-height: 1.1; letter-spacing: -0.03em; color: var(--c-cream); margin-bottom: 1.5rem;">
+            When the cargo is <em>someone</em> — or <em>something</em> alive.
+          </h2>
+          <p style="font-family: var(--f-sans); font-size: 19px; line-height: 1.65; color: rgba(247,242,232,0.8); margin-bottom: 1.5rem; max-width: 50ch;">
+            HUM repatriation requires dignity, speed and full coordination with funeral directors, embassies and religious authorities. AVI shipments require IATA Live Animals Regulations compliance, veterinary protocols, and end-to-end welfare planning.
+          </p>
+          <p style="font-family: var(--f-sans); font-size: 19px; line-height: 1.65; color: rgba(247,242,232,0.8); margin-bottom: 2rem; max-width: 50ch;">
+            We've handled both for 19 years. Our team is on standby 24/7 for HUM emergencies, and our AVI handlers are trained on every IATA LAR container specification — from companion pets to bloodstock horses, exotic birds and CITES-protected species.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 1px; background: rgba(176,122,79,0.2); max-width: 28rem;">
+            <div style="background: var(--c-ink); padding: 16px 20px; display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--c-mute);">HUM dispatch</span>
+              <span style="font-family: var(--f-display); font-size: 24px; font-weight: 700; color: var(--c-copper);">24/7 Emergency</span>
+            </div>
+            <div style="background: var(--c-ink); padding: 16px 20px; display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--c-mute);">AVI compliance</span>
+              <span style="font-family: var(--f-display); font-size: 24px; font-weight: 700; color: var(--c-copper);">IATA LAR + CITES</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 2rem;">
+            <a href={`tel:${site.phoneRaw}`} style="font-family: var(--f-sans); font-size: 16px; font-weight: 600; color: var(--c-cream); display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border: 1px solid rgba(176,122,79,0.5); transition: all 0.2s ease;" class="hover:bg-[var(--c-bordeaux)] hover:border-[var(--c-bordeaux)]">
+              Call our 24/7 specialist line <span class="btn-arrow">&rarr;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DGR Classes — Accordion -->
+  <section style="background: var(--c-cream); padding: clamp(5rem, 10vw, 8rem) 0;">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">DGR Classes</p>
+          <h2 style="font-family: var(--f-display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: var(--c-ink); max-width: 22ch;">
+            All 9 dangerous goods <em>classes.</em>
+          </h2>
+        </div>
+      </div>
+
+      <div class="max-w-3xl reveal" style="display: flex; flex-direction: column; gap: 0;">
+        {[
+          { title: 'Class 1 · Explosives', desc: 'Fireworks, signal flares, mining detonators, ammunition. Specialised handling, segregation, controlled storage.', features: ['Pyrotechnics', 'Ammunition', 'Mining detonators'] },
+          { title: 'Class 2 · Gases', desc: 'Compressed, liquefied, dissolved gases. Industrial gases (CO2, oxygen), refrigerants, lighters, aerosols.', features: ['Compressed gases', 'Aerosols', 'Refrigerants'] },
+          { title: 'Class 3 · Flammable Liquids', desc: 'Diesel, petrol, ATF (aviation turbine fuel), paints, alcohols, perfumes. Major mining cargo category.', features: ['Diesel & petrol', 'ATF for mining', 'Paints & solvents'] },
+          { title: 'Class 4-5 · Flammable Solids & Oxidisers', desc: 'Matches, naphthalene, sulfur, ammonium nitrate, hydrogen peroxide, organic peroxides.', features: ['Mining oxidisers', 'Industrial peroxides', 'Self-reactive substances'] },
+          { title: 'Class 6 · Toxic & Infectious', desc: 'Pesticides, cyanide compounds (mining), medical waste, biological samples. Core mining reagent category.', features: ['Sodium cyanide for mining', 'Medical samples', 'Pesticides'] },
+          { title: 'Class 7 · Radioactive Materials', desc: 'Medical isotopes, industrial radiography sources, mining ore samples with natural radioactivity. Type A/B packaging.', features: ['Medical isotopes', 'Industrial gauges', 'Mining samples'] },
+          { title: 'Class 8 · Corrosives', desc: 'Sulfuric acid, sodium hydroxide, hydrochloric acid, batteries. Mining reagent staple.', features: ['Sulfuric acid for mining', 'Batteries (wet/dry)', 'Cleaning chemicals'] },
+          { title: 'Class 9 · Miscellaneous', desc: 'Lithium batteries (huge category), dry ice, magnetised materials, marine pollutants, GMOs.', features: ['Lithium-ion batteries', 'Dry ice', 'Marine pollutants'] },
+        ].map((sol) => (
+          <details class="accordion-item" style="border-top: 1px solid var(--c-line);">
+            <summary style="display: flex; justify-content: space-between; align-items: center; padding: clamp(1.5rem, 3vw, 2rem) 0; cursor: pointer; list-style: none;">
+              <h3 style="font-family: var(--f-display); font-size: clamp(17px, 1.8vw, 20px); font-weight: 600; color: var(--c-ink); letter-spacing: -0.01em;">{sol.title}</h3>
+              <span class="accordion-icon" style="font-family: var(--f-mono); font-size: 24px; color: var(--c-bordeaux); transition: transform 0.3s ease; flex-shrink: 0; margin-left: 16px;">+</span>
+            </summary>
+            <div style="padding: 0 0 clamp(1.5rem, 3vw, 2rem) 0;">
+              <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); max-width: 65ch; margin-bottom: 1rem;">{sol.desc}</p>
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                {sol.features.map((f) => (
+                  <div style="display: flex; align-items: flex-start; gap: 10px;">
+                    <span style="font-family: var(--f-mono); font-size: 14px; color: var(--c-bordeaux); margin-top: 3px; flex-shrink: 0;">&check;</span>
+                    <span style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.5; color: var(--c-charcoal);">{f}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </details>
+        ))}
+        <div style="border-top: 1px solid var(--c-line);"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="padding-top: clamp(5rem, 10vw, 8rem); padding-bottom: clamp(5rem, 10vw, 8rem);">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">FAQ</p>
+          <h2 style="font-family: var(--f-display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: var(--c-ink);">
+            Common <em>questions.</em>
+          </h2>
+        </div>
+      </div>
+
+      <div class="max-w-3xl" style="display: flex; flex-direction: column; gap: 0;">
+        {[
+          { q: 'Are your DGR handlers IATA certified?', a: 'Yes — all our DGR staff hold current IATA Dangerous Goods Regulations certification, recertified every 2 years per IATA mandate. Shipper declarations completed in-house.' },
+          { q: 'How fast can you arrange HUM repatriation?', a: '24/7 emergency response. Initial coordination within 2 hours of call. Typical repatriation processed within 48-72h depending on destination and documentation status.' },
+          { q: 'Can you transport live animals?', a: 'Yes — IATA Live Animals Regulations (LAR) compliant. Bloodstock horses, exotic birds, primates, companion pets, livestock. CITES permit applications handled for protected species.' },
+          { q: 'What CITES species do you handle?', a: 'All CITES Appendix I, II, III species with proper permits. Includes plants and animals — from succulents to rhino horn (for legal scientific transfer).' },
+          { q: 'What if my cargo combines multiple categories (e.g. DGR + perishable)?', a: 'Our specialists assess the combined regulatory requirements and design a compliant shipping solution. Multi-class shipments are routine for us.' },
+        ].map((faq) => (
+          <details class="accordion-item" style="border-top: 1px solid var(--c-line);">
+            <summary style="display: flex; justify-content: space-between; align-items: center; padding: clamp(1.25rem, 2.5vw, 1.75rem) 0; cursor: pointer; list-style: none;">
+              <h3 style="font-family: var(--f-display); font-size: 24px; font-weight: 600; color: var(--c-ink);">{faq.q}</h3>
+              <span class="accordion-icon" style="font-family: var(--f-mono); font-size: 24px; color: var(--c-bordeaux); transition: transform 0.3s ease; flex-shrink: 0; margin-left: 16px;">+</span>
+            </summary>
+            <p style="padding: 0 0 clamp(1.25rem, 2.5vw, 1.75rem) 0; font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); max-width: 65ch;">{faq.a}</p>
+          </details>
+        ))}
+        <div style="border-top: 1px solid var(--c-line);"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band-bordeaux" style="padding: clamp(5rem, 10vw, 8rem) 0;">
+    <div class="absolute right-[-60px] bottom-[-60px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 400px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10" style="text-align: center;">
+      <h2 style="font-family: var(--f-display); font-weight: 800; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; letter-spacing: -0.03em; color: var(--c-cream); margin-bottom: 1rem;">
+        Cargo that needs <em style="font-family: var(--f-serif); color: var(--c-copper); font-style: italic; font-weight: 500;">a specialist?</em>
+      </h2>
+      <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: rgba(247,242,232,0.75); max-width: 48ch; margin: 0 auto 2.5rem;">
+        Quote in less than 2h. Emergency line 24/7: <a href={`tel:${site.phoneRaw}`} style="color: var(--c-cream); text-decoration: underline; text-underline-offset: 3px;">{site.phone}</a>
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contact?quote=1&mode=specialised" class="btn-white">Talk to a specialist <span class="btn-arrow">&rarr;</span></a>
+        <a href={site.social.whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-outline-light">WhatsApp us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  details summary::-webkit-details-marker { display: none; }
+  details[open] .accordion-icon { transform: rotate(45deg); }
+  details summary:hover h3 { color: var(--c-bordeaux); }
+</style>

@@ -1,0 +1,266 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/sections/PageHeader.astro';
+import { site } from '@/lib/site';
+---
+
+<BaseLayout
+  title="Freight Services South Africa"
+  description="Discover Mekluc Freight's full multimodal services — air freight, sea freight, road freight, customs clearing, warehousing, insurance, packaging and specialised cargo."
+>
+  <PageHeader
+    bgImage="/images/hero/hero-cargo-insurance.webp"
+    label="Our Services"
+    title="Freight services — multimodal, certified, end-to-end."
+    subtitle="Air, sea, road and customs solutions for exporters, importers and project cargo — delivered by an AEO-accredited, Level 1 B-BBEE freight partner based in Johannesburg."
+    cta={{ text: 'Get a tailored quote in less than 2h', href: '/contact?quote=1' }}
+  />
+
+  <!-- SERVICES GRID -->
+  <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 10rem);">
+    <div class="section">
+      <!-- Section header — editorial split -->
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Core capabilities</p>
+          <h2 class="section-title">What we <em>move</em></h2>
+        </div>
+        <p class="section-lead">Eight specialist freight services under one roof. Every shipment covered by AEO-accredited customs clearance and a team that picks up the phone.</p>
+      </div>
+
+      <!-- Services grid — editorial magazine style -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px reveal" style="background: var(--c-line-soft);">
+        {[
+          {
+            num: '01',
+            tag: 'AIR',
+            title: 'Air Freight',
+            href: '/services/air-freight',
+            desc: 'Express, perishables, DGR, HUM, AVI — from OR Tambo, Cape Town and Durban to every continent.',
+            comingSoon: false,
+          },
+          {
+            num: '02',
+            tag: 'SEA',
+            title: 'Sea Freight',
+            href: '/services/sea-freight',
+            desc: 'FCL, LCL, breakbulk and project cargo from Durban, Cape Town, Port Elizabeth and Coega.',
+            comingSoon: false,
+          },
+          {
+            num: '03',
+            tag: 'ROAD',
+            title: 'Road Freight',
+            href: '/services/road-freight',
+            desc: 'Cross-border road freight from South Africa to DRC, Zambia, Zimbabwe, Mozambique and SACU.',
+            comingSoon: false,
+          },
+          {
+            num: '04',
+            tag: 'CUSTOMS',
+            title: 'Customs Clearing',
+            href: '/services/customs-clearing',
+            desc: 'SARS-licensed and AEO-accredited. Faster clearance, lower inspection risk, full compliance.',
+            comingSoon: false,
+          },
+          {
+            num: '05',
+            tag: 'WAREHOUSING',
+            title: 'Warehousing & Consolidation',
+            href: '/services/warehousing',
+            desc: 'Bonded warehousing in Sandton. AEO-secured facility. Pick & pack, cross-docking, cargo handling.',
+            comingSoon: false,
+          },
+          {
+            num: '06',
+            tag: 'INSURANCE',
+            title: 'Cargo Insurance',
+            href: '#',
+            desc: 'Marine all-risks cover through accredited South African insurers. Quoted with your freight in one document.',
+            comingSoon: true,
+          },
+          {
+            num: '07',
+            tag: 'PACKAGING',
+            title: 'Packaging & Crating',
+            href: '/services/packaging-crating',
+            desc: 'Export-ready ISPM-15 certified crating in Johannesburg. For sea freight, project cargo, fragile machinery.',
+            comingSoon: false,
+          },
+          {
+            num: '08',
+            tag: 'SPECIALISED',
+            title: 'Specialised Cargo',
+            href: '/services/specialised-cargo',
+            desc: 'HUM repatriation, DGR (IATA classes 1-9), AVI live animals. 24/7 emergency response.',
+            comingSoon: false,
+          },
+        ].map((s) => (
+          <a
+            href={s.href}
+            class={`group block bg-[var(--c-paper)] transition-all ${s.comingSoon ? 'opacity-70 cursor-default' : 'hover:bg-[var(--c-cream)]'}`}
+            style="padding: clamp(2rem, 4vw, 3rem);"
+          >
+            <div class="flex items-center gap-3 mb-5">
+              <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-mute);">&mdash; {s.num}</span>
+              <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-bordeaux);">{s.tag}</span>
+            </div>
+            <h3 style="font-family: var(--f-serif); font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 400; line-height: 1.15; color: var(--c-ink); margin-bottom: 0.75rem; transition: color 0.2s;" class={!s.comingSoon ? 'group-hover:text-[var(--c-bordeaux)]' : ''}>
+              {s.title}
+            </h3>
+            <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); margin-bottom: 1.5rem;">
+              {s.desc}
+            </p>
+            {s.comingSoon ? (
+              <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--c-copper);">Coming soon</span>
+            ) : (
+              <span style="font-family: var(--f-sans); font-size: 19px; font-weight: 600; color: var(--c-bordeaux); display: inline-flex; align-items: center; gap: 8px;">
+                Learn more <span class="btn-arrow" style="font-family: var(--f-mono); font-size: 14px;">&rarr;</span>
+              </span>
+            )}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST SIGNALS — V3 dark band -->
+  <section style="background: var(--c-ink); background-image: radial-gradient(circle at 30% 70%, rgba(176,122,79,0.06) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(128,0,32,0.04) 0%, transparent 50%); padding: clamp(5rem, 12vw, 10rem) 0;">
+    <div class="section">
+      <div class="section-header reveal" style="margin-bottom: 56px;">
+        <div>
+          <p class="eyebrow mb-4" style="color: var(--c-copper);">Why Mekluc</p>
+          <h2 class="section-title" style="color: var(--c-cream);">Why South African businesses <em>trust us</em></h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-0 reveal">
+        {[
+          {
+            stat: 'AEO',
+            label: 'SARS Accredited',
+            desc: 'Authorised Economic Operator — faster customs, lower inspection risk, priority processing.',
+          },
+          {
+            stat: `${site.yearsActive}`,
+            label: 'Years in freight',
+            desc: 'Deep expertise across all transport modes since 2007. Air, sea, road, customs, warehousing.',
+          },
+          {
+            stat: 'L1 BEE',
+            label: '100% Black Woman Owned',
+            desc: 'Maximum empowerment rating. 100% Black Woman Owned since day one. Procurement-ready.',
+          },
+        ].map((p, i) => (
+          <div style={`padding: 2.5rem; ${i > 0 ? 'border-left: 1px solid rgba(176,122,79,0.15);' : ''}`} class="hidden md:block">
+            <p style="font-family: var(--f-serif); font-size: clamp(2.5rem, 4vw, 3.25rem); font-weight: 400; color: var(--c-copper); line-height: 1; margin-bottom: 0.5rem;">
+              {p.stat}
+            </p>
+            <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--c-cream); margin-bottom: 1rem;">
+              {p.label}
+            </p>
+            <p style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.65; color: var(--c-mute);">
+              {p.desc}
+            </p>
+          </div>
+        ))}
+        {/* Mobile: stacked with top borders */}
+        {[
+          {
+            stat: 'AEO',
+            label: 'SARS Accredited',
+            desc: 'Authorised Economic Operator — faster customs, lower inspection risk, priority processing.',
+          },
+          {
+            stat: `${site.yearsActive}`,
+            label: 'Years in freight',
+            desc: 'Deep expertise across all transport modes since 2007. Air, sea, road, customs, warehousing.',
+          },
+          {
+            stat: 'L1 BEE',
+            label: '100% Black Woman Owned',
+            desc: 'Maximum empowerment rating. 100% Black Woman Owned since day one. Procurement-ready.',
+          },
+        ].map((p, i) => (
+          <div style={`padding: 2rem 0; ${i > 0 ? 'border-top: 1px solid rgba(176,122,79,0.15);' : ''}`} class="md:hidden">
+            <p style="font-family: var(--f-serif); font-size: 2.5rem; font-weight: 400; color: var(--c-copper); line-height: 1; margin-bottom: 0.5rem;">
+              {p.stat}
+            </p>
+            <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--c-cream); margin-bottom: 1rem;">
+              {p.label}
+            </p>
+            <p style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.65; color: var(--c-mute);">
+              {p.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CROSS-LINK TO SOLUTIONS -->
+  <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 10rem);">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Industry focus</p>
+          <h2 class="section-title">Looking for <em>industry-specific</em> solutions?</h2>
+        </div>
+        <p class="section-lead">We package our services into end-to-end solutions for the industries we know best.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
+        {[
+          {
+            title: 'SA Export Diversification',
+            href: '/solutions/sa-export-diversification',
+            sector: 'EXPORT',
+            desc: 'New markets for South African exporters after US tariff shifts — Asia, Middle East, India, AfCFTA.',
+          },
+          {
+            title: 'Mining & Project Cargo Africa',
+            href: '/solutions/mining-project-cargo-africa',
+            sector: 'MINING',
+            desc: 'Heavy equipment and chemical reagents to DRC, Zambia, Zimbabwe mining corridors.',
+          },
+          {
+            title: 'Pharma & Perishables GDP',
+            href: '/solutions/pharma-perishables-gdp',
+            sector: 'PHARMA',
+            desc: 'GDP-ready forwarding for pharmaceuticals, fresh produce, temperature-controlled cargo.',
+          },
+        ].map((sol) => (
+          <a href={sol.href} class="group block border border-[var(--c-line)] hover:border-[var(--c-bordeaux)] transition-all" style="padding: clamp(1.5rem, 3vw, 2.5rem);">
+            <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-bordeaux); display: block; margin-bottom: 1rem;">{sol.sector}</span>
+            <h3 style="font-family: var(--f-serif); font-size: 1.5rem; font-weight: 400; line-height: 1.2; color: var(--c-ink); margin-bottom: 0.75rem; transition: color 0.2s;" class="group-hover:text-[var(--c-bordeaux)]">
+              {sol.title}
+            </h3>
+            <p style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.65; color: var(--c-charcoal); margin-bottom: 1.5rem;">{sol.desc}</p>
+            <span style="font-family: var(--f-sans); font-size: 19px; font-weight: 600; color: var(--c-bordeaux); display: inline-flex; align-items: center; gap: 8px;">
+              View solution <span class="btn-arrow" style="font-family: var(--f-mono); font-size: 14px;">&rarr;</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND — V3 bordeaux -->
+  <section class="cta-band-bordeaux" style="padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="absolute right-[-60px] bottom-[-60px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 400px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10">
+      <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; color: var(--c-cream); margin-bottom: 1rem;">
+        Not sure which service <em style="color: var(--c-copper); font-style: italic;">fits?</em>
+      </h2>
+      <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: rgba(247,242,232,0.7); max-width: 52ch; margin-bottom: 2.5rem;">
+        Tell us what you're moving — we'll match it to the right service mix and quote it in 2 hours.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="/contact?quote=1" class="btn-white">Get a tailored quote in less than 2h <span class="btn-arrow">&rarr;</span></a>
+        <a href={site.social.whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-outline-light">WhatsApp us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

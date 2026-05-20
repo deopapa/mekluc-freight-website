@@ -1,0 +1,10 @@
+## Cloudflare Pages — Redirects (V3.5)
+## See https://developers.cloudflare.com/pages/configuration/redirects/
+
+## Force trailing-slash consistency
+## (Astro builds with trailing slashes by default — no rules needed for now)
+
+## Future legacy redirects (to add when migrating from old WordPress site):
+## /old-about/                /about/                          301
+## /services/freight/         /services/                       301
+## /our-team.html             /about#leadership                301

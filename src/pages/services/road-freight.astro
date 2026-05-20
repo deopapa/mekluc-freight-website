@@ -1,0 +1,210 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/sections/PageHeader.astro';
+import { site } from '@/lib/site';
+---
+
+<BaseLayout
+  title="Cross-Border Road Freight | SA to DRC Zambia Zimbabwe Mozambique"
+  description="Cross-border road freight from South Africa to DRC, Zambia, Zimbabwe, Mozambique. AEO customs at Beit Bridge, Chirundu, Kasumbalesa. Mining specialists. Quote in less than 2h."
+>
+  <PageHeader
+    bgImage="/images/hero/hero-road-freight.webp"
+    label="Road Freight"
+    title="Cross-border road freight from South Africa."
+    subtitle="DRC, Zambia, Zimbabwe, Mozambique, Namibia, Botswana — AEO-secured customs at every border post, mining and project cargo specialists."
+    cta={{ text: 'Get a road quote in less than 2h', href: '/contact?quote=1&mode=road' }}
+    ctaSecondary={{ text: 'Track shipment', href: '/tracking' }}
+  />
+
+  <!-- WHY ROAD — Stats Band Bordeaux -->
+  <section class="cta-band-bordeaux">
+    <div class="absolute right-[-80px] bottom-[-80px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 360px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10" style="padding-top: clamp(3rem, 6vw, 5rem); padding-bottom: clamp(3rem, 6vw, 5rem);">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 items-center">
+        <div class="md:col-span-1">
+          <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-copper); margin-bottom: 8px;">
+            <span style="display: inline-block; width: 24px; height: 1px; background: var(--c-copper); margin-right: 10px; vertical-align: middle;"></span>Why Road with Mekluc
+          </p>
+          <p style="font-family: var(--f-display); font-size: clamp(20px, 2.2vw, 26px); font-weight: 700; line-height: 1.15; color: var(--c-cream); letter-spacing: -0.02em;">
+            Borders <em>that flow.</em>
+          </p>
+        </div>
+        {[
+          { num: '4-6', unit: 'HRS', label: 'AEO border clearance' },
+          { num: '10', unit: '+', label: 'Border posts handled' },
+          { num: '2-4', unit: 'DAYS', label: 'Saved vs standard customs' },
+        ].map((stat) => (
+          <div style="border-left: 1px solid rgba(247,242,232,0.18); padding-left: clamp(1rem, 2vw, 1.5rem);" class="flex flex-col gap-2">
+            <span style="font-family: var(--f-display); font-weight: 800; color: var(--c-cream); line-height: 1; letter-spacing: -0.03em; font-size: clamp(44px, 5.5vw, 60px);">
+              {stat.num}<small style="font-family: var(--f-serif); font-style: italic; font-weight: 500; color: var(--c-copper); font-size: 0.45em; margin-left: 6px;">{stat.unit}</small>
+            </span>
+            <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(247,242,232,0.7);">
+              {stat.label}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE OFFER — 5 cards -->
+  <section style="padding-top: clamp(5rem, 10vw, 8rem); padding-bottom: clamp(5rem, 10vw, 8rem);">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">What we offer</p>
+          <h2 style="font-family: var(--f-display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: var(--c-ink); max-width: 20ch;">
+            From parcel to <em>project cargo.</em>
+          </h2>
+        </div>
+        <p class="section-lead">Five service tiers from standard freight to specialised dangerous goods and abnormal loads.</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-px reveal" style="background: var(--c-line-soft);">
+        {[
+          { tag: 'FTL', title: 'Full Truckload', desc: 'Dedicated truck, your cargo only. Refrigerated, dry van, tautliner, flatbed, low loader.' },
+          { tag: 'LTL', title: 'Less Than Truckload', desc: 'Weekly consolidations on SADC corridors. Cost-effective for <5 tons.' },
+          { tag: 'ABNORMAL', title: 'Oversized Loads', desc: 'Route surveys, abnormal load permits, police escort, specialised trailers.' },
+          { tag: 'DGR', title: 'Dangerous Goods', desc: 'Mining reagents, fuel, chemicals. Trained drivers, placarded vehicles.' },
+          { tag: 'COLD', title: 'Refrigerated', desc: 'Temperature-controlled trucks with continuous data loggers. Pharma, perishables.' },
+        ].map((s) => (
+          <div style="background: var(--c-paper); padding: clamp(1.5rem, 3vw, 2rem);">
+            <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); margin-bottom: 10px;">{s.tag}</p>
+            <h3 style="font-family: var(--f-display); font-size: 22px; font-weight: 700; color: var(--c-ink); margin-bottom: 10px; letter-spacing: -0.02em; line-height: 1.2;">{s.title}</h3>
+            <p style="font-family: var(--f-sans); font-size: 19px; line-height: 1.55; color: var(--c-charcoal);">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CORRIDORS — Accordion -->
+  <section style="background: var(--c-cream); padding: clamp(5rem, 10vw, 8rem) 0;">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Corridors</p>
+          <h2 style="font-family: var(--f-display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: var(--c-ink); max-width: 20ch;">
+            Routes we run <em>every week.</em>
+          </h2>
+        </div>
+      </div>
+
+      <div class="max-w-3xl reveal" style="display: flex; flex-direction: column; gap: 0;">
+        {[
+          { title: 'SA ↔ DRC (12-18 days)', desc: 'Johannesburg via Beit Bridge → Bulawayo → Chirundu → Lusaka → Kasumbalesa → Lubumbashi. Mining specialists.', features: ['3 border crossings handled', 'AEO at Beit Bridge & Kasumbalesa', 'Mine site delivery'] },
+          { title: 'SA ↔ Zambia (7-10 days)', desc: 'Johannesburg via Beit Bridge → Chirundu → Lusaka or Copperbelt. Mining reagents and equipment.', features: ['Weight bridge compliance', 'ZRA pre-clearance', 'DGR class 6 & 8 handled'] },
+          { title: 'SA ↔ Zimbabwe (3-5 days)', desc: 'Johannesburg via Beit Bridge → Harare or Bulawayo. General cargo, mining, agri.', features: ['Beit Bridge optimised', 'Import permit assistance', 'Currency-aware billing'] },
+          { title: 'SA ↔ Mozambique (2-4 days)', desc: 'Johannesburg via Lebombo / Komatipoort → Maputo or Beira. Coastal industry support.', features: ['Lebombo express lane', 'Mozambique port coordination', 'Bilingual paperwork'] },
+          { title: 'SA ↔ SACU (1-3 days)', desc: 'Botswana, Namibia, Lesotho, Eswatini — same-day to 3-day delivery within Southern African Customs Union.', features: ['SACU customs simplification', 'No duties between members', 'Multiple daily departures'] },
+        ].map((sol) => (
+          <details class="accordion-item" style="border-top: 1px solid var(--c-line);">
+            <summary style="display: flex; justify-content: space-between; align-items: center; padding: clamp(1.5rem, 3vw, 2rem) 0; cursor: pointer; list-style: none;">
+              <h3 style="font-family: var(--f-display); font-size: clamp(17px, 1.8vw, 20px); font-weight: 600; color: var(--c-ink); letter-spacing: -0.01em;">{sol.title}</h3>
+              <span class="accordion-icon" style="font-family: var(--f-mono); font-size: 24px; color: var(--c-bordeaux); transition: transform 0.3s ease; flex-shrink: 0; margin-left: 16px;">+</span>
+            </summary>
+            <div style="padding: 0 0 clamp(1.5rem, 3vw, 2rem) 0;">
+              <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); max-width: 65ch; margin-bottom: 1rem;">{sol.desc}</p>
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                {sol.features.map((f) => (
+                  <div style="display: flex; align-items: flex-start; gap: 10px;">
+                    <span style="font-family: var(--f-mono); font-size: 14px; color: var(--c-bordeaux); margin-top: 3px; flex-shrink: 0;">&check;</span>
+                    <span style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.5; color: var(--c-charcoal);">{f}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </details>
+        ))}
+        <div style="border-top: 1px solid var(--c-line);"></div>
+      </div>
+
+      <div class="reveal" style="margin-top: 32px; text-align: center;">
+        <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-mute); margin-bottom: 8px;">BORDER POSTS HANDLED</p>
+        <p style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.8; color: var(--c-charcoal); max-width: 60ch; margin: 0 auto;">
+          Beit Bridge · Chirundu · Kasumbalesa · Lebombo · Komatipoort · Skilpadshek · Groblersbrug · Vioolsdrift · Maseru Bridge · Ficksburg
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES band -->
+  <section style="background: var(--c-ink); position: relative; overflow: hidden;">
+    <div class="section" style="padding-top: clamp(3rem, 6vw, 5rem); padding-bottom: clamp(3rem, 6vw, 5rem);">
+      <div class="reveal" style="margin-bottom: 32px; text-align: center;">
+        <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-copper); margin-bottom: 12px;">— Industries we move</p>
+        <h2 style="font-family: var(--f-display); font-size: clamp(24px, 3vw, 32px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: var(--c-cream); max-width: 28ch; margin: 0 auto;">
+          From <em>Copperbelt</em> to <em>construction.</em>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-3 md:grid-cols-6 gap-px reveal" style="background: rgba(176,122,79,0.15);">
+        {['Mining', 'Agriculture', 'Manufacturing', 'Construction', 'Energy & Fuel', 'Retail & FMCG'].map((ind) => (
+          <div style="background: var(--c-ink); padding: 1.25rem 0.75rem; text-align: center;">
+            <span style="font-family: var(--f-display); font-size: 19px; font-weight: 600; color: var(--c-cream);">{ind}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="padding-top: clamp(5rem, 10vw, 8rem); padding-bottom: clamp(5rem, 10vw, 8rem);">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">FAQ</p>
+          <h2 style="font-family: var(--f-display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: var(--c-ink);">
+            Common <em>questions.</em>
+          </h2>
+        </div>
+      </div>
+
+      <div class="max-w-3xl" style="display: flex; flex-direction: column; gap: 0;">
+        {[
+          { q: 'How long does road freight to the DRC take?', a: '12-18 days from Johannesburg to Lubumbashi. Our AEO accreditation saves 2-4 days versus standard customs at Beit Bridge and Kasumbalesa.' },
+          { q: 'Can you handle oversized cargo by road?', a: 'Yes — route surveys, abnormal load permits in SA, Zimbabwe and Zambia, police escort coordination, and specialised trailers (low-bed, step-deck, extendable flatbed).' },
+          { q: 'Do you transport dangerous goods (DGR)?', a: 'Yes — all DGR classes. Mining reagents (cyanide, sulfuric acid) and fuel are core cargo for us. Trained drivers, placarded vehicles, full compliance.' },
+          { q: 'What if my truck is held at a border?', a: 'Rare with AEO pre-clearance. When it happens we have direct contacts at every major border post and resolve in real time.' },
+        ].map((faq) => (
+          <details class="accordion-item" style="border-top: 1px solid var(--c-line);">
+            <summary style="display: flex; justify-content: space-between; align-items: center; padding: clamp(1.25rem, 2.5vw, 1.75rem) 0; cursor: pointer; list-style: none;">
+              <h3 style="font-family: var(--f-display); font-size: 24px; font-weight: 600; color: var(--c-ink);">{faq.q}</h3>
+              <span class="accordion-icon" style="font-family: var(--f-mono); font-size: 24px; color: var(--c-bordeaux); transition: transform 0.3s ease; flex-shrink: 0; margin-left: 16px;">+</span>
+            </summary>
+            <p style="padding: 0 0 clamp(1.25rem, 2.5vw, 1.75rem) 0; font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); max-width: 65ch;">{faq.a}</p>
+          </details>
+        ))}
+        <div style="border-top: 1px solid var(--c-line);"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band-bordeaux" style="padding: clamp(5rem, 10vw, 8rem) 0;">
+    <div class="absolute right-[-60px] bottom-[-60px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 400px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10" style="text-align: center;">
+      <h2 style="font-family: var(--f-display); font-weight: 800; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; letter-spacing: -0.03em; color: var(--c-cream); margin-bottom: 1rem;">
+        Ready to ship by <em style="font-family: var(--f-serif); color: var(--c-copper); font-style: italic; font-weight: 500;">road?</em>
+      </h2>
+      <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: rgba(247,242,232,0.75); max-width: 48ch; margin: 0 auto 2.5rem;">
+        Quote in less than 2h. Or call <a href={`tel:${site.phoneRaw}`} style="color: var(--c-cream); text-decoration: underline; text-underline-offset: 3px;">{site.phone}</a>.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contact?quote=1&mode=road" class="btn-white">Get a road quote <span class="btn-arrow">&rarr;</span></a>
+        <a href={site.social.whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-outline-light">WhatsApp us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  details summary::-webkit-details-marker { display: none; }
+  details[open] .accordion-icon { transform: rotate(45deg); }
+  details summary:hover h3 { color: var(--c-bordeaux); }
+</style>

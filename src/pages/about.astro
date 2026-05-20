@@ -1,0 +1,540 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/sections/PageHeader.astro';
+import SectionTOC from '@/components/layout/SectionTOC.astro';
+import { site } from '@/lib/site';
+
+// V3.4 PATCH 3 — Sticky TOC items for /about page
+const tocItems = [
+  { id: 'hero', label: 'About Mekluc' },
+  { id: 'our-story', label: 'Our Story' },
+  { id: 'leadership', label: 'Meet the Founder' },
+  { id: 'values', label: 'Our Values' },
+  { id: 'credentials', label: 'Our Accreditations' },
+  { id: 'network', label: 'Where We Operate' },
+  { id: 'testimonials', label: 'Testimonials' },
+  { id: 'roadmap', label: 'Roadmap' },
+  { id: 'cta', label: 'Get in touch' },
+];
+---
+
+<BaseLayout
+  title="About Mekluc Freight | Black Woman Owned · AEO · Level 1 BEE Freight Forwarder"
+  description="Founded in 2007 by Anne-Marie Mandtoumbi, Mekluc Freight is a 100% Black Woman Owned freight forwarder accredited by SARS as AEO and rated Level 1 B-BBEE. 19 years of African logistics expertise."
+>
+  <PageHeader
+    bgImage="/images/hero/hero-about-team.webp"
+    label="About Mekluc Freight"
+    title="Built in Africa. Trusted across continents."
+    subtitle="Mekluc Freight is a 19-year-old, 100% Black Woman Owned freight forwarder headquartered in Sandton, Johannesburg. AEO-accredited by SARS and rated Level 1 B-BBEE."
+    cta={{ text: 'Get a quote in less than 2h', href: '/contact?quote=1' }}
+    ctaSecondary={{ text: 'Our services', href: '/services' }}
+  />
+  <span id="hero" class="anchor-offset"></span>
+
+  <!-- V3.4 PATCH 3 — Sticky TOC for /about (fixed left, desktop only) -->
+  <div class="toc-wrapper">
+    <SectionTOC items={tocItems} />
+  </div>
+
+  <!-- OUR STORY — editorial long-form -->
+  <span id="our-story" class="anchor-offset"></span>
+  <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 10rem);">
+    <div class="section">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 reveal">
+        <!-- Left column: eyebrow + title -->
+        <div class="lg:col-span-4">
+          <p class="eyebrow mb-4">Our story</p>
+          <h2 class="section-title">Nineteen years of <em>moving freight</em></h2>
+        </div>
+        <!-- Right column: story text -->
+        <div class="lg:col-span-8" style="border-left: 1px solid var(--c-line); padding-left: clamp(1.5rem, 3vw, 3rem);">
+          <p style="font-family: var(--f-sans); font-size: clamp(1rem, 1.4vw, 1.125rem); line-height: 1.65; color: var(--c-charcoal); margin-bottom: 1.5rem;">
+            In 2007, Anne-Marie Mandtoumbi opened a freight forwarding office in Johannesburg with one conviction: that South African exporters and importers deserved a freight partner who treated their cargo like their own — not like a line item on a quote.
+          </p>
+          <p style="font-family: var(--f-serif); font-size: 1.25rem; font-style: italic; color: var(--c-bordeaux); line-height: 1.4; margin-bottom: 1.5rem;">
+            Nineteen years later, that conviction hasn't changed.
+          </p>
+          <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); margin-bottom: 1.5rem;">
+            What has changed is the breadth of what we handle. What started as customs clearing and consolidation grew into multimodal freight forwarding — air, sea, road and bonded warehousing — serving mining operations in the Copperbelt, pharmaceutical exporters from Gauteng, citrus farmers in the Western Cape, and industrial component suppliers from across the country.
+          </p>
+          <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal);">
+            Today, Mekluc is an Authorised Economic Operator accredited by SARS (a status held by less than 1% of South African forwarders) and a Level 1 B-BBEE contributor. But the people picking up the phone when your container is stuck at Beit Bridge are the same people who started this company — focused, accountable, and reachable when it matters.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP INTRO BAND -->
+  <span id="leadership" class="anchor-offset"></span>
+  <section style="position: relative; overflow: hidden; background: var(--c-ink);">
+    <div class="grid grid-cols-1 lg:grid-cols-2 items-stretch" style="min-height: clamp(420px, 55vw, 620px);">
+
+      <!-- LEFT — Text on ink dark background -->
+      <div style="display: flex; flex-direction: column; justify-content: center; padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 5rem); position: relative; background: var(--c-ink);">
+        <!-- Subtle bordeaux radial accent -->
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 70%, rgba(128,0,32,0.18) 0%, transparent 60%); pointer-events: none;"></div>
+
+        <div class="reveal" style="position: relative; z-index: 1;">
+          <!-- BIG eyebrow LEADERSHIP -->
+          <p style="font-family: var(--f-mono); font-size: clamp(16px, 1.4vw, 19px); font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--c-copper); margin-bottom: 32px;">
+            <span style="display: inline-block; width: 56px; height: 3px; background: var(--c-copper); margin-right: 22px; vertical-align: middle;"></span>Leadership
+          </p>
+
+          <!-- TITLE — clean Inter Display bold, much bigger -->
+          <h2 style="font-family: var(--f-display); font-weight: 800; font-size: clamp(2.75rem, 6vw, 5rem); line-height: 0.98; letter-spacing: -0.045em; color: var(--c-cream); margin-bottom: 2rem;">
+            Run on first-name terms.
+          </h2>
+
+          <p style="font-family: var(--f-sans); font-size: clamp(1.1875rem, 1.7vw, 1.4375rem); line-height: 1.55; color: rgba(247,242,232,0.92); max-width: 46ch; margin-bottom: 2.75rem; font-weight: 400;">
+            A family business where the founder still answers the phone and signs off every operational decision. No layers between you and the people who move your cargo.
+          </p>
+
+          <a href="#team" class="btn-white">
+            Meet the founder <span class="btn-arrow">&rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT — Anne-Marie portrait fully visible -->
+      <div style="position: relative; overflow: hidden; min-height: clamp(380px, 50vw, 620px); background: var(--c-ink);">
+        <img
+          src="/images/hero/hero-about-leadership.webp"
+          alt="Anne-Marie Mandtoumbi, Founder and Managing Director of Mekluc Freight"
+          style="width: 100%; height: 100%; object-fit: cover; object-position: center top;"
+          loading="lazy"
+        />
+        <!-- Light gradient overlay on left edge for smooth transition with text panel -->
+        <div class="absolute inset-0 lg:block hidden" style="background: linear-gradient(90deg, var(--c-ink) 0%, transparent 18%);"></div>
+        <!-- Bordeaux accent stripe at bottom -->
+        <div class="absolute bottom-0 left-0 right-0" style="height: 6px; background: var(--c-bordeaux);"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MEET OUR LEADERSHIP -->
+  <section id="team" style="background: var(--c-cream); padding: clamp(5rem, 12vw, 10rem) 0;">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Leadership</p>
+          <h2 class="section-title">Meet the <em>founder</em></h2>
+        </div>
+        <p class="section-lead">A founder-led business run on first-name terms with clients. Decisions happen fast — because the person making them is the person who started Mekluc in 2007.</p>
+      </div>
+
+      <!-- ANNE-MARIE — Editorial split-layout: portrait left + presentation + vision right -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start reveal">
+        <!-- Portrait — left column 5/12 -->
+        <div class="lg:col-span-5">
+          <div style="position: relative; aspect-ratio: 4/5; overflow: hidden; background: var(--c-cream-deep);">
+            <img
+              src="/images/hero/hero-about-leadership.webp"
+              alt="Anne-Marie Mandtoumbi, Founder and Managing Director of Mekluc Freight"
+              style="width: 100%; height: 100%; object-fit: cover; object-position: center top;"
+              loading="lazy"
+            />
+            <!-- Bordeaux corner accent -->
+            <div style="position: absolute; bottom: 0; left: 0; padding: 16px 20px; background: var(--c-bordeaux); color: var(--c-cream);">
+              <p style="font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 4px; opacity: 0.85;">Founder · MD</p>
+              <p style="font-family: var(--f-display); font-size: 19px; font-weight: 700; letter-spacing: -0.01em;">Anne-Marie Mandtoumbi</p>
+            </div>
+          </div>
+          <!-- Quote signature below portrait -->
+          <p style="font-family: var(--f-serif); font-style: italic; font-size: 1.1875rem; line-height: 1.5; color: var(--c-bordeaux); margin-top: 1.5rem; max-width: 32ch;">
+            "Cargo isn't a line item. It's someone's business depending on it arriving."
+          </p>
+        </div>
+
+        <!-- Presentation + vision — right column 7/12 -->
+        <div class="lg:col-span-7">
+          <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.2em; color: var(--c-bordeaux); text-transform: uppercase; display: block; margin-bottom: 16px;">
+            <span style="display: inline-block; width: 24px; height: 1px; background: var(--c-bordeaux); margin-right: 12px; vertical-align: middle;"></span>The Founder
+          </span>
+
+          <h3 style="font-family: var(--f-display); font-size: clamp(28px, 3.5vw, 38px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: var(--c-ink); margin-bottom: 1.5rem;">
+            Anne-Marie <em>Mandtoumbi.</em>
+          </h3>
+
+          <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); margin-bottom: 1.25rem; font-weight: 500;">
+            Founder and Managing Director of Mekluc Freight. South African entrepreneur. 19 years moving cargo across Africa and the world.
+          </p>
+
+          <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); margin-bottom: 1rem;">
+            Anne-Marie has led Mekluc through three structural shifts — from customs broker to full-service multimodal forwarder, from a regional player to a continental operator, and from a privately held small business to an AEO-accredited Level 1 B-BBEE trade partner.
+          </p>
+
+          <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); margin-bottom: 2rem;">
+            A hands-on Managing Director by choice, she is known by clients by first name, picks up the phone when it rings, and signs off every operational decision that matters. No layers. No call centre. Just the founder, accountable.
+          </p>
+
+          <!-- VISION block -->
+          <div style="border-left: 3px solid var(--c-bordeaux); padding: 16px 0 16px 24px; margin-top: 2.5rem;">
+            <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.2em; color: var(--c-copper); text-transform: uppercase; margin-bottom: 12px;">
+              Her Vision
+            </p>
+            <p style="font-family: var(--f-display); font-size: clamp(20px, 2vw, 24px); font-weight: 600; line-height: 1.3; letter-spacing: -0.015em; color: var(--c-ink); margin-bottom: 1rem;">
+              To make Mekluc the most <em>trusted</em> independent freight forwarder between South Africa and the rest of Africa by 2028.
+            </p>
+            <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal);">
+              Not the biggest. Not the cheapest. The one clients return to because their cargo arrived intact, on time, with paperwork that holds up — every single time.
+            </p>
+          </div>
+
+          <!-- Credentials chips -->
+          <div class="flex flex-wrap gap-2" style="margin-top: 2rem;">
+            {[
+              '100% Black Woman Owned',
+              'Founded Mekluc · 2007',
+              'AEO accredited partner',
+              'Level 1 B-BBEE',
+              'SAAFF member',
+            ].map((chip) => (
+              <span style="font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--c-charcoal); padding: 8px 14px; background: var(--c-paper); border: 1px solid var(--c-line);">
+                {chip}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE STAND FOR -->
+  <span id="values" class="anchor-offset"></span>
+  <section style="padding: clamp(5rem, 12vw, 10rem) 0;">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Our values</p>
+          <h2 class="section-title">What we <em>stand for</em></h2>
+        </div>
+        <p class="section-lead">Four values, articulated by Anne-Marie when Mekluc was founded — and tested every day since.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px reveal" style="background: var(--c-line-soft);">
+        {[
+          {
+            title: 'Trust',
+            desc: 'We have spent 19 years earning the trust of South African exporters and importers. That trust is built on small things: returning a call within the hour, flagging a delay before the client notices, and never overpromising on a transit time.',
+          },
+          {
+            title: 'Compliance',
+            desc: 'We hold every licence and certificate that South African and international law requires to move freight legitimately. We don\'t cut corners on documentation. Because the cost of getting it wrong always exceeds the cost of getting it right.',
+          },
+          {
+            title: 'Agility',
+            desc: 'We are large enough to handle multimodal project cargo across continents, and small enough to give every client the founder\'s number. When the market shifts, we shift with it.',
+          },
+          {
+            title: 'Partnership',
+            desc: 'We view ourselves as a member of your logistics team — one who specialises in customs, carrier relationships, and the operational detail that separates an on-time delivery from a delayed one.',
+          },
+        ].map((v) => (
+          <div style="background: var(--c-paper); padding: clamp(2rem, 4vw, 3rem);">
+            <h3 style="font-family: var(--f-serif); font-size: 1.625rem; font-weight: 500; color: var(--c-ink); line-height: 1.2; margin-bottom: 1rem;">{v.title}</h3>
+            <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal);">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== ASSOCIATIONS & PARTNERS — Megafreight-style logo bar ============== -->
+  <!-- V3.5 PATCH — Logos accréditations style megafreight.co.za/our-story -->
+  <section style="background: #FFFFFF; padding: clamp(4rem, 8vw, 6rem) 0; border-top: 1px solid var(--c-line-soft); border-bottom: 1px solid var(--c-line-soft);">
+    <div class="section">
+      <div class="reveal" style="text-align: center; margin-bottom: 56px;">
+        <h2 style="font-family: var(--f-sans); font-size: clamp(1.5rem, 2.5vw, 2.25rem); font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; color: var(--c-ink); margin: 0; position: relative; display: inline-block; padding-bottom: 20px;">
+          Associations &amp; Partners
+          <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 2px; background: var(--c-bordeaux);"></span>
+        </h2>
+      </div>
+
+      <!-- Logo row — 5 accreditations -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 md:gap-12 items-center reveal" style="max-width: 1100px; margin: 0 auto;">
+
+        <!-- AEO (logo réel) -->
+        <a href="/accreditations" class="logo-tile" aria-label="AEO Accredited">
+          <img src="/images/logos/aeo-official.svg" alt="AEO — Authorised Economic Operator" style="max-height: 90px; max-width: 100%; width: auto; margin: 0 auto; display: block;" loading="lazy" />
+        </a>
+
+        <!-- SARS (text badge, no official logo on hand) -->
+        <a href="/accreditations" class="logo-tile" aria-label="SARS Customs Clearing Agent">
+          <div style="text-align: center;">
+            <p style="font-family: var(--f-sans); font-weight: 800; font-size: 32px; color: #003D7A; letter-spacing: 0.02em; line-height: 1;">SARS</p>
+            <p style="font-family: var(--f-sans); font-size: 10px; letter-spacing: 0.15em; color: var(--c-charcoal); text-transform: uppercase; margin-top: 6px;">Customs Agent</p>
+          </div>
+        </a>
+
+        <!-- SAAFF (text badge — replace with official SVG when available) -->
+        <a href="/accreditations" class="logo-tile" aria-label="SAAFF Member">
+          <div style="text-align: center;">
+            <p style="font-family: var(--f-sans); font-weight: 800; font-size: 32px; color: #1B5E9E; letter-spacing: 0.04em; line-height: 1;">SAAFF</p>
+            <p style="font-family: var(--f-sans); font-size: 10px; letter-spacing: 0.15em; color: var(--c-charcoal); text-transform: uppercase; margin-top: 6px;">Member</p>
+          </div>
+        </a>
+
+        <!-- Level 1 B-BBEE -->
+        <a href="/accreditations" class="logo-tile" aria-label="Level 1 B-BBEE Contributor">
+          <div style="text-align: center;">
+            <p style="font-family: var(--f-sans); font-weight: 800; font-size: 28px; color: var(--c-bordeaux); letter-spacing: 0.01em; line-height: 1;">LEVEL 1</p>
+            <p style="font-family: var(--f-sans); font-weight: 700; font-size: 14px; color: var(--c-ink); letter-spacing: 0.05em; margin-top: 4px;">B-BBEE</p>
+            <p style="font-family: var(--f-sans); font-size: 10px; letter-spacing: 0.15em; color: var(--c-charcoal); text-transform: uppercase; margin-top: 4px;">Contributor</p>
+          </div>
+        </a>
+
+        <!-- 100% Black Woman Owned -->
+        <a href="/accreditations" class="logo-tile" aria-label="100% Black Woman Owned">
+          <div style="text-align: center;">
+            <p style="font-family: var(--f-sans); font-weight: 800; font-size: 32px; color: var(--c-ink); letter-spacing: 0.01em; line-height: 1;">100%</p>
+            <p style="font-family: var(--f-sans); font-weight: 700; font-size: 11px; color: var(--c-bordeaux); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 6px; line-height: 1.3;">Black Woman<br/>Owned</p>
+          </div>
+        </a>
+
+      </div>
+
+      <p style="text-align: center; font-family: var(--f-sans); font-size: 13px; color: var(--c-mute); margin-top: 48px; max-width: 60ch; margin-left: auto; margin-right: auto;">
+        Accreditation details available to verified clients on request.
+        <a href="/accreditations" style="color: var(--c-bordeaux); font-weight: 600; text-decoration: underline; text-underline-offset: 3px;">See full credentials &rarr;</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ACCREDITATIONS -->
+  <span id="credentials" class="anchor-offset"></span>
+  <section style="background: var(--c-ink); background-image: radial-gradient(circle at 20% 80%, rgba(176,122,79,0.06) 0%, transparent 50%); padding: clamp(5rem, 12vw, 10rem) 0;">
+    <div class="section">
+      <div class="reveal" style="margin-bottom: 56px;">
+        <p class="eyebrow mb-4" style="color: var(--c-copper);">Credentials</p>
+        <h2 class="section-title" style="color: var(--c-cream);">Our <em>accreditations</em></h2>
+        <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: var(--c-mute); max-width: 52ch; margin-top: 1rem;">
+          The credentials that prove what we say about ourselves.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 reveal">
+        {[
+          { short: 'AEO', name: 'AEO South Africa', desc: 'Highest customs trust from SARS. Less than 1% of SA forwarders.' },
+          { short: 'SARS', name: 'Customs Clearing Agent', desc: 'Licensed by SARS for direct customs declarations.' },
+          { short: 'L1 BEE', name: 'Level 1 B-BBEE', desc: 'Maximum BEE rating. 135% procurement recognition.' },
+          { short: 'SAAFF', name: 'SAAFF Member', desc: 'South African Association of Freight Forwarders.' },
+          { short: 'BWO', name: '100% Black Woman Owned', desc: 'Owned by Anne-Marie Mandtoumbi since 2007.' },
+        ].map((a) => (
+          <div style="border: 1px solid rgba(176,122,79,0.15); padding: 2rem;">
+            <span style="font-family: var(--f-mono); font-size: 19px; letter-spacing: 0.12em; color: var(--c-copper); font-weight: 600; display: block; margin-bottom: 0.75rem;">{a.short}</span>
+            <h3 style="font-family: var(--f-serif); font-size: 1.125rem; font-weight: 500; color: var(--c-cream); line-height: 1.3; margin-bottom: 0.5rem;">{a.name}</h3>
+            <p style="font-family: var(--f-sans); font-size: 0.8125rem; line-height: 1.55; color: var(--c-mute);">{a.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <p style="font-family: var(--f-sans); font-size: 0.8125rem; color: var(--c-mute); margin-top: 2rem;">
+        Accreditation details available to clients on request.
+      </p>
+    </div>
+  </section>
+
+  <!-- WHERE WE OPERATE -->
+  <span id="network" class="anchor-offset"></span>
+  <section style="padding: clamp(5rem, 12vw, 10rem) 0;">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Network</p>
+          <h2 class="section-title">Where we <em>operate</em></h2>
+        </div>
+        <p class="section-lead">Headquartered in Sandton. Operating across South Africa and into the rest of the continent.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px reveal" style="background: var(--c-line-soft);">
+        <div style="background: var(--c-paper); padding: clamp(1.5rem, 3vw, 2.5rem);">
+          <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); text-transform: uppercase; display: block; margin-bottom: 0.75rem;">Headquarters</span>
+          <p style="font-family: var(--f-sans); font-size: 1rem; color: var(--c-ink);">Morningside, Sandton, Johannesburg, South Africa</p>
+        </div>
+        <div style="background: var(--c-paper); padding: clamp(1.5rem, 3vw, 2.5rem);">
+          <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); text-transform: uppercase; display: block; margin-bottom: 0.75rem;">South African Ports</span>
+          <p style="font-family: var(--f-sans); font-size: 1rem; color: var(--c-ink);">Durban &middot; Cape Town &middot; Port Elizabeth &middot; East London &middot; Coega</p>
+        </div>
+        <div style="background: var(--c-paper); padding: clamp(1.5rem, 3vw, 2.5rem);">
+          <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); text-transform: uppercase; display: block; margin-bottom: 0.75rem;">South African Airports</span>
+          <p style="font-family: var(--f-sans); font-size: 1rem; color: var(--c-ink);">OR Tambo (JNB) &middot; Cape Town (CPT) &middot; King Shaka (DUR)</p>
+        </div>
+        <div style="background: var(--c-paper); padding: clamp(1.5rem, 3vw, 2.5rem);">
+          <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); text-transform: uppercase; display: block; margin-bottom: 0.75rem;">African Corridors</span>
+          <p style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.65; color: var(--c-ink);">
+            SA &harr; DRC (Lubumbashi) &middot; SA &harr; Zambia (Copperbelt) &middot; SA &harr; Zimbabwe (Harare) &middot; SA &harr; Mozambique (Maputo) &middot; SACU
+          </p>
+        </div>
+      </div>
+
+      <!-- International coverage -->
+      <div class="reveal" style="margin-top: 1px; background: var(--c-cream); border: 1px solid var(--c-line-soft); padding: clamp(1.5rem, 3vw, 2.5rem);">
+        <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); text-transform: uppercase; display: block; margin-bottom: 1rem;">International &middot; Via carrier partnerships</span>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+          {[
+            { region: 'Europe', hubs: 'All major hubs' },
+            { region: 'Middle East', hubs: 'Dubai, Doha, Riyadh' },
+            { region: 'Asia', hubs: 'Singapore, Hong Kong, Shanghai' },
+            { region: 'North America', hubs: 'JFK, Atlanta, Chicago, LA' },
+            { region: 'South America', hubs: 'São Paulo, Buenos Aires' },
+            { region: 'Oceania', hubs: 'Sydney, Melbourne, Auckland' },
+          ].map((r) => (
+            <div>
+              <p style="font-family: var(--f-sans); font-size: 1rem; font-weight: 600; color: var(--c-ink); margin-bottom: 0.25rem;">{r.region}</p>
+              <p style="font-family: var(--f-sans); font-size: 0.8125rem; color: var(--c-charcoal);">{r.hubs}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <span id="testimonials" class="anchor-offset"></span>
+  <section style="background: var(--c-cream); padding: clamp(5rem, 12vw, 10rem) 0;">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Testimonials</p>
+          <h2 class="section-title">What our clients <em>say</em></h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal">
+        {[
+          {
+            quote: 'Mekluc has been moving our specialised industrial cargo for years. What sets them apart is the human side — they call when there\'s a delay, they call when there\'s none, and they always pick up.',
+            name: 'Yvonne Viljoen',
+            role: 'Supply Chain Manager, EagleBurgmann',
+          },
+          {
+            quote: 'From customs clearance to delivery, Mekluc has been a reliable partner for our industrial supplies. They understand our business — and they deliver.',
+            name: 'Chezrae Scott-Crossley',
+            role: 'REMA TIP TOP',
+          },
+          {
+            quote: 'Mekluc handles our customs across air and sea freight. The AEO status makes a real difference — we\'ve stopped budgeting for demurrage delays.',
+            name: 'Ian McDonald',
+            role: 'Operations Manager, Timken',
+          },
+          {
+            quote: 'Mekluc moves our project cargo — heavy, oversized, regulated — and they handle the paperwork that gives other forwarders headaches.',
+            name: 'Glynis Wilson',
+            role: 'Logistics Manager, Bergman-Ross',
+          },
+        ].map((t) => (
+          <div style="background: var(--c-paper); border: 1px solid var(--c-line); padding: clamp(2rem, 4vw, 2.5rem); position: relative;">
+            <span style="font-family: var(--f-serif); font-size: 4rem; color: var(--c-bordeaux); opacity: 0.15; position: absolute; top: 1rem; left: 1.5rem; line-height: 1;" aria-hidden="true">&ldquo;</span>
+            <blockquote style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.65; color: var(--c-ink); font-style: italic; margin-bottom: 1.5rem; position: relative; z-index: 1;">
+              {t.quote}
+            </blockquote>
+            <p style="font-family: var(--f-sans); font-size: 1rem; font-weight: 600; color: var(--c-ink);">{t.name}</p>
+            <p style="font-family: var(--f-sans); font-size: 0.8125rem; color: var(--c-charcoal);">{t.role}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHERE WE'RE GOING NEXT -->
+  <span id="roadmap" class="anchor-offset"></span>
+  <section style="padding: clamp(5rem, 12vw, 10rem) 0;">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Roadmap</p>
+          <h2 class="section-title">Where we're <em>going next</em></h2>
+        </div>
+        <p class="section-lead">A 24-month transformation programme to bring our 19 years of expertise fully into the digital era.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
+        {[
+          {
+            title: 'Digital Transformation 2026-2028',
+            desc: 'Rebuilding our digital tools end-to-end — from this website to client portal, tracking, and quote workflows.',
+          },
+          {
+            title: 'AfCFTA-Ready Export Solutions',
+            desc: 'Building dedicated services for South African exporters moving into AfCFTA member states.',
+          },
+          {
+            title: 'GDP-Ready Pharma Expansion',
+            desc: 'Doubling our cold-chain capabilities for pharmaceuticals, vaccines, and high-value perishables.',
+          },
+        ].map((item) => (
+          <div style="border: 1px solid var(--c-line); padding: clamp(1.5rem, 3vw, 2.5rem);">
+            <h3 style="font-family: var(--f-serif); font-size: 1.25rem; font-weight: 500; color: var(--c-ink); line-height: 1.3; margin-bottom: 0.75rem;">{item.title}</h3>
+            <p style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.65; color: var(--c-charcoal);">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <span id="cta" class="anchor-offset"></span>
+  <section class="cta-band-bordeaux" style="padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="absolute right-[-60px] bottom-[-60px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 400px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10">
+      <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; color: var(--c-cream); margin-bottom: 1rem;">
+        Let's move your <em style="color: var(--c-copper); font-style: italic;">cargo.</em>
+      </h2>
+      <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: rgba(247,242,232,0.7); max-width: 52ch; margin-bottom: 2.5rem;">
+        You've read about us. Now talk to us. Quote in less than 2h. Or pick up the phone.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="/contact?quote=1" class="btn-white">Get your quote in less than 2h <span class="btn-arrow">&rarr;</span></a>
+        <a href={site.social.whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-outline-light">WhatsApp us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* V3.4 PATCH 3 — TOC sticky positioning + anchor offset compensation */
+  .toc-wrapper {
+    display: none;
+  }
+
+  @media (min-width: 1280px) {
+    .toc-wrapper {
+      display: block;
+      position: fixed;
+      left: 32px;
+      top: 140px;
+      z-index: 30;
+      max-width: 200px;
+    }
+  }
+
+  /* Invisible anchor markers for scroll-to with header offset */
+  .anchor-offset {
+    display: block;
+    height: 0;
+    scroll-margin-top: 100px;
+    visibility: hidden;
+  }
+
+  /* V3.5 PATCH — Associations & Partners logo tiles (Megafreight-style) */
+  .logo-tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+    padding: 16px;
+    transition: all 0.25s ease;
+    opacity: 0.85;
+    filter: grayscale(0%);
+  }
+  .logo-tile:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+</style>
+

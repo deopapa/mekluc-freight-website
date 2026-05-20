@@ -1,0 +1,152 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/sections/PageHeader.astro';
+import { site } from '@/lib/site';
+---
+
+<BaseLayout
+  title="Sustainability Commitment | Mekluc Freight South Africa"
+  description="Mekluc Freight's commitment to ESG, sustainable logistics, transformation and ethical freight forwarding in South Africa."
+>
+  <PageHeader
+    label="ESG Commitment"
+    title="Sustainability — what we commit to, what we measure, what we improve."
+    subtitle="A 19-year-old South African company built by a Black woman entrepreneur. A Level 1 B-BBEE Contributor. An AEO-accredited operator with documented internal controls. We've been embedded in the South African transformation agenda since 2007 — and we're scaling our commitments."
+    bg="paper"
+  />
+
+  <!-- 4 Pillars -->
+  <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 10rem);">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Framework</p>
+          <h2 class="section-title">Our four <em>pillars</em></h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px reveal" style="background: var(--c-line-soft);">
+        {[
+          {
+            num: '01',
+            title: 'Economic transformation',
+            items: [
+              '100% Black Woman Owned freight forwarder',
+              'Level 1 B-BBEE Contributor (135% procurement recognition)',
+              'Local employment in Sandton, Johannesburg',
+              'Local supplier preference where commercially viable',
+              'Skills development for SA graduates entering logistics',
+            ],
+          },
+          {
+            num: '02',
+            title: 'Compliance & ethics',
+            items: [
+              'AEO accreditation by SARS',
+              'SAAFF membership — adherence to code of ethics',
+              'POPIA-compliant handling of personal data',
+              'Anti-bribery and anti-corruption policy',
+              'No facilitation payments, anywhere on our routes',
+              'Anti-fraud protocols on banking and identity verification',
+            ],
+          },
+          {
+            num: '03',
+            title: 'Environmental commitment',
+            items: [
+              'Container weight optimisation',
+              'Carrier selection includes carbon efficiency',
+              'Route optimisation for reduced emissions',
+              'Digital documentation to reduce paper waste',
+            ],
+            future: [
+              'Carbon footprint reporting per shipment (2027)',
+              'SAF options for air freight (2027)',
+              'Partner carrier emissions tracking (2027)',
+              'Annual sustainability report (2028)',
+            ],
+          },
+          {
+            num: '04',
+            title: 'Supply chain integrity',
+            items: [
+              'AEO accreditation includes physical security of cargo',
+              'Chain of custody documented end-to-end',
+              'No high-risk cargo we cannot legitimately handle',
+              'Refuse cargo with suspected sanctions exposure',
+              'Coordinate with destination customs',
+            ],
+          },
+        ].map((pillar) => (
+          <div style="background: var(--c-paper); padding: clamp(2rem, 4vw, 3rem);">
+            <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); display: block; margin-bottom: 1rem;">&mdash; {pillar.num}</span>
+            <h3 style="font-family: var(--f-serif); font-size: 1.5rem; font-weight: 400; line-height: 1.2; color: var(--c-ink); margin-bottom: 1.25rem;">{pillar.title}</h3>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              {pillar.items.map((item) => (
+                <div style="display: flex; align-items: flex-start; gap: 10px;">
+                  <span style="font-family: var(--f-mono); font-size: 14px; color: var(--c-bordeaux); margin-top: 3px; flex-shrink: 0;">&check;</span>
+                  <span style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.5; color: var(--c-charcoal);">{item}</span>
+                </div>
+              ))}
+            </div>
+            {pillar.future && (
+              <div style="margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--c-line-soft);">
+                <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.12em; color: var(--c-mute); margin-bottom: 10px;">ROADMAP</p>
+                <div style="display: flex; flex-direction: column; gap: 6px;">
+                  {pillar.future.map((item) => (
+                    <div style="display: flex; align-items: flex-start; gap: 10px;">
+                      <span style="font-family: var(--f-mono); font-size: 14px; color: var(--c-mute); margin-top: 3px; flex-shrink: 0;">&mdash;</span>
+                      <span style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.5; color: var(--c-mute);">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What we don't claim — dark band -->
+  <section style="background: var(--c-ink); background-image: radial-gradient(circle at 30% 70%, rgba(176,122,79,0.06) 0%, transparent 50%); padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="section">
+      <div class="max-w-3xl reveal">
+        <p class="eyebrow mb-4" style="color: var(--c-copper);">Honesty</p>
+        <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(1.75rem, 3.5vw, 2.5rem); line-height: 1.15; color: var(--c-cream); margin-bottom: 1.5rem;">
+          What we don't claim
+        </h2>
+        <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-mute); margin-bottom: 1rem;">
+          We are not yet a carbon-neutral freight forwarder. We have not yet achieved full Scope 3 emissions transparency. We do not yet operate a fleet of zero-emission vehicles.
+        </p>
+        <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-mute); margin-bottom: 1.5rem;">
+          These are honest gaps. We are working on them through 2027-2028 in line with industry capability and our budget.
+        </p>
+        <div style="padding: 20px 24px; border: 1px solid rgba(176,122,79,0.2);">
+          <p style="font-family: var(--f-serif); font-size: 1.25rem; font-weight: 400; color: var(--c-cream); font-style: italic;">
+            What we claim today is what we actually do.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band-bordeaux" style="padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="absolute right-[-60px] bottom-[-60px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 400px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10" style="text-align: center;">
+      <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; color: var(--c-cream); margin-bottom: 1rem;">
+        ESG and procurement <em style="color: var(--c-copper); font-style: italic;">compliance?</em>
+      </h2>
+      <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: rgba(247,242,232,0.7); max-width: 48ch; margin: 0 auto 2.5rem;">
+        Level 1 B-BBEE. 100% Black Woman Owned. AEO accredited. Documented ESG commitments.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contact?quote=1" class="btn-white">Talk to our team <span class="btn-arrow">&rarr;</span></a>
+        <a href="/accreditations" class="btn-outline-light">View accreditations</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

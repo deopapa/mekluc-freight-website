@@ -1,0 +1,195 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/sections/PageHeader.astro';
+import { site } from '@/lib/site';
+---
+
+<BaseLayout
+  title="Track Your Shipment | Mekluc Freight South Africa"
+  description="Track your shipment in real time using your Bill of Lading, container number, booking reference or customer reference. Updates within 2 hours."
+>
+  <PageHeader
+    label="Shipment Tracking"
+    title="Where is your cargo right now?"
+    subtitle="Track by Bill of Lading, Air Waybill, container number, booking reference or your own customer reference. Real-time update from our operations team within 2 business hours."
+    bg="paper"
+  />
+
+  <!-- TRACKING FORM -->
+  <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 10rem);">
+    <div class="section">
+      <div class="max-w-2xl mx-auto reveal">
+        <form class="tracking-form" id="trackingForm">
+
+          <!-- Reference type -->
+          <div class="form-group">
+            <label for="ref-type">Reference type</label>
+            <select id="ref-type" name="ref-type">
+              <option value="bl">Bill of Lading (BL)</option>
+              <option value="awb">Air Waybill (AWB)</option>
+              <option value="container">Container number</option>
+              <option value="booking">Booking reference</option>
+              <option value="customer">Customer reference</option>
+              <option value="mkl">Mekluc quote reference (MKL-Q-...)</option>
+            </select>
+          </div>
+
+          <!-- Reference number -->
+          <div class="form-group">
+            <label for="tracking-ref">Enter your reference <span style="color: var(--c-bordeaux);">*</span></label>
+            <input type="text" id="tracking-ref" name="tracking-ref" required
+              placeholder="e.g. MSKU1234567 or MKL-Q-2026-0042" />
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="tracking-email">Your email for the response <span style="color: var(--c-bordeaux);">*</span></label>
+            <input type="email" id="tracking-email" name="tracking-email" required
+              placeholder="you@company.co.za" />
+          </div>
+
+          <!-- Response channel -->
+          <fieldset class="form-group">
+            <legend style="font-family: var(--f-sans); font-size: 1rem; font-weight: 600; color: var(--c-ink); margin-bottom: 12px;">Preferred response channel</legend>
+            <div style="display: flex; flex-wrap: wrap; gap: 24px;">
+              {['Email', 'Phone', 'WhatsApp'].map((ch, i) => (
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-family: var(--f-sans); font-size: 1.1875rem; color: var(--c-ink);">
+                  <input type="radio" name="response-channel" value={ch.toLowerCase()} checked={i === 0}
+                    style="accent-color: var(--c-bordeaux); width: 16px; height: 16px;" />
+                  {ch}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+            Track shipment <span class="btn-arrow">&rarr;</span>
+          </button>
+        </form>
+
+        <!-- Post-submit note -->
+        <div style="margin-top: 24px; padding: 24px; background: var(--c-cream); border: 1px solid var(--c-line-soft); text-align: center;">
+          <p style="font-family: var(--f-sans); font-size: 1rem; color: var(--c-charcoal);">
+            Our operations team will send you an update within 2 business hours. For urgent matters, call us at
+            <a href={`tel:${site.phoneRaw}`} style="color: var(--c-bordeaux); font-weight: 600;">{site.phone}</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="background: var(--c-cream); padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">FAQ</p>
+          <h2 class="section-title">Tracking <em>questions</em></h2>
+        </div>
+      </div>
+
+      <div class="max-w-3xl" style="display: flex; flex-direction: column; gap: 0;">
+        {[
+          {
+            q: 'How fast will I get a response?',
+            a: 'Within 2 business hours during office hours (Mon-Fri 08:00-17:00 SAST). Requests outside business hours are responded to on the next business day morning.',
+          },
+          {
+            q: 'What information will I get?',
+            a: 'Current location, estimated time of arrival, any customs or operational issues, and what we\'re doing about them. Sea freight includes vessel name and voyage. Air freight includes flight reference and AWB status.',
+          },
+          {
+            q: 'Why isn\'t there automated tracking?',
+            a: 'We\'re building it. Our current tracking is operated by our team because a human who knows your cargo is more useful than a dashboard that doesn\'t reflect customs delays or port congestion. Version 2 (2027) will combine both.',
+          },
+          {
+            q: 'Can I get WhatsApp updates?',
+            a: 'Yes — select WhatsApp as your preferred response channel. Our WhatsApp Business setup is being finalised and will be fully operational soon.',
+          },
+          {
+            q: 'I don\'t have reference numbers — can you still help?',
+            a: 'Absolutely. Include your name, company, approximate shipment date, origin and destination. Our team will find your shipment.',
+          },
+        ].map((faq, i) => (
+          <div class="reveal" style={`padding: clamp(1.5rem, 3vw, 2rem) 0; ${i > 0 ? 'border-top: 1px solid var(--c-line);' : ''}`}>
+            <h3 style="font-family: var(--f-serif); font-size: 1.25rem; font-weight: 400; color: var(--c-ink); margin-bottom: 0.75rem;">{faq.q}</h3>
+            <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); max-width: 60ch;">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM / URGENT -->
+  <section style="background: var(--c-ink); background-image: radial-gradient(circle at 30% 70%, rgba(176,122,79,0.06) 0%, transparent 50%); padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="section" style="text-align: center;">
+      <div class="reveal">
+        <p class="eyebrow mb-4" style="color: var(--c-copper); justify-content: center;">Urgent</p>
+        <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(2rem, 4.5vw, 3.25rem); line-height: 1.1; color: var(--c-cream); margin-bottom: 1rem;">
+          Something <em style="color: var(--c-copper); font-style: italic;">wrong</em> with your shipment?
+        </h2>
+        <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: var(--c-mute); max-width: 48ch; margin: 0 auto 2.5rem;">
+          If you suspect a problem — delay, damage, customs issue — contact us directly and we'll prioritise the case.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href={`tel:${site.phoneRaw}`} class="btn-white">Call operations team <span class="btn-arrow">&rarr;</span></a>
+          <a href="/contact?quote=1" class="btn-outline-light">Request a quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .tracking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: clamp(2rem, 4vw, 3rem);
+    background: var(--c-ivory);
+    border: 1px solid var(--c-line);
+  }
+
+  .tracking-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .tracking-form label {
+    font-family: var(--f-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--c-ink);
+  }
+
+  .tracking-form input,
+  .tracking-form select {
+    font-family: var(--f-sans);
+    font-size: 1.1875rem;
+    color: var(--c-ink);
+    background: var(--c-paper);
+    border: 1px solid var(--c-line);
+    padding: 14px 18px;
+    transition: border-color 0.2s ease;
+    width: 100%;
+  }
+
+  .tracking-form input:focus,
+  .tracking-form select:focus {
+    outline: none;
+    border-color: var(--c-bordeaux);
+  }
+
+  .tracking-form input::placeholder {
+    color: var(--c-mute);
+  }
+
+  .tracking-form select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%236B645E' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 44px;
+  }
+</style>

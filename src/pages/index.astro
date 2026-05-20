@@ -1,0 +1,495 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { site } from '@/lib/site';
+import { t } from '@/i18n/translations';
+
+const lang = 'en' as const;
+---
+
+<BaseLayout
+  title="Home"
+  description="South Africa's AEO-accredited freight forwarder. 19 years of multimodal logistics from Johannesburg. Level 1 B-BBEE. 100% Black Woman Owned. Get a quote in less than 2h."
+>
+  <!-- ============== HERO — V3 Editorial ============== -->
+  <section class="relative overflow-hidden" style="padding: clamp(60px, 10vw, 120px) 0 clamp(80px, 14vw, 160px);">
+    <!-- Hero background image (optimized WebP) -->
+    <div class="absolute inset-0 z-0">
+      <img
+        src="/images/hero/hero-home.webp"
+        alt="Cape Town port at golden hour — South Africa freight gateway"
+        class="w-full h-full object-cover"
+        loading="eager"
+        fetchpriority="high"
+      />
+      {/* Layered overlay for text contrast — homepage uses dark text so we lighten with cream */}
+      <div class="absolute inset-0" style="background: linear-gradient(90deg, rgba(244,237,222,0.96) 0%, rgba(244,237,222,0.88) 45%, rgba(244,237,222,0.55) 80%, rgba(244,237,222,0.25) 100%);"></div>
+      <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(244,237,222,0.3) 0%, transparent 30%, transparent 70%, rgba(244,237,222,0.5) 100%);"></div>
+    </div>
+
+    <!-- Decorative ornament -->
+    <span class="absolute right-0 top-[100px] font-serif italic font-normal text-mekluc-bordeaux opacity-[0.07] pointer-events-none select-none leading-none tracking-tighter z-[1]" style="font-size: clamp(80px, 13vw, 180px);">
+      19
+    </span>
+
+    <div class="section relative z-10">
+      <div class="eyebrow mb-8 opacity-0" style="animation: fadeUp 0.7s 0.1s forwards; font-size: 17px; font-weight: 600; letter-spacing: 0.24em;">
+        <span style="display: inline-block; width: 48px; height: 2.5px; background: var(--c-bordeaux); margin-right: 18px; vertical-align: middle;"></span>AEO ACCREDITED · LEVEL 1 B-BBEE · SINCE 2007
+      </div>
+
+      <h1 class="font-display text-mekluc-ink mb-8 opacity-0" style="font-size: clamp(52px, 8vw, 104px); line-height: 0.96; letter-spacing: -0.045em; font-weight: 800; animation: fadeUp 0.7s 0.25s forwards; max-width: 18ch;">
+        Freight import &amp; export.<br/><em>South Africa</em> to the world.
+      </h1>
+
+      <p class="font-sans text-mekluc-ink-soft mb-12 opacity-0" style="font-size: clamp(20px, 1.8vw, 26px); line-height: 1.45; max-width: 56ch; animation: fadeUp 0.7s 0.4s forwards; font-weight: 400;">
+        Air, sea, road and customs solutions for exporters and importers — <strong style="color: var(--c-ink); font-weight: 700;">AEO-accredited</strong>, Level 1 B-BBEE, 19 years moving cargo from and to South Africa.
+      </p>
+
+      <div class="flex flex-wrap items-center gap-3 opacity-0" style="animation: fadeUp 0.7s 0.55s forwards;">
+        <a href="/contact?quote=1" class="btn-primary btn-lg">
+          Get a quote in less than 2h <span class="btn-arrow">&rarr;</span>
+        </a>
+        <a href="/tracking" class="btn-ghost btn-lg">
+          Track shipment
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SERVICES ICON BAND — Megafreight-inspired ============== -->
+  <section style="background: var(--c-ink); background-image: radial-gradient(circle at 30% 70%, rgba(176,122,79,0.08) 0%, transparent 50%);" class="relative z-10">
+    <div class="section" style="padding-top: clamp(2rem, 4vw, 3rem); padding-bottom: clamp(2rem, 4vw, 3rem);">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px" style="background: rgba(176,122,79,0.15);">
+        {[
+          {
+            label: 'Air Freight',
+            href: '/services/air-freight',
+            icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>`,
+          },
+          {
+            label: 'Sea Freight',
+            href: '/services/sea-freight',
+            icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1 .6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M19.38 20A11.6 11.6 0 0 0 21 14l-9-4-9 4c0 2.9.94 5.34 2.81 7.76"/><path d="M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6"/><path d="M12 10v4"/><path d="M12 2v3"/></svg>`,
+          },
+          {
+            label: 'Road Freight',
+            href: '/services/road-freight',
+            icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>`,
+          },
+          {
+            label: 'Customs Clearing',
+            href: '/services/customs-clearing',
+            icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>`,
+          },
+          {
+            label: 'Warehousing',
+            href: '/services/warehousing',
+            icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35a2 2 0 0 1 1.26-1.86l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35Z"/><path d="M6 18h12"/><path d="M6 14h12"/><rect width="12" height="12" x="6" y="10"/></svg>`,
+          },
+          {
+            label: 'Cargo Insurance',
+            href: '/services/cargo-insurance',
+            icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>`,
+          },
+        ].map((service) => (
+          <a href={service.href} style="background: var(--c-ink); padding: clamp(1.5rem, 3vw, 2rem) 1rem; display: flex; flex-direction: column; align-items: center; gap: 12px; transition: background 0.25s ease;" class="group hover:bg-[#252320]">
+            <div style="color: var(--c-copper); transition: color 0.25s ease;" class="group-hover:text-[var(--c-cream)]" set:html={service.icon} />
+            <span style="font-family: var(--f-sans); font-size: 19px; font-weight: 600; color: var(--c-cream); text-align: center; letter-spacing: 0.02em;">
+              {service.label}
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== WHY MEKLUC — Bordeaux Band (DHL-inspired) ============== -->
+  <section class="cta-band-bordeaux relative z-10">
+    <div class="absolute right-[-80px] bottom-[-80px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 360px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10" style="padding-top: clamp(3rem, 6vw, 5rem); padding-bottom: clamp(3rem, 6vw, 5rem);">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-4 items-center">
+        <!-- Label column -->
+        <div class="md:col-span-1">
+          <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-copper); margin-bottom: 8px;">
+            <span style="display: inline-block; width: 24px; height: 1px; background: var(--c-copper); margin-right: 10px; vertical-align: middle;"></span>Why Mekluc
+          </p>
+          <p style="font-family: var(--f-display); font-size: clamp(20px, 2.2vw, 26px); font-weight: 700; line-height: 1.15; color: var(--c-cream); letter-spacing: -0.02em;">
+            Numbers that <em>matter.</em>
+          </p>
+        </div>
+        <!-- Stats columns -->
+        {[
+          { num: `${site.yearsActive}`, unit: 'YRS', label: 'In operation' },
+          { num: '100', unit: '%', label: 'Black Woman Owned' },
+          { num: 'L1', unit: 'BEE', label: 'Top B-BBEE rating' },
+          { num: 'AEO', unit: '', label: 'SARS accredited' },
+        ].map((stat) => (
+          <div style="border-left: 1px solid rgba(247,242,232,0.18); padding-left: clamp(1rem, 2vw, 1.5rem);" class="flex flex-col gap-2">
+            <span style="font-family: var(--f-display); font-weight: 800; color: var(--c-cream); line-height: 1; letter-spacing: -0.03em; font-size: clamp(44px, 5.5vw, 60px);">
+              {stat.num}<small style="font-family: var(--f-serif); font-style: italic; font-weight: 500; color: var(--c-copper); font-size: 0.45em; margin-left: 6px;">{stat.unit}</small>
+            </span>
+            <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(247,242,232,0.7);">
+              {stat.label}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SERVICES — V3 Grid ============== -->
+  <section class="section-padding" id="services">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <div class="eyebrow mb-4">WHAT WE MOVE</div>
+          <h2 class="section-title">From your dock to <em>anywhere on the map</em> — and back.</h2>
+        </div>
+        <p class="section-lead">
+          Pick the mode. We handle the rest — including the SARS customs paperwork
+          that most other forwarders treat as someone else's problem.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-mekluc-line-soft border border-mekluc-line-soft reveal">
+        {[
+          { num: '01 / AIR', title: 'Air Freight', desc: 'Express, consolidation, perishables, DGR, HUM and AVI cargo handled from OR Tambo, Cape Town and Durban to every major airport worldwide.', href: '/services/air-freight', img: '/images/service-air-freight.png' },
+          { num: '02 / SEA', title: 'Sea Freight', desc: 'FCL, LCL, breakbulk and project cargo from Durban and Cape Town. NVOCC consolidation and full visibility from booking to discharge.', href: '/services/sea-freight', img: '/images/service-sea-freight.png' },
+          { num: '03 / CUSTOMS', title: 'Customs Clearing', desc: 'SARS-licensed and AEO-accredited. Faster clearance, lower inspection risk, full compliance — every shipment, every border.', href: '/services/customs-clearing', img: '/images/service-customs.png' },
+          { num: '04 / ROAD', title: 'Road Freight', desc: 'Full and part loads across Southern Africa. Cross-border expertise at Beit Bridge, Chirundu, Kasumbalesa and Lebombo. Escorted when needed.', href: '/services/road-freight', img: '/images/service-road-freight.png' },
+          { num: '05 / WAREHOUSE', title: 'Warehousing', desc: 'Bonded and general warehousing in Johannesburg. Inventory management, pick-and-pack, and distribution. Scanner-tracked.', href: '/services/warehousing', img: '/images/service-warehousing.png' },
+          { num: '06 / INSURANCE', title: 'Cargo Insurance', desc: 'Marine, air and inland transit cover tailored to your commodity. Claims handled in-house. Because cargo is only as good as its cover.', href: '/services/cargo-insurance', img: '/images/service-cargo-insurance.png' },
+        ].map((svc) => (
+          <a href={svc.href} class="group bg-mekluc-paper hover:bg-mekluc-cream transition-colors duration-400 p-[44px_36px] flex flex-col gap-5 min-h-[360px] relative cursor-pointer">
+            <div class="font-mono text-[11px] text-mekluc-copper tracking-[0.15em]">— {svc.num}</div>
+            <h3 class="font-serif font-medium text-[32px] leading-[1.1] text-mekluc-ink tracking-tight">{svc.title}</h3>
+            <p class="font-sans text-[14px] leading-[1.65] text-mekluc-ink-soft flex-grow">{svc.desc}</p>
+            <span class="font-sans text-[13px] font-semibold text-mekluc-bordeaux inline-flex items-center gap-2 mt-auto tracking-[0.02em]">
+              See {svc.title.toLowerCase()} <span class="font-mono text-[12px] transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== INDUSTRIES WE SERVE — DHL-inspired horizontal band ============== -->
+  <section style="background: var(--c-ink); position: relative; overflow: hidden;">
+    <div class="section" style="padding-top: clamp(4rem, 8vw, 6rem); padding-bottom: clamp(4rem, 8vw, 6rem);">
+      <div class="section-header reveal" style="margin-bottom: 48px;">
+        <div>
+          <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-copper); margin-bottom: 12px;">
+            <span style="display: inline-block; width: 24px; height: 1px; background: var(--c-copper); margin-right: 10px; vertical-align: middle;"></span>Industries we serve
+          </p>
+          <h2 style="font-family: var(--f-display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: var(--c-cream); max-width: 22ch;">
+            Built for the sectors that <em>drive South Africa.</em>
+          </h2>
+        </div>
+        <p style="font-family: var(--f-sans); font-size: 19px; line-height: 1.65; color: rgba(247,242,232,0.7); max-width: 44ch;">
+          From DRC mining sites to GDP-compliant pharma — we know the documentation, the borders, the carriers, and the risks.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px reveal" style="background: rgba(176,122,79,0.15);">
+        {[
+          {
+            label: 'Mining',
+            sub: 'DRC · Zambia · Zimbabwe',
+            icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/><path d="M9 18v.01"/></svg>`,
+          },
+          {
+            label: 'Pharma & Health',
+            sub: 'GDP cold chain',
+            icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></svg>`,
+          },
+          {
+            label: 'Agriculture',
+            sub: 'Citrus · Wine · Berries',
+            icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c-4 0-8-4-8-9 0-5 4-12 8-12s8 7 8 12c0 5-4 9-8 9Z"/><path d="M12 22V10"/><path d="M12 10 9.5 7.5"/><path d="M12 13l-2.5-2.5"/></svg>`,
+          },
+          {
+            label: 'Automotive',
+            sub: 'Parts · Components',
+            icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>`,
+          },
+          {
+            label: 'Manufacturing',
+            sub: 'Steel · Chemicals',
+            icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg>`,
+          },
+          {
+            label: 'Retail & FMCG',
+            sub: 'Consumer goods',
+            icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>`,
+          },
+        ].map((industry) => (
+          <div style="background: var(--c-ink); padding: clamp(1.5rem, 3vw, 2.25rem) 1rem; display: flex; flex-direction: column; align-items: center; gap: 12px; transition: background 0.25s ease;" class="group hover:bg-[#252320]">
+            <div style="color: var(--c-copper); transition: transform 0.3s ease;" class="group-hover:scale-110" set:html={industry.icon} />
+            <span style="font-family: var(--f-display); font-size: 16px; font-weight: 700; color: var(--c-cream); text-align: center; letter-spacing: 0;">
+              {industry.label}
+            </span>
+            <span style="font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,242,232,0.5); text-align: center;">
+              {industry.sub}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <div class="reveal" style="margin-top: 32px; text-align: center;">
+        <a href="/solutions" style="font-family: var(--f-sans); font-size: 16px; font-weight: 600; color: var(--c-cream); display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border: 1px solid rgba(176,122,79,0.4); transition: all 0.2s ease;" class="hover:bg-[var(--c-bordeaux)] hover:border-[var(--c-bordeaux)]">
+          View all sector solutions <span class="btn-arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SOLUTIONS — V3 Editorial Cards ============== -->
+  <section class="section-padding bg-mekluc-cream" id="solutions">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <div class="eyebrow mb-4">SECTOR EXPERTISE</div>
+          <h2 class="section-title">Three industries we know <em>inside out</em>.</h2>
+        </div>
+        <p class="section-lead">
+          Three teams that speak your language — from SARS forms to dangerous
+          goods declarations to GDP-compliant cold chain integrity.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
+        {[
+          { sector: 'SA Export Diversification', title: 'Beyond the US tariffs. Into Asia, the Middle East and AfCFTA.', desc: 'For South African citrus, wine, nut, automotive and metal exporters building resilient routes to growth markets.', cta: 'Diversify your portfolio', href: '/solutions/sa-export-diversification' },
+          { sector: 'Mining & Project Cargo', title: 'Heavy equipment and reagents to the Copperbelt.', desc: 'Cross-border road freight to the DRC, Zambia and Zimbabwe. AEO-secured customs at Beit Bridge, Chirundu and Kasumbalesa.', cta: 'Move your mining cargo', href: '/solutions/mining-project-cargo-africa' },
+          { sector: 'Pharma & Perishables', title: 'GDP-ready freight that holds the cold chain.', desc: 'Laboratories, vaccines, red berries, stone fruit, citrus, meat — temperature-controlled, time-critical, documented end-to-end.', cta: 'Plan your GDP shipment', href: '/solutions/pharma-perishables-gdp' },
+        ].map((sol) => (
+          <a href={sol.href} class="group bg-mekluc-ivory border border-mekluc-line-soft p-[40px_32px] flex flex-col gap-[18px] transition-all duration-300 hover:border-mekluc-bordeaux hover:-translate-y-1">
+            <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-mekluc-bordeaux">— {sol.sector}</span>
+            <h3 class="font-serif font-medium text-[26px] leading-[1.15] text-mekluc-ink tracking-tight">{sol.title}</h3>
+            <p class="font-sans text-[13.5px] leading-[1.65] text-mekluc-ink-soft flex-grow">{sol.desc}</p>
+            <span class="font-sans text-[13px] font-semibold text-mekluc-bordeaux inline-flex items-center gap-[6px] mt-3">
+              {sol.cta} <span class="transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== WHY MEKLUC — V3 Dark Section ============== -->
+  <section class="section-padding relative overflow-hidden" style="background: var(--c-ink);" id="why-mekluc">
+    <!-- Background gradients -->
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(circle at 20% 30%, rgba(176, 122, 79, 0.12) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(128, 0, 32, 0.2) 0%, transparent 50%);"></div>
+
+    <div class="section relative z-[2]">
+      <div class="section-header reveal">
+        <div>
+          <div class="eyebrow mb-4" style="color: var(--c-copper);">
+            <span style="background: var(--c-copper);" class="w-7 h-px inline-block mr-[14px]"></span>
+            WHY MEKLUC
+          </div>
+          <h2 class="section-title" style="color: var(--c-cream);">
+            You don't just need a forwarder. You need a <em style="color: var(--c-copper);">partner</em>.
+          </h2>
+        </div>
+        <p class="section-lead" style="color: var(--c-line);">
+          Mekluc is not trying to be DHL. We are the certified, reachable,
+          Africa-focused freight partner for companies that need customs expertise,
+          fast response, and hands-on support.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+        {[
+          { metric: `${site.yearsActive}`, sub: 'YEARS OF OPERATIONS', title: 'Counted in shipments delivered.', desc: 'From a one-office freight desk in 2007 to a multimodal operator trusted across Southern Africa.' },
+          { metric: 'AEO', sub: 'ACCREDITED BY SARS', title: 'The highest tier of customs trust.', desc: 'Held by less than 1% of South African forwarders. Faster clearance, fewer inspections, international mutual recognition.' },
+          { metric: 'L1', sub: 'B-BBEE CONTRIBUTOR', title: 'Maximum BEE rating.', desc: '135% procurement recognition for your supply chain compliance. Independently audited, renewed annually.' },
+          { metric: '100', sub: '% BLACK WOMAN OWNED', title: 'Founded and led by Anne-Marie Mandtoumbi.', desc: 'Three principles since 2007 — trust, agility, and getting the work done.' },
+        ].map((p, i) => (
+          <div class={`py-9 px-6 flex flex-col gap-[14px] ${i > 0 ? 'lg:border-l' : ''}`} style={i > 0 ? 'border-color: rgba(216, 207, 194, 0.18);' : ''}>
+            <div class="font-serif font-medium text-mekluc-copper leading-none tracking-tight" style="font-size: 52px; font-feature-settings: 'lnum';">
+              {p.metric}<small class="text-[0.4em] text-mekluc-cream font-normal block mt-[6px] tracking-normal">{p.sub}</small>
+            </div>
+            <h3 class="font-serif font-medium text-[18px] text-mekluc-cream">{p.title}</h3>
+            <p class="font-sans text-[13px] leading-[1.6]" style="color: var(--c-line);">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Quote CTA -->
+      <div class="mt-14 pt-12 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 flex-wrap" style="border-top: 1px solid rgba(216, 207, 194, 0.15);">
+        <p class="font-serif italic font-normal text-mekluc-cream max-w-[40ch]" style="font-size: clamp(22px, 2.5vw, 28px); line-height: 1.3;">
+          "Mekluc treats our cargo like their own — and gets it through customs faster."
+        </p>
+        <a href="/contact?quote=1" class="btn-gold btn-lg">
+          Get a tailored quote in less than 2h <span class="btn-arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SOCIAL PROOF ============== -->
+  <section class="section-padding">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <div class="eyebrow mb-4">TRUSTED BY</div>
+          <h2 class="section-title">South Africa's leading <em>exporters</em>.</h2>
+        </div>
+        <p class="section-lead">
+          From multinational industrial suppliers to specialist healthcare
+          laboratories — they've trusted Mekluc to move what matters.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center reveal">
+        <!-- Client names -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-10 gap-y-8 items-center">
+          {['EagleBurgmann', 'REMA TIP TOP', 'Timken', 'Lancet Labs', 'Bergman-Ross', 'SAPMA'].map((name) => (
+            <div class="font-serif font-medium text-[19px] text-mekluc-charcoal tracking-tight border-b border-mekluc-line pb-3 hover:text-mekluc-bordeaux transition-colors cursor-default">
+              {name}
+            </div>
+          ))}
+        </div>
+
+        <!-- Testimonial -->
+        <figure class="bg-mekluc-cream border-l-[3px] border-mekluc-bordeaux p-9 relative">
+          <span class="font-serif italic text-[100px] leading-none text-mekluc-bordeaux absolute top-2 right-6 opacity-[0.12] pointer-events-none">"</span>
+          <blockquote class="font-serif italic font-normal text-[22px] leading-[1.45] text-mekluc-ink mb-[22px] tracking-tight">
+            Mekluc has been moving our specialised cargo for years. What sets them
+            apart is the human side — they call when there's a delay, they call
+            when there's none, and they always pick up.
+          </blockquote>
+          <figcaption class="font-mono text-[11px] tracking-[0.15em] uppercase text-mekluc-charcoal">
+            <strong class="text-mekluc-ink font-semibold">Yvonne Viljoen</strong> — Supply Chain Manager, EagleBurgmann
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== TRACK SHIPMENT WIDGET ============== -->
+  <section class="bg-mekluc-cream-deep py-20" id="tracking">
+    <div class="section">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-[60px] items-center">
+        <div>
+          <h2 class="font-serif font-normal text-mekluc-ink tracking-tight" style="font-size: clamp(28px, 3.5vw, 40px); line-height: 1.1;">
+            Where is your <em class="italic text-mekluc-bordeaux">cargo</em> right now?
+          </h2>
+          <p class="font-sans text-[14px] text-mekluc-charcoal leading-[1.65] mt-[14px]">
+            Track by Bill of Lading, container number, booking reference or your own
+            customer reference. Real-time updates from port to door.
+          </p>
+        </div>
+        <form class="bg-mekluc-ivory border border-mekluc-line p-2 grid items-center gap-2" style="grid-template-columns: auto 1fr auto;">
+          <select class="font-mono text-[12px] tracking-[0.06em] uppercase text-mekluc-charcoal bg-mekluc-cream border-none py-[14px] px-[18px] cursor-pointer border-r border-mekluc-line">
+            <option>BL / AWB</option>
+            <option>Container</option>
+            <option>Booking Ref</option>
+            <option>MKL Quote</option>
+          </select>
+          <input type="text" placeholder="Enter your tracking number" class="font-mono text-[14px] border-none bg-transparent py-[14px] px-[18px] text-mekluc-ink outline-none placeholder:text-mekluc-mute" />
+          <button type="submit" class="btn-primary">Track <span class="btn-arrow">&rarr;</span></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== INSIGHTS ============== -->
+  <section class="section-padding" id="insights">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <div class="eyebrow mb-4">INSIGHTS</div>
+          <h2 class="section-title">Read the <em>analysis</em>.</h2>
+        </div>
+        <p class="section-lead">
+          What's actually happening on the corridors between South Africa and the rest
+          of the world. Quarterly insights, from the people who clear customs for a living.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 reveal">
+        {[
+          { category: 'Customs & AEO', date: 'Q2 2026', title: 'What AEO accreditation actually means for your customs clearance time', excerpt: 'Less than 1% of South African freight forwarders hold AEO status. Here\'s what that means in hours saved, inspections avoided, and rand retained.', href: '/insights' },
+          { category: 'Corridors', date: 'Q2 2026', title: 'Mining cargo to the DRC: 3 things SA exporters should plan before tendering', excerpt: 'The Copperbelt corridor is booming — but it punishes forwarders who don\'t understand Kasumbalesa. Three lessons from 19 years of cross-border freight.', href: '/insights' },
+          { category: 'Industry Trends', date: 'Q1 2026', title: 'SA Export Diversification post-US tariffs: the 5 corridors that matter in 2026', excerpt: 'US tariffs are reshaping SA export flows. Five corridors are absorbing the volume — and three of them aren\'t where you\'d expect.', href: '/insights' },
+        ].map((article) => (
+          <a href={article.href} class="group flex flex-col gap-[18px] cursor-pointer">
+            <div class="font-mono text-[10px] tracking-[0.2em] uppercase text-mekluc-bordeaux flex justify-between border-b border-mekluc-line pb-3">
+              <span>{article.category}</span>
+              <time class="text-mekluc-mute font-normal">{article.date}</time>
+            </div>
+            <h3 class="font-serif font-medium text-[22px] leading-[1.25] text-mekluc-ink tracking-tight group-hover:text-mekluc-bordeaux transition-colors">
+              {article.title}
+            </h3>
+            <p class="font-sans text-[13.5px] leading-[1.65] text-mekluc-charcoal">
+              {article.excerpt}
+            </p>
+            <span class="font-mono text-[11px] tracking-[0.12em] uppercase text-mekluc-bordeaux mt-[6px]">
+              Read article &rarr;
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== CONTACT BAND — V3 Bordeaux Full-Width ============== -->
+  <section class="bg-mekluc-bordeaux text-mekluc-cream relative overflow-hidden" style="padding: clamp(90px, 12vw, 140px) 0;" id="contact">
+    <!-- Decorative M -->
+    <span class="absolute font-serif italic font-normal leading-[0.8] select-none pointer-events-none opacity-60" style="font-size: 600px; color: var(--c-bordeaux-deep); top: -120px; right: -80px;">M</span>
+
+    <div class="section relative z-[2]">
+      <h2 class="font-serif font-normal text-mekluc-cream max-w-[18ch] mb-7" style="font-size: clamp(40px, 6vw, 72px); line-height: 1.05; letter-spacing: -0.02em;">
+        Let's move your <em class="italic text-mekluc-copper">cargo</em>.
+      </h2>
+      <p class="font-sans text-[17px] leading-[1.6] max-w-[56ch] mb-11" style="color: var(--c-line);">
+        Tell us what you're moving and where. We come back with a quote in less than 2h —
+        or pick up the phone and let's talk freight.
+      </p>
+
+      <div class="flex flex-wrap gap-[14px] mb-14">
+        <a href="/contact?quote=1" class="btn-white btn-lg">
+          Get your quote in less than 2h <span class="btn-arrow">&rarr;</span>
+        </a>
+        <a href="/contact" class="btn-outline-light btn-lg">
+          Talk to our team
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pt-10" style="border-top: 1px solid rgba(247, 242, 232, 0.2);">
+        <div>
+          <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-mekluc-copper mb-2">Call us</p>
+          <p class="font-sans text-[14.5px] text-mekluc-cream leading-[1.5]">
+            <a href={`tel:${site.phone}`} class="hover:text-mekluc-copper transition-colors">{site.phone}</a>
+          </p>
+        </div>
+        <div>
+          <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-mekluc-copper mb-2">Email</p>
+          <p class="font-sans text-[14.5px] text-mekluc-cream leading-[1.5]">
+            <a href={`mailto:${site.email}`} class="hover:text-mekluc-copper transition-colors">{site.email}</a>
+          </p>
+        </div>
+        <div>
+          <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-mekluc-copper mb-2">WhatsApp</p>
+          <p class="font-sans text-[14.5px] text-mekluc-cream leading-[1.5]">
+            <a href={site.social.whatsappLink} target="_blank" rel="noopener" class="hover:text-mekluc-copper transition-colors">Chat with our team</a>
+          </p>
+        </div>
+        <div>
+          <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-mekluc-copper mb-2">Office</p>
+          <p class="font-sans text-[14.5px] text-mekluc-cream leading-[1.5]">{site.address.full}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>

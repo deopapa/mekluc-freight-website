@@ -1,0 +1,202 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/sections/PageHeader.astro';
+import { site } from '@/lib/site';
+---
+
+<BaseLayout
+  title="Export Packaging & Crating South Africa | ISPM-15 Compliant"
+  description="Professional export packaging and crating in Johannesburg. ISPM-15 compliant wooden crates, custom protective packaging, fragile cargo, machinery boxing. Quote in less than 2h."
+>
+  <PageHeader
+    bgImage="/images/hero/hero-packaging.webp"
+    label="Packaging & Crating"
+    title="Export packaging that protects your cargo."
+    subtitle="Professional crating, fragile handling, custom protective packaging — ISPM-15 compliant for international shipment. Built in Sandton, dispatched anywhere."
+    cta={{ text: 'Get a packaging quote', href: '/contact?quote=1&mode=packaging' }}
+  />
+
+  <!-- WHY PACKAGING — Stats Band Bordeaux -->
+  <section class="cta-band-bordeaux">
+    <div class="absolute right-[-80px] bottom-[-80px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 360px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10" style="padding-top: clamp(3rem, 6vw, 5rem); padding-bottom: clamp(3rem, 6vw, 5rem);">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 items-center">
+        <div class="md:col-span-1">
+          <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-copper); margin-bottom: 8px;">
+            <span style="display: inline-block; width: 24px; height: 1px; background: var(--c-copper); margin-right: 10px; vertical-align: middle;"></span>Why Crate with Us
+          </p>
+          <p style="font-family: var(--f-display); font-size: clamp(20px, 2.2vw, 26px); font-weight: 700; line-height: 1.15; color: var(--c-cream); letter-spacing: -0.02em;">
+            Cargo arrives <em>intact.</em>
+          </p>
+        </div>
+        {[
+          { num: 'ISPM', unit: '-15', label: 'Compliant wood treatment' },
+          { num: '0', unit: '%', label: 'In-transit damage claims' },
+          { num: '24', unit: 'H', label: 'Standard turnaround' },
+        ].map((stat) => (
+          <div style="border-left: 1px solid rgba(247,242,232,0.18); padding-left: clamp(1rem, 2vw, 1.5rem);" class="flex flex-col gap-2">
+            <span style="font-family: var(--f-display); font-weight: 800; color: var(--c-cream); line-height: 1; letter-spacing: -0.03em; font-size: clamp(44px, 5.5vw, 60px);">
+              {stat.num}<small style="font-family: var(--f-serif); font-style: italic; font-weight: 500; color: var(--c-copper); font-size: 0.45em; margin-left: 6px;">{stat.unit}</small>
+            </span>
+            <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(247,242,232,0.7);">
+              {stat.label}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE OFFER — 6 cards -->
+  <section style="padding-top: clamp(5rem, 10vw, 8rem); padding-bottom: clamp(5rem, 10vw, 8rem);">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">What we offer</p>
+          <h2 style="font-family: var(--f-display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: var(--c-ink); max-width: 22ch;">
+            Packaging built for <em>global transit.</em>
+          </h2>
+        </div>
+        <p class="section-lead">From wooden crates to vacuum-sealed protective packaging — tailored to your cargo's value and route.</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-px reveal" style="background: var(--c-line-soft);">
+        {[
+          { tag: 'WOOD', title: 'Wooden Crates (ISPM-15)', desc: 'Heat-treated certified timber crates for international shipping. Compliant with all destination phytosanitary regulations.' },
+          { tag: 'CUSTOM', title: 'Custom Boxing', desc: 'Made-to-measure boxes for non-standard cargo. CAD-designed for optimal protection and shipping cube efficiency.' },
+          { tag: 'FRAGILE', title: 'Fragile & High-Value', desc: 'Multi-layer foam cushioning, shock indicators, tilt sensors. For art, electronics, medical devices, sensitive instruments.' },
+          { tag: 'MACHINERY', title: 'Machinery Crating', desc: 'Heavy-duty crates with internal bracing for industrial equipment, mining machinery, project cargo. Crane-liftable.' },
+          { tag: 'VACUUM', title: 'Vacuum Barrier Bags', desc: 'Moisture-proof aluminium barrier bags for marine transit. Corrosion-sensitive cargo, long-term storage.' },
+          { tag: 'PALLETS', title: 'Palletisation', desc: 'ISPM-15 certified pallets, strapping, shrink-wrap, corner protectors. Ready for forklift handling.' },
+        ].map((s) => (
+          <div style="background: var(--c-paper); padding: clamp(1.5rem, 3vw, 2rem);">
+            <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); margin-bottom: 10px;">{s.tag}</p>
+            <h3 style="font-family: var(--f-display); font-size: 22px; font-weight: 700; color: var(--c-ink); margin-bottom: 10px; letter-spacing: -0.02em; line-height: 1.2;">{s.title}</h3>
+            <p style="font-family: var(--f-sans); font-size: 19px; line-height: 1.55; color: var(--c-charcoal);">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS — Accordion -->
+  <section style="background: var(--c-cream); padding: clamp(5rem, 10vw, 8rem) 0;">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Process</p>
+          <h2 style="font-family: var(--f-display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: var(--c-ink); max-width: 20ch;">
+            How we <em>crate it.</em>
+          </h2>
+        </div>
+      </div>
+
+      <div class="max-w-3xl reveal" style="display: flex; flex-direction: column; gap: 0;">
+        {[
+          { title: '01 · Assessment & specification', desc: 'We assess your cargo dimensions, weight, value, fragility, destination and transport mode to design the optimal packaging solution.', features: ['Cargo dimension survey', 'Risk & value assessment', 'Route-specific recommendations'] },
+          { title: '02 · Material selection', desc: 'ISPM-15 heat-treated timber, marine-grade plywood, vacuum barrier films, multi-density foam — we source the right material for each shipment.', features: ['ISPM-15 certified timber', 'Marine-grade materials', 'Sustainable options when possible'] },
+          { title: '03 · Crating & protection', desc: 'Manufactured in our Sandton workshop. Internal bracing for fragile cargo, shock indicators on high-value items, full photographic record.', features: ['On-site workshop', 'Shock & tilt indicators', 'Photo documentation'] },
+          { title: '04 · Labelling & dispatch', desc: 'International shipping marks, handling pictograms, ISPM-15 stamps, destination labels. Ready for collection or onward freight.', features: ['IMO compliant marks', 'Handling pictograms', 'Direct integration with our freight services'] },
+        ].map((sol) => (
+          <details class="accordion-item" style="border-top: 1px solid var(--c-line);">
+            <summary style="display: flex; justify-content: space-between; align-items: center; padding: clamp(1.5rem, 3vw, 2rem) 0; cursor: pointer; list-style: none;">
+              <h3 style="font-family: var(--f-display); font-size: clamp(17px, 1.8vw, 20px); font-weight: 600; color: var(--c-ink); letter-spacing: -0.01em;">{sol.title}</h3>
+              <span class="accordion-icon" style="font-family: var(--f-mono); font-size: 24px; color: var(--c-bordeaux); transition: transform 0.3s ease; flex-shrink: 0; margin-left: 16px;">+</span>
+            </summary>
+            <div style="padding: 0 0 clamp(1.5rem, 3vw, 2rem) 0;">
+              <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); max-width: 65ch; margin-bottom: 1rem;">{sol.desc}</p>
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                {sol.features.map((f) => (
+                  <div style="display: flex; align-items: flex-start; gap: 10px;">
+                    <span style="font-family: var(--f-mono); font-size: 14px; color: var(--c-bordeaux); margin-top: 3px; flex-shrink: 0;">&check;</span>
+                    <span style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.5; color: var(--c-charcoal);">{f}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </details>
+        ))}
+        <div style="border-top: 1px solid var(--c-line);"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES band -->
+  <section style="background: var(--c-ink); position: relative; overflow: hidden;">
+    <div class="section" style="padding-top: clamp(3rem, 6vw, 5rem); padding-bottom: clamp(3rem, 6vw, 5rem);">
+      <div class="reveal" style="margin-bottom: 32px; text-align: center;">
+        <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-copper); margin-bottom: 12px;">— Cargo we package</p>
+        <h2 style="font-family: var(--f-display); font-size: clamp(24px, 3vw, 32px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: var(--c-cream); max-width: 28ch; margin: 0 auto;">
+          From <em>artwork</em> to <em>heavy machinery.</em>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-3 md:grid-cols-6 gap-px reveal" style="background: rgba(176,122,79,0.15);">
+        {['Art & Antiques', 'Electronics', 'Machinery', 'Medical Devices', 'Mining Equipment', 'Aerospace'].map((ind) => (
+          <div style="background: var(--c-ink); padding: 1.25rem 0.75rem; text-align: center;">
+            <span style="font-family: var(--f-display); font-size: 19px; font-weight: 600; color: var(--c-cream);">{ind}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="padding-top: clamp(5rem, 10vw, 8rem); padding-bottom: clamp(5rem, 10vw, 8rem);">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">FAQ</p>
+          <h2 style="font-family: var(--f-display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: var(--c-ink);">
+            Common <em>questions.</em>
+          </h2>
+        </div>
+      </div>
+
+      <div class="max-w-3xl" style="display: flex; flex-direction: column; gap: 0;">
+        {[
+          { q: 'What is ISPM-15 and do I need it?', a: 'ISPM-15 is the international standard for treating wooden packaging used in global trade — prevents pest spread. Almost every country requires it for wooden crates. Yes, you need it.' },
+          { q: 'Can you crate machinery on-site?', a: 'Yes — we can dispatch our crating team to your premises for large or immovable machinery. Quote includes travel time and on-site labour.' },
+          { q: 'How long does crating take?', a: 'Standard crates 24-48 hours. Custom complex crating 3-5 days. Rush service available for critical shipments.' },
+          { q: 'Do you handle the shipping too?', a: 'Yes — packaging integrates seamlessly with our air, sea, and road freight services. Single point of contact, single quote, single invoice.' },
+        ].map((faq) => (
+          <details class="accordion-item" style="border-top: 1px solid var(--c-line);">
+            <summary style="display: flex; justify-content: space-between; align-items: center; padding: clamp(1.25rem, 2.5vw, 1.75rem) 0; cursor: pointer; list-style: none;">
+              <h3 style="font-family: var(--f-display); font-size: 24px; font-weight: 600; color: var(--c-ink);">{faq.q}</h3>
+              <span class="accordion-icon" style="font-family: var(--f-mono); font-size: 24px; color: var(--c-bordeaux); transition: transform 0.3s ease; flex-shrink: 0; margin-left: 16px;">+</span>
+            </summary>
+            <p style="padding: 0 0 clamp(1.25rem, 2.5vw, 1.75rem) 0; font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); max-width: 65ch;">{faq.a}</p>
+          </details>
+        ))}
+        <div style="border-top: 1px solid var(--c-line);"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band-bordeaux" style="padding: clamp(5rem, 10vw, 8rem) 0;">
+    <div class="absolute right-[-60px] bottom-[-60px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 400px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10" style="text-align: center;">
+      <h2 style="font-family: var(--f-display); font-weight: 800; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; letter-spacing: -0.03em; color: var(--c-cream); margin-bottom: 1rem;">
+        Need cargo <em style="font-family: var(--f-serif); color: var(--c-copper); font-style: italic; font-weight: 500;">protection?</em>
+      </h2>
+      <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: rgba(247,242,232,0.75); max-width: 48ch; margin: 0 auto 2.5rem;">
+        Quote in less than 2h. Or call <a href={`tel:${site.phoneRaw}`} style="color: var(--c-cream); text-decoration: underline; text-underline-offset: 3px;">{site.phone}</a>.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contact?quote=1&mode=packaging" class="btn-white">Get a packaging quote <span class="btn-arrow">&rarr;</span></a>
+        <a href={site.social.whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-outline-light">WhatsApp us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  details summary::-webkit-details-marker { display: none; }
+  details[open] .accordion-icon { transform: rotate(45deg); }
+  details summary:hover h3 { color: var(--c-bordeaux); }
+</style>

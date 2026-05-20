@@ -1,0 +1,83 @@
+---
+// DHL-inspired breadcrumb — auto-generated from URL path
+// Shows on every internal page (hidden on home)
+// Maps path segments to friendly labels
+
+const pathname = Astro.url.pathname.replace(/\/$/, ''); // strip trailing slash
+
+// Hide on home
+const isHome = pathname === '' || pathname === '/';
+
+// Label map (URL slug -> display name)
+const labelMap: Record<string, string> = {
+  '': 'Home',
+  'services': 'Services',
+  'air-freight': 'Air Freight',
+  'sea-freight': 'Sea Freight',
+  'road-freight': 'Road Freight',
+  'customs-clearing': 'Customs Clearing',
+  'warehousing': 'Warehousing',
+  'cargo-insurance': 'Cargo Insurance',
+  'packaging-crating': 'Packaging & Crating',
+  'specialised-cargo': 'Specialised Cargo',
+  'solutions': 'Sector Solutions',
+  'sa-export-diversification': 'SA Export Diversification',
+  'mining-project-cargo-africa': 'Mining & Project Cargo',
+  'pharma-perishables-gdp': 'Pharma & Perishables',
+  'about': 'About',
+  'contact': 'Contact',
+  'tracking': 'Track Shipment',
+  'accreditations': 'Accreditations',
+  'insights': 'Insights',
+  'careers': 'Careers',
+  'news': 'News & Press',
+  'sustainability': 'Sustainability',
+  'privacy': 'Privacy Policy',
+  'terms': 'Terms of Service',
+};
+
+// Build trail
+const segments = pathname.split('/').filter(Boolean);
+const trail = [
+  { href: '/', label: 'Home' },
+  ...segments.map((seg, i) => ({
+    href: '/' + segments.slice(0, i + 1).join('/'),
+    label: labelMap[seg] || seg.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
+  })),
+];
+---
+
+{!isHome && (
+  <nav aria-label="Breadcrumb" style="background: var(--c-cream); border-bottom: 1px solid var(--c-line-soft);" class="relative z-20">
+    <div class="section" style="padding-top: 12px; padding-bottom: 12px;">
+      <ol style="display: flex; flex-wrap: wrap; align-items: center; gap: 0; list-style: none; margin: 0; padding: 0;">
+        {trail.map((crumb, i) => {
+          const isLast = i === trail.length - 1;
+          return (
+            <li style="display: flex; align-items: center;">
+              {!isLast ? (
+                <>
+                  <a
+                    href={crumb.href}
+                    style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-charcoal); transition: color 0.2s ease;"
+                    class="hover:text-[var(--c-bordeaux)]"
+                  >
+                    {crumb.label}
+                  </a>
+                  <span style="font-family: var(--f-mono); font-size: 13px; color: var(--c-mute); margin: 0 12px;">&rsaquo;</span>
+                </>
+              ) : (
+                <span
+                  aria-current="page"
+                  style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-bordeaux); font-weight: 600;"
+                >
+                  {crumb.label}
+                </span>
+              )}
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  </nav>
+)}

@@ -1,0 +1,259 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/sections/PageHeader.astro';
+import { site } from '@/lib/site';
+---
+
+<BaseLayout
+  title="Privacy Policy | Mekluc Freight South Africa | POPIA Compliant"
+  description="Mekluc Freight privacy policy. POPIA-compliant data handling for our clients, prospects and website visitors."
+>
+  <PageHeader
+    label="Legal"
+    title="Privacy Policy"
+    subtitle="POPIA-compliant data handling for our clients, prospects and website visitors."
+    bg="paper"
+  />
+
+  <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 10rem);">
+    <div class="section">
+      <div class="max-w-3xl">
+        <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.12em; color: var(--c-mute); margin-bottom: 3rem;">LAST UPDATED: MAY 2026</p>
+
+        <div class="legal-content">
+
+          <section class="legal-section">
+            <h2>1. Who we are</h2>
+            <p>
+              {site.name} ("we", "our", "us") is a South African freight forwarding and customs clearing company headquartered in {site.address.full}.
+            </p>
+            <p>
+              Website: <a href={site.url}>{site.domain}</a><br />
+              Email: <a href={`mailto:${site.email}`}>{site.email}</a><br />
+              Phone: <a href={`tel:${site.phoneRaw}`}>{site.phone}</a><br />
+              Address: {site.address.full}
+            </p>
+            <p>
+              This privacy policy explains how we collect, use, store and protect your personal information in compliance with the Protection of Personal Information Act 4 of 2013 (POPIA) and other applicable South African data protection legislation.
+            </p>
+          </section>
+
+          <section class="legal-section">
+            <h2>2. What personal information we collect</h2>
+            <p>We may collect the following personal information when you interact with us:</p>
+            <ul>
+              <li>Information submitted through our quote request forms (name, company, email, phone, cargo details)</li>
+              <li>Information submitted through our shipment tracking forms</li>
+              <li>Emails and phone communications with our team</li>
+              <li>WhatsApp messages sent to our business number</li>
+              <li>Contractual information (company registration, VAT numbers, customs codes, shipping instructions)</li>
+              <li>Website analytics data (anonymised browsing behaviour, device type, referral source)</li>
+            </ul>
+          </section>
+
+          <section class="legal-section">
+            <h2>3. Why we collect it</h2>
+            <p>We use your personal information to:</p>
+            <ul>
+              <li>Provide freight quotations and respond to enquiries</li>
+              <li>Perform customs clearance on your behalf (as a SARS-licensed clearing agent)</li>
+              <li>Provide shipment status updates and tracking information</li>
+              <li>Arrange cargo insurance where requested</li>
+              <li>Comply with regulatory obligations (SARS, SAAFF, AEO programme requirements)</li>
+              <li>Maintain records for audit and compliance purposes</li>
+              <li>Send industry updates and service information (opt-in only)</li>
+              <li>Improve our services and website experience</li>
+            </ul>
+          </section>
+
+          <section class="legal-section">
+            <h2>4. Legal basis (POPIA Section 11)</h2>
+            <p>We process your personal information on the following legal bases:</p>
+            <ul>
+              <li><strong>Consent</strong> — where you have given us clear, voluntary consent (e.g. submitting a quote form, subscribing to updates)</li>
+              <li><strong>Contract performance</strong> — where processing is necessary to perform our obligations under a freight forwarding or customs clearing agreement</li>
+              <li><strong>Legal obligation</strong> — where we are required by law to process your information (e.g. customs declarations, tax records, AEO audit requirements)</li>
+              <li><strong>Legitimate interest</strong> — where processing is necessary for our legitimate business interests, provided those interests do not override your rights</li>
+            </ul>
+          </section>
+
+          <section class="legal-section">
+            <h2>5. Who we share it with</h2>
+            <p>We may share your personal information with the following parties, only to the extent necessary to provide our services:</p>
+            <ul>
+              <li>Carriers, shipping lines, airlines and sub-contracted freight forwarders</li>
+              <li>Customs authorities (SARS and international customs agencies)</li>
+              <li>Insurance providers (where cargo insurance is arranged)</li>
+              <li>IT service providers (hosting, email, analytics — all bound by data processing agreements)</li>
+              <li>Legal advisors and auditors (where legally required)</li>
+              <li>Law enforcement agencies (where compelled by law)</li>
+            </ul>
+            <p><strong>We do not sell personal information. We do not share personal information for marketing purposes with third parties.</strong></p>
+          </section>
+
+          <section class="legal-section">
+            <h2>6. International transfers</h2>
+            <p>
+              Freight forwarding by its nature involves the transfer of shipment-related data across international borders. Where we transfer personal information outside South Africa, we ensure compliance with POPIA Chapter 9 — specifically that the recipient country has adequate data protection legislation, or that appropriate contractual safeguards are in place.
+            </p>
+          </section>
+
+          <section class="legal-section">
+            <h2>7. Cookies and analytics</h2>
+            <p>Our website uses the following types of cookies:</p>
+            <ul>
+              <li><strong>Essential cookies</strong> — required for the website to function (e.g. session management, form submission)</li>
+              <li><strong>Analytics cookies</strong> — anonymised usage data to help us improve the website. No personally identifiable information is collected.</li>
+              <li><strong>Optional marketing pixels</strong> — used only with your consent for remarketing purposes</li>
+            </ul>
+            <p>You can disable non-essential cookies in your browser settings at any time.</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>8. Data retention</h2>
+            <p>We retain personal information for the following periods:</p>
+            <ul>
+              <li><strong>Active client records:</strong> duration of the commercial relationship plus 5 years</li>
+              <li><strong>Customs clearance records:</strong> 5 years (as required by SARS)</li>
+              <li><strong>Unconverted quote requests:</strong> 18 months</li>
+              <li><strong>Marketing subscribers:</strong> until you opt out</li>
+              <li><strong>Web analytics data:</strong> 24 months (anonymised)</li>
+            </ul>
+            <p>After the applicable retention period, personal information is securely deleted or anonymised.</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>9. Your POPIA rights</h2>
+            <p>Under POPIA, you have the right to:</p>
+            <ul>
+              <li><strong>Access</strong> — request a copy of the personal information we hold about you</li>
+              <li><strong>Correct</strong> — request correction of inaccurate or outdated information</li>
+              <li><strong>Object</strong> — object to the processing of your personal information in certain circumstances</li>
+              <li><strong>Request deletion</strong> — request that we delete your personal information (subject to legal retention obligations)</li>
+              <li><strong>Complain</strong> — lodge a complaint with the Information Regulator if you believe your rights have been infringed</li>
+            </ul>
+            <p>To exercise any of these rights, contact our Information Officer:</p>
+            <p>
+              Email: <a href={`mailto:${site.email}`}>{site.email}</a><br />
+              Phone: <a href={`tel:${site.phoneRaw}`}>{site.phone}</a><br />
+              Address: {site.address.full}
+            </p>
+            <p>
+              You may also contact the Information Regulator directly at <a href="https://inforegulator.org.za" target="_blank" rel="noopener noreferrer">inforegulator.org.za</a>.
+            </p>
+          </section>
+
+          <section class="legal-section">
+            <h2>10. Security</h2>
+            <p>We implement appropriate technical and organisational measures to protect your personal information, including:</p>
+            <ul>
+              <li>Encrypted email communications</li>
+              <li>Role-based access controls on all internal systems</li>
+              <li>AEO-secured premises with physical security measures</li>
+              <li>Regular staff training on data protection and POPIA compliance</li>
+              <li>POPIA-compliant data processing agreements with all third-party service providers</li>
+            </ul>
+          </section>
+
+          <section class="legal-section">
+            <h2>11. Anti-fraud notice</h2>
+            <div class="legal-callout">
+              <p>
+                <strong>Mekluc Freight will NEVER communicate a change in our banking details by email.</strong> If you receive such an email, contact us immediately on <a href={`tel:${site.phoneRaw}`}>{site.phone}</a>. Always confirm correspondence is from @mekluc.co.za.
+              </p>
+            </div>
+          </section>
+
+          <section class="legal-section">
+            <h2>12. Changes to this policy</h2>
+            <p>
+              This policy was last updated in May 2026. We may update this policy from time to time to reflect changes in our practices or legal requirements. Significant changes will be communicated to active clients by email. The current version will always be available on this page.
+            </p>
+          </section>
+
+          <section class="legal-section">
+            <h2>13. Contact</h2>
+            <p>For any questions about this privacy policy or how we handle your personal information:</p>
+            <p>
+              Email: <a href={`mailto:${site.email}`}>{site.email}</a><br />
+              Phone: <a href={`tel:${site.phoneRaw}`}>{site.phone}</a><br />
+              Address: {site.address.full}
+            </p>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .legal-section {
+    padding: clamp(1.5rem, 3vw, 2.5rem) 0;
+    border-top: 1px solid var(--c-line-soft);
+  }
+
+  .legal-section:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .legal-section h2 {
+    font-family: var(--f-serif);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--c-ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .legal-section p {
+    font-family: var(--f-sans);
+    font-size: 1.1875rem;
+    line-height: 1.65;
+    color: var(--c-charcoal);
+    margin-bottom: 0.75rem;
+  }
+
+  .legal-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .legal-section ul,
+  .legal-section ol {
+    font-family: var(--f-sans);
+    font-size: 1.1875rem;
+    line-height: 1.65;
+    color: var(--c-charcoal);
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .legal-section li {
+    margin-bottom: 0.375rem;
+  }
+
+  .legal-section a {
+    color: var(--c-bordeaux);
+    font-weight: 600;
+  }
+
+  .legal-section strong {
+    color: var(--c-ink);
+  }
+
+  .legal-callout {
+    padding: 20px 24px;
+    background: var(--c-cream);
+    border-left: 3px solid var(--c-bordeaux);
+  }
+
+  .legal-callout p {
+    margin-bottom: 0;
+  }
+</style>

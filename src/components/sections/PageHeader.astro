@@ -1,0 +1,120 @@
+---
+interface Props {
+  label?: string;
+  title: string;
+  subtitle?: string;
+  cta?: { text: string; href: string };
+  ctaSecondary?: { text: string; href: string };
+  bg?: 'dark' | 'bordeaux' | 'paper';
+  /** Optional background image URL */
+  bgImage?: string;
+}
+
+const { label, title, subtitle, cta, ctaSecondary, bg = 'dark', bgImage } = Astro.props;
+---
+
+<section class="page-hero relative overflow-hidden" data-bg={bg}>
+  {/* Background image slot */}
+  {bgImage && (
+    <div class="absolute inset-0 z-0">
+      <img
+        src={bgImage}
+        alt=""
+        class="w-full h-full object-cover"
+        loading="eager"
+      />
+      {/* Triple-layer overlay for guaranteed text contrast on any image */}
+      {/* 1. Strong horizontal gradient: dark on left where text sits */}
+      <div class="absolute inset-0" style="background: linear-gradient(90deg, rgba(28,28,28,0.92) 0%, rgba(28,28,28,0.82) 40%, rgba(28,28,28,0.55) 75%, rgba(28,28,28,0.35) 100%);"></div>
+      {/* 2. Subtle vertical darkening at bottom for landing line */}
+      <div class="absolute inset-0" style="background: linear-gradient(180deg, transparent 0%, transparent 60%, rgba(28,28,28,0.4) 100%);"></div>
+      {/* 3. Bordeaux radial accent in lower-left for brand depth */}
+      <div class="absolute inset-0" style="background: radial-gradient(ellipse at 20% 80%, rgba(128,0,32,0.25) 0%, transparent 60%);"></div>
+    </div>
+  )}
+
+  {/* Decorative gradient background (when no image) */}
+  {!bgImage && (
+    <div class="absolute inset-0 z-0" style={
+      bg === 'bordeaux'
+        ? 'background: var(--c-bordeaux); background-image: radial-gradient(circle at 20% 80%, rgba(176,122,79,0.15) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(208,0,56,0.1) 0%, transparent 50%);'
+        : bg === 'paper'
+        ? 'background: var(--c-cream);'
+        : 'background: var(--c-ink); background-image: radial-gradient(circle at 20% 80%, rgba(176,122,79,0.08) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(128,0,32,0.06) 0%, transparent 50%);'
+    }></div>
+  )}
+
+  {/* Decorative ornamental letter */}
+  {bg !== 'paper' && (
+    <div class="absolute right-[-40px] bottom-[-40px] z-0 select-none pointer-events-none" aria-hidden="true">
+      <span style={`font-family: var(--f-serif); font-size: 320px; line-height: 1; font-weight: 400; font-style: italic; color: ${bg === 'bordeaux' ? 'rgba(247,242,232,0.04)' : 'rgba(176,122,79,0.04)'};`}>M</span>
+    </div>
+  )}
+
+  <div class="section relative z-10" style="padding-top: clamp(6rem, 14vw, 10rem); padding-bottom: clamp(5rem, 12vw, 8rem);">
+    <div class="max-w-3xl">
+      {label && (
+        <p class="eyebrow mb-6 hero-fade" style={`animation-delay: 0.1s; ${bg === 'paper' ? 'color: var(--c-bordeaux);' : bg === 'bordeaux' ? 'color: var(--c-copper);' : 'color: var(--c-copper);'}`} set:html={`<span class="eyebrow-line" style="background: currentColor;"></span>${label}`} />
+      )}
+      <h1 class="hero-fade" style={`font-family: var(--f-sans); font-weight: 600; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.1; letter-spacing: -0.02em; animation-delay: 0.25s; color: ${bgImage ? 'var(--c-cream)' : bg === 'paper' ? 'var(--c-ink)' : 'var(--c-cream)'};`}>
+        {title}
+      </h1>
+      {subtitle && (
+        <p class="hero-fade" style={`font-family: var(--f-sans); font-size: clamp(1rem, 1.3vw, 1.1875rem); line-height: 1.6; max-width: 60ch; margin-top: 1.25rem; animation-delay: 0.4s; font-weight: 400; color: ${bgImage ? 'rgba(247,242,232,0.92)' : bg === 'paper' ? 'var(--c-charcoal)' : bg === 'bordeaux' ? 'rgba(247,242,232,0.88)' : 'var(--c-line)'};`}>
+          {subtitle}
+        </p>
+      )}
+      {(cta || ctaSecondary) && (
+        <div class="flex flex-wrap gap-4 mt-8 hero-fade" style="animation-delay: 0.55s;">
+          {cta && (
+            bg === 'paper' ? (
+              <a href={cta.href} class="btn-primary">{cta.text}<span class="btn-arrow">&rarr;</span></a>
+            ) : (
+              <a href={cta.href} class="btn-white">{cta.text}<span class="btn-arrow">&rarr;</span></a>
+            )
+          )}
+          {ctaSecondary && (
+            bg === 'paper' ? (
+              <a href={ctaSecondary.href} class="btn-ghost">{ctaSecondary.text}</a>
+            ) : (
+              <a href={ctaSecondary.href} class="btn-outline-light">{ctaSecondary.text}</a>
+            )
+          )}
+        </div>
+      )}
+    </div>
+  </div>
+
+  {/* Bottom decorative line */}
+  {bg !== 'paper' && (
+    <div class="absolute bottom-0 left-0 right-0 h-px z-10" style={`background: linear-gradient(90deg, transparent, ${bg === 'bordeaux' ? 'rgba(176,122,79,0.3)' : 'rgba(176,122,79,0.15)'}, transparent);`}></div>
+  )}
+</section>
+
+<style>
+  .eyebrow-line {
+    display: inline-block;
+    width: 44px;
+    height: 2px;
+    margin-right: 18px;
+    vertical-align: middle;
+  }
+
+  /* Cache le ::before de la classe .eyebrow car on a déjà .eyebrow-line */
+  :global(.page-hero) .eyebrow::before {
+    display: none;
+  }
+
+  .hero-fade {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: heroFadeUp 0.8s ease forwards;
+  }
+
+  @keyframes heroFadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

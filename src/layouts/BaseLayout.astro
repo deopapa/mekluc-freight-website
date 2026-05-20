@@ -1,0 +1,338 @@
+---
+import '@/styles/global.css';
+import { site } from '@/lib/site';
+import { getLangFromUrl, t } from '@/i18n/translations';
+import Breadcrumb from '@/components/layout/Breadcrumb.astro';
+import FloatingActions from '@/components/global/FloatingActions.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { title, description = site.seo.defaultDescription, ogImage } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const fullTitle = title === 'Home'
+  ? `${site.name} — AEO Accredited Freight Forwarder South Africa`
+  : site.seo.titleTemplate.replace('%s', title);
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={description} />
+
+  <title>{fullTitle}</title>
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" sizes="192x192" href="/android-chrome-192x192.png" />
+  <link rel="icon" sizes="512x512" href="/android-chrome-512x512.png" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href={new URL(Astro.url.pathname, site.url).href} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={new URL(Astro.url.pathname, site.url).href} />
+  <meta property="og:site_name" content={site.name} />
+  {ogImage && <meta property="og:image" content={ogImage} />}
+
+  <!-- Schema.org LocalBusiness -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": site.name,
+    "description": description,
+    "url": site.url,
+    "telephone": site.phone,
+    "email": site.email,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": site.address.city,
+      "addressRegion": site.address.province,
+      "addressCountry": "ZA"
+    },
+    "foundingDate": "2007",
+    "slogan": site.tagline,
+    "areaServed": "South Africa"
+  })} />
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- ============== UTILITY BAR — Bordeaux commercial ============== -->
+  <div style="background: var(--c-bordeaux); color: var(--c-cream);" class="relative z-50">
+    <div class="section flex items-center justify-between" style="padding-top: 10px; padding-bottom: 10px;">
+      <!-- Left: trust signals -->
+      <div class="flex items-center gap-5">
+        <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(247,242,232,0.85);">
+          AEO Accredited
+        </span>
+        <span style="color: rgba(247,242,232,0.3);">|</span>
+        <span class="hidden sm:inline" style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(247,242,232,0.85);">
+          Level 1 B-BBEE
+        </span>
+        <span class="hidden sm:inline" style="color: rgba(247,242,232,0.3);">|</span>
+        <span class="hidden md:inline" style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(247,242,232,0.85);">
+          Since 2007
+        </span>
+      </div>
+      <!-- Right: contact -->
+      <div class="flex items-center gap-5">
+        <a href={`tel:${site.phoneRaw}`} style="font-family: var(--f-sans); font-size: 13px; font-weight: 600; color: var(--c-cream); transition: opacity 0.2s ease;" class="hover:opacity-80 flex items-center gap-2">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          {site.phone}
+        </a>
+        <span class="hidden sm:inline" style="color: rgba(247,242,232,0.3);">|</span>
+        <a href={`mailto:${site.email}`} class="hidden sm:flex items-center gap-2" style="font-family: var(--f-sans); font-size: 13px; font-weight: 500; color: var(--c-cream); transition: opacity 0.2s ease;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          {site.email}
+        </a>
+        <span class="hidden lg:inline" style="color: rgba(247,242,232,0.3);">|</span>
+        <a href="/terms" class="hidden lg:inline" style="font-family: var(--f-sans); font-size: 13px; font-weight: 500; color: var(--c-cream); text-decoration: underline; text-underline-offset: 3px;">
+          Standard Trading Conditions
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== HEADER ============== -->
+  <header class="sticky top-0 z-40 border-b border-mekluc-line-soft" style="background: rgba(250, 246, 238, 0.92); backdrop-filter: blur(8px);">
+    <nav class="section flex items-center justify-between py-[18px]">
+      <!-- V3.5 PATCH — Logo Mekluc Freight agrandi (58px → 84px) -->
+      <a href="/" class="flex items-center gap-[16px]">
+        <img
+          src="/images/logos/mekluc-freight-logo.svg"
+          alt="Mekluc Freight — AEO Accredited Freight Forwarder"
+          class="h-[84px] w-auto"
+          width="220"
+          loading="eager"
+        />
+        <span class="w-px h-[44px] bg-mekluc-line hidden sm:block"></span>
+        <span class="font-mono text-[12px] text-mekluc-charcoal tracking-[0.12em] uppercase hidden sm:block leading-tight">
+          EST. 2007<br/>Johannesburg
+        </span>
+      </a>
+
+      <!-- Nav links -->
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="/services" class="font-sans text-[14px] font-medium text-mekluc-ink-soft relative hover:text-mekluc-bordeaux transition-colors nav-link">
+          {t(lang, 'nav.services')}
+        </a>
+        <a href="/solutions" class="font-sans text-[14px] font-medium text-mekluc-ink-soft relative hover:text-mekluc-bordeaux transition-colors nav-link">
+          {t(lang, 'nav.solutions')}
+        </a>
+        <a href="/tracking" class="font-sans text-[14px] font-medium text-mekluc-ink-soft relative hover:text-mekluc-bordeaux transition-colors nav-link">
+          Track
+        </a>
+        <a href="/insights" class="font-sans text-[14px] font-medium text-mekluc-ink-soft relative hover:text-mekluc-bordeaux transition-colors nav-link">
+          {t(lang, 'nav.insights')}
+        </a>
+        <a href="/about" class="font-sans text-[14px] font-medium text-mekluc-ink-soft relative hover:text-mekluc-bordeaux transition-colors nav-link">
+          {t(lang, 'nav.about')}
+        </a>
+        <a href="/contact" class="font-sans text-[14px] font-medium text-mekluc-ink-soft relative hover:text-mekluc-bordeaux transition-colors nav-link">
+          {t(lang, 'nav.contact')}
+        </a>
+      </div>
+
+      <!-- CTA group -->
+      <div class="flex items-center gap-3">
+        <a href={site.social.whatsappLink} target="_blank" rel="noopener" class="hidden md:inline-flex btn-ghost">
+          WhatsApp
+        </a>
+        <a href="/contact?quote=1" class="btn-primary">
+          Request a quote <span class="btn-arrow">&rarr;</span>
+        </a>
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-btn" class="lg:hidden ml-2 p-2 text-mekluc-ink" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-mekluc-line-soft bg-mekluc-paper">
+      <div class="section py-6 flex flex-col gap-4">
+        <a href="/services" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">Services</a>
+        <a href="/solutions" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">Solutions</a>
+        <a href="/tracking" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">Track Shipment</a>
+        <a href="/insights" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">Insights</a>
+        <a href="/about" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">About</a>
+        <a href="/contact" class="font-sans text-[15px] font-medium text-mekluc-ink-soft hover:text-mekluc-bordeaux transition-colors py-2">Contact</a>
+        <div class="flex gap-3 pt-4 border-t border-mekluc-line-soft">
+          <a href={site.social.whatsappLink} target="_blank" rel="noopener" class="btn-whatsapp flex-1 justify-center">WhatsApp</a>
+          <a href="/contact?quote=1" class="btn-primary flex-1 justify-center">Get a quote <span class="btn-arrow">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============== TICKER — Trust Signals ============== -->
+  <div class="bg-mekluc-ink text-mekluc-cream py-[14px] overflow-hidden relative z-30">
+    <div class="ticker-track flex gap-[60px] whitespace-nowrap font-mono text-eyebrow uppercase" style="animation: tickerScroll 50s linear infinite;">
+      {[...Array(2)].map(() => (
+        <>
+          <span class="inline-flex items-center gap-[14px] flex-shrink-0">AEO South Africa <span class="w-[5px] h-[5px] bg-mekluc-copper rounded-full"></span></span>
+          <span class="inline-flex items-center gap-[14px] flex-shrink-0">SARS Customs Clearing Agent <span class="w-[5px] h-[5px] bg-mekluc-copper rounded-full"></span></span>
+          <span class="inline-flex items-center gap-[14px] flex-shrink-0">Level 1 B-BBEE <span class="w-[5px] h-[5px] bg-mekluc-copper rounded-full"></span></span>
+          <span class="inline-flex items-center gap-[14px] flex-shrink-0">SAAFF Member <span class="w-[5px] h-[5px] bg-mekluc-copper rounded-full"></span></span>
+          <span class="inline-flex items-center gap-[14px] flex-shrink-0">100% Black Woman Owned <span class="w-[5px] h-[5px] bg-mekluc-copper rounded-full"></span></span>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <!-- ============== BREADCRUMB (DHL-inspired, hidden on home) ============== -->
+  <Breadcrumb />
+
+  <!-- ============== MAIN CONTENT ============== -->
+  <main class="flex-1 relative z-10">
+    <slot />
+  </main>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="bg-mekluc-ink text-mekluc-line">
+    <div class="section pt-20 pb-10">
+      <!-- Top grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14 lg:gap-[60px] pb-14 border-b" style="border-color: rgba(216, 207, 194, 0.15);">
+        <!-- Brand column — Official Logo (dark bg variant, charte v2.3 §04) -->
+        <div>
+          <img
+            src="/images/logos/MEKLUC_LOGO_COLOR_DARK_v2.0.png"
+            alt="Mekluc Freight"
+            class="h-[60px] w-auto mb-[18px]"
+            loading="lazy"
+          />
+          <p class="font-serif italic text-[19px] leading-[1.4] text-mekluc-line max-w-[32ch]">
+            {site.tagline}
+          </p>
+          <p class="font-sans text-body-sm text-mekluc-charcoal mt-6">
+            {site.address.full}
+          </p>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-mekluc-copper mb-[18px]">
+            Services
+          </p>
+          <ul class="flex flex-col gap-[10px]">
+            <li><a href="/services/air-freight" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Air Freight</a></li>
+            <li><a href="/services/sea-freight" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Sea Freight</a></li>
+            <li><a href="/services/road-freight" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Road Freight</a></li>
+            <li><a href="/services/customs-clearing" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Customs Clearing</a></li>
+            <li><a href="/services/warehousing" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Warehousing</a></li>
+            <li><a href="/services/packaging-crating" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Packaging & Crating</a></li>
+            <li><a href="/services/specialised-cargo" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Specialised Cargo</a></li>
+            <li><a href="/services/cargo-insurance" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Cargo Insurance</a></li>
+          </ul>
+        </div>
+
+        <!-- Company -->
+        <div>
+          <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-mekluc-copper mb-[18px]">
+            Company
+          </p>
+          <ul class="flex flex-col gap-[10px]">
+            <li><a href="/about" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">About Mekluc</a></li>
+            <li><a href="/accreditations" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Accreditations</a></li>
+            <li><a href="/insights" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Insights</a></li>
+            <li><a href="/careers" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Careers</a></li>
+            <li><a href="/sustainability" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Sustainability</a></li>
+            <li><a href="/news" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">News & Press</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-mekluc-copper mb-[18px]">
+            Contact
+          </p>
+          <ul class="flex flex-col gap-[10px]">
+            <li><a href={`tel:${site.phone}`} class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">{site.phone}</a></li>
+            <li><a href={`mailto:${site.email}`} class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">{site.email}</a></li>
+            <li><a href={site.social.whatsappLink} target="_blank" rel="noopener" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">WhatsApp</a></li>
+            <li><a href="/contact?quote=1" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Request a Quote</a></li>
+            <li><a href="/tracking" class="font-sans text-[14px] text-mekluc-line hover:text-mekluc-cream transition-colors">Track Shipment</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-5">
+        <p class="font-mono text-[11px] tracking-[0.08em] text-mekluc-charcoal uppercase">
+          &copy; {new Date().getFullYear()} Mekluc Freight. All rights reserved. 100% Black Woman Owned.
+        </p>
+        <div class="flex gap-6">
+          <a href="/privacy" class="font-mono text-[11px] tracking-[0.08em] uppercase text-mekluc-charcoal hover:text-mekluc-cream transition-colors">Privacy</a>
+          <a href="/terms" class="font-mono text-[11px] tracking-[0.08em] uppercase text-mekluc-charcoal hover:text-mekluc-cream transition-colors">Terms</a>
+          <a href="/sustainability" class="font-mono text-[11px] tracking-[0.08em] uppercase text-mekluc-charcoal hover:text-mekluc-cream transition-colors">Sustainability</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============== FLOATING ACTIONS (Patch typo-bubbles 2026-05-19) ============== -->
+  <!-- 2 bubbles: Quote (bordeaux) + WhatsApp (green). Replaces old single FAB. -->
+  <FloatingActions />
+
+  <!-- ============== SCRIPTS ============== -->
+  <style>
+    /* Ticker animation */
+    @keyframes tickerScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* Nav link underline animation */
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -22px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--c-bordeaux);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+  </style>
+
+  <script>
+    // Mobile menu toggle
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+      });
+    }
+
+    // Intersection Observer for reveal animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>

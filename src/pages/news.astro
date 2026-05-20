@@ -1,0 +1,130 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/sections/PageHeader.astro';
+import { site } from '@/lib/site';
+---
+
+<BaseLayout
+  title="News & Awards | Mekluc Freight South Africa"
+  description="Mekluc Freight news, press mentions, awards and industry recognition."
+>
+  <PageHeader
+    label="News & Press"
+    title="News, press mentions and milestones."
+    subtitle="Mekluc Freight in the press, recent industry developments, and milestones from 19 years of operations."
+    bg="paper"
+  />
+
+  <!-- Recent press -->
+  <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 10rem);">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Press</p>
+          <h2 class="section-title">Recent <em>press</em></h2>
+        </div>
+      </div>
+
+      <div class="max-w-3xl reveal" style="padding: clamp(2rem, 4vw, 3rem); background: var(--c-cream); border: 1px solid var(--c-line-soft);">
+        <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); margin-bottom: 0.75rem;">
+          Industry mentions will be added as they appear. Press releases from Mekluc Freight will be published here.
+        </p>
+        <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal);">
+          Appearances in Freight News, Engineering News and African Cargo will be linked when available.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards & recognition — cream band -->
+  <section style="background: var(--c-cream); padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Recognition</p>
+          <h2 class="section-title">Awards & <em>recognition</em></h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px reveal" style="background: var(--c-line-soft);">
+        <div style="background: var(--c-paper); padding: clamp(2rem, 4vw, 3rem);">
+          <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); margin-bottom: 1.25rem;">CURRENT RECOGNITION</p>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            {[
+              { badge: 'AEO', label: 'AEO accreditation by SARS' },
+              { badge: 'B-BBEE L1', label: 'Level 1 B-BBEE certification' },
+              { badge: 'SAAFF', label: 'SAAFF membership' },
+            ].map((item) => (
+              <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.12em; color: var(--c-copper); background: rgba(176,122,79,0.08); padding: 6px 12px; flex-shrink: 0;">{item.badge}</span>
+                <span style="font-family: var(--f-sans); font-size: 1.1875rem; color: var(--c-charcoal);">{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div style="background: var(--c-paper); padding: clamp(2rem, 4vw, 3rem);">
+          <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); margin-bottom: 1.25rem;">AWARDS PURSUING</p>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            {[
+              'Logistics Achiever Awards',
+              'SAAFF Excellence Awards',
+              'Women in Logistics Africa Awards',
+            ].map((award) => (
+              <div style="display: flex; align-items: flex-start; gap: 12px;">
+                <span style="font-family: var(--f-mono); font-size: 14px; color: var(--c-bordeaux); margin-top: 3px; flex-shrink: 0;">&check;</span>
+                <span style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.5; color: var(--c-charcoal);">{award}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Press contact -->
+  <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 10rem);">
+    <div class="section">
+      <div class="max-w-3xl reveal">
+        <p class="eyebrow mb-4">Media</p>
+        <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; color: var(--c-ink); margin-bottom: 1.5rem;">
+          Press <em style="color: var(--c-bordeaux); font-style: italic;">contact</em>
+        </h2>
+        <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); margin-bottom: 2rem;">
+          For media enquiries, interviews with Anne-Marie Mandtoumbi or comment on freight industry developments:
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 1px; background: var(--c-line-soft);">
+          <div style="background: var(--c-cream); padding: 16px 20px; display: flex; align-items: center; gap: 16px;">
+            <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.12em; color: var(--c-mute); width: 48px;">EMAIL</span>
+            <a href={`mailto:${site.email}`} style="font-family: var(--f-sans); font-size: 1.1875rem; color: var(--c-bordeaux); font-weight: 600;">{site.email}</a>
+          </div>
+          <div style="background: var(--c-cream); padding: 16px 20px; display: flex; align-items: center; gap: 16px;">
+            <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.12em; color: var(--c-mute); width: 48px;">PHONE</span>
+            <a href={`tel:${site.phoneRaw}`} style="font-family: var(--f-sans); font-size: 1.1875rem; color: var(--c-bordeaux); font-weight: 600;">{site.phone}</a>
+          </div>
+        </div>
+        <p style="font-family: var(--f-sans); font-size: 0.8125rem; color: var(--c-mute); margin-top: 1.5rem;">
+          We respond to media enquiries within 24 business hours.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band-bordeaux" style="padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="absolute right-[-60px] bottom-[-60px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 400px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10" style="text-align: center;">
+      <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; color: var(--c-cream); margin-bottom: 1rem;">
+        Follow Mekluc Freight on <em style="color: var(--c-copper); font-style: italic;">LinkedIn.</em>
+      </h2>
+      <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: rgba(247,242,232,0.7); max-width: 48ch; margin: 0 auto 2.5rem;">
+        Industry insights, company milestones and freight news from South Africa.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer" class="btn-white">Follow on LinkedIn <span class="btn-arrow">&rarr;</span></a>
+        <a href="/insights" class="btn-outline-light">Read Mekluc Insights</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

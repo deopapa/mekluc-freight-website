@@ -1,0 +1,167 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/sections/PageHeader.astro';
+import { site } from '@/lib/site';
+---
+
+<BaseLayout
+  title="Sector Solutions Freight | SA Export Mining Pharma"
+  description="Sector-specific freight solutions — SA Export Diversification, Mining & Project Cargo Africa, Pharma & Perishables GDP-Ready. Designed for your industry."
+>
+  <PageHeader
+    label="Sector Solutions"
+    title="Solutions built around your trade."
+    subtitle="Three industries we know inside-out. Three teams that speak your language — from SARS forms to dangerous goods declarations."
+    cta={{ text: 'Get a tailored quote in less than 2h', href: '/contact?quote=1' }}
+    bg="bordeaux"
+  />
+
+  <!-- INTRO -->
+  <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 8rem);">
+    <div class="section">
+      <div class="max-w-3xl reveal">
+        <p style="font-family: var(--f-sans); font-size: clamp(1.0625rem, 1.5vw, 1.25rem); line-height: 1.65; color: var(--c-charcoal);">
+          Standard freight forwarding works for standard cargo. The shipments that actually matter to your business are rarely standard. Mining cargo to the DRC doesn't move like consumer goods to Europe. GDP-compliant pharmaceuticals don't ship like industrial machinery. Our three solutions are built around the industries we serve weekly.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 SOLUTION CARDS — editorial magazine -->
+  <section style="padding-bottom: clamp(5rem, 12vw, 10rem);">
+    <div class="section">
+      <div class="grid grid-cols-1 gap-px reveal" style="background: var(--c-line-soft);">
+        {[
+          {
+            num: '01',
+            tag: 'EXPORT',
+            title: 'SA Export Diversification',
+            href: '/solutions/sa-export-diversification',
+            desc: 'For South African exporters re-routing beyond US tariff exposure into Asia, Middle East, India and AfCFTA markets.',
+            bullets: [
+              'Multi-corridor freight optimisation',
+              'AGOA/AfCFTA/SADC certificates of origin',
+              'Market entry documentation per destination',
+              'Phytosanitary & health certifications',
+            ],
+            cta: 'Diversify your export portfolio',
+          },
+          {
+            num: '02',
+            tag: 'MINING',
+            title: 'Mining & Project Cargo Africa',
+            href: '/solutions/mining-project-cargo-africa',
+            desc: 'For mining operations and project cargo shipments to the DRC Copperbelt, Zambia and Zimbabwe.',
+            bullets: [
+              'Heavy equipment and oversized cargo',
+              'Mining reagents and chemicals (DGR class 6/8)',
+              'Cross-border customs at Beit Bridge/Chirundu/Kasumbalesa',
+              'Final-mile to mine sites',
+            ],
+            cta: 'Move your mining cargo',
+          },
+          {
+            num: '03',
+            tag: 'PHARMA',
+            title: 'Pharma & Perishables GDP-Ready',
+            href: '/solutions/pharma-perishables-gdp',
+            desc: 'For pharmaceutical exporters, vaccine logistics, laboratory samples, fruit and meat exporters.',
+            bullets: [
+              'Cold chain integrity from -80°C to ambient',
+              'GDP-compliant pharma handling',
+              'Validated cold chain partners',
+              'Temperature traceability and audit-ready documentation',
+            ],
+            cta: 'Plan your GDP shipment',
+          },
+        ].map((s) => (
+          <a href={s.href} class={`group block bg-[var(--c-paper)] hover:bg-[var(--c-cream)] transition-all`} style="padding: clamp(2.5rem, 5vw, 4rem);">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+              <div>
+                <div class="flex items-center gap-3 mb-5">
+                  <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-mute);">&mdash; {s.num}</span>
+                  <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-bordeaux);">{s.tag}</span>
+                </div>
+                <h3 style="font-family: var(--f-serif); font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 400; line-height: 1.15; color: var(--c-ink); margin-bottom: 1rem; transition: color 0.2s;" class="group-hover:text-[var(--c-bordeaux)]">
+                  {s.title}
+                </h3>
+                <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); margin-bottom: 1.5rem; max-width: 48ch;">
+                  {s.desc}
+                </p>
+                <span style="font-family: var(--f-sans); font-size: 15px; font-weight: 600; color: var(--c-bordeaux); display: inline-flex; align-items: center; gap: 8px;">
+                  {s.cta} <span class="btn-arrow" style="font-family: var(--f-mono); font-size: 14px;">&rarr;</span>
+                </span>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                {s.bullets.map((b) => (
+                  <div style="display: flex; align-items: flex-start; gap: 12px;">
+                    <span style="font-family: var(--f-mono); font-size: 14px; color: var(--c-bordeaux); margin-top: 3px; flex-shrink: 0;">&check;</span>
+                    <span style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.5; color: var(--c-charcoal);">{b}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH — process -->
+  <section style="background: var(--c-cream); padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Our approach</p>
+          <h2 class="section-title">Whatever the sector, <em>same rigour</em></h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-0 reveal">
+        {[
+          { step: '01', title: 'Assess', desc: 'Understand your cargo, route, constraints, and stakes.' },
+          { step: '02', title: 'Plan', desc: 'Design the optimal multimodal route and documentation strategy.' },
+          { step: '03', title: 'Execute', desc: 'Pick up, ship, clear customs, deliver — with full visibility.' },
+          { step: '04', title: 'Optimise', desc: 'Quarterly review, route adjustments, cost improvements.' },
+        ].map((s, i) => (
+          <div style={`padding: clamp(1.5rem, 3vw, 2.5rem); ${i > 0 ? 'border-left: 1px solid var(--c-line-soft);' : ''}`} class="hidden md:block">
+            <p style="font-family: var(--f-serif); font-size: clamp(2.5rem, 4vw, 3.25rem); font-weight: 400; color: var(--c-bordeaux); line-height: 1; margin-bottom: 0.75rem;">{s.step}</p>
+            <h3 style="font-family: var(--f-serif); font-size: 1.25rem; font-weight: 400; color: var(--c-ink); margin-bottom: 0.5rem;">{s.title}</h3>
+            <p style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.65; color: var(--c-charcoal);">{s.desc}</p>
+          </div>
+        ))}
+        {[
+          { step: '01', title: 'Assess', desc: 'Understand your cargo, route, constraints, and stakes.' },
+          { step: '02', title: 'Plan', desc: 'Design the optimal multimodal route and documentation strategy.' },
+          { step: '03', title: 'Execute', desc: 'Pick up, ship, clear customs, deliver — with full visibility.' },
+          { step: '04', title: 'Optimise', desc: 'Quarterly review, route adjustments, cost improvements.' },
+        ].map((s, i) => (
+          <div style={`padding: 1.5rem 0; ${i > 0 ? 'border-top: 1px solid var(--c-line-soft);' : ''}`} class="md:hidden">
+            <p style="font-family: var(--f-serif); font-size: 2.5rem; font-weight: 400; color: var(--c-bordeaux); line-height: 1; margin-bottom: 0.5rem;">{s.step}</p>
+            <h3 style="font-family: var(--f-serif); font-size: 1.25rem; font-weight: 400; color: var(--c-ink); margin-bottom: 0.5rem;">{s.title}</h3>
+            <p style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.65; color: var(--c-charcoal);">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band-bordeaux" style="padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="absolute right-[-60px] bottom-[-60px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 400px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10" style="text-align: center;">
+      <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; color: var(--c-cream); margin-bottom: 1rem;">
+        Your industry isn't <em style="color: var(--c-copper); font-style: italic;">here?</em>
+      </h2>
+      <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: rgba(247,242,232,0.7); max-width: 48ch; margin: 0 auto 2.5rem;">
+        We handle standard freight forwarding across all sectors. Tell us about your cargo — we'll match the right approach.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contact?quote=1" class="btn-white">Get a tailored quote in less than 2h <span class="btn-arrow">&rarr;</span></a>
+        <a href={site.social.whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-outline-light">WhatsApp us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,328 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/sections/PageHeader.astro';
+import { site } from '@/lib/site';
+---
+
+<BaseLayout
+  title="Pharma Freight GDP | Perishables Cold Chain South Africa"
+  description="GDP-compliant freight forwarding for pharmaceuticals, vaccines, fruit, meat and red berries. Cold chain integrity. AEO secured customs. Plan your pharma shipment."
+>
+  <PageHeader
+    bgImage="/images/hero/hero-pharma.webp"
+    label="Pharma & Perishables"
+    title="Pharma and perishables — moved under cold chain that holds."
+    subtitle="GDP-compliant freight forwarding for pharmaceuticals, vaccines, laboratory samples, red berries, stone fruit, citrus, meat and seafood. Continuous temperature monitoring. Validated containers. AEO-secured customs that doesn't break the cold chain."
+    cta={{ text: 'Plan your GDP-ready shipment', href: '/contact?quote=1&solution=pharma' }}
+  />
+
+  <!-- THE SITUATION -->
+  <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 8rem);">
+    <div class="section">
+      <div class="max-w-3xl reveal">
+        <p style="font-family: var(--f-sans); font-size: clamp(1.0625rem, 1.5vw, 1.25rem); line-height: 1.65; color: var(--c-charcoal); margin-bottom: 1.5rem;">
+          Pharmaceutical and perishable freight is unforgiving. Every hour matters. A vaccine shipment that sits on a tarmac for 6 hours is a destroyed shipment. A container of red berries that spends an extra day in customs loses shelf life that no amount of logistics can recover.
+        </p>
+        <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); margin-bottom: 1.5rem;">
+          What this means in practice: validated cold chain partners at every handover point. Continuous temperature monitoring from the moment your cargo leaves your facility. GDP-compliant handling procedures that your quality team can audit. Customs clearance that doesn't sit containers on hot tarmac while paperwork queues.
+        </p>
+        <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); margin-bottom: 2rem;">
+          That last point is where our AEO accreditation changes everything. Pre-arrival customs processing means your temperature-sensitive cargo clears in hours, not days. For pharma and perishables, AEO isn't a nice-to-have — it's the difference between product delivered and product destroyed.
+        </p>
+        <a href="/contact?quote=1&solution=pharma" style="font-family: var(--f-sans); font-size: 15px; font-weight: 600; color: var(--c-bordeaux); display: inline-flex; align-items: center; gap: 8px;">
+          Talk to our pharma & perishables team <span class="btn-arrow" style="font-family: var(--f-mono); font-size: 14px;">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE SHIP — dark band -->
+  <section style="background: var(--c-ink); background-image: radial-gradient(circle at 30% 70%, rgba(176,122,79,0.06) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(128,0,32,0.04) 0%, transparent 50%); padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="section">
+      <div class="reveal" style="margin-bottom: 48px;">
+        <p class="eyebrow mb-4" style="color: var(--c-copper);">Cargo types</p>
+        <h2 class="section-title" style="color: var(--c-cream);">What we ship under <em>GDP / cold chain</em></h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 reveal">
+        {[
+          {
+            tag: 'PHARMA',
+            title: 'Pharmaceuticals',
+            items: ['Vaccines & biologics', 'Prescription medications', 'Active pharmaceutical ingredients (APIs)', 'Clinical trial samples', 'Diagnostic kits', 'Veterinary pharma'],
+          },
+          {
+            tag: 'LABORATORY',
+            title: 'Laboratory samples',
+            items: ['Biological samples', 'Genetic & tissue samples (dry ice or LN2)', 'Reference standards', 'Chain-of-custody documented'],
+          },
+          {
+            tag: 'PRODUCE',
+            title: 'Perishable produce',
+            items: ['Stone fruit', 'Pome fruit', 'Citrus', 'Table grapes', 'Red berries', 'Avocados', 'Vegetables'],
+          },
+          {
+            tag: 'PROTEIN',
+            title: 'Meat and seafood',
+            items: ['Frozen meat', 'Chilled meat', 'Fish & seafood', 'Processed protein'],
+          },
+        ].map((cat) => (
+          <div style="border: 1px solid rgba(176,122,79,0.15); padding: clamp(1.5rem, 3vw, 2.5rem);">
+            <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); display: block; margin-bottom: 1rem;">{cat.tag}</span>
+            <h3 style="font-family: var(--f-serif); font-size: 1.5rem; font-weight: 400; color: var(--c-cream); margin-bottom: 1.25rem;">{cat.title}</h3>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              {cat.items.map((item) => (
+                <div style="display: flex; align-items: flex-start; gap: 10px;">
+                  <span style="font-family: var(--f-mono); font-size: 14px; color: var(--c-copper); margin-top: 3px; flex-shrink: 0;">&check;</span>
+                  <span style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.5; color: var(--c-mute);">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="reveal" style="margin-top: 16px;">
+        <div style="border: 1px solid rgba(176,122,79,0.15); padding: clamp(1.5rem, 3vw, 2rem);">
+          <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); display: block; margin-bottom: 10px;">FLORICULTURE</span>
+          <h3 style="font-family: var(--f-serif); font-size: 1.25rem; font-weight: 400; color: var(--c-cream); margin-bottom: 0.75rem;">Floriculture</h3>
+          <div class="flex flex-wrap gap-6">
+            {['Cut flowers', 'Plants & seedlings'].map((item) => (
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-family: var(--f-mono); font-size: 14px; color: var(--c-copper); flex-shrink: 0;">&check;</span>
+                <span style="font-family: var(--f-sans); font-size: 1rem; color: var(--c-mute);">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLD CHAIN CAPABILITIES -->
+  <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 10rem);">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Cold chain</p>
+          <h2 class="section-title">Our cold chain <em>capabilities</em></h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-px reveal" style="background: var(--c-line-soft);">
+        {[
+          {
+            num: '01',
+            title: 'Temperature ranges',
+            items: ['Frozen: -25°C to -18°C', 'Chilled: 2°C to 8°C', 'Controlled ambient: 15°C to 25°C', 'Ultra-low: -80°C', 'Cryogenic: -196°C (LN2)'],
+          },
+          {
+            num: '02',
+            title: 'Container types',
+            items: ['Reefer sea containers', 'Active cooling air containers', 'Passive cooling solutions', 'Dry ice packaging'],
+          },
+          {
+            num: '03',
+            title: 'Monitoring & traceability',
+            items: ['Data loggers on every shipment', 'Pre-departure validation', 'In-transit monitoring', 'Arrival temperature reports', 'Audit-ready documentation'],
+          },
+        ].map((col) => (
+          <div style="background: var(--c-paper); padding: clamp(2rem, 4vw, 3rem);">
+            <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); display: block; margin-bottom: 1rem;">&mdash; {col.num}</span>
+            <h3 style="font-family: var(--f-serif); font-size: 1.5rem; font-weight: 400; line-height: 1.2; color: var(--c-ink); margin-bottom: 1.25rem;">{col.title}</h3>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              {col.items.map((item) => (
+                <div style="display: flex; align-items: flex-start; gap: 10px;">
+                  <span style="font-family: var(--f-mono); font-size: 14px; color: var(--c-bordeaux); margin-top: 3px; flex-shrink: 0;">&check;</span>
+                  <span style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.5; color: var(--c-charcoal);">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- GDP COMPLIANCE — cream band -->
+  <section style="background: var(--c-cream); padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="section">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start reveal">
+        <div>
+          <p class="eyebrow mb-4">Compliance</p>
+          <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; color: var(--c-ink); margin-bottom: 1.5rem;">
+            GDP compliance — what it means for <em style="color: var(--c-bordeaux); font-style: italic;">your cargo</em>
+          </h2>
+          <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); margin-bottom: 1rem;">
+            Good Distribution Practice (GDP) is the quality standard for the pharmaceutical supply chain. It governs how medicines are stored, transported and handled to ensure they remain safe and effective.
+          </p>
+          <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal);">
+            For perishable produce, equivalent standards apply — PPECB cold chain protocols, phytosanitary compliance, and temperature traceability that satisfies both South African export authorities and destination import inspectors.
+          </p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          {[
+            'Qualification of freight forwarder',
+            'Container and route validation',
+            'Continuous temperature monitoring',
+            'Deviation management procedures',
+            'Personnel training records',
+            'Complete audit trail',
+          ].map((item) => (
+            <div style="display: flex; align-items: center; gap: 14px; padding: 16px 20px; background: var(--c-paper); border: 1px solid var(--c-line-soft);">
+              <span style="font-family: var(--f-mono); font-size: 24px; color: var(--c-bordeaux); flex-shrink: 0;">&check;</span>
+              <span style="font-family: var(--f-sans); font-size: 1.1875rem; color: var(--c-ink);">{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AEO ADVANTAGE -->
+  <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 10rem);">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">AEO advantage</p>
+          <h2 class="section-title">When hours matter, <em>AEO delivers</em></h2>
+        </div>
+        <p class="section-lead">For temperature-sensitive cargo, customs delays are cargo destruction events. AEO accreditation prevents exactly this.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px reveal" style="background: var(--c-line-soft);">
+        {[
+          {
+            num: '01',
+            title: 'Pre-arrival clearance',
+            desc: 'Documentation submitted and processed before your cargo reaches the port or airport. Containers move to cold storage — not to customs queues.',
+          },
+          {
+            num: '02',
+            title: 'Priority handling',
+            desc: 'AEO-accredited shipments receive priority processing. Your reefer container is cleared and plugged in within hours of discharge.',
+          },
+          {
+            num: '03',
+            title: 'Reduced inspections',
+            desc: 'Lower inspection rates mean your cold chain stays intact. Fewer container openings. Fewer temperature excursions caused by customs examination.',
+          },
+          {
+            num: '04',
+            title: 'International recognition',
+            desc: 'Mutual recognition agreements mean AEO benefits extend to destination customs. Preferential treatment at both ends of the journey.',
+          },
+        ].map((adv) => (
+          <div style="background: var(--c-paper); padding: clamp(2rem, 4vw, 3rem);">
+            <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); display: block; margin-bottom: 1rem;">&mdash; {adv.num}</span>
+            <h3 style="font-family: var(--f-serif); font-size: 1.5rem; font-weight: 400; line-height: 1.2; color: var(--c-ink); margin-bottom: 0.75rem;">{adv.title}</h3>
+            <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal);">{adv.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="reveal" style="margin-top: 48px; text-align: center;">
+        <p style="font-family: var(--f-serif); font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 400; color: var(--c-ink); max-width: 48ch; margin: 0 auto;">
+          $42,000 saved on a single shipment — the value of a pharma container that would have been destroyed by a 2-day customs delay.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY — dark band -->
+  <section style="background: var(--c-ink); background-image: radial-gradient(circle at 30% 70%, rgba(176,122,79,0.06) 0%, transparent 50%); padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="section">
+      <div class="max-w-3xl reveal">
+        <p class="eyebrow mb-4" style="color: var(--c-copper);">Case study</p>
+        <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(1.75rem, 3.5vw, 2.5rem); line-height: 1.15; color: var(--c-cream); margin-bottom: 1.5rem;">
+          Western Cape red berries export, peak season
+        </h2>
+        <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-mute); margin-bottom: 1rem;">
+          A Western Cape red berries exporter required 4-6 reefer containers per week during peak season, shipped to European markets. Set point: 0.5°C. Transit time: 18-21 days. Tolerance for temperature deviation: minimal.
+        </p>
+        <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-mute); margin-bottom: 2rem;">
+          The protocol: pre-cooling validation before stuffing, continuous data logger monitoring from cold store to vessel, pre-arrival customs clearance to eliminate tarmac waiting time, container plug-in verification at every transhipment point, arrival temperature reports within 2 hours of discharge.
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4" style="margin-bottom: 2rem;">
+          {[
+            { label: 'Containers shipped', value: '24' },
+            { label: 'Claims', value: '0' },
+            { label: 'Max deviation', value: '<0.4°C' },
+            { label: 'Previous forwarder', value: '1 in 8' },
+          ].map((stat) => (
+            <div style="text-align: center; padding: 20px; border: 1px solid rgba(176,122,79,0.15);">
+              <p style="font-family: var(--f-serif); font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 400; color: var(--c-copper); line-height: 1; margin-bottom: 6px;">{stat.value}</p>
+              <p style="font-family: var(--f-sans); font-size: 0.75rem; letter-spacing: 0.05em; color: var(--c-mute);">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+
+        <p style="font-family: var(--f-sans); font-size: 0.8125rem; font-style: italic; color: var(--c-mute);">
+          Season result: 24 containers, zero claims, temperature deviation under 0.4°C. Previous forwarder: 1 claim in every 8 containers.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="background: var(--c-cream); padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">FAQ</p>
+          <h2 class="section-title">Pharma & perishables <em>questions</em></h2>
+        </div>
+      </div>
+
+      <div class="max-w-3xl" style="display: flex; flex-direction: column; gap: 0;">
+        {[
+          {
+            q: 'Are you GDP-certified?',
+            a: 'We work with GDP-certified cold chain partners at every handover point. Our processes follow GDP guidelines and are audit-ready for your quality team to verify.',
+          },
+          {
+            q: 'What temperature ranges can you handle?',
+            a: 'From -196°C (cryogenic, liquid nitrogen) through ultra-low (-80°C), frozen (-25°C to -18°C), chilled (2°C to 8°C) and controlled ambient (15°C to 25°C).',
+          },
+          {
+            q: 'How do you prevent customs delays for reefer cargo?',
+            a: 'AEO pre-arrival clearance means documentation is processed before your cargo reaches the port. Containers move to cold storage, not customs queues.',
+          },
+          {
+            q: 'Can you handle clinical trial samples?',
+            a: 'Yes — with full chain-of-custody documentation, temperature monitoring, and the handling protocols required for regulatory compliance. Both import and export.',
+          },
+          {
+            q: 'What about PPECB compliance for fruit exports?',
+            a: 'We coordinate PPECB cold chain compliance end-to-end — pre-cooling validation, data logger monitoring, phytosanitary certificates, and arrival condition reporting.',
+          },
+        ].map((faq, i) => (
+          <div class="reveal" style={`padding: clamp(1.5rem, 3vw, 2rem) 0; ${i > 0 ? 'border-top: 1px solid var(--c-line);' : ''}`}>
+            <h3 style="font-family: var(--f-serif); font-size: 1.25rem; font-weight: 400; color: var(--c-ink); margin-bottom: 0.75rem;">{faq.q}</h3>
+            <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); max-width: 60ch;">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band-bordeaux" style="padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="absolute right-[-60px] bottom-[-60px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 400px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10" style="text-align: center;">
+      <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; color: var(--c-cream); margin-bottom: 1rem;">
+        Shipping pharma or <em style="color: var(--c-copper); font-style: italic;">perishables?</em>
+      </h2>
+      <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: rgba(247,242,232,0.7); max-width: 48ch; margin: 0 auto 2.5rem;">
+        Cold chain integrity starts with the right forwarder. Call us at <a href={`tel:${site.phoneRaw}`} style="color: var(--c-cream); text-decoration: underline; text-underline-offset: 3px;">{site.phone}</a>.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contact?quote=1&solution=pharma" class="btn-white">Plan your GDP-ready shipment <span class="btn-arrow">&rarr;</span></a>
+        <a href={site.social.whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-outline-light">WhatsApp us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,240 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/sections/PageHeader.astro';
+import { site } from '@/lib/site';
+---
+
+<BaseLayout
+  title="Air Freight South Africa | AEO Accredited | OR Tambo Cape Town Durban"
+  description="Air freight forwarding from South Africa. AEO-accredited customs at OR Tambo, Cape Town and Durban. Express, perishables, DGR, HUM, AVI. Quote in less than 2h."
+>
+  <PageHeader
+    bgImage="/images/hero/hero-air-freight.webp"
+    label="Air Freight"
+    title="Air freight from South Africa — faster through customs."
+    subtitle="AEO-accredited. Express, perishables, DGR, HUM, AVI cargo handled from OR Tambo, Cape Town and Durban to every continent."
+    cta={{ text: 'Get an air quote in less than 2h', href: '/contact?quote=1&mode=air' }}
+    ctaSecondary={{ text: 'Track shipment', href: '/tracking' }}
+  />
+
+  <!-- ============== WHY AIR FREIGHT — Stats Band Bordeaux ============== -->
+  <section class="cta-band-bordeaux">
+    <div class="absolute right-[-80px] bottom-[-80px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 360px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10" style="padding-top: clamp(3rem, 6vw, 5rem); padding-bottom: clamp(3rem, 6vw, 5rem);">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 items-center">
+        <div class="md:col-span-1">
+          <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-copper); margin-bottom: 8px;">
+            <span style="display: inline-block; width: 24px; height: 1px; background: var(--c-copper); margin-right: 10px; vertical-align: middle;"></span>Why Air with Mekluc
+          </p>
+          <p style="font-family: var(--f-display); font-size: clamp(20px, 2.2vw, 26px); font-weight: 700; line-height: 1.15; color: var(--c-cream); letter-spacing: -0.02em;">
+            Faster <em>where it matters.</em>
+          </p>
+        </div>
+        {[
+          { num: '1-2', unit: 'HRS', label: 'AEO customs clearance' },
+          { num: '< 1', unit: '%', label: 'Physical inspection rate' },
+          { num: '3', unit: 'HUBS', label: 'JNB · CPT · DUR' },
+        ].map((stat) => (
+          <div style="border-left: 1px solid rgba(247,242,232,0.18); padding-left: clamp(1rem, 2vw, 1.5rem);" class="flex flex-col gap-2">
+            <span style="font-family: var(--f-display); font-weight: 800; color: var(--c-cream); line-height: 1; letter-spacing: -0.03em; font-size: clamp(44px, 5.5vw, 60px);">
+              {stat.num}<small style="font-family: var(--f-serif); font-style: italic; font-weight: 500; color: var(--c-copper); font-size: 0.45em; margin-left: 6px;">{stat.unit}</small>
+            </span>
+            <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(247,242,232,0.7);">
+              {stat.label}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== WHAT WE OFFER — 4 cards ============== -->
+  <section style="padding-top: clamp(5rem, 10vw, 8rem); padding-bottom: clamp(5rem, 10vw, 8rem);">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">What we offer</p>
+          <h2 style="font-family: var(--f-display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: var(--c-ink); max-width: 18ch;">
+            Air freight services <em>tailored</em> to your cargo.
+          </h2>
+        </div>
+        <p class="section-lead">Four service tiers covering everything from express documents to oversized project cargo.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px reveal" style="background: var(--c-line-soft);">
+        {[
+          {
+            tag: 'GENERAL',
+            title: 'General Cargo',
+            desc: 'Standard palletised freight. Consolidation available for cost savings. Door-to-door or airport-to-airport.',
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35a2 2 0 0 1 1.26-1.86l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35Z"/><path d="M6 18h12"/><path d="M6 14h12"/></svg>`,
+          },
+          {
+            tag: 'EXPRESS',
+            title: 'Express & Time-Critical',
+            desc: '24-72h delivery worldwide. Direct flights, priority handling, AEO-fast customs. For urgent spares, samples, contracts.',
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+          },
+          {
+            tag: 'COLD CHAIN',
+            title: 'Pharma & Perishables',
+            desc: 'GDP-compliant. Active or passive cooling. Continuous temperature monitoring from cold store to destination.',
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"/><path d="M8 16h.01"/><path d="M8 20h.01"/><path d="M12 18h.01"/><path d="M12 22h.01"/><path d="M16 16h.01"/><path d="M16 20h.01"/></svg>`,
+          },
+          {
+            tag: 'SPECIALISED',
+            title: 'DGR · HUM · AVI',
+            desc: 'Dangerous Goods (all classes), Human Remains repatriation, Live Animals. IATA-certified handlers.',
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>`,
+          },
+        ].map((s) => (
+          <div style="background: var(--c-paper); padding: clamp(2rem, 4vw, 2.5rem);">
+            <div style="color: var(--c-bordeaux); margin-bottom: 1rem;" set:html={s.icon} />
+            <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); margin-bottom: 8px;">{s.tag}</p>
+            <h3 style="font-family: var(--f-display); font-size: 22px; font-weight: 700; color: var(--c-ink); margin-bottom: 12px; letter-spacing: -0.02em; line-height: 1.2;">{s.title}</h3>
+            <p style="font-family: var(--f-sans); font-size: 17px; line-height: 1.6; color: var(--c-charcoal);">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SOLUTIONS — Accordion ============== -->
+  <section style="background: var(--c-cream); padding: clamp(5rem, 10vw, 8rem) 0;">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Solutions</p>
+          <h2 style="font-family: var(--f-display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: var(--c-ink); max-width: 20ch;">
+            Choose your <em>service level.</em>
+          </h2>
+        </div>
+      </div>
+
+      <div class="max-w-3xl reveal" style="display: flex; flex-direction: column; gap: 0;">
+        {[
+          {
+            title: 'Standard Air Freight (3-7 days)',
+            desc: 'Cost-effective air freight on regular commercial flights. Consolidation services available for shipments under 1 ton. Best value for non-urgent cargo with reliable transit times.',
+            features: ['Door-to-door or airport-to-airport', 'Daily departures JNB/CPT/DUR', 'Tracking from acceptance to delivery'],
+          },
+          {
+            title: 'Express Air Freight (24-72h)',
+            desc: 'Priority handling on direct flights. AEO-fast customs clearance at both origin and destination. For urgent spare parts, contracts, samples and time-sensitive shipments.',
+            features: ['Guaranteed lift on next available flight', 'Pre-arrival customs lodgement', 'Active monitoring with proactive updates'],
+          },
+          {
+            title: 'Charter Services',
+            desc: 'Full aircraft charter for oversized cargo, outsized weights, or shipments requiring exclusive use. Aircraft selection from regional turboprops to AN-124 freighters.',
+            features: ['Single shipper, single cargo', 'Custom routing including remote airports', 'Specialised loading and lifting equipment'],
+          },
+          {
+            title: 'Time-Definite Delivery',
+            desc: 'Delivery within a guaranteed window for commercial-critical shipments. Backed by SLA with refund clauses. For trade shows, retail launches, manufacturing deadlines.',
+            features: ['Guaranteed delivery date and time', 'SLA contract with penalty clauses', 'Dedicated coordinator from booking to PoD'],
+          },
+        ].map((sol) => (
+          <details class="accordion-item" style="border-top: 1px solid var(--c-line);">
+            <summary style="display: flex; justify-content: space-between; align-items: center; padding: clamp(1.5rem, 3vw, 2rem) 0; cursor: pointer; list-style: none;">
+              <h3 style="font-family: var(--f-display); font-size: clamp(17px, 1.8vw, 20px); font-weight: 600; color: var(--c-ink); letter-spacing: -0.01em;">{sol.title}</h3>
+              <span class="accordion-icon" style="font-family: var(--f-mono); font-size: 24px; color: var(--c-bordeaux); transition: transform 0.3s ease; flex-shrink: 0; margin-left: 16px;">+</span>
+            </summary>
+            <div style="padding: 0 0 clamp(1.5rem, 3vw, 2rem) 0;">
+              <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); max-width: 65ch; margin-bottom: 1rem;">{sol.desc}</p>
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                {sol.features.map((f) => (
+                  <div style="display: flex; align-items: flex-start; gap: 10px;">
+                    <span style="font-family: var(--f-mono); font-size: 14px; color: var(--c-bordeaux); margin-top: 3px; flex-shrink: 0;">&check;</span>
+                    <span style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.5; color: var(--c-charcoal);">{f}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </details>
+        ))}
+        <div style="border-top: 1px solid var(--c-line);"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== INDUSTRIES WE SHIP — Mini band dark ============== -->
+  <section style="background: var(--c-ink); position: relative; overflow: hidden;">
+    <div class="section" style="padding-top: clamp(3rem, 6vw, 5rem); padding-bottom: clamp(3rem, 6vw, 5rem);">
+      <div class="reveal" style="margin-bottom: 32px; text-align: center;">
+        <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-copper); margin-bottom: 12px;">— Industries we ship by air</p>
+        <h2 style="font-family: var(--f-display); font-size: clamp(24px, 3vw, 32px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: var(--c-cream); max-width: 28ch; margin: 0 auto;">
+          From <em>vaccines</em> to <em>aircraft parts</em>.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-3 md:grid-cols-6 gap-px reveal" style="background: rgba(176,122,79,0.15);">
+        {['Pharma & Health', 'Auto Parts', 'Perishables', 'Documents', 'Tech & Electronics', 'E-commerce'].map((ind) => (
+          <div style="background: var(--c-ink); padding: 1.25rem 0.75rem; text-align: center;">
+            <span style="font-family: var(--f-display); font-size: 19px; font-weight: 600; color: var(--c-cream);">{ind}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FAQ — Condensed ============== -->
+  <section style="padding-top: clamp(5rem, 10vw, 8rem); padding-bottom: clamp(5rem, 10vw, 8rem);">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">FAQ</p>
+          <h2 style="font-family: var(--f-display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: var(--c-ink);">
+            Common <em>questions.</em>
+          </h2>
+        </div>
+      </div>
+
+      <div class="max-w-3xl" style="display: flex; flex-direction: column; gap: 0;">
+        {[
+          { q: 'How fast can air freight clear South African customs?', a: 'With AEO accreditation: 1-2 hours for pre-arrival cleared shipments. Standard non-AEO: 4-12 hours typical, 24-48h for held inspections.' },
+          { q: 'Can you handle dangerous goods by air?', a: 'Yes — all 9 IATA DGR classes. Our handlers are IATA DGR-certified and recertified every 2 years. We handle lithium batteries, perishables in dry ice, samples in Class 6, and aerosols.' },
+          { q: 'What about temperature-sensitive cargo?', a: 'GDP-compliant cold chain from -80°C through ambient. Active cooling containers for long-haul, passive solutions for shorter transit. Data loggers on every shipment.' },
+          { q: 'Do you offer charter services?', a: 'Yes. Aircraft from regional turboprops (5-tonne payload) through AN-124 freighters (120-tonne payload). For project cargo, oversized items, time-critical industrial shipments.' },
+        ].map((faq, i) => (
+          <details class="accordion-item" style={`border-top: 1px solid var(--c-line); ${i === 0 ? 'border-top: 1px solid var(--c-line);' : ''}`}>
+            <summary style="display: flex; justify-content: space-between; align-items: center; padding: clamp(1.25rem, 2.5vw, 1.75rem) 0; cursor: pointer; list-style: none;">
+              <h3 style="font-family: var(--f-display); font-size: 24px; font-weight: 600; color: var(--c-ink);">{faq.q}</h3>
+              <span class="accordion-icon" style="font-family: var(--f-mono); font-size: 24px; color: var(--c-bordeaux); transition: transform 0.3s ease; flex-shrink: 0; margin-left: 16px;">+</span>
+            </summary>
+            <p style="padding: 0 0 clamp(1.25rem, 2.5vw, 1.75rem) 0; font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); max-width: 65ch;">{faq.a}</p>
+          </details>
+        ))}
+        <div style="border-top: 1px solid var(--c-line);"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== CTA BAND ============== -->
+  <section class="cta-band-bordeaux" style="padding: clamp(5rem, 10vw, 8rem) 0;">
+    <div class="absolute right-[-60px] bottom-[-60px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 400px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10" style="text-align: center;">
+      <h2 style="font-family: var(--f-display); font-weight: 800; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; letter-spacing: -0.03em; color: var(--c-cream); margin-bottom: 1rem;">
+        Ready to ship by <em style="font-family: var(--f-serif); color: var(--c-copper); font-style: italic; font-weight: 500;">air?</em>
+      </h2>
+      <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: rgba(247,242,232,0.75); max-width: 48ch; margin: 0 auto 2.5rem;">
+        Quote in less than 2h. Or call <a href={`tel:${site.phoneRaw}`} style="color: var(--c-cream); text-decoration: underline; text-underline-offset: 3px;">{site.phone}</a>.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contact?quote=1&mode=air" class="btn-white">Get an air quote <span class="btn-arrow">&rarr;</span></a>
+        <a href={site.social.whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-outline-light">WhatsApp us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Accordion native styling */
+  details summary::-webkit-details-marker { display: none; }
+  details[open] .accordion-icon { transform: rotate(45deg); }
+  details summary:hover h3 { color: var(--c-bordeaux); }
+  details summary { transition: background 0.15s ease; }
+</style>

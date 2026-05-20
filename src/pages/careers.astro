@@ -1,0 +1,148 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/sections/PageHeader.astro';
+import { site } from '@/lib/site';
+---
+
+<BaseLayout
+  title="Careers at Mekluc Freight | Join South Africa's AEO Freight Partner"
+  description="Build your career at Mekluc Freight — AEO-accredited South African freight forwarder. Open positions in operations, customs and commercial."
+>
+  <PageHeader
+    label="Careers"
+    title="Build your career in African freight forwarding."
+    subtitle="Mekluc Freight is a 19-year-old South African company, AEO-accredited by SARS, Level 1 B-BBEE, and 100% Black Woman Owned. We grow by recruiting people who care about the cargo as much as our clients do."
+    bg="paper"
+  />
+
+  <!-- Why Mekluc -->
+  <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 10rem);">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Why Mekluc</p>
+          <h2 class="section-title">A company where <em>your work matters</em></h2>
+        </div>
+      </div>
+
+      <div class="max-w-3xl reveal" style="display: flex; flex-direction: column; gap: 12px;">
+        {[
+          'A small enough team that your work is visible and valued.',
+          'A large enough company that you\'ll handle real, varied cargo.',
+          'A founder-led culture where decisions happen fast.',
+          'Real career paths in customs, operations, commercial, and management.',
+          'Industry-leading accreditations and continuing education support.',
+        ].map((item) => (
+          <div style="display: flex; align-items: flex-start; gap: 14px; padding: 16px 20px; background: var(--c-cream); border: 1px solid var(--c-line-soft);">
+            <span style="font-family: var(--f-mono); font-size: 14px; color: var(--c-bordeaux); flex-shrink: 0; margin-top: 1px;">&check;</span>
+            <span style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.5; color: var(--c-ink);">{item}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What we look for — dark band -->
+  <section style="background: var(--c-ink); background-image: radial-gradient(circle at 30% 70%, rgba(176,122,79,0.06) 0%, transparent 50%); padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="section">
+      <div class="reveal" style="margin-bottom: 48px;">
+        <p class="eyebrow mb-4" style="color: var(--c-copper);">Culture</p>
+        <h2 class="section-title" style="color: var(--c-cream);">What we <em>look for</em></h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 reveal">
+        {[
+          { title: 'Care for the detail', desc: 'Every customs form, every shipment.' },
+          { title: 'Reliability', desc: 'Clients return calls — we return faster.' },
+          { title: 'Compliance literacy', desc: 'A freight forwarder gets compliance wrong once, then loses.' },
+          { title: 'Africa-orientation', desc: 'We move cargo to corridors most companies avoid.' },
+          { title: 'Hands-on attitude', desc: 'Every team member helps when a shipment needs it.' },
+        ].map((q) => (
+          <div style="border: 1px solid rgba(176,122,79,0.15); padding: clamp(1.5rem, 3vw, 2rem);">
+            <h3 style="font-family: var(--f-serif); font-size: 1.25rem; font-weight: 400; color: var(--c-cream); margin-bottom: 0.5rem;">{q.title}</h3>
+            <p style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.65; color: var(--c-mute);">{q.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Open positions -->
+  <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 10rem);">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Positions</p>
+          <h2 class="section-title">Current open <em>positions</em></h2>
+        </div>
+      </div>
+
+      <div class="max-w-3xl reveal" style="padding: clamp(2rem, 4vw, 3rem); background: var(--c-cream); border: 1px solid var(--c-line-soft); text-align: center;">
+        <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); margin-bottom: 0.5rem;">
+          Currently no open positions advertised.
+        </p>
+        <p style="font-family: var(--f-sans); font-size: 1rem; color: var(--c-mute);">
+          Speculative applications welcome — we keep your CV on file and reach out when a relevant position opens.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to apply — cream band -->
+  <section style="background: var(--c-cream); padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Process</p>
+          <h2 class="section-title">How to <em>apply</em></h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-0 reveal">
+        {[
+          { step: '01', title: 'Send your CV', desc: `Email ${site.email} with subject: Career application — [your name]` },
+          { step: '02', title: 'Cover note', desc: 'Include a short cover note (max 200 words) on why Mekluc.' },
+          { step: '03', title: 'Acknowledgment', desc: 'We acknowledge within 5 business days.' },
+          { step: '04', title: 'Interview', desc: 'Interviews scheduled when a relevant role opens.' },
+        ].map((s, i) => (
+          <div style={`padding: clamp(1.5rem, 3vw, 2.5rem); ${i > 0 ? 'border-left: 1px solid var(--c-line-soft);' : ''}`} class="hidden md:block">
+            <p style="font-family: var(--f-serif); font-size: clamp(2.5rem, 4vw, 3.25rem); font-weight: 400; color: var(--c-bordeaux); line-height: 1; margin-bottom: 0.75rem;">{s.step}</p>
+            <h3 style="font-family: var(--f-serif); font-size: 1.25rem; font-weight: 400; color: var(--c-ink); margin-bottom: 0.5rem;">{s.title}</h3>
+            <p style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.65; color: var(--c-charcoal);">{s.desc}</p>
+          </div>
+        ))}
+        {[
+          { step: '01', title: 'Send your CV', desc: `Email ${site.email} with subject: Career application — [your name]` },
+          { step: '02', title: 'Cover note', desc: 'Include a short cover note (max 200 words) on why Mekluc.' },
+          { step: '03', title: 'Acknowledgment', desc: 'We acknowledge within 5 business days.' },
+          { step: '04', title: 'Interview', desc: 'Interviews scheduled when a relevant role opens.' },
+        ].map((s, i) => (
+          <div style={`padding: 1.5rem 0; ${i > 0 ? 'border-top: 1px solid var(--c-line-soft);' : ''}`} class="md:hidden">
+            <p style="font-family: var(--f-serif); font-size: 2.5rem; font-weight: 400; color: var(--c-bordeaux); line-height: 1; margin-bottom: 0.5rem;">{s.step}</p>
+            <h3 style="font-family: var(--f-serif); font-size: 1.25rem; font-weight: 400; color: var(--c-ink); margin-bottom: 0.5rem;">{s.title}</h3>
+            <p style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.65; color: var(--c-charcoal);">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band-bordeaux" style="padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="absolute right-[-60px] bottom-[-60px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 400px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10" style="text-align: center;">
+      <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; color: var(--c-cream); margin-bottom: 1rem;">
+        Ready to join <em style="color: var(--c-copper); font-style: italic;">Mekluc Freight?</em>
+      </h2>
+      <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: rgba(247,242,232,0.7); max-width: 48ch; margin: 0 auto 2.5rem;">
+        Send a speculative application or connect with us on LinkedIn.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href={`mailto:${site.email}?subject=Career%20application`} class="btn-white">Send application <span class="btn-arrow">&rarr;</span></a>
+        <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer" class="btn-outline-light">Connect on LinkedIn</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

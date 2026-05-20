@@ -1,0 +1,181 @@
+---
+// V3.4 PATCH CORRECTION 3 — Sticky Table of Contents (TOC) for /about page
+// Visible: desktop ≥ 1024px only. Hidden on tablet + mobile.
+// Highlight active section via IntersectionObserver. Smooth scroll on click.
+
+interface TOCItem {
+  id: string;
+  label: string;
+}
+
+interface Props {
+  items: TOCItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<aside class="section-toc" aria-label="Page sections navigation">
+  <p class="toc-label">On this page</p>
+  <ol class="toc-list">
+    {items.map((item, i) => (
+      <li>
+        <a href={`#${item.id}`} data-toc-link={item.id}>
+          <span class="toc-number">{String(i + 1).padStart(2, '0')}</span>
+          <span class="toc-text">{item.label}</span>
+        </a>
+      </li>
+    ))}
+  </ol>
+</aside>
+
+<style>
+  .section-toc {
+    /* Visible desktop only — PATCH 3.2 */
+    display: none;
+    position: sticky;
+    top: 120px; /* PATCH 3.2 — under sticky header */
+    left: 0;
+    align-self: flex-start;
+    padding: 0;
+    max-width: 220px;
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 1024px) {
+    .section-toc {
+      display: block;
+    }
+  }
+
+  .toc-label {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--c-mute);
+    margin-bottom: 16px;
+    padding-left: 14px;
+  }
+
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-left: 1px solid var(--c-line);
+  }
+
+  .toc-list li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .toc-list a {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 8px 14px;
+    font-family: var(--f-mono);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--c-charcoal);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    position: relative;
+    line-height: 1.4;
+  }
+
+  .toc-list a:hover {
+    color: var(--c-copper);
+  }
+
+  .toc-list a.toc-active {
+    color: var(--c-bordeaux);
+    font-weight: 600;
+  }
+
+  /* Active indicator — 2px vertical bar bordeaux left of label (PATCH 3.4) */
+  .toc-list a.toc-active::before {
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--c-bordeaux);
+  }
+
+  .toc-number {
+    color: var(--c-mute);
+    font-size: 10px;
+    flex-shrink: 0;
+  }
+
+  .toc-list a.toc-active .toc-number {
+    color: var(--c-bordeaux);
+  }
+
+  .toc-text {
+    flex: 1;
+  }
+</style>
+
+<script>
+  // Smooth scroll + active highlight via IntersectionObserver
+  document.addEventListener('DOMContentLoaded', () => {
+    const tocLinks = document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]');
+    if (!tocLinks.length) return;
+
+    // Smooth scroll on click (offset for sticky header ~88px)
+    tocLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = link.dataset.tocLink;
+        if (!id) return;
+        const target = document.getElementById(id);
+        if (!target) return;
+        const top = target.getBoundingClientRect().top + window.scrollY - 100;
+        window.scrollTo({ top, behavior: 'smooth' });
+        // Update URL hash without jump
+        history.pushState(null, '', `#${id}`);
+      });
+    });
+
+    // Build map: id -> link element
+    const linkMap = new Map<string, HTMLAnchorElement>();
+    tocLinks.forEach((l) => {
+      const id = l.dataset.tocLink;
+      if (id) linkMap.set(id, l);
+    });
+
+    // IntersectionObserver to highlight active section
+    const sections = Array.from(linkMap.keys())
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Find the topmost intersecting section
+        const intersecting = entries.filter((e) => e.isIntersecting);
+        if (intersecting.length === 0) return;
+        intersecting.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        const activeId = intersecting[0].target.id;
+
+        linkMap.forEach((link, id) => {
+          link.classList.toggle('toc-active', id === activeId);
+        });
+      },
+      {
+        rootMargin: '-100px 0px -60% 0px', // Trigger when section in top portion
+        threshold: 0,
+      }
+    );
+
+    sections.forEach((s) => observer.observe(s));
+  });
+</script>

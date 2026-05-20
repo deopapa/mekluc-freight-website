@@ -1,0 +1,222 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/sections/PageHeader.astro';
+import { site } from '@/lib/site';
+---
+
+<BaseLayout
+  title="Customs Clearing South Africa | AEO SARS Licensed | Faster Clearance"
+  description="SARS-licensed customs clearing, AEO accredited. Faster release, lower inspection risk, full compliance — every shipment. Get a customs quote in less than 2h."
+>
+  <PageHeader
+    bgImage="/images/hero/hero-customs.webp"
+    label="Customs Clearing"
+    title="SARS-licensed. AEO-accredited. Customs cleared faster."
+    subtitle="Less than 1% of South African freight forwarders hold AEO accreditation. Mekluc is one of them — your imports and exports clear customs faster, get inspected less."
+    cta={{ text: 'Get a customs quote in less than 2h', href: '/contact?quote=1&mode=customs' }}
+  />
+
+  <!-- WHY CUSTOMS — Stats Band Bordeaux -->
+  <section class="cta-band-bordeaux">
+    <div class="absolute right-[-80px] bottom-[-80px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 360px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10" style="padding-top: clamp(3rem, 6vw, 5rem); padding-bottom: clamp(3rem, 6vw, 5rem);">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 items-center">
+        <div class="md:col-span-1">
+          <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-copper); margin-bottom: 8px;">
+            <span style="display: inline-block; width: 24px; height: 1px; background: var(--c-copper); margin-right: 10px; vertical-align: middle;"></span>Why AEO Matters
+          </p>
+          <p style="font-family: var(--f-display); font-size: clamp(20px, 2.2vw, 26px); font-weight: 700; line-height: 1.15; color: var(--c-cream); letter-spacing: -0.02em;">
+            Top <em>1%</em> of SA forwarders.
+          </p>
+        </div>
+        {[
+          { num: '2-4', unit: 'HRS', label: 'AEO sea release' },
+          { num: '< 1', unit: '%', label: 'Of SA freight forwarders' },
+          { num: '5', unit: '+ YRS', label: 'Records retained' },
+        ].map((stat) => (
+          <div style="border-left: 1px solid rgba(247,242,232,0.18); padding-left: clamp(1rem, 2vw, 1.5rem);" class="flex flex-col gap-2">
+            <span style="font-family: var(--f-display); font-weight: 800; color: var(--c-cream); line-height: 1; letter-spacing: -0.03em; font-size: clamp(44px, 5.5vw, 60px);">
+              {stat.num}<small style="font-family: var(--f-serif); font-style: italic; font-weight: 500; color: var(--c-copper); font-size: 0.45em; margin-left: 6px;">{stat.unit}</small>
+            </span>
+            <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(247,242,232,0.7);">
+              {stat.label}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE OFFER — 4 cards -->
+  <section style="padding-top: clamp(5rem, 10vw, 8rem); padding-bottom: clamp(5rem, 10vw, 8rem);">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">What we offer</p>
+          <h2 style="font-family: var(--f-display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: var(--c-ink); max-width: 20ch;">
+            Full-spectrum <em>customs services.</em>
+          </h2>
+        </div>
+        <p class="section-lead">Imports, exports, transit, specialised — handled by our in-house licensed agents.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px reveal" style="background: var(--c-line-soft);">
+        {[
+          {
+            tag: 'IMPORTS',
+            title: 'Import Clearance',
+            desc: 'SAD500 declarations, tariff classification, duty calculation, anti-dumping, bonded warehousing entries, rebates.',
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M12 12v6"/><path d="m15 15-3 3-3-3"/></svg>`,
+          },
+          {
+            tag: 'EXPORTS',
+            title: 'Export Clearance',
+            desc: 'SAD500 export declarations, certificates of origin, phytosanitary, VGM verification, export rebates.',
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M12 18v-6"/><path d="m9 15 3-3 3 3"/></svg>`,
+          },
+          {
+            tag: 'TRANSIT',
+            title: 'Transit & In-Bond',
+            desc: 'Transit declarations between customs zones, in-bond movements by road/rail/air, cross-border SADC and SACU.',
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+          },
+          {
+            tag: 'SPECIALISED',
+            title: 'Specialised Customs',
+            desc: 'DGR (IATA 1-9), HUM repatriation, AVI live animal permits/CITES, pharmaceutical & cold-chain compliance.',
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>`,
+          },
+        ].map((s) => (
+          <div style="background: var(--c-paper); padding: clamp(2rem, 4vw, 2.5rem);">
+            <div style="color: var(--c-bordeaux); margin-bottom: 1rem;" set:html={s.icon} />
+            <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); margin-bottom: 8px;">{s.tag}</p>
+            <h3 style="font-family: var(--f-display); font-size: 22px; font-weight: 700; color: var(--c-ink); margin-bottom: 12px; letter-spacing: -0.02em; line-height: 1.2;">{s.title}</h3>
+            <p style="font-family: var(--f-sans); font-size: 17px; line-height: 1.6; color: var(--c-charcoal);">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS — Accordion -->
+  <section style="background: var(--c-cream); padding: clamp(5rem, 10vw, 8rem) 0;">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Process</p>
+          <h2 style="font-family: var(--f-display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: var(--c-ink); max-width: 20ch;">
+            How customs <em>actually works.</em>
+          </h2>
+        </div>
+      </div>
+
+      <div class="max-w-3xl reveal" style="display: flex; flex-direction: column; gap: 0;">
+        {[
+          { title: '01 · Documentation review', desc: 'We review your commercial invoice, packing list, transport documents and certificates. Flag any compliance gaps before SARS sees them.', features: ['Invoice & packing list audit', 'Origin certificate validation', 'Pre-flight risk assessment'] },
+          { title: '02 · Tariff classification & valuation', desc: 'Correct HS code assignment, duty rate calculation, identification of applicable rebates and trade agreements (AGOA, SADC, EU-SA TDCA).', features: ['HS code expertise', 'Trade agreement application', 'Rebate identification'] },
+          { title: '03 · Pre-arrival submission', desc: 'SAD500 lodged electronically before your cargo arrives. AEO status triggers green-lane processing automatically.', features: ['Pre-arrival lodgement', 'Green-lane automation', 'Direct SARS communication'] },
+          { title: '04 · Release & post-clearance', desc: 'Customs release confirmed within hours of arrival. Records retained 5+ years for audit. Post-clearance amendments handled if needed.', features: ['Release notification within hours', '5+ year record retention', 'SARS audit representation'] },
+        ].map((sol) => (
+          <details class="accordion-item" style="border-top: 1px solid var(--c-line);">
+            <summary style="display: flex; justify-content: space-between; align-items: center; padding: clamp(1.5rem, 3vw, 2rem) 0; cursor: pointer; list-style: none;">
+              <h3 style="font-family: var(--f-display); font-size: clamp(17px, 1.8vw, 20px); font-weight: 600; color: var(--c-ink); letter-spacing: -0.01em;">{sol.title}</h3>
+              <span class="accordion-icon" style="font-family: var(--f-mono); font-size: 24px; color: var(--c-bordeaux); transition: transform 0.3s ease; flex-shrink: 0; margin-left: 16px;">+</span>
+            </summary>
+            <div style="padding: 0 0 clamp(1.5rem, 3vw, 2rem) 0;">
+              <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); max-width: 65ch; margin-bottom: 1rem;">{sol.desc}</p>
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                {sol.features.map((f) => (
+                  <div style="display: flex; align-items: flex-start; gap: 10px;">
+                    <span style="font-family: var(--f-mono); font-size: 14px; color: var(--c-bordeaux); margin-top: 3px; flex-shrink: 0;">&check;</span>
+                    <span style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.5; color: var(--c-charcoal);">{f}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </details>
+        ))}
+        <div style="border-top: 1px solid var(--c-line);"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES band -->
+  <section style="background: var(--c-ink); position: relative; overflow: hidden;">
+    <div class="section" style="padding-top: clamp(3rem, 6vw, 5rem); padding-bottom: clamp(3rem, 6vw, 5rem);">
+      <div class="reveal" style="margin-bottom: 32px; text-align: center;">
+        <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-copper); margin-bottom: 12px;">— Industries we clear for</p>
+        <h2 style="font-family: var(--f-display); font-size: clamp(24px, 3vw, 32px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: var(--c-cream); max-width: 30ch; margin: 0 auto;">
+          Every sector. Every <em>tariff code.</em>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-3 md:grid-cols-6 gap-px reveal" style="background: rgba(176,122,79,0.15);">
+        {['Mining', 'Pharma', 'Automotive', 'Agriculture', 'Manufacturing', 'Retail'].map((ind) => (
+          <div style="background: var(--c-ink); padding: 1.25rem 0.75rem; text-align: center;">
+            <span style="font-family: var(--f-display); font-size: 19px; font-weight: 600; color: var(--c-cream);">{ind}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="padding-top: clamp(5rem, 10vw, 8rem); padding-bottom: clamp(5rem, 10vw, 8rem);">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">FAQ</p>
+          <h2 style="font-family: var(--f-display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: var(--c-ink);">
+            Common <em>questions.</em>
+          </h2>
+        </div>
+      </div>
+
+      <div class="max-w-3xl" style="display: flex; flex-direction: column; gap: 0;">
+        {[
+          { q: 'What is AEO and why does it matter for me?', a: 'AEO (Authorised Economic Operator) is a SARS accreditation for freight operators meeting strict security and compliance standards. Your cargo gets faster processing, fewer inspections, priority green-lane access.' },
+          { q: 'Do I need AEO accreditation myself?', a: 'No. When Mekluc handles your customs clearance, our AEO accreditation applies to your shipments. You get all benefits without needing your own status.' },
+          { q: 'How long does customs clearance take?', a: 'AEO pre-arrival: sea FCL released 2-4h of discharge, air 1-2h, road border 4-6h. Standard non-AEO: typically 24-48h or longer.' },
+          { q: 'Can you reduce my customs costs legally?', a: 'Yes. We review tariff classifications for correct duty rates and identify trade agreements (SADC, AGOA, EU-SA TDCA), rebates, and temporary import permits.' },
+          { q: 'What happens if SARS audits me?', a: 'We retain all customs records 5+ years. Our compliance team provides documentation and represents your interests throughout audit processes.' },
+        ].map((faq) => (
+          <details class="accordion-item" style="border-top: 1px solid var(--c-line);">
+            <summary style="display: flex; justify-content: space-between; align-items: center; padding: clamp(1.25rem, 2.5vw, 1.75rem) 0; cursor: pointer; list-style: none;">
+              <h3 style="font-family: var(--f-display); font-size: 24px; font-weight: 600; color: var(--c-ink);">{faq.q}</h3>
+              <span class="accordion-icon" style="font-family: var(--f-mono); font-size: 24px; color: var(--c-bordeaux); transition: transform 0.3s ease; flex-shrink: 0; margin-left: 16px;">+</span>
+            </summary>
+            <p style="padding: 0 0 clamp(1.25rem, 2.5vw, 1.75rem) 0; font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); max-width: 65ch;">{faq.a}</p>
+          </details>
+        ))}
+        <div style="border-top: 1px solid var(--c-line);"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band-bordeaux" style="padding: clamp(5rem, 10vw, 8rem) 0;">
+    <div class="absolute right-[-60px] bottom-[-60px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 400px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10" style="text-align: center;">
+      <h2 style="font-family: var(--f-display); font-weight: 800; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; letter-spacing: -0.03em; color: var(--c-cream); margin-bottom: 1rem;">
+        Let SARS speed up your <em style="font-family: var(--f-serif); color: var(--c-copper); font-style: italic; font-weight: 500;">customs.</em>
+      </h2>
+      <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: rgba(247,242,232,0.75); max-width: 48ch; margin: 0 auto 2.5rem;">
+        Quote in less than 2h. Or call <a href={`tel:${site.phoneRaw}`} style="color: var(--c-cream); text-decoration: underline; text-underline-offset: 3px;">{site.phone}</a>.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contact?quote=1&mode=customs" class="btn-white">Get a customs quote <span class="btn-arrow">&rarr;</span></a>
+        <a href={site.social.whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-outline-light">WhatsApp us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  details summary::-webkit-details-marker { display: none; }
+  details[open] .accordion-icon { transform: rotate(45deg); }
+  details summary:hover h3 { color: var(--c-bordeaux); }
+</style>

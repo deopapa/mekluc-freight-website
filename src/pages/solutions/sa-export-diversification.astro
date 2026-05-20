@@ -1,0 +1,306 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/sections/PageHeader.astro';
+import { site } from '@/lib/site';
+---
+
+<BaseLayout
+  title="SA Export Diversification | Beyond US Tariffs | Asia Middle East AfCFTA"
+  description="Help for South African exporters diversifying beyond US tariffs into Asia, Middle East, India and AfCFTA. Citrus, wine, nuts, automotive, metals. Get a diversification plan."
+>
+  <PageHeader
+    bgImage="/images/hero/hero-sa-export.webp"
+    label="Export Diversification"
+    title="Beyond the US tariffs. Into Asia, the Middle East, India and the rest of Africa."
+    subtitle="For South African exporters re-routing away from US trade exposure toward growth markets — we handle the freight, the customs, the documentation, and the corridor expertise that turns a new market plan into actual containers leaving the port."
+    cta={{ text: 'Plan your diversification', href: '/contact?quote=1&solution=export' }}
+  />
+
+  <!-- THE SITUATION -->
+  <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 8rem);">
+    <div class="section">
+      <div class="max-w-3xl reveal">
+        <p style="font-family: var(--f-sans); font-size: clamp(1.0625rem, 1.5vw, 1.25rem); line-height: 1.65; color: var(--c-charcoal); margin-bottom: 1.5rem;">
+          South African exporters built decades of trade around a handful of established corridors — primarily the US, the EU, and traditional Commonwealth markets. The 2025-2026 US tariff escalation changed that calculus overnight.
+        </p>
+        <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); margin-bottom: 1.5rem;">
+          But three corridors are opening wider than they have in a generation. The African Continental Free Trade Area is creating intra-African trade opportunities that didn't exist five years ago. Middle Eastern and Asian buyers are actively sourcing South African citrus, wine, nuts, metals and manufactured goods. And India's bilateral trade with South Africa is growing faster than any other major partner.
+        </p>
+        <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); margin-bottom: 2rem;">
+          The challenge isn't finding buyers. It's executing the logistics. New markets mean new documentation requirements, new customs regimes, new carrier networks, new phytosanitary standards — and new risks. That's what we do. Mekluc turns a diversification strategy into shipped containers with clean customs clearance at both ends.
+        </p>
+        <a href="/contact?quote=1&solution=export" style="font-family: var(--f-sans); font-size: 15px; font-weight: 600; color: var(--c-bordeaux); display: inline-flex; align-items: center; gap: 8px;">
+          Talk to our export diversification team <span class="btn-arrow" style="font-family: var(--f-mono); font-size: 14px;">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE MOVE — dark band -->
+  <section style="background: var(--c-ink); background-image: radial-gradient(circle at 30% 70%, rgba(176,122,79,0.06) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(128,0,32,0.04) 0%, transparent 50%); padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="section">
+      <div class="reveal" style="margin-bottom: 48px;">
+        <p class="eyebrow mb-4" style="color: var(--c-copper);">Cargo types</p>
+        <h2 class="section-title" style="color: var(--c-cream);">What we move for <em>SA exporters</em></h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 reveal">
+        {[
+          {
+            tag: 'AGRICULTURE',
+            title: 'Agricultural exports',
+            items: ['Citrus', 'Stone fruit', 'Red berries', 'Nuts', 'Wine', 'Processed agriculture'],
+          },
+          {
+            tag: 'INDUSTRIAL',
+            title: 'Industrial exports',
+            items: ['Automotive components', 'Steel & metal products', 'Specialty chemicals', 'Mining-derived products', 'Industrial machinery spare parts'],
+          },
+          {
+            tag: 'CONSUMER',
+            title: 'Consumer goods',
+            items: ['Cosmetics & personal care', 'Specialty foods & beverages', 'Textile & apparel'],
+          },
+        ].map((cat) => (
+          <div style="border: 1px solid rgba(176,122,79,0.15); padding: clamp(1.5rem, 3vw, 2rem);">
+            <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); display: block; margin-bottom: 1rem;">{cat.tag}</span>
+            <h3 style="font-family: var(--f-serif); font-size: 1.25rem; font-weight: 400; color: var(--c-cream); margin-bottom: 1rem;">{cat.title}</h3>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              {cat.items.map((item) => (
+                <div style="display: flex; align-items: flex-start; gap: 10px;">
+                  <span style="font-family: var(--f-mono); font-size: 14px; color: var(--c-copper); margin-top: 3px; flex-shrink: 0;">&check;</span>
+                  <span style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.5; color: var(--c-mute);">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- DESTINATIONS -->
+  <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 10rem);">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Destinations</p>
+          <h2 class="section-title">Where we send <em>your cargo</em></h2>
+        </div>
+        <p class="section-lead">Growth corridors where South African exporters are finding new buyers — and where we already operate.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px reveal" style="background: var(--c-line-soft);">
+        {[
+          {
+            num: '01',
+            title: 'Asia',
+            cities: 'Singapore, Hong Kong, Shanghai, Mumbai, Tokyo, Seoul',
+          },
+          {
+            num: '02',
+            title: 'Middle East',
+            cities: 'Dubai, Doha, Riyadh / Dammam, Tel Aviv, Muscat',
+          },
+          {
+            num: '03',
+            title: 'Indian Subcontinent',
+            cities: 'Mumbai, Chennai, Karachi, Colombo, Dhaka',
+          },
+          {
+            num: '04',
+            title: 'AfCFTA Markets',
+            cities: 'East Africa (Nairobi, Mombasa, Dar es Salaam) · West Africa (Lagos, Abidjan, Dakar, Tema) · North Africa (Casablanca, Alexandria) · Indian Ocean (Antananarivo, Port Louis)',
+          },
+        ].map((dest) => (
+          <div style="background: var(--c-paper); padding: clamp(1.5rem, 3vw, 2.5rem);">
+            <div class="flex items-center gap-3 mb-3">
+              <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-mute);">&mdash; {dest.num}</span>
+            </div>
+            <h3 style="font-family: var(--f-serif); font-size: 1.5rem; font-weight: 400; line-height: 1.2; color: var(--c-ink); margin-bottom: 0.5rem;">{dest.title}</h3>
+            <p style="font-family: var(--f-sans); font-size: 1rem; line-height: 1.65; color: var(--c-charcoal);">{dest.cities}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES — cream band -->
+  <section style="background: var(--c-cream); padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">Capabilities</p>
+          <h2 class="section-title">Export diversification <em>expertise</em></h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px reveal" style="background: var(--c-line-soft);">
+        {[
+          {
+            num: '01',
+            title: 'Multi-modal optimisation',
+            desc: 'Air, sea and road combinations designed for each corridor — balancing transit time, cost and cargo sensitivity. We don\'t default to the cheapest route; we default to the right one.',
+          },
+          {
+            num: '02',
+            title: 'Regulatory documentation per destination',
+            desc: 'AGOA certificates, AfCFTA rules of origin, EU-SADC EPA documentation, Chinese GACC registration, Japanese Plant Quarantine clearance, Saudi SASO conformity, UAE ESMA compliance.',
+          },
+          {
+            num: '03',
+            title: 'Market entry support',
+            desc: 'Documentation walkthrough for first-time corridors, carrier recommendations based on route performance data, customs broker introductions at destination.',
+          },
+          {
+            num: '04',
+            title: 'Phytosanitary & health certification',
+            desc: 'DALRRD phytosanitary inspections, PPECB cold chain compliance, health certificates for food exports, DAFF veterinary clearances. Coordinated end-to-end.',
+          },
+        ].map((cap) => (
+          <div style="background: var(--c-paper); padding: clamp(2rem, 4vw, 3rem);">
+            <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); display: block; margin-bottom: 1rem;">&mdash; {cap.num}</span>
+            <h3 style="font-family: var(--f-serif); font-size: 1.5rem; font-weight: 400; line-height: 1.2; color: var(--c-ink); margin-bottom: 0.75rem;">{cap.title}</h3>
+            <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal);">{cap.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- AEO ADVANTAGE -->
+  <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 10rem);">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">AEO advantage</p>
+          <h2 class="section-title">Faster clearance, <em>every corridor</em></h2>
+        </div>
+        <p class="section-lead">For a SA exporter routing a first shipment to Mumbai or Shanghai, AEO accreditation can save 5-12 days versus standard customs handling.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-px reveal" style="background: var(--c-line-soft);">
+        {[
+          {
+            num: '01',
+            title: 'Pre-arrival customs',
+            desc: 'Export declarations submitted and processed before your cargo reaches the port or airport. No queuing in the standard SARS processing line.',
+          },
+          {
+            num: '02',
+            title: 'Reduced inspections',
+            desc: 'AEO-accredited shippers receive a fraction of the physical inspections applied to standard exporters. Fewer delays, fewer missed vessel cut-offs.',
+          },
+          {
+            num: '03',
+            title: 'International recognition',
+            desc: 'South Africa\'s AEO programme has mutual recognition with the EU, China, Japan and Switzerland. Preferential treatment at destination customs.',
+          },
+        ].map((adv) => (
+          <div style="background: var(--c-paper); padding: clamp(2rem, 4vw, 3rem);">
+            <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); display: block; margin-bottom: 1rem;">&mdash; {adv.num}</span>
+            <h3 style="font-family: var(--f-serif); font-size: 1.5rem; font-weight: 400; line-height: 1.2; color: var(--c-ink); margin-bottom: 0.75rem;">{adv.title}</h3>
+            <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal);">{adv.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY — dark band -->
+  <section style="background: var(--c-ink); background-image: radial-gradient(circle at 30% 70%, rgba(176,122,79,0.06) 0%, transparent 50%); padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="section">
+      <div class="max-w-3xl reveal">
+        <p class="eyebrow mb-4" style="color: var(--c-copper);">Case study</p>
+        <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(1.75rem, 3.5vw, 2.5rem); line-height: 1.15; color: var(--c-cream); margin-bottom: 1.5rem;">
+          Western Cape stone fruit exporter
+        </h2>
+        <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-mute); margin-bottom: 1rem;">
+          A major Western Cape stone fruit exporter faced a 60% volume loss when US tariffs made their primary corridor uneconomic. They needed to redirect that volume before the season opened.
+        </p>
+        <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-mute); margin-bottom: 2rem;">
+          Working with Mekluc, the exporter redirected into four new corridors: 40% to Dubai, 20% to Mumbai, 30% to the UK, and a 10% test shipment to Saudi Arabia. Each corridor required different phytosanitary protocols, carrier bookings, customs documentation and cold chain specifications.
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4" style="margin-bottom: 2rem;">
+          {[
+            { label: 'Volume preserved', value: '95%' },
+            { label: 'Price per carton', value: '+8%' },
+            { label: 'Customs holds', value: '0' },
+            { label: 'Transit time saved', value: '7 days' },
+          ].map((stat) => (
+            <div style="text-align: center; padding: 20px; border: 1px solid rgba(176,122,79,0.15);">
+              <p style="font-family: var(--f-serif); font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 400; color: var(--c-copper); line-height: 1; margin-bottom: 6px;">{stat.value}</p>
+              <p style="font-family: var(--f-sans); font-size: 0.75rem; letter-spacing: 0.05em; color: var(--c-mute);">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+
+        <p style="font-family: var(--f-sans); font-size: 0.8125rem; font-style: italic; color: var(--c-mute);">
+          Available with named client reference on request after the next season closes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="background: var(--c-cream); padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow mb-4">FAQ</p>
+          <h2 class="section-title">Export diversification <em>questions</em></h2>
+        </div>
+      </div>
+
+      <div class="max-w-3xl" style="display: flex; flex-direction: column; gap: 0;">
+        {[
+          {
+            q: 'Can you handle a market I\'ve never shipped to before?',
+            a: 'Yes — that\'s the core of this service. We handle documentation walkthrough, carrier selection, customs broker introductions at destination, and phytosanitary coordination for first-time corridors.',
+          },
+          {
+            q: 'How quickly can you open a new corridor?',
+            a: 'Typically 2-4 weeks from initial consultation to first shipment. Longer for markets requiring new certifications (e.g. Chinese GACC registration for agricultural products).',
+          },
+          {
+            q: 'Do I need my own AEO accreditation?',
+            a: 'No. When Mekluc handles your customs clearance, our AEO accreditation applies to your shipments. You get all benefits without needing your own status.',
+          },
+          {
+            q: 'What about cold chain for perishables to new markets?',
+            a: 'We coordinate the full cold chain — pre-cooling validation, reefer container booking, continuous temperature monitoring, and arrival condition verification. See our Pharma & Perishables solution for details.',
+          },
+          {
+            q: 'What does the service cost?',
+            a: 'No fixed retainer. You pay per shipment — freight, customs clearance and documentation. First consultation is free. Quote delivered in less than 2h.',
+          },
+        ].map((faq, i) => (
+          <div class="reveal" style={`padding: clamp(1.5rem, 3vw, 2rem) 0; ${i > 0 ? 'border-top: 1px solid var(--c-line);' : ''}`}>
+            <h3 style="font-family: var(--f-serif); font-size: 1.25rem; font-weight: 400; color: var(--c-ink); margin-bottom: 0.75rem;">{faq.q}</h3>
+            <p style="font-family: var(--f-sans); font-size: 1.1875rem; line-height: 1.65; color: var(--c-charcoal); max-width: 60ch;">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band-bordeaux" style="padding: clamp(5rem, 12vw, 8rem) 0;">
+    <div class="absolute right-[-60px] bottom-[-60px] select-none pointer-events-none" aria-hidden="true">
+      <span style="font-family: var(--f-serif); font-size: 400px; line-height: 1; font-weight: 400; font-style: italic; color: rgba(247,242,232,0.04);">M</span>
+    </div>
+    <div class="section relative z-10" style="text-align: center;">
+      <h2 style="font-family: var(--f-serif); font-weight: 400; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; color: var(--c-cream); margin-bottom: 1rem;">
+        Ready to diversify your <em style="color: var(--c-copper); font-style: italic;">export portfolio?</em>
+      </h2>
+      <p style="font-family: var(--f-sans); font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.65; color: rgba(247,242,232,0.7); max-width: 48ch; margin: 0 auto 2.5rem;">
+        First consultation free. Quote delivered in less than 2h. Call us at <a href={`tel:${site.phoneRaw}`} style="color: var(--c-cream); text-decoration: underline; text-underline-offset: 3px;">{site.phone}</a>.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contact?quote=1&solution=export" class="btn-white">Plan your diversification <span class="btn-arrow">&rarr;</span></a>
+        <a href={site.social.whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-outline-light">WhatsApp us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
