@@ -16,8 +16,8 @@ export function asset(path: string): string {
 export const site = {
   name: 'Mekluc Freight',
   tagline: 'With us nothing stands in your way',
-  url: 'https://mekluc.co.za',
-  domain: 'mekluc.co.za',
+  url: 'https://meklucfreight.co.za',
+  domain: 'meklucfreight.co.za',
 
   /* Contact — D4 acte 18/05/2026 */
   phone: '+27 11 392 1699',

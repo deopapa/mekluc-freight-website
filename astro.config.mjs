@@ -5,9 +5,9 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  // V4.4 — Custom domain mekluc.co.za (PRIMARY, via Afrihost)
-  // meklucfreight.co.za (Xneelo) to be added as alias in V2
-  site: 'https://mekluc.co.za',
+  // V4.5 — Custom domain meklucfreight.co.za (PRIMARY, Elitehost reg + Cloudflare DNS)
+  // mekluc.co.za (Afrihost) to be added as alias once Microsoft 365 DNS is migrated
+  site: 'https://meklucfreight.co.za',
   // No base path — serves from root of custom domain
   integrations: [
     mdx(),
