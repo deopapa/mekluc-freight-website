@@ -1,0 +1,199 @@
+---
+// V4.6 QuoteNudge (Deo 2026-05-20)
+// Sticky banner that appears bottom-center after the visitor has scrolled >40%
+// of the page, IF they haven't dismissed it in this session.
+// Skipped on /contact (already there) and on the home hero before scroll.
+//
+// Goal: capture the visitor who hesitates to leave without asking for a quote.
+---
+
+<div class="quote-nudge" data-quote-nudge hidden role="region" aria-label="Quick quote prompt">
+  <div class="quote-nudge-inner">
+    <span class="quote-nudge-pulse" aria-hidden="true"></span>
+    <p class="quote-nudge-text">
+      <strong>Need a freight quote?</strong>
+      <span class="quote-nudge-sub">We reply in under 2 hours, every business day.</span>
+    </p>
+    <div class="quote-nudge-actions">
+      <a href="/contact?quote=1" class="btn-primary quote-nudge-cta">
+        Request a quote <span class="btn-arrow">&rarr;</span>
+      </a>
+      <button type="button" class="quote-nudge-dismiss" aria-label="Dismiss this prompt" data-quote-dismiss>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .quote-nudge {
+    position: fixed;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%) translateY(120%);
+    z-index: 45;
+    width: min(560px, calc(100% - 96px));
+    pointer-events: none;
+    transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+  }
+  .quote-nudge[hidden] {
+    display: none;
+  }
+  .quote-nudge[data-shown] {
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+  }
+
+  .quote-nudge-inner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--c-cream);
+    border: 1px solid var(--c-line);
+    border-left: 4px solid var(--c-bordeaux);
+    padding: 14px 18px 14px 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+  }
+
+  .quote-nudge-pulse {
+    flex-shrink: 0;
+    width: 10px;
+    height: 10px;
+    background: var(--c-carmin);
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(208, 0, 56, 0.6);
+    animation: quoteNudgePulse 2s ease-out infinite;
+  }
+  @keyframes quoteNudgePulse {
+    0%   { box-shadow: 0 0 0 0 rgba(208, 0, 56, 0.6); }
+    70%  { box-shadow: 0 0 0 12px rgba(208, 0, 56, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(208, 0, 56, 0); }
+  }
+
+  .quote-nudge-text {
+    flex: 1;
+    margin: 0;
+    font-family: var(--f-sans);
+    font-size: 14px;
+    line-height: 1.35;
+    color: var(--c-ink);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .quote-nudge-text strong {
+    font-weight: 600;
+  }
+  .quote-nudge-sub {
+    font-size: 12.5px;
+    color: var(--c-charcoal);
+  }
+
+  .quote-nudge-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .quote-nudge-cta {
+    font-size: 13px !important;
+    padding: 8px 14px !important;
+    white-space: nowrap;
+  }
+
+  .quote-nudge-dismiss {
+    width: 32px;
+    height: 32px;
+    border-radius: 9999px;
+    background: transparent;
+    border: none;
+    color: var(--c-mute);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .quote-nudge-dismiss:hover {
+    background: var(--c-line-soft);
+    color: var(--c-bordeaux);
+  }
+
+  /* Mobile : tighter layout */
+  @media (max-width: 640px) {
+    .quote-nudge {
+      width: calc(100% - 32px);
+      bottom: 12px;
+    }
+    .quote-nudge-inner {
+      padding: 12px 12px 12px 16px;
+      gap: 10px;
+    }
+    .quote-nudge-text {
+      font-size: 13px;
+    }
+    .quote-nudge-sub {
+      display: none;
+    }
+    .quote-nudge-cta span.btn-arrow {
+      display: none;
+    }
+    .quote-nudge-cta {
+      padding: 8px 12px !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .quote-nudge { transition: none; }
+    .quote-nudge-pulse { animation: none; }
+  }
+</style>
+
+<script>
+  /* V4.6 QuoteNudge — show after scroll >= 40% of page, unless dismissed this session */
+  document.addEventListener('DOMContentLoaded', () => {
+    const nudge = document.querySelector<HTMLElement>('[data-quote-nudge]');
+    if (!nudge) return;
+
+    const path = window.location.pathname;
+    // Don't show on the contact / quote page itself — pointless
+    if (path.startsWith('/contact')) return;
+    // Don't show if user already dismissed this session
+    if (sessionStorage.getItem('mekluc_quote_nudge_dismissed') === '1') return;
+
+    let shown = false;
+    const showAfterScroll = 0.4; // 40% of the document scrolled
+
+    const onScroll = () => {
+      if (shown) return;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight <= 0) return;
+      const ratio = window.scrollY / docHeight;
+      if (ratio >= showAfterScroll) {
+        shown = true;
+        nudge.removeAttribute('hidden');
+        requestAnimationFrame(() => nudge.setAttribute('data-shown', ''));
+        window.removeEventListener('scroll', onScroll);
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Dismiss handler
+    const dismissBtn = document.querySelector('[data-quote-dismiss]');
+    dismissBtn && dismissBtn.addEventListener('click', () => {
+      nudge.removeAttribute('data-shown');
+      sessionStorage.setItem('mekluc_quote_nudge_dismissed', '1');
+      setTimeout(() => nudge.setAttribute('hidden', ''), 450);
+    });
+
+    // Hide once user actually clicks the Quote CTA inside the nudge
+    nudge.querySelector('.quote-nudge-cta')?.addEventListener('click', () => {
+      sessionStorage.setItem('mekluc_quote_nudge_dismissed', '1');
+    });
+  });
+</script>

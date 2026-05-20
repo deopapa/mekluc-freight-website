@@ -5,6 +5,7 @@ import { getLangFromUrl, t } from '@/i18n/translations';
 import Breadcrumb from '@/components/layout/Breadcrumb.astro';
 import FloatingActions from '@/components/global/FloatingActions.astro';
 import ServiceQuickNav from '@/components/global/ServiceQuickNav.astro';
+import QuoteNudge from '@/components/global/QuoteNudge.astro';
 
 interface Props {
   title: string;
@@ -373,6 +374,10 @@ const fullTitle = title === 'Home'
   <!-- ============== SERVICE QUICK-NAV (V4.6 Lot 3 2026-05-20) ============== -->
   <!-- Desktop: sticky right rail with icons. Mobile: floating button -> bottom drawer. -->
   <ServiceQuickNav />
+
+  <!-- ============== QUOTE NUDGE (V4.6 Lot 4 2026-05-20) ============== -->
+  <!-- Bottom-center sticky banner. Appears after scroll >=40%, except on /contact. -->
+  <QuoteNudge />
 
   <!-- ============== SCRIPTS ============== -->
   <style>
