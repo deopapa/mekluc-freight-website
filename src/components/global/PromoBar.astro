@@ -58,22 +58,13 @@ const isActive = !!(promo && promo.active);
 )}
 
 <style>
-  /* V4.6.5 — AEO blue + black identity */
+  /* V4.7 HOTFIX — Solid AEO blue + black gradient (no shimmer animation, was CPU-heavy on mobile) */
   .promo-bar {
-    background: linear-gradient(90deg, #0d1b3d 0%, #1f4e8b 40%, #80b7dd 50%, #1f4e8b 60%, #0d1b3d 100%);
-    background-size: 200% 100%;
+    background: linear-gradient(90deg, #0d1b3d 0%, #1f4e8b 50%, #0d1b3d 100%);
     color: #ffffff;
     position: relative;
     z-index: 41;
     border-bottom: 1px solid #000000;
-    animation: promoBarShimmer 18s linear infinite;
-  }
-  @keyframes promoBarShimmer {
-    0%   { background-position: 0% 50%; }
-    100% { background-position: 200% 50%; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .promo-bar { animation: none; background: #1f4e8b; }
   }
 
   .promo-bar-inner {
