@@ -618,37 +618,54 @@ const tocItems = [
 </style>
 
 <script>
-  /* V4.5 PATCH P0 #2 — Hide sticky TOC when full-bleed dark/colored sections are in view */
+  /* V4.6 PATCH (Deo 2026-05-20) — Hide sticky TOC when:
+     (A) the user is in the hero/top zone (before scrolling into the article body)
+     (B) a full-bleed dark/colored section is in view (Leadership / Credentials / CTA)
+  */
   document.addEventListener('DOMContentLoaded', () => {
     const toc = document.querySelector<HTMLElement>('.toc-wrapper');
     if (!toc) return;
 
-    // Sections with their own dark/colored background that would clash with the cream TOC card.
-    // Hiding the TOC over these gives a clean "TOC fades out, section is hero" feel.
+    // -- State trackers -------------------------------------------------------
+    const fullBleedVisible = new Set<HTMLElement>();
+    let inHeroZone = true; // start true: user opens page at top, TOC must NOT show over hero
+
+    const refresh = () => {
+      toc.classList.toggle('toc-hidden', inHeroZone || fullBleedVisible.size > 0);
+    };
+
+    // -- (A) Hero zone detection via scroll position --------------------------
+    // The hero PageHeader is roughly the first viewport. Hide TOC until user
+    // scrolls ~60% of the viewport height (well past the H1 + subtitle).
+    const updateHeroState = () => {
+      const newState = window.scrollY < window.innerHeight * 0.6;
+      if (newState !== inHeroZone) {
+        inHeroZone = newState;
+        refresh();
+      }
+    };
+    window.addEventListener('scroll', updateHeroState, { passive: true });
+    updateHeroState();
+
+    // -- (B) Full-bleed dark/colored sections via IntersectionObserver --------
     const fullBleedIds = ['leadership', 'credentials', 'cta'];
     const targets = fullBleedIds
       .map((id) => document.getElementById(id)?.nextElementSibling as HTMLElement | null)
       .filter((el): el is HTMLElement => el !== null);
 
-    if (!targets.length) return;
-
-    const visible = new Set<HTMLElement>();
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) visible.add(e.target as HTMLElement);
-          else visible.delete(e.target as HTMLElement);
-        });
-        toc.classList.toggle('toc-hidden', visible.size > 0);
-      },
-      {
-        // Trigger as soon as the section enters the top portion of viewport
-        rootMargin: '-100px 0px -40% 0px',
-        threshold: 0,
-      }
-    );
-
-    targets.forEach((t) => observer.observe(t));
+    if (targets.length) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) fullBleedVisible.add(e.target as HTMLElement);
+            else fullBleedVisible.delete(e.target as HTMLElement);
+          });
+          refresh();
+        },
+        { rootMargin: '-100px 0px -40% 0px', threshold: 0 }
+      );
+      targets.forEach((t) => observer.observe(t));
+    }
   });
 </script>
 
