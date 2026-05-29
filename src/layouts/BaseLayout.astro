@@ -77,6 +77,18 @@ const fullTitle = title === 'Home'
     "slogan": site.tagline,
     "areaServed": "South Africa"
   })} />
+
+  {/* Plausible analytics (POPIA-friendly, cookieless) — loads only in production
+      AND when site.analytics.plausible.enabled is true (set by Gracia after
+      creating the Plausible account). Decision D3 §6. */}
+  {import.meta.env.PROD && site.analytics.plausible.enabled && (
+    <script
+      is:inline
+      defer
+      data-domain={site.analytics.plausible.domain}
+      src={site.analytics.plausible.src}
+    ></script>
+  )}
 </head>
 <body class="min-h-screen flex flex-col">
 
@@ -364,6 +376,7 @@ const fullTitle = title === 'Home'
         <div class="flex gap-6">
           <a href="/privacy" class="font-mono text-[11px] tracking-[0.08em] uppercase text-mekluc-charcoal hover:text-mekluc-cream transition-colors">Privacy</a>
           <a href="/terms" class="font-mono text-[11px] tracking-[0.08em] uppercase text-mekluc-charcoal hover:text-mekluc-cream transition-colors">Terms</a>
+          <a href="/data-deletion" class="font-mono text-[11px] tracking-[0.08em] uppercase text-mekluc-charcoal hover:text-mekluc-cream transition-colors">Data Deletion</a>
           <a href="/sustainability" class="font-mono text-[11px] tracking-[0.08em] uppercase text-mekluc-charcoal hover:text-mekluc-cream transition-colors">Sustainability</a>
         </div>
       </div>
