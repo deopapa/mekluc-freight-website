@@ -18,7 +18,7 @@ import { site } from '@/lib/site';
   <section style="padding-top: clamp(5rem, 12vw, 10rem); padding-bottom: clamp(5rem, 12vw, 10rem);">
     <div class="section">
       <div class="max-w-3xl">
-        <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.12em; color: var(--c-mute); margin-bottom: 3rem;">LAST UPDATED: MAY 2026</p>
+        <p style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.12em; color: var(--c-mute); margin-bottom: 3rem;">LAST UPDATED: 29 MAY 2026</p>
 
         <div class="legal-content">
 
@@ -45,7 +45,8 @@ import { site } from '@/lib/site';
               <li>Information submitted through our quote request forms (name, company, email, phone, cargo details)</li>
               <li>Information submitted through our shipment tracking forms</li>
               <li>Emails and phone communications with our team</li>
-              <li>WhatsApp messages sent to our business number</li>
+              <li>WhatsApp messages sent to our business number (+27 63 893 3653) — including messages handled by our automated WhatsApp assistant and by our team</li>
+              <li>Documents and media you send us via WhatsApp (bills of lading, packing lists, cargo photos, commercial invoices)</li>
               <li>Contractual information (company registration, VAT numbers, customs codes, shipping instructions)</li>
               <li>Website analytics data (anonymised browsing behaviour, device type, referral source)</li>
             </ul>
@@ -87,6 +88,14 @@ import { site } from '@/lib/site';
               <li>IT service providers (hosting, email, analytics — all bound by data processing agreements)</li>
               <li>Legal advisors and auditors (where legally required)</li>
               <li>Law enforcement agencies (where compelled by law)</li>
+            </ul>
+            <p>When you contact us via WhatsApp, your message is processed by the following technology providers acting as our data processors, strictly to operate the conversation:</p>
+            <ul>
+              <li><strong>Meta Platforms (WhatsApp Business Cloud API)</strong> — delivery of WhatsApp messages</li>
+              <li><strong>Telegram (operator relay)</strong> — internal bridge that lets our team reply to your WhatsApp messages from their devices; you never interact with Telegram directly and all replies reach you under the "Mekluc Freight" name on WhatsApp</li>
+              <li><strong>Anthropic (AI assistant)</strong> — powers our automated WhatsApp assistant that handles first-line enquiries</li>
+              <li><strong>Cloudinary</strong> — secure storage of documents and media you send us (bills of lading, packing lists, cargo photos)</li>
+              <li><strong>Supabase</strong> — encrypted database for conversation records and quote requests</li>
             </ul>
             <p><strong>We do not sell personal information. We do not share personal information for marketing purposes with third parties.</strong></p>
           </section>
@@ -141,6 +150,9 @@ import { site } from '@/lib/site';
             <p>
               You may also contact the Information Regulator directly at <a href="https://inforegulator.org.za" target="_blank" rel="noopener noreferrer">inforegulator.org.za</a>.
             </p>
+            <p>
+              To request deletion of the data from your WhatsApp conversations with us, see our <a href="/data-deletion">Data Deletion Instructions</a>.
+            </p>
           </section>
 
           <section class="legal-section">
@@ -159,7 +171,7 @@ import { site } from '@/lib/site';
             <h2>11. Anti-fraud notice</h2>
             <div class="legal-callout">
               <p>
-                <strong>Mekluc Freight will NEVER communicate a change in our banking details by email.</strong> If you receive such an email, contact us immediately on <a href={`tel:${site.phoneRaw}`}>{site.phone}</a>. Always confirm correspondence is from @mekluc.co.za.
+                <strong>Mekluc Freight will NEVER communicate a change in our banking details by email, WhatsApp or social media.</strong> If you receive such a communication, contact us immediately on our landline <a href={`tel:${site.phoneRaw}`}>{site.phone}</a> to verify. Always confirm correspondence is from @mekluc.co.za. Our official channels are our landline {site.phone}, email {site.email}, and our verified WhatsApp business number +27 63 893 3653.
               </p>
             </div>
           </section>

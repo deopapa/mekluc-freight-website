@@ -24,12 +24,13 @@ export const site = {
   phoneRaw: '27113921699',
   email: 'info@mekluc.co.za',
   /**
-   * WhatsApp temporary mobile (Gracia personal/business mobile)
-   * until WhatsApp Business Cloud API setup July 2026 (D5)
-   * Switch back to dedicated business number then.
-   * Main phone +27 11 392 1699 stays displayed publicly — wa.me uses mobile only.
+   * WhatsApp Business official number — WhatsApp Cloud API LIVE since 28/05/2026 (D5).
+   * Display name "Mekluc Freight" approved by Meta. Bot operational + Telegram operator bridge.
+   * Decision D3: this number is the official Mekluc Freight WhatsApp channel.
+   * Main landline +27 11 392 1699 stays displayed publicly for calls; wa.me uses this number.
+   * NEVER printed on fiduciary documents (quotes/invoices/contracts) — anti-BEC fraud rule.
    */
-  whatsapp: '27837456483',
+  whatsapp: '27638933653',
 
   /* Adresse — D2 acte, Isando supprime */
   address: {
@@ -57,13 +58,27 @@ export const site = {
   social: {
     linkedin: 'https://www.linkedin.com/company/mekluc-freight',
     facebook: 'https://www.facebook.com/meklucfreight',
-    whatsappLink: 'https://wa.me/27837456483',
+    whatsappLink: 'https://wa.me/27638933653',
   },
 
   /* SEO defaults */
   seo: {
     titleTemplate: '%s | Mekluc Freight',
     defaultDescription: '19 years of multimodal freight forwarding from South Africa. AEO accredited. Level 1 B-BBEE. 100% Black Woman Owned.',
+  },
+
+  /* Analytics — Plausible (POPIA-friendly, cookieless) — décision D3 §6.
+   * enabled=false par défaut. Gracia active après avoir :
+   *   1. Créé un compte sur plausible.io (ou self-hosted)
+   *   2. Ajouté le site "meklucfreight.co.za" dans le dashboard Plausible
+   * Puis passer enabled à true. Le script ne se charge qu'en production
+   * (import.meta.env.PROD) ET si enabled=true. */
+  analytics: {
+    plausible: {
+      enabled: false,
+      domain: 'meklucfreight.co.za',
+      src: 'https://plausible.io/js/script.js',
+    },
   },
 
   /* Promotion bar (V4.6.4 — Deo 2026-05-20)
@@ -77,10 +92,15 @@ export const site = {
    *   - { label: 'NEW',   text: 'Direct sea sailing to GCC every Friday — citrus, wine, table grapes.', ctaText: 'Book a slot',  ctaHref: '/contact?quote=1&promo=gcc' }
    *   - { label: 'PHARMA', text: 'Free GDP audit on your first cold-chain shipment.', ctaText: 'Claim it', ctaHref: '/contact?quote=1&promo=pharma' }
    */
+  /* NOTE Deo (29/05/2026): l'ancien texte promo mentionnait "EU" dans les
+   * partenaires MRA — FACTUELLEMENT FAUX (EU n'est PAS partenaire MRA SARS,
+   * règle programme stricte). Corrigé pour s'aligner sur la liste MRA validée
+   * (UK, USA, India, China — cf. guardrails chatbot D2). À faire valider par
+   * Anne-Marie pour confirmer la liste exacte des pays affichables. */
   promo: {
     active: true,
     label: 'AEO',
-    text: 'Top 1% AEO-accredited freight forwarder — faster customs, less inspection, mutual recognition with EU/CN/JP/CH.',
+    text: 'Top 1% AEO-accredited freight forwarder — faster customs, less inspection, mutual recognition with the UK, USA, India and China.',
     ctaText: 'Request your quote',
     ctaHref: '/contact?quote=1',
   },
