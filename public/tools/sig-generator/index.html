@@ -198,10 +198,6 @@
     <h2>Reseaux Sociaux</h2>
     <div class="toggle-row"><input type="checkbox" id="showLinkedin" onchange="state.showLinkedin=this.checked;render()"><label for="showLinkedin">LinkedIn</label></div>
     <div id="linkedinFields" class="field" style="display:none;margin-left:23px;"><input type="text" id="linkedin" value="mekluc-freight" placeholder="slug entreprise" oninput="render()"></div>
-    <div class="toggle-row"><input type="checkbox" id="showWhatsapp" onchange="state.showWhatsapp=this.checked;render()"><label for="showWhatsapp">WhatsApp</label></div>
-    <div id="whatsappFields" style="display:none;margin-left:23px;">
-      <div class="field-row"><div class="field"><input type="text" id="whatsapp" value="meklucfreight" placeholder="ID" oninput="render()"></div><div class="field"><input type="text" id="whatsappNum" value="27638933653" placeholder="Numero sans +" oninput="render()"></div></div>
-    </div>
     <div class="toggle-row"><input type="checkbox" id="showFacebook" onchange="state.showFacebook=this.checked;render()"><label for="showFacebook">Facebook</label></div>
     <div id="facebookFields" class="field" style="display:none;margin-left:23px;"><input type="text" id="facebook" value="MeklucFreightSA" placeholder="ID" oninput="render()"></div>
     <div class="help-text" style="margin-top:6px;">Cochez un reseau pour l'activer dans la signature. Decochez pour le masquer sans perdre les donnees.</div>
@@ -419,7 +415,6 @@ const state = {
   showBanner: true,
   showPromo: true,
   showLinkedin: false,
-  showWhatsapp: false,
   showFacebook: false,
   useHostedImages: false,
   darkBg: false,
@@ -563,7 +558,7 @@ function resetColors() {
 
 /* ===== PROFILE SAVE / LOAD (localStorage) ===== */
 const PROFILES_STORAGE_KEY = 'mekluc_sig_profiles';
-const PROFILE_FIELDS = ['fullName','title','company','industryLine','phoneOffice','phoneMobile','phoneWhatsapp','email','website','address','warehouse','linkedin','whatsapp','facebook','whatsappNum','tagline','accreditations','antiFraudText','promoTitle','promoText','promoUrl','promoLinkText'];
+const PROFILE_FIELDS = ['fullName','title','company','industryLine','phoneOffice','phoneMobile','phoneWhatsapp','email','website','address','warehouse','linkedin','facebook','tagline','accreditations','antiFraudText','promoTitle','promoText','promoUrl','promoLinkText'];
 
 function getSavedProfiles() {
   try { return JSON.parse(localStorage.getItem(PROFILES_STORAGE_KEY)) || {}; } catch(e) { return {}; }
@@ -712,9 +707,8 @@ function buildSignatureHTML(forExport) {
 
   // Social links — only shown if toggled ON + has value
   const socials=[];
-  const li=val('linkedin'), wa=val('whatsapp'), fb=val('facebook');
+  const li=val('linkedin'), fb=val('facebook');
   if(state.showLinkedin && li) socials.push('<a href="https://linkedin.com/company/'+li+'" style="color:'+cTxt+';text-decoration:none;">'+iconImg('linkedin')+li+'</a>');
-  if(state.showWhatsapp && wa) socials.push('<a href="https://wa.me/'+val('whatsappNum')+'" style="color:'+cTxt+';text-decoration:none;">'+iconImg('whatsapp')+wa+'</a>');
   if(state.showFacebook && fb) socials.push('<a href="https://facebook.com/'+fb+'" style="color:'+cTxt+';text-decoration:none;">'+iconImg('facebook')+fb+'</a>');
 
   // Logo images with free positioning — use hosted URLs or base64
@@ -885,7 +879,6 @@ function render() {
   });
   // Toggle visibility of social fields and hosted URL fields
   document.getElementById('linkedinFields').style.display=state.showLinkedin?'block':'none';
-  document.getElementById('whatsappFields').style.display=state.showWhatsapp?'block':'none';
   document.getElementById('facebookFields').style.display=state.showFacebook?'block':'none';
   document.getElementById('hostedUrlFields').style.display=state.useHostedImages?'block':'none';
   document.getElementById('promoFields').style.display=state.showPromo?'block':'none';
