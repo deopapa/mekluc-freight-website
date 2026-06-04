@@ -198,6 +198,7 @@
     <h2>Reseaux Sociaux</h2>
     <div class="toggle-row"><input type="checkbox" id="showLinkedin" onchange="state.showLinkedin=this.checked;render()"><label for="showLinkedin">LinkedIn</label></div>
     <div id="linkedinFields" class="field" style="display:none;margin-left:23px;"><input type="text" id="linkedin" value="mekluc-freight" placeholder="slug entreprise" oninput="render()"></div>
+    <div class="toggle-row"><input type="checkbox" id="showWhatsapp" checked onchange="state.showWhatsapp=this.checked;render()"><label for="showWhatsapp">WhatsApp (Chat with us &mdash; uses WhatsApp Business number above)</label></div>
     <div class="toggle-row"><input type="checkbox" id="showFacebook" onchange="state.showFacebook=this.checked;render()"><label for="showFacebook">Facebook</label></div>
     <div id="facebookFields" class="field" style="display:none;margin-left:23px;"><input type="text" id="facebook" value="MeklucFreightSA" placeholder="ID" oninput="render()"></div>
     <div class="help-text" style="margin-top:6px;">Cochez un reseau pour l'activer dans la signature. Decochez pour le masquer sans perdre les donnees.</div>
@@ -415,6 +416,7 @@ const state = {
   showBanner: true,
   showPromo: true,
   showLinkedin: false,
+  showWhatsapp: true,
   showFacebook: false,
   useHostedImages: false,
   darkBg: false,
@@ -708,7 +710,9 @@ function buildSignatureHTML(forExport) {
   // Social links — only shown if toggled ON + has value
   const socials=[];
   const li=val('linkedin'), fb=val('facebook');
+  var waSoc=val('phoneWhatsapp').replace(/[^0-9]/g,'');
   if(state.showLinkedin && li) socials.push('<a href="https://linkedin.com/company/'+li+'" style="color:'+cTxt+';text-decoration:none;">'+iconImg('linkedin')+li+'</a>');
+  if(state.showWhatsapp && waSoc) socials.push('<a href="https://wa.me/'+waSoc+'" style="color:'+cTxt+';text-decoration:none;">'+iconImg('whatsapp')+'Chat with us</a>');
   if(state.showFacebook && fb) socials.push('<a href="https://facebook.com/'+fb+'" style="color:'+cTxt+';text-decoration:none;">'+iconImg('facebook')+fb+'</a>');
 
   // Logo images with free positioning — use hosted URLs or base64
@@ -803,11 +807,7 @@ function buildSignatureHTML(forExport) {
   h+='<tr><td style="padding:0;"><span style="color:'+cLbl+';font-weight:500;font-size:'+fd+'px;">Office</span>&nbsp;&nbsp;<span'+ed('phoneOffice')+' style="color:'+cTxt+';">'+val('phoneOffice')+'</span>';
   if(val('phoneMobile')) { h+=' &nbsp;<span style="color:'+cSep+';">|</span>&nbsp; <span style="color:'+cLbl+';font-weight:500;font-size:'+fd+'px;">Mobile</span>&nbsp;&nbsp;<span'+ed('phoneMobile')+' style="color:'+cTxt+';">'+val('phoneMobile')+'</span>'; }
   h+='</td></tr>';
-  // WhatsApp Business — clickable wa.me (V4.8)
-  if(val('phoneWhatsapp')) {
-    var waDigits = val('phoneWhatsapp').replace(/[^0-9]/g,'');
-    h+='<tr><td style="padding:0;"><span style="color:'+cLbl+';font-weight:500;font-size:'+fd+'px;">WhatsApp</span>&nbsp;&nbsp;<a href="https://wa.me/'+waDigits+'" style="color:'+cLink+';text-decoration:none;">'+val('phoneWhatsapp')+'</a></td></tr>';
-  }
+  // WhatsApp is shown as a social icon (Chat with us), not as a classic phone line — CLAUDE.md matrice
   h+='<tr><td style="padding:0;"><span style="color:'+cLbl+';font-weight:500;font-size:'+fd+'px;">Email</span>&nbsp;&nbsp;<a href="mailto:'+val('email')+'"'+edLink('email','email')+' style="color:'+cLink+';text-decoration:none;">'+val('email')+'</a></td></tr>';
   h+='<tr><td style="padding:0;"><span style="color:'+cLbl+';font-weight:500;font-size:'+fd+'px;">Web</span>&nbsp;&nbsp;<a href="https://'+val('website')+'"'+edLink('website','web')+' style="color:'+cLink+';text-decoration:none;">'+val('website')+'</a></td></tr>';
   // Head Office (+ Warehouse only if present) — V4.8 deux adresses
