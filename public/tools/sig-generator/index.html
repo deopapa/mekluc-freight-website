@@ -157,7 +157,7 @@
 <div class="header">
   <div class="header-left">
     <h1>Mekluc Freight — Signature Generator</h1>
-    <span class="version">v4.7</span>
+    <span class="version">v4.8</span>
   </div>
   <span class="subtitle">Direction Artistique Corporate &middot; Freight Standards</span>
 </div>
@@ -189,16 +189,18 @@
       <div class="field"><label>Telephone Office</label><input type="text" id="phoneOffice" value="+27 11 392 1699" oninput="render()"></div>
       <div class="field"><label>Telephone Mobile</label><input type="text" id="phoneMobile" value="+27 83 745 6483" oninput="render()"></div>
     </div>
+    <div class="field"><label>WhatsApp Business</label><input type="text" id="phoneWhatsapp" value="+27 63 893 36 53" oninput="render()"><div class="help-text">Numero WhatsApp officiel Mekluc &mdash; lien wa.me cliquable dans la signature (laisser vide pour masquer)</div></div>
     <div class="field"><label>Email</label><input type="email" id="email" value="anne_marie@mekluc.co.za" oninput="render()"></div>
     <div class="field"><label>Site Web</label><input type="text" id="website" value="www.meklucfreight.co.za" oninput="render()"></div>
-    <div class="field"><label>Adresse</label><input type="text" id="address" value="Morningside, Sandton, Johannesburg, South Africa" oninput="render()"></div>
+    <div class="field"><label>Head Office</label><input type="text" id="address" value="Morningside, Sandton, Johannesburg, South Africa" oninput="render()"></div>
+    <div class="field"><label>Warehouse &amp; Operations</label><input type="text" id="warehouse" value="Sky Park, 1 Bonaero Dr, Bonaero Park, Kempton Park, 1619 (5 min from OR Tambo)" oninput="render()"><div class="help-text">2e adresse &mdash; entrepot &amp; operations (laisser vide pour masquer)</div></div>
 
     <h2>Reseaux Sociaux</h2>
     <div class="toggle-row"><input type="checkbox" id="showLinkedin" onchange="state.showLinkedin=this.checked;render()"><label for="showLinkedin">LinkedIn</label></div>
     <div id="linkedinFields" class="field" style="display:none;margin-left:23px;"><input type="text" id="linkedin" value="mekluc-freight" placeholder="slug entreprise" oninput="render()"></div>
     <div class="toggle-row"><input type="checkbox" id="showWhatsapp" onchange="state.showWhatsapp=this.checked;render()"><label for="showWhatsapp">WhatsApp</label></div>
     <div id="whatsappFields" style="display:none;margin-left:23px;">
-      <div class="field-row"><div class="field"><input type="text" id="whatsapp" value="meklucfreight" placeholder="ID" oninput="render()"></div><div class="field"><input type="text" id="whatsappNum" value="27113921699" placeholder="Numero sans +" oninput="render()"></div></div>
+      <div class="field-row"><div class="field"><input type="text" id="whatsapp" value="meklucfreight" placeholder="ID" oninput="render()"></div><div class="field"><input type="text" id="whatsappNum" value="27638933653" placeholder="Numero sans +" oninput="render()"></div></div>
     </div>
     <div class="toggle-row"><input type="checkbox" id="showFacebook" onchange="state.showFacebook=this.checked;render()"><label for="showFacebook">Facebook</label></div>
     <div id="facebookFields" class="field" style="display:none;margin-left:23px;"><input type="text" id="facebook" value="meklucfreight" placeholder="ID" oninput="render()"></div>
@@ -254,17 +256,17 @@
 
     <h2>Couleurs</h2>
     <div class="field-row-3">
-      <div class="field"><label>Nom</label><div class="color-field"><input type="color" id="colorName" value="#2C2C2C" oninput="render()"><span class="clabel" id="colorNameHex">#2C2C2C</span></div></div>
-      <div class="field"><label>Titre</label><div class="color-field"><input type="color" id="colorTitle" value="#0B2C4D" oninput="render()"><span class="clabel" id="colorTitleHex">#0B2C4D</span></div></div>
+      <div class="field"><label>Nom</label><div class="color-field"><input type="color" id="colorName" value="#303030" oninput="render()"><span class="clabel" id="colorNameHex">#303030</span></div></div>
+      <div class="field"><label>Titre</label><div class="color-field"><input type="color" id="colorTitle" value="#800020" oninput="render()"><span class="clabel" id="colorTitleHex">#800020</span></div></div>
       <div class="field"><label>Labels</label><div class="color-field"><input type="color" id="colorLabels" value="#8B8B8B" oninput="render()"><span class="clabel" id="colorLabelsHex">#8B8B8B</span></div></div>
     </div>
     <div class="field-row-3">
-      <div class="field"><label>Liens</label><div class="color-field"><input type="color" id="colorLinks" value="#0B2C4D" oninput="render()"><span class="clabel" id="colorLinksHex">#0B2C4D</span></div></div>
-      <div class="field"><label>Texte</label><div class="color-field"><input type="color" id="colorText" value="#2C2C2C" oninput="render()"><span class="clabel" id="colorTextHex">#2C2C2C</span></div></div>
+      <div class="field"><label>Liens</label><div class="color-field"><input type="color" id="colorLinks" value="#800020" oninput="render()"><span class="clabel" id="colorLinksHex">#800020</span></div></div>
+      <div class="field"><label>Texte</label><div class="color-field"><input type="color" id="colorText" value="#303030" oninput="render()"><span class="clabel" id="colorTextHex">#303030</span></div></div>
       <div class="field"><label>Separateur</label><div class="color-field"><input type="color" id="colorSep" value="#D0D5DD" oninput="render()"><span class="clabel" id="colorSepHex">#D0D5DD</span></div></div>
     </div>
     <div class="field-row">
-      <div class="field"><label>Tagline</label><div class="color-field"><input type="color" id="colorTagline" value="#0B2C4D" oninput="render()"><span class="clabel" id="colorTaglineHex">#0B2C4D</span></div></div>
+      <div class="field"><label>Tagline</label><div class="color-field"><input type="color" id="colorTagline" value="#800020" oninput="render()"><span class="clabel" id="colorTaglineHex">#800020</span></div></div>
       <div class="field"><label>Warning</label><div class="color-field"><input type="color" id="colorWarning" value="#8B8B8B" oninput="render()"><span class="clabel" id="colorWarningHex">#8B8B8B</span></div></div>
     </div>
     <button class="reset-colors-btn" onclick="resetColors()">&#8635; Couleurs par defaut</button>
@@ -283,11 +285,11 @@
 
     <h2>Zone Info Client</h2>
     <div id="promoFields">
-      <div class="field"><label>Titre</label><input type="text" id="promoTitle" value="Industry Update" oninput="render()"></div>
-      <div class="field"><label>Texte court (1-2 lignes)</label><input type="text" id="promoText" value="Stay informed on the latest SARS customs regulations and trade updates affecting your imports and exports." oninput="render()"></div>
+      <div class="field"><label>Titre</label><input type="text" id="promoTitle" value="Mekluc Insights" oninput="render()"></div>
+      <div class="field"><label>Texte court (1-2 lignes)</label><input type="text" id="promoText" value="Latest on SARS Deferment, AEO benefits and freight corridors &mdash; straight from our team." oninput="render()"></div>
       <div class="field-row">
-        <div class="field"><label>URL du lien</label><input type="text" id="promoUrl" value="https://www.sars.gov.za/customs-and-excise/" oninput="render()"></div>
-        <div class="field"><label>Texte du lien</label><input type="text" id="promoLinkText" value="Read more on SARS" oninput="render()"></div>
+        <div class="field"><label>URL du lien</label><input type="text" id="promoUrl" value="https://meklucfreight.co.za/insights/" oninput="render()"></div>
+        <div class="field"><label>Texte du lien</label><input type="text" id="promoLinkText" value="Read on Mekluc Insights" oninput="render()"></div>
       </div>
       <div class="help-text">Zone compacte affichee sous la signature. Liez un article SARS, une news import/export, ou une promo interne.</div>
     </div>
@@ -352,10 +354,10 @@ function iconImg(name) {
 
 /* ===== FREIGHT / TRANSPORT ICONS — Industry visual identity ===== */
 const FREIGHT_ICON = {
-  air: "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.5 9.2l-6.2-1.6L10 1.5c-.1-.3-.4-.5-.7-.3L8.5 2l1.6 5.4-5.5-1.4L3.5 4l-.8.2L3.6 7 2 6.6l-.5.5 2.2 1.8 1.7.5 5.5 1.4-4.5 3.5-.8-.2-.3.8 2.7.7c.3.1.7 0 .9-.2l4.8-3.7 4.9 1.3c.5.1 1-.1 1.2-.6.1-.5-.1-1-.6-1.2z" fill="#0B2C4D"/></svg>'),
-  sea: "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M17 11l-1.5-5H13V4H7v2H4.5L3 11l-1 .3v1.2l.6-.2c1.2-.3 2-.2 2.8.3.8.5 1.4.5 2.2.2.8-.3 1.6-.3 2.4 0 .8.3 1.4.3 2.2-.2.8-.5 1.6-.6 2.8-.3l.6.2v-1.2L17 11zM7 6h6v.5H7V6zm-1.8 5l1-3.5h7.6l1 3.5H5.2zM2.4 14.5c.8.5 1.6.6 2.8.3.8-.3 1.4-.3 2.2.2.8.5 1.6.5 2.4.2.8-.3 1.4-.3 2.2.2.8.5 1.6.5 2.4.2.8-.3 1.6-.6 2.8-.3l.6.2v1.2l-.6-.2c-1.2-.3-2-.2-2.8.3-.8.5-1.4.5-2.2.2-.8-.3-1.6-.3-2.4 0-.8.3-1.4.3-2.2-.2-.8-.5-1.6-.6-2.8-.3l-.6.2v-1.2l.6-.2z" fill="#0B2C4D"/></svg>'),
-  road: "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M17 13V7c0-.6-.4-1-1-1h-2V5c0-.6-.4-1-1-1H3c-.6 0-1 .4-1 1v8c0 .6.4 1 1 1h.3c.2.9 1 1.5 1.9 1.5s1.7-.6 1.9-1.5h5.8c.2.9 1 1.5 1.9 1.5s1.7-.6 1.9-1.5H17c.6 0 1-.4 1-1v-1l-1 1zM5.2 15c-.7 0-1.2-.5-1.2-1.2s.5-1.2 1.2-1.2 1.2.5 1.2 1.2-.5 1.2-1.2 1.2zM12 7h3l2 3h-5V7zm2.8 8c-.7 0-1.2-.5-1.2-1.2s.5-1.2 1.2-1.2 1.2.5 1.2 1.2-.5 1.2-1.2 1.2z" fill="#0B2C4D"/></svg>'),
-  customs: "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M15 2H5c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V3c0-.6-.4-1-1-1zm-1 14H6V4h8v12zM7 6h6v1H7V6zm0 2.5h6v1H7v-1zm0 2.5h4v1H7v-1zm5.5 2l-1 1.5-1-1.5h2z" fill="#E87722"/></svg>'),
+  air: "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.5 9.2l-6.2-1.6L10 1.5c-.1-.3-.4-.5-.7-.3L8.5 2l1.6 5.4-5.5-1.4L3.5 4l-.8.2L3.6 7 2 6.6l-.5.5 2.2 1.8 1.7.5 5.5 1.4-4.5 3.5-.8-.2-.3.8 2.7.7c.3.1.7 0 .9-.2l4.8-3.7 4.9 1.3c.5.1 1-.1 1.2-.6.1-.5-.1-1-.6-1.2z" fill="#800020"/></svg>'),
+  sea: "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M17 11l-1.5-5H13V4H7v2H4.5L3 11l-1 .3v1.2l.6-.2c1.2-.3 2-.2 2.8.3.8.5 1.4.5 2.2.2.8-.3 1.6-.3 2.4 0 .8.3 1.4.3 2.2-.2.8-.5 1.6-.6 2.8-.3l.6.2v-1.2L17 11zM7 6h6v.5H7V6zm-1.8 5l1-3.5h7.6l1 3.5H5.2zM2.4 14.5c.8.5 1.6.6 2.8.3.8-.3 1.4-.3 2.2.2.8.5 1.6.5 2.4.2.8-.3 1.4-.3 2.2.2.8.5 1.6.5 2.4.2.8-.3 1.6-.6 2.8-.3l.6.2v1.2l-.6-.2c-1.2-.3-2-.2-2.8.3-.8.5-1.4.5-2.2.2-.8-.3-1.6-.3-2.4 0-.8.3-1.4.3-2.2-.2-.8-.5-1.6-.6-2.8-.3l-.6.2v-1.2l.6-.2z" fill="#800020"/></svg>'),
+  road: "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M17 13V7c0-.6-.4-1-1-1h-2V5c0-.6-.4-1-1-1H3c-.6 0-1 .4-1 1v8c0 .6.4 1 1 1h.3c.2.9 1 1.5 1.9 1.5s1.7-.6 1.9-1.5h5.8c.2.9 1 1.5 1.9 1.5s1.7-.6 1.9-1.5H17c.6 0 1-.4 1-1v-1l-1 1zM5.2 15c-.7 0-1.2-.5-1.2-1.2s.5-1.2 1.2-1.2 1.2.5 1.2 1.2-.5 1.2-1.2 1.2zM12 7h3l2 3h-5V7zm2.8 8c-.7 0-1.2-.5-1.2-1.2s.5-1.2 1.2-1.2 1.2.5 1.2 1.2-.5 1.2-1.2 1.2z" fill="#800020"/></svg>'),
+  customs: "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M15 2H5c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V3c0-.6-.4-1-1-1zm-1 14H6V4h8v12zM7 6h6v1H7V6zm0 2.5h6v1H7v-1zm0 2.5h4v1H7v-1zm5.5 2l-1 1.5-1-1.5h2z" fill="#800020"/></svg>'),
 };
 /* PNG versions of freight icons (converted from SVG at page load for Outlook Desktop compatibility) */
 const FREIGHT_ICON_PNG = {};
@@ -399,9 +401,9 @@ async function loadBannerGif() {
 
 /* ===== DEFAULT COLORS ===== */
 const DEFAULT_COLORS = {
-  colorName:'#2C2C2C', colorTitle:'#0B2C4D', colorLabels:'#8B8B8B',
-  colorLinks:'#0B2C4D', colorText:'#2C2C2C', colorSep:'#D0D5DD',
-  colorTagline:'#0B2C4D', colorWarning:'#8B8B8B',
+  colorName:'#303030', colorTitle:'#800020', colorLabels:'#8B8B8B',
+  colorLinks:'#800020', colorText:'#303030', colorSep:'#D0D5DD',
+  colorTagline:'#800020', colorWarning:'#8B8B8B',
 };
 
 /* ===== STATE ===== */
@@ -432,43 +434,51 @@ const profiles = {
     fullName:'Anne-Marie Mandtoumbi', title:'Managing Director', company:'',
     industryLine:'Air · Sea · Road · Customs',
     phoneOffice:'+27 11 392 1699', phoneMobile:'+27 83 745 6483',
+    phoneWhatsapp:'+27 63 893 36 53',
     email:'anne_marie@mekluc.co.za', website:'www.meklucfreight.co.za',
     address:'Morningside, Sandton, Johannesburg, South Africa',
+    warehouse:'Sky Park, 1 Bonaero Dr, Bonaero Park, Kempton Park, 1619 (5 min from OR Tambo)',
     whatsapp:'meklucfreight', facebook:'meklucfreight', linkedin:'mekluc-freight',
-    whatsappNum:'27113921699', tagline:'With us nothing stands in your way',
+    whatsappNum:'27638933653', tagline:'With us nothing stands in your way',
     accreditations:'AEO South Africa | SARS Customs Clearing Agent | Level 1 B-BBEE | 100% Black Woman Owned',
     antiFraudText:'',
   },
   'deo-gracia': {
-    fullName:'Deo Gracia Mekourou', title:'CFO & Operations', company:'',
+    fullName:'Deo Gracia Mandtoumbi Mekourou', title:'Programme Director', company:'',
     industryLine:'Air · Sea · Road · Customs',
-    phoneOffice:'+27 11 392 1699', phoneMobile:'+27 72 295 1512',
+    phoneOffice:'+27 11 392 1699', phoneMobile:'',
+    phoneWhatsapp:'+27 63 893 36 53',
     email:'director@mekluc.co.za', website:'www.meklucfreight.co.za',
     address:'Morningside, Sandton, Johannesburg, South Africa',
+    warehouse:'Sky Park, 1 Bonaero Dr, Bonaero Park, Kempton Park, 1619 (5 min from OR Tambo)',
     whatsapp:'meklucfreight', facebook:'meklucfreight', linkedin:'mekluc-freight',
-    whatsappNum:'27113921699', tagline:'With us nothing stands in your way',
+    whatsappNum:'27638933653', tagline:'With us nothing stands in your way',
     accreditations:'AEO South Africa | SARS Customs Clearing Agent | Level 1 B-BBEE | 100% Black Woman Owned',
     antiFraudText:'',
   },
   'nyiko': {
     fullName:'Nyiko Shingange', title:'Accounts Manager', company:'',
     industryLine:'Air · Sea · Road · Customs',
-    phoneOffice:'+27 11 392 1699', phoneMobile:'',
+    phoneOffice:'+27 11 392 1699', phoneMobile:'+27 76 482 9701',
+    phoneWhatsapp:'+27 63 893 36 53',
     email:'account2@mekluc.com', website:'www.meklucfreight.co.za',
     address:'Morningside, Sandton, Johannesburg, South Africa',
-    whatsapp:'', facebook:'', linkedin:'',
-    whatsappNum:'27113921699', tagline:'With us nothing stands in your way',
+    warehouse:'Sky Park, 1 Bonaero Dr, Bonaero Park, Kempton Park, 1619 (5 min from OR Tambo)',
+    whatsapp:'meklucfreight', facebook:'meklucfreight', linkedin:'mekluc-freight',
+    whatsappNum:'27638933653', tagline:'With us nothing stands in your way',
     accreditations:'AEO South Africa | SARS Customs Clearing Agent | Level 1 B-BBEE | 100% Black Woman Owned',
     antiFraudText:'',
   },
   'siyiwa': {
     fullName:'Siyiwa Chekwa', title:'Operations Coordinator', company:'',
     industryLine:'Air · Sea · Road · Customs',
-    phoneOffice:'+27 11 392 1699', phoneMobile:'084 411 9508',
+    phoneOffice:'+27 11 392 1699', phoneMobile:'+27 84 411 9508',
+    phoneWhatsapp:'+27 63 893 36 53',
     email:'Controller@mekluc.co.za', website:'www.meklucfreight.co.za',
     address:'Morningside, Sandton, Johannesburg, South Africa',
-    whatsapp:'', facebook:'', linkedin:'',
-    whatsappNum:'27113921699', tagline:'With us nothing stands in your way',
+    warehouse:'Sky Park, 1 Bonaero Dr, Bonaero Park, Kempton Park, 1619 (5 min from OR Tambo)',
+    whatsapp:'meklucfreight', facebook:'meklucfreight', linkedin:'mekluc-freight',
+    whatsappNum:'27638933653', tagline:'With us nothing stands in your way',
     accreditations:'AEO South Africa | SARS Customs Clearing Agent | Level 1 B-BBEE | 100% Black Woman Owned',
     antiFraudText:'',
   },
@@ -476,10 +486,12 @@ const profiles = {
     fullName:'', title:'', company:'',
     industryLine:'Air · Sea · Road · Customs',
     phoneOffice:'+27 11 392 1699', phoneMobile:'',
+    phoneWhatsapp:'+27 63 893 36 53',
     email:'', website:'www.meklucfreight.co.za',
     address:'Morningside, Sandton, Johannesburg, South Africa',
-    whatsapp:'', facebook:'', linkedin:'',
-    whatsappNum:'27113921699', tagline:'With us nothing stands in your way',
+    warehouse:'Sky Park, 1 Bonaero Dr, Bonaero Park, Kempton Park, 1619 (5 min from OR Tambo)',
+    whatsapp:'meklucfreight', facebook:'meklucfreight', linkedin:'mekluc-freight',
+    whatsappNum:'27638933653', tagline:'With us nothing stands in your way',
     accreditations:'AEO South Africa | SARS Customs Clearing Agent | Level 1 B-BBEE | 100% Black Woman Owned',
     antiFraudText:'',
   },
@@ -511,7 +523,7 @@ async function loadDefaultLogos() {
   if(!logoMeklucSrc) logoMeklucSrc = await imgToBase64('/assets/sig/mekluc-logo.png');
   if(!logoAeoSrc) logoAeoSrc = await imgToBase64('/assets/sig/aeo-logo.png');
   // 4. Last resort: SVG placeholders
-  if(!logoMeklucSrc) logoMeklucSrc='data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="180" height="76"><rect fill="#0B2C4D" width="180" height="76" rx="4"/><text x="90" y="42" fill="#fff" font-family="Calibri" font-size="14" font-weight="bold" text-anchor="middle">MEKLUC FREIGHT</text></svg>');
+  if(!logoMeklucSrc) logoMeklucSrc='data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="180" height="76"><rect fill="#800020" width="180" height="76" rx="4"/><text x="90" y="42" fill="#fff" font-family="Calibri" font-size="14" font-weight="bold" text-anchor="middle">MEKLUC FREIGHT</text></svg>');
   if(!logoAeoSrc) logoAeoSrc='data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50"><circle cx="25" cy="25" r="23" fill="none" stroke="#8B8B8B" stroke-width="1.5"/><text x="25" y="29" fill="#8B8B8B" font-family="Calibri" font-size="11" font-weight="bold" text-anchor="middle">AEO</text></svg>');
   render();
 }
@@ -551,7 +563,7 @@ function resetColors() {
 
 /* ===== PROFILE SAVE / LOAD (localStorage) ===== */
 const PROFILES_STORAGE_KEY = 'mekluc_sig_profiles';
-const PROFILE_FIELDS = ['fullName','title','company','industryLine','phoneOffice','phoneMobile','email','website','address','linkedin','whatsapp','facebook','whatsappNum','tagline','accreditations','antiFraudText','promoTitle','promoText','promoUrl','promoLinkText'];
+const PROFILE_FIELDS = ['fullName','title','company','industryLine','phoneOffice','phoneMobile','phoneWhatsapp','email','website','address','warehouse','linkedin','whatsapp','facebook','whatsappNum','tagline','accreditations','antiFraudText','promoTitle','promoText','promoUrl','promoLinkText'];
 
 function getSavedProfiles() {
   try { return JSON.parse(localStorage.getItem(PROFILES_STORAGE_KEY)) || {}; } catch(e) { return {}; }
@@ -774,10 +786,10 @@ function buildSignatureHTML(forExport) {
       h+='<div style="margin:0 0 14px 0;">';
       h+='<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;"><tr>';
       const modes=[
-        {icon:'air',label:'Air',col:'#0B2C4D'},
-        {icon:'sea',label:'Sea',col:'#0B2C4D'},
-        {icon:'road',label:'Road',col:'#0B2C4D'},
-        {icon:'customs',label:'Customs',col:'#E87722'}
+        {icon:'air',label:'Air',col:'#800020'},
+        {icon:'sea',label:'Sea',col:'#800020'},
+        {icon:'road',label:'Road',col:'#800020'},
+        {icon:'customs',label:'Customs',col:'#800020'}
       ];
       modes.forEach((m,i)=>{
         const sep=i<modes.length-1?'<td style="padding:0 8px;color:'+cSep+';font-size:13px;font-family:'+ff+';">&middot;</td>':'';
@@ -793,10 +805,20 @@ function buildSignatureHTML(forExport) {
 
   // Contact details
   h+='<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;font-family:'+ff+';font-size:'+fd+'px;color:'+cTxt+';line-height:1.9;">';
-  h+='<tr><td style="padding:0;"><span style="color:'+cLbl+';font-weight:500;font-size:'+fd+'px;">Office</span>&nbsp;&nbsp;<span'+ed('phoneOffice')+' style="color:'+cTxt+';">'+val('phoneOffice')+'</span> &nbsp;<span style="color:'+cSep+';">|</span>&nbsp; <span style="color:'+cLbl+';font-weight:500;font-size:'+fd+'px;">Mobile</span>&nbsp;&nbsp;<span'+ed('phoneMobile')+' style="color:'+cTxt+';">'+val('phoneMobile')+'</span></td></tr>';
+  // Office (+ Mobile only if present — Deo has no mobile, CCO protection)
+  h+='<tr><td style="padding:0;"><span style="color:'+cLbl+';font-weight:500;font-size:'+fd+'px;">Office</span>&nbsp;&nbsp;<span'+ed('phoneOffice')+' style="color:'+cTxt+';">'+val('phoneOffice')+'</span>';
+  if(val('phoneMobile')) { h+=' &nbsp;<span style="color:'+cSep+';">|</span>&nbsp; <span style="color:'+cLbl+';font-weight:500;font-size:'+fd+'px;">Mobile</span>&nbsp;&nbsp;<span'+ed('phoneMobile')+' style="color:'+cTxt+';">'+val('phoneMobile')+'</span>'; }
+  h+='</td></tr>';
+  // WhatsApp Business — clickable wa.me (V4.8)
+  if(val('phoneWhatsapp')) {
+    var waDigits = val('phoneWhatsapp').replace(/[^0-9]/g,'');
+    h+='<tr><td style="padding:0;"><span style="color:'+cLbl+';font-weight:500;font-size:'+fd+'px;">WhatsApp</span>&nbsp;&nbsp;<a href="https://wa.me/'+waDigits+'" style="color:'+cLink+';text-decoration:none;">'+val('phoneWhatsapp')+'</a></td></tr>';
+  }
   h+='<tr><td style="padding:0;"><span style="color:'+cLbl+';font-weight:500;font-size:'+fd+'px;">Email</span>&nbsp;&nbsp;<a href="mailto:'+val('email')+'"'+edLink('email','email')+' style="color:'+cLink+';text-decoration:none;">'+val('email')+'</a></td></tr>';
   h+='<tr><td style="padding:0;"><span style="color:'+cLbl+';font-weight:500;font-size:'+fd+'px;">Web</span>&nbsp;&nbsp;<a href="https://'+val('website')+'"'+edLink('website','web')+' style="color:'+cLink+';text-decoration:none;">'+val('website')+'</a></td></tr>';
-  h+='<tr><td style="padding:0;"><span style="color:'+cLbl+';font-weight:500;font-size:'+fd+'px;">Address</span>&nbsp;&nbsp;<span'+ed('address')+' style="color:'+cTxt+';">'+val('address')+'</span></td></tr>';
+  // Head Office (+ Warehouse only if present) — V4.8 deux adresses
+  h+='<tr><td style="padding:0;"><span style="color:'+cLbl+';font-weight:500;font-size:'+fd+'px;">Head Office</span>&nbsp;&nbsp;<span'+ed('address')+' style="color:'+cTxt+';">'+val('address')+'</span></td></tr>';
+  if(val('warehouse')) { h+='<tr><td style="padding:0;"><span style="color:'+cLbl+';font-weight:500;font-size:'+fd+'px;">Warehouse</span>&nbsp;&nbsp;<span'+ed('warehouse')+' style="color:'+cTxt+';">'+val('warehouse')+'</span></td></tr>'; }
   if(socials.length>0) {
     h+='<tr><td style="padding:2px 0 0 0;">'+socials.join(' &nbsp;&nbsp; ')+'</td></tr>';
   }
@@ -837,11 +859,11 @@ function buildSignatureHTML(forExport) {
     const pTitle=val('promoTitle'), pText=val('promoText'), pUrl=val('promoUrl'), pLink=val('promoLinkText');
     if(pTitle || pText) {
       h+='<tr><td style="padding:10px 0 0 0;">';
-      h+='<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;width:100%;background:#F8F9FB;border-radius:4px;border-left:3px solid #E87722;">';
+      h+='<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;width:100%;background:#F8F9FB;border-radius:4px;border-left:3px solid #800020;">';
       h+='<tr><td style="padding:8px 12px;">';
-      if(pTitle) h+='<div style="font-family:'+ff+';font-size:10px;font-weight:700;color:#0B2C4D;text-transform:uppercase;letter-spacing:0.6px;margin:0 0 3px 0;">'+pTitle+'</div>';
+      if(pTitle) h+='<div style="font-family:'+ff+';font-size:10px;font-weight:700;color:#800020;text-transform:uppercase;letter-spacing:0.6px;margin:0 0 3px 0;">'+pTitle+'</div>';
       if(pText) h+='<div style="font-family:'+ff+';font-size:11px;color:#555;line-height:1.45;margin:0 0 4px 0;">'+pText+'</div>';
-      if(pUrl && pLink) h+='<a href="'+pUrl+'" target="_blank" style="font-family:'+ff+';font-size:10px;color:#0B2C4D;font-weight:600;text-decoration:none;">'+pLink+' &rarr;</a>';
+      if(pUrl && pLink) h+='<a href="'+pUrl+'" target="_blank" style="font-family:'+ff+';font-size:10px;color:#800020;font-weight:600;text-decoration:none;">'+pLink+' &rarr;</a>';
       h+='</td></tr></table>';
       h+='</td></tr>';
     }
