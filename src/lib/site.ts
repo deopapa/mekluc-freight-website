@@ -32,11 +32,25 @@ export const site = {
    */
   whatsapp: '27638933653',
 
-  /* Adresse — D2 acte, Isando supprime */
+  /* Head Office — corporate / fiduciaire (D2 acte, Isando supprime).
+   * Adresse principale Google Business + documents fiduciaires + signatures. */
   address: {
     short: 'Morningside, Sandton, Johannesburg',
     full: 'Morningside, Sandton, Johannesburg, South Africa',
     city: 'Sandton',
+    province: 'Gauteng',
+    country: 'South Africa',
+  },
+
+  /* Warehouse & Operations — 2e adresse publique (Option B, Deo 04/06/2026).
+   * Facility operationnel + cargo handling, 5 min de OR Tambo (argument Air Freight).
+   * Apparait sur la page Contact (section distincte). N'est PAS l'adresse corporate :
+   * le Head Office Sandton reste l'adresse fiduciaire. */
+  warehouse: {
+    short: 'Bonaero Park, Kempton Park',
+    full: 'Sky Park, 1 Bonaero Dr, Bonaero Park, Kempton Park, 1619, South Africa',
+    note: '5 minutes from OR Tambo International Airport',
+    city: 'Kempton Park',
     province: 'Gauteng',
     country: 'South Africa',
   },
@@ -57,7 +71,7 @@ export const site = {
   /* Social */
   social: {
     linkedin: 'https://www.linkedin.com/company/mekluc-freight',
-    facebook: 'https://www.facebook.com/meklucfreight',
+    facebook: 'https://www.facebook.com/MeklucFreightSA',
     whatsappLink: 'https://wa.me/27638933653',
   },
 
