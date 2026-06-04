@@ -114,7 +114,7 @@ export const site = {
   promo: {
     active: true,
     label: 'AEO',
-    text: 'Top 1% AEO-accredited freight forwarder — faster customs, less inspection, mutual recognition with the UK, USA, India and China.',
+    text: 'AEO-certified by SARS — faster customs clearance and mutual recognition across our international partner corridors (UK, USA, India, China and more).',
     ctaText: 'Request your quote',
     ctaHref: '/contact?quote=1',
   },
