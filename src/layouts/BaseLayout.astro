@@ -67,12 +67,26 @@ const fullTitle = title === 'Home'
     "url": site.url,
     "telephone": site.phone,
     "email": site.email,
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": site.address.city,
-      "addressRegion": site.address.province,
-      "addressCountry": "ZA"
-    },
+    "address": [
+      {
+        "@type": "PostalAddress",
+        "addressLocality": site.address.city,
+        "addressRegion": site.address.province,
+        "addressCountry": "ZA"
+      },
+      {
+        "@type": "PostalAddress",
+        "streetAddress": "Sky Park, 1 Bonaero Dr, Bonaero Park",
+        "addressLocality": site.warehouse.city,
+        "addressRegion": site.warehouse.province,
+        "postalCode": "1619",
+        "addressCountry": "ZA"
+      }
+    ],
+    "sameAs": [
+      site.social.facebook,
+      site.social.linkedin
+    ],
     "foundingDate": "2007",
     "slogan": site.tagline,
     "areaServed": "South Africa"
