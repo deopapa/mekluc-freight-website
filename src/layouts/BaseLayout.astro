@@ -126,13 +126,13 @@ const fullTitle = title === 'Home'
       <!-- Right: PHONE prominent + email + search + lang + STC -->
       <div class="flex items-center gap-4">
         <!-- Phone — MORE PROMINENT (V4.2) -->
-        <a href={`tel:${site.phoneRaw}`} style="font-family: var(--f-display); font-size: 14px; font-weight: 700; color: var(--c-cream); transition: opacity 0.2s ease; letter-spacing: 0.02em;" class="hover:opacity-80 flex items-center gap-2">
+        <a href={`tel:${site.phoneRaw}`} style="font-family: var(--f-sans); font-size: 14px; font-weight: 700; color: var(--c-cream); transition: opacity 0.2s ease; letter-spacing: 0.02em;" class="hover:opacity-80 flex items-center gap-2">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           {site.phone}
         </a>
         <span class="hidden sm:inline" style="color: rgba(247,242,232,0.3);">|</span>
         <!-- Email -->
-        <a href={`mailto:${site.email}`} class="hidden sm:flex items-center gap-2" style="font-family: var(--f-display); font-size: 13px; font-weight: 500; color: rgba(247,242,232,0.9); transition: opacity 0.2s ease;">
+        <a href={`mailto:${site.email}`} class="hidden sm:flex items-center gap-2" style="font-family: var(--f-sans); font-size: 13px; font-weight: 500; color: rgba(247,242,232,0.9); transition: opacity 0.2s ease;">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           {site.email}
         </a>
@@ -143,19 +143,19 @@ const fullTitle = title === 'Home'
         </button>
         <!-- Language dropdown (V4.2) — EN active, FR/AF placeholders -->
         <div class="hidden md:flex relative" id="lang-switcher">
-          <button id="lang-btn" class="utility-icon-btn flex items-center gap-1" aria-label="Change language" aria-expanded="false" style="background: transparent; border: none; cursor: pointer; padding: 4px 6px; font-family: var(--f-display); font-size: 13px; font-weight: 600; color: rgba(247,242,232,0.9); letter-spacing: 0.05em;">
+          <button id="lang-btn" class="utility-icon-btn flex items-center gap-1" aria-label="Change language" aria-expanded="false" style="background: transparent; border: none; cursor: pointer; padding: 4px 6px; font-family: var(--f-sans); font-size: 13px; font-weight: 600; color: rgba(247,242,232,0.9); letter-spacing: 0.05em;">
             <span aria-hidden="true">🇿🇦</span><span>EN</span>
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <!-- Dropdown menu -->
           <div id="lang-menu" class="hidden absolute right-0 top-full mt-2" style="background: var(--c-ink); border: 1px solid rgba(247,242,232,0.15); min-width: 140px; z-index: 100; box-shadow: 0 8px 24px rgba(0,0,0,0.2);">
-            <button class="lang-item lang-item-active" data-lang="en" style="display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px 14px; font-family: var(--f-display); font-size: 13px; font-weight: 600; color: var(--c-cream); background: transparent; border: none; cursor: pointer; text-align: left;">
+            <button class="lang-item lang-item-active" data-lang="en" style="display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px 14px; font-family: var(--f-sans); font-size: 13px; font-weight: 600; color: var(--c-cream); background: transparent; border: none; cursor: pointer; text-align: left;">
               <span>🇿🇦</span><span>English</span><span style="margin-left: auto; color: var(--c-copper); font-size: 11px;">●</span>
             </button>
-            <button class="lang-item" data-lang="fr" style="display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px 14px; font-family: var(--f-display); font-size: 13px; font-weight: 500; color: rgba(247,242,232,0.6); background: transparent; border: none; cursor: not-allowed; text-align: left;" disabled>
+            <button class="lang-item" data-lang="fr" style="display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px 14px; font-family: var(--f-sans); font-size: 13px; font-weight: 500; color: rgba(247,242,232,0.6); background: transparent; border: none; cursor: not-allowed; text-align: left;" disabled>
               <span>🇫🇷</span><span>Français</span><span style="margin-left: auto; font-size: 9px; color: rgba(247,242,232,0.4);">SOON</span>
             </button>
-            <button class="lang-item" data-lang="af" style="display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px 14px; font-family: var(--f-display); font-size: 13px; font-weight: 500; color: rgba(247,242,232,0.6); background: transparent; border: none; cursor: not-allowed; text-align: left;" disabled>
+            <button class="lang-item" data-lang="af" style="display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px 14px; font-family: var(--f-sans); font-size: 13px; font-weight: 500; color: rgba(247,242,232,0.6); background: transparent; border: none; cursor: not-allowed; text-align: left;" disabled>
               <span>🇿🇦</span><span>Afrikaans</span><span style="margin-left: auto; font-size: 9px; color: rgba(247,242,232,0.4);">SOON</span>
             </button>
           </div>
@@ -168,15 +168,15 @@ const fullTitle = title === 'Home'
   <div id="search-overlay" class="hidden fixed inset-0 z-[100] flex items-start justify-center pt-32" style="background: rgba(26,22,18,0.85); backdrop-filter: blur(8px);">
     <div class="w-full max-w-2xl px-6">
       <form action="/" method="get" role="search" style="position: relative;">
-        <input type="search" name="q" id="search-input" placeholder="Search Mekluc Freight..." autocomplete="off" style="width: 100%; padding: 22px 60px 22px 24px; font-family: var(--f-display); font-size: 18px; background: var(--c-cream); border: 2px solid var(--c-bordeaux); color: var(--c-ink); outline: none;" />
-        <button type="submit" aria-label="Submit search" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: var(--c-bordeaux); color: var(--c-cream); border: none; cursor: pointer; padding: 12px 18px; font-family: var(--f-display); font-size: 14px; font-weight: 700;">
+        <input type="search" name="q" id="search-input" placeholder="Search Mekluc Freight..." autocomplete="off" style="width: 100%; padding: 22px 60px 22px 24px; font-family: var(--f-sans); font-size: 18px; background: var(--c-cream); border: 2px solid var(--c-bordeaux); color: var(--c-ink); outline: none;" />
+        <button type="submit" aria-label="Submit search" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: var(--c-bordeaux); color: var(--c-cream); border: none; cursor: pointer; padding: 12px 18px; font-family: var(--f-sans); font-size: 14px; font-weight: 700;">
           Search
         </button>
       </form>
       <button id="search-close" aria-label="Close search" style="position: absolute; top: -48px; right: 24px; background: transparent; border: none; color: var(--c-cream); cursor: pointer; padding: 8px;">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
-      <p style="text-align: center; color: rgba(247,242,232,0.6); font-family: var(--f-display); font-size: 13px; margin-top: 16px;">
+      <p style="text-align: center; color: rgba(247,242,232,0.6); font-family: var(--f-sans); font-size: 13px; margin-top: 16px;">
         Press <kbd style="background: rgba(247,242,232,0.15); padding: 2px 8px; border-radius: 4px; font-family: var(--f-mono); font-size: 11px;">ESC</kbd> to close · Search is coming soon (V1.5)
       </p>
     </div>
@@ -206,22 +206,22 @@ const fullTitle = title === 'Home'
 
       <!-- NAV LINKS — V4.1 spaced + 15px -->
       <div class="hidden lg:flex items-center" style="gap: 36px;">
-        <a href="/about" style="font-family: var(--f-display); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
+        <a href="/about" style="font-family: var(--f-sans); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
           {t(lang, 'nav.about')}
         </a>
-        <a href="/services" style="font-family: var(--f-display); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
+        <a href="/services" style="font-family: var(--f-sans); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
           {t(lang, 'nav.services')}
         </a>
-        <a href="/solutions" style="font-family: var(--f-display); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
+        <a href="/solutions" style="font-family: var(--f-sans); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
           {t(lang, 'nav.solutions')}
         </a>
-        <a href="/tracking" style="font-family: var(--f-display); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
+        <a href="/tracking" style="font-family: var(--f-sans); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
           Track
         </a>
-        <a href="/insights" style="font-family: var(--f-display); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
+        <a href="/insights" style="font-family: var(--f-sans); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
           {t(lang, 'nav.insights')}
         </a>
-        <a href="/contact" style="font-family: var(--f-display); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
+        <a href="/contact" style="font-family: var(--f-sans); font-size: 15px; font-weight: 600; color: var(--c-ink); transition: color 0.2s ease;" class="nav-link-v4">
           {t(lang, 'nav.contact')}
         </a>
       </div>
@@ -463,7 +463,7 @@ const fullTitle = title === 'Home'
       padding: 6px 12px;
       background: var(--c-bordeaux);
       color: var(--c-cream);
-      font-family: var(--f-display);
+      font-family: var(--f-sans);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -596,7 +596,7 @@ const fullTitle = title === 'Home'
       margin: 0 0 8px;
     }
     .aeo-popover-title {
-      font-family: var(--f-display);
+      font-family: var(--f-sans);
       font-weight: 500;
       font-size: 22px;
       line-height: 1.2;
@@ -684,7 +684,7 @@ const fullTitle = title === 'Home'
       padding: 10px 16px;
       background: #25D366;
       color: #FFFFFF;
-      font-family: var(--f-display);
+      font-family: var(--f-sans);
       font-size: 14px;
       font-weight: 700;
       letter-spacing: 0.01em;
