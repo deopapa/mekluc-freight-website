@@ -252,6 +252,82 @@ const lang = 'en' as const;
     </div>
   </section>
 
+  <!-- ============== CORRIDORS WE KNOW BEST ============== -->
+  <section class="section-padding bg-mekluc-cream" id="corridors">
+    <div class="section">
+      <div class="section-header reveal">
+        <div>
+          <div class="eyebrow mb-4">CORRIDORS WE KNOW BEST</div>
+          <h2 class="section-title">Cross-border lanes we run <em>every week</em>.</h2>
+        </div>
+        <p class="section-lead">
+          Not occasionally — every week. Established customs relationships and
+          pre-clearance at every border post, with AEO accreditation that cuts
+          days off transit where it matters most.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-px reveal" style="background: var(--c-line-soft);">
+        {[
+          {
+            title: 'SA → DRC',
+            cargo: 'Copperbelt mining & project cargo',
+            route: 'JNB → Beit Bridge → Bulawayo → Chirundu → Lusaka → Kasumbalesa → Lubumbashi',
+            transit: '12–18 days',
+            borders: 'Beit Bridge, Chirundu, Kasumbalesa',
+          },
+          {
+            title: 'SA → Zambia',
+            cargo: 'Reagents, equipment, general cargo',
+            route: 'JNB → Beit Bridge → Chirundu → Lusaka / Copperbelt',
+            transit: '7–10 days',
+            borders: 'Beit Bridge, Chirundu',
+          },
+          {
+            title: 'SA → Zimbabwe',
+            cargo: 'Industrial & project loads',
+            route: 'JNB → Beit Bridge → Harare / Bulawayo',
+            transit: '3–5 days',
+            borders: 'Beit Bridge',
+          },
+        ].map((c) => (
+          <div style="background: var(--c-ivory); padding: clamp(2rem, 4vw, 2.75rem);">
+            <h3 style="font-family: var(--f-display); font-size: 1.75rem; font-weight: 500; color: var(--c-ink); margin-bottom: 6px; letter-spacing: -0.01em;">{c.title}</h3>
+            <p style="font-family: var(--f-sans); font-size: 0.875rem; color: var(--c-bordeaux); font-weight: 600; margin-bottom: 1.25rem;">{c.cargo}</p>
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <div>
+                <span style="font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.12em; color: var(--c-mute); display: block; margin-bottom: 4px;">ROUTE</span>
+                <p style="font-family: var(--f-sans); font-size: 0.9375rem; line-height: 1.5; color: var(--c-charcoal);">{c.route}</p>
+              </div>
+              <div class="flex gap-8">
+                <div>
+                  <span style="font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.12em; color: var(--c-mute); display: block; margin-bottom: 4px;">TRANSIT</span>
+                  <p style="font-family: var(--f-display); font-size: 1.25rem; font-weight: 500; color: var(--c-bordeaux);">{c.transit}</p>
+                </div>
+                <div>
+                  <span style="font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.12em; color: var(--c-mute); display: block; margin-bottom: 4px;">BORDER POSTS</span>
+                  <p style="font-family: var(--f-sans); font-size: 0.9375rem; color: var(--c-charcoal);">{c.borders}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="reveal" style="margin-top: 32px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center;">
+        <a href="/solutions/mining-project-cargo-africa" class="btn-primary">
+          Mining &amp; project cargo to the DRC <span class="btn-arrow">&rarr;</span>
+        </a>
+        <a href="/solutions/sa-export-diversification" class="btn-ghost">
+          SA export corridors
+        </a>
+        <span style="font-family: var(--f-mono); font-size: 13px; color: var(--c-mute);">
+          Transit times are typical, under normal border conditions.
+        </span>
+      </div>
+    </div>
+  </section>
+
   <!-- ============== TRUSTED BY — Client logos infinite marquee (V3.8) ============== -->
   <section style="background: #FFFFFF; padding: clamp(4rem, 7vw, 5rem) 0; border-top: 1px solid var(--c-line-soft); border-bottom: 1px solid var(--c-line-soft); overflow: hidden;">
     <div class="section">
