@@ -1,8 +1,8 @@
-/* ===== V4.0 FONTS — Plus Jakarta Sans (moderne, attractif, premium SaaS) ===== */
-/* Plus Jakarta Sans = TITRES + BODY (police unique, cohérente, attractive) */
+/* ===== V5.0 FONTS — Mekluc v3 charter (validé Gracia, juin 2026) ===== */
+/* Playfair Display = TITRES (serif éditorial premium) */
+/* Inter = BODY (sans moderne, ultra-lisible) */
 /* IBM Plex Mono = eyebrows + labels uppercase (uniquement) */
-/* Fraunces SUPPRIMÉ (trop serif/lourd selon feedback utilisateur) */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..700&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -10,28 +10,34 @@
 
 @layer base {
   :root {
-    --c-bordeaux: #800020;
-    --c-bordeaux-deep: #5C0017;
-    --c-carmin: #D00038;
-    --c-ink: #1A1612;
-    --c-ink-soft: #3D3530;
-    --c-charcoal: #6B645E;
-    /* V4.7 PATCH P1 (WCAG AA fix 2026-05-20) — mute darkened 9D958E -> 776E67 (2.95:1 -> 4.55:1) */
+    /* ===== V5.0 — Charte Mekluc v3 (validé Gracia juin 2026) ===== */
+    /* Bordeaux primaire #7a1f2a (légèrement plus chaud que l'ancien #800020) */
+    --c-bordeaux: #7a1f2a;
+    --c-bordeaux-deep: #5e1620;
+    --c-carmin: #b8323f;       /* hover/interaction, aligné nouvelle teinte */
+    /* Encre #2c1810 — brun-noir chaud (remplace #1A1612) */
+    --c-ink: #2c1810;
+    --c-ink-soft: #4a3328;
+    --c-charcoal: #6B645E;     /* gris WCAG-safe, conservé */
+    /* V4.7 PATCH P1 (WCAG AA fix) — mute 4.55:1, conservé */
     --c-mute: #776E67;
     --c-line: #D8CFC2;
     --c-line-soft: #E8E0D2;
-    /* V3.6 PATCH — Background tout BLANC pur (zéro off-white) */
-    --c-cream: #FFFFFF;        /* WHITE — bandes secondaires */
-    --c-cream-deep: #F5F5F5;   /* Gris très très léger pour micro-séparation */
-    --c-paper: #FFFFFF;        /* Body background = WHITE pur */
-    --c-ivory: #FFFFFF;        /* Forms = WHITE */
-    /* V4.7 PATCH P1 (WCAG AA fix 2026-05-20) — copper darkened B07A4F -> 95643E (3.66:1 -> 5.04:1) */
-    --c-copper: #95643E;
-    --c-copper-deep: #7A5234;
-    /* V4.0 — Plus Jakarta Sans unifié, IBM Plex Mono pour eyebrows */
-    --f-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    --f-serif: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; /* alias compat */
-    --f-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    /* V5.0 — Surfaces off-white #faf9f5 (premium, moins clinique que blanc pur) */
+    --c-cream: #faf9f5;        /* off-white — bandes secondaires + texte sur fond sombre */
+    --c-cream-deep: #f2efe8;   /* off-white plus profond pour micro-séparation */
+    --c-paper: #faf9f5;        /* Body background = off-white chaud */
+    --c-ivory: #ffffff;        /* Forms = blanc pur (contraste champ) */
+    /* V5.0 — OR #c9a84c : accent sur fonds SOMBRES + boutons uniquement (échoue WCAG sur blanc). */
+    /* Sur fond clair, utiliser --c-gold-ink (or sombre lisible) ou le bordeaux. */
+    --c-copper: #c9a84c;       /* alias historique = OR (utilisé sur bandes sombres) */
+    --c-copper-deep: #b08f3a;  /* or profond — hover boutons */
+    --c-gold: #c9a84c;         /* nom canonique de l'accent or */
+    --c-gold-ink: #8a6a1f;     /* or sombre WCAG-safe (~4.6:1) pour texte/accent sur fond clair */
+    /* V5.0 — Playfair Display (titres) + Inter (corps), IBM Plex Mono (eyebrows) */
+    --f-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --f-serif: 'Playfair Display', Georgia, 'Times New Roman', serif; /* alias compat */
+    --f-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
     --f-mono: 'IBM Plex Mono', 'SF Mono', Consolas, monospace;
     --measure: 1200px;
   }
@@ -45,30 +51,29 @@
   }
 
   body {
-    background-color: #FFFFFF; /* V3.5 PATCH — WHITE pur, plus de cream/marron */
+    background-color: var(--c-paper); /* V5.0 — off-white #faf9f5 chaud */
     font-size: 1.0625rem;
     line-height: 1.7;
     font-weight: 400;
   }
 
-  /* V3.5 PATCH — Texture noise supprimée (background WHITE clean) */
-
-  /* V4.0 — Tous les titres en Plus Jakarta Sans bold (attractif, moderne, lisible) */
+  /* V5.0 — Titres en Playfair Display (serif éditorial). */
+  /* Tracking quasi neutre : le serif souffre d'un letter-spacing trop négatif. */
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--f-display);
     color: var(--c-ink);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    line-height: 1.12;
   }
 
-  /* V4.0 — em dans titres = italic Plus Jakarta Sans, couleur héritée */
+  /* V5.0 — em dans titres = italic Playfair, couleur héritée */
   h1 em, h2 em, h3 em, h4 em {
     font-family: var(--f-display);
     font-style: italic;
-    font-weight: 700;
+    font-weight: 600;
     color: inherit;
-    letter-spacing: -0.015em;
+    letter-spacing: 0;
   }
 
   /* V4.0 — Pull-quotes (em dans p / blockquote) = italic bordeaux Plus Jakarta Sans */

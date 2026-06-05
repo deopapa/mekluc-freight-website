@@ -37,22 +37,29 @@ const lang = 'en' as const;
         <span style="display: inline-block; width: 48px; height: 2.5px; background: var(--c-bordeaux); margin-right: 18px; vertical-align: middle;"></span>AEO ACCREDITED · LEVEL 1 B-BBEE · SINCE 2007
       </div>
 
-      <h1 class="text-mekluc-ink mb-6 opacity-0" style="font-family: var(--f-display); font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 1.05; letter-spacing: -0.035em; font-weight: 800; animation: fadeUp 0.7s 0.25s forwards; max-width: 18ch;">
-        Your freight partner between <em style="font-style: italic; font-weight: 700; color: var(--c-bordeaux);">South Africa</em> and the world.
+      <h1 class="text-mekluc-ink mb-6 opacity-0" style="font-family: var(--f-display); font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 1.08; letter-spacing: -0.01em; font-weight: 700; animation: fadeUp 0.7s 0.25s forwards; max-width: 18ch;">
+        Your freight partner between <em style="font-style: italic; font-weight: 600; color: var(--c-bordeaux);">South Africa</em> and the world.
       </h1>
 
-      <p class="text-mekluc-ink-soft mb-10 opacity-0" style="font-family: var(--f-sans); font-size: clamp(1.0625rem, 1.4vw, 1.25rem); line-height: 1.6; max-width: 55ch; animation: fadeUp 0.7s 0.4s forwards; font-weight: 400;">
-        Import &amp; export by air, sea and road — handled by an <strong style="color: var(--c-ink); font-weight: 600;">AEO-accredited</strong>, Level 1 B-BBEE forwarder. <strong style="color: var(--c-ink); font-weight: 600;">19 years</strong> moving cargo for South African business.
+      <p class="text-mekluc-ink-soft mb-8 opacity-0" style="font-family: var(--f-sans); font-size: clamp(1.0625rem, 1.4vw, 1.25rem); line-height: 1.6; max-width: 56ch; animation: fadeUp 0.7s 0.4s forwards; font-weight: 400;">
+        Air, sea &amp; road freight with in-house <strong style="color: var(--c-ink); font-weight: 600;">SARS customs clearance</strong> — by an <strong style="color: var(--c-ink); font-weight: 600;">AEO-accredited</strong>, Level 1 B-BBEE forwarder. We move your cargo through the border, not into demurrage. <strong style="color: var(--c-ink); font-weight: 600;">19 years</strong> on South Africa's trade lanes.
       </p>
 
       <div class="flex flex-wrap items-center gap-3 opacity-0" style="animation: fadeUp 0.7s 0.55s forwards;">
         <a href="/contact?quote=1" class="btn-primary btn-lg">
-          Get a quote in less than 2h <span class="btn-arrow">&rarr;</span>
+          Get a quote in under 2h <span class="btn-arrow">&rarr;</span>
         </a>
-        <a href="/tracking" class="btn-ghost btn-lg">
-          Track shipment
+        <a href={site.social.whatsappLink} target="_blank" rel="noopener" class="btn-whatsapp btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.2.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2z"/></svg>
+          Chat on WhatsApp
+        </a>
+        <a href="/tracking" class="font-sans text-[14px] font-semibold text-mekluc-ink hover:text-mekluc-bordeaux transition-colors" style="padding: 18px 12px;">
+          Track shipment &rarr;
         </a>
       </div>
+      <p class="opacity-0" style="font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.04em; color: var(--c-mute); margin-top: 16px; animation: fadeUp 0.7s 0.7s forwards;">
+        Tell us your route &amp; cargo — a specialist replies in under 2 business hours.
+      </p>
     </div>
   </section>
 
@@ -163,7 +170,7 @@ const lang = 'en' as const;
           { num: '06 / INSURANCE', title: 'Cargo Insurance', desc: 'Marine, air and inland transit cover tailored to your commodity. Claims handled in-house. Because cargo is only as good as its cover.', href: '/services/cargo-insurance', img: '/images/service-cargo-insurance.png' },
         ].map((svc) => (
           <a href={svc.href} class="group bg-mekluc-paper hover:bg-mekluc-cream transition-colors duration-400 p-[44px_36px] flex flex-col gap-5 min-h-[360px] relative cursor-pointer">
-            <div class="font-mono text-[11px] text-mekluc-copper tracking-[0.15em]">— {svc.num}</div>
+            <div class="font-mono text-[11px] text-mekluc-bordeaux tracking-[0.15em]">— {svc.num}</div>
             <h3 class="font-display font-medium text-[32px] leading-[1.1] text-mekluc-ink tracking-tight">{svc.title}</h3>
             <p class="font-sans text-[14px] leading-[1.65] text-mekluc-ink-soft flex-grow">{svc.desc}</p>
             <span class="font-sans text-[13px] font-semibold text-mekluc-bordeaux inline-flex items-center gap-2 mt-auto tracking-[0.02em]">
