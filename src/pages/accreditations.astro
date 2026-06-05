@@ -44,6 +44,17 @@ import { site } from '@/lib/site';
             ],
           },
           {
+            badge: 'DEFERMENT',
+            title: 'SARS Deferment Account',
+            what: 'A SARS-approved deferment account lets approved customs duties and import VAT be settled on a scheduled basis rather than paid upfront at the moment of clearance. When you clear under Mekluc’s deferment facility, your cargo is released without waiting on a same-day payment.',
+            benefits: [
+              'Cargo released without same-day duty & VAT payment',
+              'Duties and import VAT consolidated — not blocking each shipment',
+              'Stronger cash flow on regular and monthly imports',
+              'Fewer clearance delays caused by last-minute payments',
+            ],
+          },
+          {
             badge: 'B-BBEE L1',
             title: 'Level 1 B-BBEE',
             what: 'The maximum Broad-Based Black Economic Empowerment rating recognised by South African law. Independently audited. Renewed annually.',
@@ -68,7 +79,7 @@ import { site } from '@/lib/site';
         ].map((acc, i) => (
           <div id={acc.badge.toLowerCase().replace(/[^a-z0-9]/g, '')} class="reveal" style={`padding: clamp(2.5rem, 5vw, 4rem) 0; scroll-margin-top: 120px; ${i > 0 ? 'border-top: 1px solid var(--c-line);' : ''}`}>
             <div class="flex items-center gap-3 mb-5">
-              <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-copper); background: rgba(176,122,79,0.08); padding: 6px 12px;">{acc.badge}</span>
+              <span style="font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.18em; color: var(--c-gold-ink); background: rgba(138,106,31,0.10); padding: 6px 12px;">{acc.badge}</span>
             </div>
             <h2 style="font-family: var(--f-display); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 400; line-height: 1.2; color: var(--c-ink); margin-bottom: 1.5rem;">{acc.title}</h2>
 
