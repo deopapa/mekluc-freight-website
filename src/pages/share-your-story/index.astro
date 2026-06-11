@@ -1,0 +1,274 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/sections/PageHeader.astro';
+import { site } from '@/lib/site';
+
+// Form « Share your shipment story » — brief [COWORK-BRIEF-CASE-STUDIES-FORM-001].
+// Le site est statique (GitHub Pages) : la soumission POST vers l'API backend
+// Vercel (06-prod-v3) qui stocke (Supabase), notifie info@mekluc.co.za et crée
+// le lead OPS Console. Photos uploadées direct browser→Supabase Storage (signed URLs).
+const API_BASE = 'https://tout-in-1-prod-v3.vercel.app/api/case-study';
+---
+
+<BaseLayout
+  title="Share your shipment story | Mekluc Freight"
+  description="A 5-minute form so we can tell future Mekluc clients what we did for you. Real shipments, real proof."
+>
+  <PageHeader
+    bgImage="/images/hero/hero-contact.webp"
+    label="Case studies"
+    title="Share your shipment story."
+    subtitle="A 5-minute form so we can tell future Mekluc clients what we did for you."
+  />
+
+  <section style="padding-top: clamp(4rem, 9vw, 7rem); padding-bottom: clamp(5rem, 12vw, 10rem);">
+    <div class="section" style="max-width: 880px;">
+
+      <!-- Introduction -->
+      <div class="reveal" style="margin-bottom: 2.5rem;">
+        <p style="font-family: var(--f-sans); font-size: 1.0625rem; line-height: 1.75; color: var(--c-charcoal);">
+          We are updating the real case studies shared on meklucfreight.co.za — short stories of
+          actual shipments we have handled with clients like you. We would love to include your
+          operation so that other businesses can see what Mekluc Freight is capable of.
+        </p>
+        <p style="font-family: var(--f-sans); font-size: 1.0625rem; line-height: 1.75; color: var(--c-charcoal); margin-top: 1rem;">
+          This takes 5 minutes. You can type your answers directly, or simply call us on
+          <a href={`tel:${site.phoneRaw}`} style="color: var(--c-bordeaux); font-weight: 600;">{site.phone}</a>
+          and we will note them down for you. Whichever is easier for you.
+        </p>
+        <p style="font-family: var(--f-sans); font-size: 1.0625rem; line-height: 1.75; color: var(--c-charcoal); margin-top: 1rem;">
+          Thank you for your time.<br/>— The Mekluc Freight team
+        </p>
+
+        <!-- Reassurance -->
+        <ul style="list-style: none; padding: 1.25rem 1.5rem; margin-top: 1.75rem; border-left: 3px solid var(--c-bordeaux); background: rgba(0,0,0,0.025); display: flex; flex-direction: column; gap: 8px;">
+          <li style="font-family: var(--f-sans); font-size: 0.9375rem; color: var(--c-charcoal);">🔒 Your information stays with the Mekluc team</li>
+          <li style="font-family: var(--f-sans); font-size: 0.9375rem; color: var(--c-charcoal);">✅ We will not publish anything without your final approval</li>
+          <li style="font-family: var(--f-sans); font-size: 0.9375rem; color: var(--c-charcoal);">📞 Prefer a phone call? Dial {site.phone} (Mon–Fri 08:00–17:00 SAST)</li>
+        </ul>
+      </div>
+
+      <!-- FORM -->
+      <form class="quote-form reveal" id="storyForm" novalidate>
+
+        <!-- Honeypot (anti-bot) — invisible pour les humains -->
+        <div style="position: absolute; left: -9999px; top: -9999px;" aria-hidden="true">
+          <label for="website">Website</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <!-- Q1 -->
+        <fieldset class="form-group" style="border: 0; padding: 0;">
+          <legend style="font-family: var(--f-sans); font-weight: 600; margin-bottom: 8px;">Who is filling this form? <span style="color: var(--c-bordeaux);">*</span></legend>
+          <label class="story-radio"><input type="radio" name="filledBy" value="client" required /> <span>I am the Mekluc client (this is my shipment)</span></label>
+          <label class="story-radio"><input type="radio" name="filledBy" value="team_member" /> <span>I am a Mekluc team member filling on behalf of a client</span></label>
+        </fieldset>
+
+        <!-- Q1 conditionnel -->
+        <div class="form-group" id="proxyGroup" style="display: none;">
+          <label for="clientCompanyProxy">Client name (you are filling for them) <span style="color: var(--c-bordeaux);">*</span></label>
+          <input type="text" id="clientCompanyProxy" name="clientCompanyProxy" />
+        </div>
+
+        <!-- Q2 + Q3 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div class="form-group">
+            <label for="fullName">Your full name <span style="color: var(--c-bordeaux);">*</span></label>
+            <input type="text" id="fullName" name="fullName" required />
+          </div>
+          <div class="form-group">
+            <label for="companyName">Your company name <span style="color: var(--c-bordeaux);">*</span></label>
+            <input type="text" id="companyName" name="companyName" required />
+            <p class="story-help">If you are filling on behalf of a client, enter the client's company name.</p>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="form-group">
+          <label for="role">Your role or position <span class="story-opt">(optional)</span></label>
+          <input type="text" id="role" name="role" placeholder="e.g. Procurement Manager, Operations Director, CEO..." />
+        </div>
+
+        <!-- Q5 -->
+        <div class="form-group">
+          <label for="whatWeMoved">What did Mekluc Freight help you move? <span style="color: var(--c-bordeaux);">*</span></label>
+          <textarea id="whatWeMoved" name="whatWeMoved" rows="3" required></textarea>
+          <p class="story-help">In your own words — origin, destination, type of cargo. Just one or two sentences.</p>
+        </div>
+
+        <!-- Q6 -->
+        <div class="form-group">
+          <label for="trickiestPart">What was the trickiest part of this shipment? <span style="color: var(--c-bordeaux);">*</span></label>
+          <textarea id="trickiestPart" name="trickiestPart" rows="3" required></textarea>
+          <p class="story-help">The thing that worried you the most, or that could have gone wrong.</p>
+        </div>
+
+        <!-- Q7 -->
+        <div class="form-group">
+          <label for="howMeklucHandled">How did Mekluc handle it? <span style="color: var(--c-bordeaux);">*</span></label>
+          <textarea id="howMeklucHandled" name="howMeklucHandled" rows="3" required></textarea>
+          <p class="story-help">What did we do that made the difference?</p>
+        </div>
+
+        <!-- Q8 -->
+        <div class="form-group">
+          <label for="recommendation">If you had to recommend Mekluc in one sentence, what would you say? <span class="story-opt">(optional)</span></label>
+          <textarea id="recommendation" name="recommendation" rows="2"></textarea>
+          <p class="story-help">A short quote (15–30 words) we can feature on our website. Completely optional.</p>
+        </div>
+
+        <!-- Q9 -->
+        <fieldset class="form-group" style="border: 0; padding: 0;">
+          <legend style="font-family: var(--f-sans); font-weight: 600; margin-bottom: 8px;">How would you like to appear in the case study? <span style="color: var(--c-bordeaux);">*</span></legend>
+          <label class="story-radio"><input type="radio" name="publicationChoice" value="named" required /> <span>Use my company name (e.g. "ABC Mining, Zambia")</span></label>
+          <label class="story-radio"><input type="radio" name="publicationChoice" value="anonymous" /> <span>Keep me anonymous (e.g. "A copper mining importer in Zambia")</span></label>
+          <label class="story-radio"><input type="radio" name="publicationChoice" value="discuss_first" /> <span>Let's discuss before publishing — please contact me first</span></label>
+        </fieldset>
+
+        <!-- Q10 -->
+        <div class="form-group">
+          <label for="photos">Photos of the shipment <span class="story-opt">(optional)</span></label>
+          <input type="file" id="photos" name="photos" accept="image/jpeg,image/png,image/heic,image/heif,image/webp" multiple />
+          <p class="story-help">1 to 4 photos: cargo at warehouse, truck on the road, container at port, delivery moment. If you do not have photos, no problem — we will use our own. Max 25&nbsp;MB per photo.</p>
+          <p id="photoInfo" class="story-help" style="color: var(--c-bordeaux);"></p>
+        </div>
+
+        <!-- Q11 -->
+        <div class="form-group">
+          <label for="contactInfo">Your best contact (email or WhatsApp) <span class="story-opt">(optional)</span></label>
+          <input type="text" id="contactInfo" name="contactInfo" placeholder="e.g. name@company.com or +260 ..." />
+          <p class="story-help">So we can reach out if we need to confirm anything before publishing.</p>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn-primary" id="storySubmit" style="width: 100%; justify-content: center; margin-top: 0.5rem;">
+          Send my story to Mekluc Freight <span class="btn-arrow">&rarr;</span>
+        </button>
+        <p id="storyError" style="display: none; font-family: var(--f-sans); font-size: 0.9rem; color: #B42318; margin-top: 8px;"></p>
+      </form>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .story-radio {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-family: var(--f-sans); font-size: 0.9688rem; color: var(--c-ink);
+    padding: 6px 0; cursor: pointer;
+  }
+  .story-radio input { margin-top: 4px; accent-color: var(--c-bordeaux); }
+  .story-help { font-family: var(--f-sans); font-size: 0.8125rem; color: var(--c-mute); margin-top: 4px; }
+  .story-opt { color: var(--c-mute); font-weight: 400; font-size: 0.85em; }
+</style>
+
+<script define:vars={{ API_BASE }}>
+  const form = document.getElementById('storyForm');
+  const submitBtn = document.getElementById('storySubmit');
+  const errEl = document.getElementById('storyError');
+  const photoInput = document.getElementById('photos');
+  const photoInfo = document.getElementById('photoInfo');
+  const proxyGroup = document.getElementById('proxyGroup');
+  const startedAt = Date.now();
+
+  const MAX_FILES = 4;
+  const MAX_FILE = 25 * 1024 * 1024;
+
+  // Q1 conditionnel
+  document.querySelectorAll('input[name="filledBy"]').forEach(r => {
+    r.addEventListener('change', () => {
+      const team = form.filledBy.value === 'team_member';
+      proxyGroup.style.display = team ? 'block' : 'none';
+      document.getElementById('clientCompanyProxy').required = team;
+    });
+  });
+
+  // Validation photos à la sélection
+  photoInput.addEventListener('change', () => {
+    photoInfo.textContent = '';
+    const files = Array.from(photoInput.files || []);
+    if (files.length > MAX_FILES) {
+      photoInfo.textContent = `Maximum ${MAX_FILES} photos — only the first ${MAX_FILES} will be sent.`;
+    }
+    const tooBig = files.find(f => f.size > MAX_FILE);
+    if (tooBig) {
+      photoInfo.textContent = `"${tooBig.name}" is over 25 MB — please choose a smaller file.`;
+      photoInput.value = '';
+    }
+  });
+
+  function showError(msg) {
+    errEl.textContent = msg;
+    errEl.style.display = 'block';
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send my story to Mekluc Freight →';
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errEl.style.display = 'none';
+
+    if (!form.reportValidity()) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    try {
+      // 1) Photos → signed upload direct vers le storage (si présentes)
+      let submissionId;
+      let photoPaths = [];
+      const files = Array.from(photoInput.files || []).slice(0, MAX_FILES);
+      if (files.length > 0) {
+        submitBtn.textContent = 'Uploading photos…';
+        const signRes = await fetch(`${API_BASE}/sign`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ files: files.map(f => ({ name: f.name, type: f.type, size: f.size })) })
+        });
+        const sign = await signRes.json();
+        if (!sign.ok) throw new Error(sign.error || 'photo_sign_failed');
+        submissionId = sign.submissionId;
+        for (let i = 0; i < files.length; i++) {
+          const up = await fetch(sign.uploads[i].signedUrl, {
+            method: 'PUT',
+            headers: { 'Content-Type': files[i].type, 'x-upsert': 'false' },
+            body: files[i]
+          });
+          if (!up.ok) throw new Error('photo_upload_failed');
+          photoPaths.push(sign.uploads[i].path);
+        }
+        submitBtn.textContent = 'Sending…';
+      }
+
+      // 2) Soumission du formulaire
+      const payload = {
+        submissionId,
+        filledBy: form.filledBy.value,
+        clientCompanyProxy: form.clientCompanyProxy.value,
+        fullName: form.fullName.value,
+        companyName: form.companyName.value,
+        role: form.role.value,
+        whatWeMoved: form.whatWeMoved.value,
+        trickiestPart: form.trickiestPart.value,
+        howMeklucHandled: form.howMeklucHandled.value,
+        recommendation: form.recommendation.value,
+        publicationChoice: form.publicationChoice.value,
+        photoPaths,
+        contactInfo: form.contactInfo.value,
+        website: form.website.value,           // honeypot
+        elapsedMs: Date.now() - startedAt
+      };
+      const res = await fetch(API_BASE, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const json = await res.json();
+      if (!json.ok) throw new Error(json.error || 'submit_failed');
+
+      window.location.href = '/share-your-story/thank-you/';
+    } catch (err) {
+      showError('Something went wrong sending your story. Please try again, or call us on +27 11 392 1699 and we will note it down for you.');
+      console.error(err);
+    }
+  });
+</script>

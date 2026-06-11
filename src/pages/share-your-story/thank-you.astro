@@ -1,0 +1,30 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+// Page de remerciement post-soumission du form « Share your shipment story ».
+---
+
+<BaseLayout
+  title="Thank you | Mekluc Freight"
+  description="Your shipment story has been sent to the Mekluc Freight team."
+>
+  <section style="padding-top: clamp(8rem, 16vw, 12rem); padding-bottom: clamp(8rem, 16vw, 12rem);">
+    <div class="section" style="max-width: 640px; text-align: center;">
+      <p class="eyebrow" style="margin-bottom: 1rem;">Story received</p>
+      <h1 class="section-title" style="margin-bottom: 1.5rem;">Thank <em>you</em>.</h1>
+      <p style="font-family: var(--f-sans); font-size: 1.125rem; line-height: 1.75; color: var(--c-charcoal);">
+        Your story will help us tell future Mekluc clients exactly what we do, with real proof.
+      </p>
+      <p style="font-family: var(--f-sans); font-size: 1.125rem; line-height: 1.75; color: var(--c-charcoal); margin-top: 1rem;">
+        Our team will get back to you within 2 business days if we need to confirm anything
+        before publishing.
+      </p>
+      <p style="font-family: var(--f-sans); font-size: 1.0625rem; color: var(--c-charcoal); margin-top: 1.5rem;">
+        — The Mekluc Freight team
+      </p>
+      <a href="/" class="btn-primary" style="margin-top: 2.5rem; display: inline-flex;">
+        Back to the website <span class="btn-arrow">&rarr;</span>
+      </a>
+    </div>
+  </section>
+</BaseLayout>
