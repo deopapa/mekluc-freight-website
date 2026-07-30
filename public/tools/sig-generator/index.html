@@ -386,14 +386,13 @@ function freightIconImg(name, size) {
 }
 
 /* ===== BANNER GIF — Animated transport strip ===== */
-const BANNER_GIF_URL = 'https://www.meklucfreight.co.za/assets/sig/mekluc-transport-banner.gif';
-const BANNER_PNG_URL = 'https://www.meklucfreight.co.za/assets/sig/mekluc-transport-banner.png';
+const BANNER_GIF_URL = 'https://meklucfreight.co.za/tools/sig-generator/mekluc-transport-banner.gif';
+const BANNER_PNG_URL = 'https://meklucfreight.co.za/tools/sig-generator/mekluc-transport-banner.png';
 let bannerGifSrc = '';
 async function loadBannerGif() {
-  bannerGifSrc = await tryFetchLogo('./mekluc-transport-banner.gif');
-  if(!bannerGifSrc) bannerGifSrc = await tryFetchLogo('/assets/sig/mekluc-transport-banner.gif');
-  if(!bannerGifSrc) bannerGifSrc = await imgToBase64('/assets/sig/mekluc-transport-banner.gif');
-  if(!bannerGifSrc) bannerGifSrc = BANNER_GIF_URL;
+  // Bannière HÉBERGÉE par URL (comme les logos) — pas de base64 (supprimé par Outlook),
+  // et pointe vers le fichier réellement servi (/tools/sig-generator/, pas /assets/sig/ inexistant).
+  bannerGifSrc = BANNER_GIF_URL;
 }
 
 /* ===== DEFAULT COLORS ===== */
