@@ -65,3 +65,6 @@ wrangler-secrets.json
 
 # Cloudflare API token (NEVER commit)
 .cf-token
+
+# Devis / documents clients (donnees commerciales, ne pas publier)
+/devis/
